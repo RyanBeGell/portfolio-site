@@ -22,6 +22,7 @@ import styles from './sidebar.module.css';
 import { Avatar } from '@mui/material';
 import SidebarFooter from './sidebar-footer';
 import { useEffect } from 'react';
+import Typography from '@mui/material/Typography';
 
 
 const drawerWidth = 250;
@@ -39,9 +40,11 @@ export default function Sidebar(){
         display="flex"
         justifyContent="center"
         alignItems="center">
-        <Avatar className={styles.avatar} src={"/avatar.svg"} alt="Avatar" />
+        <Avatar className={styles.avatar} src={"/avatar.svg"} alt="Avatar"/>
       </Box>
-      <h1 className={styles.name} color="primary">Ryan BeGell</h1>
+      <Typography variant={"h4"} className={styles.name}>
+        Ryan BeGell
+      </Typography>
       <Divider />
       <List>
         {['Home', 'About', 'Skills', 'Projects', 'Blog', 'Contact'].map((text, index) => (

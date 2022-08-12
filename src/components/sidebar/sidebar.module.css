@@ -2,6 +2,8 @@
     width: 104px;
     height: 104px;
     margin-top: 16px;
+    border: White solid 5px;
+    /* Change border to '#2196F3' when real photo added*/
   }
 
   .name {

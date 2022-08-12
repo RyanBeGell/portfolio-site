@@ -21,7 +21,7 @@ const SidebarFooter = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Paper variant="outlined" sx={{ position: 'fixed', bottom: 0, left: 0, width: 248}} elevation={3}>
+      <Paper sx={{ position: 'fixed', bottom: 0, left: 0, width: 248}}>
         <BottomNavigation>
           <BottomNavigationAction icon={<LinkedIn color="primary" className={styles.footerIcon}/>} className={styles.footerIconBox}/>
           <BottomNavigationAction icon={<GitHub color="primary" className={styles.footerIcon}/>}/>
