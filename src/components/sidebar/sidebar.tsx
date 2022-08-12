@@ -1,0 +1,113 @@
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
+import Divider from '@mui/material/Divider';
+import Drawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import MenuIcon from '@mui/icons-material/Menu';
+import Toolbar from '@mui/material/Toolbar';
+import HomeIcon from '@mui/icons-material/Home';
+import PersonIcon from '@mui/icons-material/Person';
+import EqualizerIcon from '@mui/icons-material/Equalizer';
+import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
+import ContactMailRoundedIcon from '@mui/icons-material/ContactMailRounded';
+import IntegrationInstructionsRoundedIcon from '@mui/icons-material/IntegrationInstructionsRounded';
+import styles from './sidebar.module.css';
+import { Avatar } from '@mui/material';
+import SidebarFooter from './sidebar-footer';
+import { useEffect } from 'react';
+
+
+const drawerWidth = 250;
+
+export default function Sidebar(){
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+  const drawer = (
+    <div>
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center">
+        <Avatar className={styles.avatar} src={"/avatar.svg"} alt="Avatar" />
+      </Box>
+      <h1 className={styles.name} color="primary">Ryan BeGell</h1>
+      <Divider />
+      <List>
+        {['Home', 'About', 'Skills', 'Projects', 'Blog', 'Contact'].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton sx={{ borderRadius: 2,}}>
+              <ListItemIcon>
+                {index === 0 ? <HomeIcon  color="primary"/> : index === 1? <PersonIcon  color="primary"/>: index ===2?<EqualizerIcon  color="primary"/>:
+                 index ===3? <IntegrationInstructionsRoundedIcon color="primary"/>: index === 4? 
+                 <HistoryEduIcon color="primary"/>:index===5?<ContactMailRoundedIcon color="primary"/>:null}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  );
+
+  return (
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: 'none' } }}
+          >
+            <MenuIcon />
+          </IconButton>
+        </Toolbar>
+      <Box
+        component="nav"
+        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        aria-label="mailbox folders"
+      >
+        <Drawer
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: { xs: 'block', sm: 'none' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth},
+          }}
+        >
+          {drawer}
+          <SidebarFooter/>
+        </Drawer>
+        <Drawer
+          variant="permanent"
+          anchor="left"
+          sx={{
+            display: { xs: 'none', sm: 'block' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth},
+          }}
+          open
+        >
+          {drawer}
+          <SidebarFooter/>
+        </Drawer>
+      </Box>
+    </Box>
+  );
+}
+

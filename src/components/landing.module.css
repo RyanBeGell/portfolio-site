@@ -1,0 +1,35 @@
+.firstName {
+    font-family: "Neutraface Text Bold";
+}
+
+.lastName {
+    color: #2196F3;
+    font-family: "Neutraface Text Bold";
+}
+
+@font-face {font-family: "Neutraface Text Bold";
+    src: url("//db.onlinewebfonts.com/t/33c69019b1d9231e1004f52ae937b0da.eot");
+    src: url("//db.onlinewebfonts.com/t/33c69019b1d9231e1004f52ae937b0da.eot?#iefix") format("embedded-opentype"),
+     url("//db.onlinewebfonts.com/t/33c69019b1d9231e1004f52ae937b0da.woff2") format("woff2"),
+      url("//db.onlinewebfonts.com/t/33c69019b1d9231e1004f52ae937b0da.woff") format("woff"),
+       url("//db.onlinewebfonts.com/t/33c69019b1d9231e1004f52ae937b0da.ttf") format("truetype"),
+        url("//db.onlinewebfonts.com/t/33c69019b1d9231e1004f52ae937b0da.svg#Neutraface Text Bold") format("svg");
+         font-weight: normal; font-style: normal;
+    }
+
+.shiftContentRight{
+    margin-left: 250px;
+    /* Sidebar is 250px wide */
+    display: flex;
+    justify-content: center;
+    width:"100%";
+    background-color: #0A1929;
+}
+
+.shiftContentLeft{
+    margin-left:0px;
+    display: flex;
+    justify-content: center;
+    width:"100%";
+    background-color: #0A1929;
+}
