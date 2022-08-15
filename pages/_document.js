@@ -8,6 +8,12 @@ class MyDocument extends Document {
           {/* favicon */}
           <link rel="shortcut icon" size="64x64 32x32 16x16" href="/favicon.png" />
 
+          <link 
+            href="//db.onlinewebfonts.com/c/33c69019b1d9231e1004f52ae937b0da?family=Neutraface+Text+Bold" 
+            rel="stylesheet preload"
+            type="text/css"
+          />
+
           {/*syntax highlighting for mdx blog posts via. prism */}
           <link
             rel="stylesheet"
