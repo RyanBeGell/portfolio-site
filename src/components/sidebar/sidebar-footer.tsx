@@ -21,9 +21,9 @@ const SidebarFooter = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Paper sx={{ position: 'fixed', bottom: 0, left: 0, width: 248}}>
+      <Paper sx={{ position: 'fixed', bottom: 0, left: 0, width: 280}} elevation={3}>
         <BottomNavigation>
-          <BottomNavigationAction icon={<LinkedIn color="primary" className={styles.footerIcon}/>} className={styles.footerIconBox}/>
+          <BottomNavigationAction icon={<LinkedIn color="primary" className={styles.footerIcon}/>}/>
           <BottomNavigationAction icon={<GitHub color="primary" className={styles.footerIcon}/>}/>
           <BottomNavigationAction icon={<Email color="primary" className={styles.footerIcon}/>}/>
         </BottomNavigation>
