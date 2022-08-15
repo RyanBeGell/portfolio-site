@@ -13,21 +13,24 @@
     margin-bottom: 16px;
   }
 
-  @font-face {font-family: "Neutraface Text Bold";
-     src: url("//db.onlinewebfonts.com/t/33c69019b1d9231e1004f52ae937b0da.eot");
-    src: url("//db.onlinewebfonts.com/t/33c69019b1d9231e1004f52ae937b0da.eot?#iefix") format("embedded-opentype"),
-     url("//db.onlinewebfonts.com/t/33c69019b1d9231e1004f52ae937b0da.woff2") format("woff2"),
-      url("//db.onlinewebfonts.com/t/33c69019b1d9231e1004f52ae937b0da.woff") format("woff"),
-       url("//db.onlinewebfonts.com/t/33c69019b1d9231e1004f52ae937b0da.ttf") format("truetype"),
-        url("//db.onlinewebfonts.com/t/33c69019b1d9231e1004f52ae937b0da.svg#Neutraface Text Bold") format("svg");
-         font-weight: normal; font-style: normal;}
-
 .footerIcon:hover {
   transform: scale(1.5);
-  transition-duration: 0.5s;
+  transition-duration: .3s;
+  transition-property: transform;
   color: #42a5f5;
 }
 
 .footerIcon{
   color: #2196F3;
+}
+
+.navItem:hover {
+  transform: scale(1.05);
+  transition-duration: .3s;
+  transition-property: transform;
+}
+
+.underlineNavItem{
+  text-underline-offset: 10px;
+  text-decoration: underline #2196F3 2px;
 }

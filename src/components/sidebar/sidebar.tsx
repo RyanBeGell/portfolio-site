@@ -25,7 +25,7 @@ import { useEffect } from 'react';
 import Typography from '@mui/material/Typography';
 
 
-const drawerWidth = 250;
+const drawerWidth = 282;
 
 export default function Sidebar(){
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -42,20 +42,28 @@ export default function Sidebar(){
         alignItems="center">
         <Avatar className={styles.avatar} src={"/avatar.svg"} alt="Avatar"/>
       </Box>
-      <Typography variant={"h4"} className={styles.name}>
+      <Typography variant={"h5"} className={styles.name} color="">
         Ryan BeGell
       </Typography>
       <Divider />
       <List>
         {['Home', 'About', 'Skills', 'Projects', 'Blog', 'Contact'].map((text, index) => (
-          <ListItem key={text} disablePadding>
+          <ListItem key={text} sx={{px:"12px", py:"4px"}} className={styles.navItem}>
             <ListItemButton sx={{ borderRadius: 2,}}>
               <ListItemIcon>
-                {index === 0 ? <HomeIcon  color="primary"/> : index === 1? <PersonIcon  color="primary"/>: index ===2?<EqualizerIcon  color="primary"/>:
-                 index ===3? <IntegrationInstructionsRoundedIcon color="primary"/>: index === 4? 
-                 <HistoryEduIcon color="primary"/>:index===5?<ContactMailRoundedIcon color="primary"/>:null}
+                {
+                  index === 0? <HomeIcon  color="primary"/> :
+                  index === 1? <PersonIcon  color="primary"/>:
+                  index === 2? <EqualizerIcon  color="primary"/>:
+                  index === 3? <IntegrationInstructionsRoundedIcon color="primary"/>:
+                  index === 4? <HistoryEduIcon color="primary"/>:
+                  index === 5? <ContactMailRoundedIcon color="primary"/>:null
+                }
               </ListItemIcon>
-              <ListItemText primary={text} />
+              {index===4? 
+              //conditionally render the underline based on where the user is on the page - only highlighting blog temporarily
+              <ListItemText primary={text} sx={{ml:"-12px",}} className={styles.underlineNavItem}/>:
+              <ListItemText primary={text} sx={{ml:"-12px",}}/>}
             </ListItemButton>
           </ListItem>
         ))}
@@ -66,20 +74,18 @@ export default function Sidebar(){
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-        <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+            sx={{ m: 1, display: { sm: 'none' } }}
           >
             <MenuIcon />
           </IconButton>
-        </Toolbar>
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 },}}
         aria-label="mailbox folders"
       >
         <Drawer
