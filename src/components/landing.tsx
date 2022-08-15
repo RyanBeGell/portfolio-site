@@ -1,19 +1,23 @@
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, BottomNavigation, BottomNavigationAction, Paper } from "@mui/material";
 import styles from './landing.module.css';
 import programming from './programming_desk.svg';
 import Image from "next/image";
 import ReactTyped from 'react-typed';
+import Avatar from '@mui/material/Avatar';
+// import mui south icon
+import SouthIcon from '@mui/icons-material/South';
 
 export default function Landing(){
 
 
     return (
-    <Grid container direction="row" alignItems="center" justifyContent="center">
-        <Grid item>
-            <Typography variant={"h1"} className={styles.firstName} >
+        <>
+    <Grid container direction="row" alignItems="center" justifyContent="center" display="flex" sx={{p:5}} wrap='nowrap'>
+        <Grid item sx={{pr:8}}>
+            <Typography variant={"h1"} className={styles.firstName} noWrap>
                 Ryan <span className={styles.lastName}>BeGell</span>
             </Typography>
-            <Typography variant={"h4"}>
+            <Typography variant={"h4"} noWrap>
                 <ReactTyped
                     loop={false}
                     typeSpeed={80}
@@ -37,5 +41,6 @@ export default function Landing(){
                  height={787}/>
         </Grid>
     </Grid>
-    )
+        <SouthIcon color="primary" className={styles.ArrowIcon}/>
+    </>)
 }
