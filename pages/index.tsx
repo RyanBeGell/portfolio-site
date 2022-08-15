@@ -94,9 +94,23 @@ const Home: NextPage = () => {
   <ThemeProvider theme={theme}>
     <CssBaseline />
       <Sidebar/>
-      <div className={sideNavOpen? styles.shiftContentRight : styles.shiftContentLeft}>
+      <Box 
+        display="flex" 
+        alignItems="center"
+        justifyContent="center"
+        className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
+        sx={{ minHeight: '100vh' }}
+      >
         <Landing/>
-      </div>
+      </Box>
+      <Box 
+        display="flex" 
+        alignItems="center"
+        justifyContent="center"
+        className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
+        sx={{ minHeight: '100vh', backgroundColor: '#091725' }}
+      >
+      </Box>
     </ThemeProvider>
   </>)
 }
