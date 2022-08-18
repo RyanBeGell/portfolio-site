@@ -23,6 +23,5 @@
       "@/styles/*": ["styles/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/sidebar/sidebar.tsx"],
   "exclude": ["node_modules"]
 }
