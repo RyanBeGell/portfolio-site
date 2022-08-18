@@ -20,7 +20,7 @@ import ContactMailRoundedIcon from '@mui/icons-material/ContactMailRounded';
 import IntegrationInstructionsRoundedIcon from '@mui/icons-material/IntegrationInstructionsRounded';
 import styles from './sidebar.module.css';
 import { Avatar } from '@mui/material';
-import SidebarFooter from './sidebar-footer';
+import SidebarFooter from './SidebarFooter';
 import { useEffect } from 'react';
 import Typography from '@mui/material/Typography';
 

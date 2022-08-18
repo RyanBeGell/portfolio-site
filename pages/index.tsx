@@ -1,14 +1,19 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import Sidebar from '@/src/components/sidebar/sidebar'
-import Landing from '@/src/components/landing'
+import Sidebar from '@/src/components/sidebar/Sidebar'
+import Landing from '@/src/components/Landing'
 import { Grid, Box, CssBaseline } from '@mui/material'
-import { useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import styles from '@/src/components/landing.module.css';
 import { useLayoutEffect } from 'react'
-import { useEffect } from 'react'
+import { useEffect, createContext } from 'react'
 import { createTheme, ThemeProvider } from '@mui/material'
+import ToggleOffIcon from '@mui/icons-material/ToggleOff';
+import ToggleOnIcon from '@mui/icons-material/ToggleOn';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeToggle from '@/src/components/DarkModeToggle'
 
 const Home: NextPage = () => {
 
@@ -93,7 +98,14 @@ const Home: NextPage = () => {
   return (<>
   <ThemeProvider theme={theme}>
     <CssBaseline />
+
       <Sidebar/>
+      <Grid display="flex" wrap='nowrap' className={styles.darkModeToggle}>
+        <Grid item >
+          <DarkModeToggle/>
+        </Grid>
+      </Grid> 
+  
       <Box 
         display="flex" 
         alignItems="center"

@@ -26,6 +26,7 @@
     transition-duration: .3s;
     transition-property: transform;
     color: #42a5f5;
+    cursor: pointer;
   }
 
   .ArrowIcon{
@@ -35,6 +36,19 @@
     font-size: 30px;
     animation: jumpInfinite 3s infinite;
   }
+
+
+/* Place the dark mode toggle top right of screen*/
+.darkModeToggle {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index:100;
+
+    /* The MUI icon naturally already has 8px above*/
+    margin-top: 8px;
+    margin-right: 16px;
+}
 
 /* animation for my down arrow */
   @keyframes jumpInfinite {
@@ -47,5 +61,4 @@
     100% {
       margin-top: 0;
     }
-  }
-  
+  }  
