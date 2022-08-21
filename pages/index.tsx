@@ -94,7 +94,6 @@ const Home: NextPage = () => {
     },
   });
 
-
   return (<>
   <ThemeProvider theme={theme}>
     <CssBaseline />
@@ -105,7 +104,7 @@ const Home: NextPage = () => {
           <DarkModeToggle/>
         </Grid>
       </Grid> 
-  
+      {/* Landing */}
       <Box 
         display="flex" 
         alignItems="center"
@@ -115,6 +114,7 @@ const Home: NextPage = () => {
       >
         <Landing/>
       </Box>
+      {/*About section*/}
       <Box 
         display="flex" 
         alignItems="center"
@@ -123,6 +123,42 @@ const Home: NextPage = () => {
         sx={{ minHeight: '100vh', backgroundColor: '#091725' }}
       >
       </Box>
+      {/* Skills section */}
+      <Box 
+        display="flex" 
+        alignItems="center"
+        justifyContent="center"
+        className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
+        sx={{ minHeight: '100vh'}}
+      >
+      </Box>
+      {/*Projects section*/}
+      <Box 
+        display="flex" 
+        alignItems="center"
+        justifyContent="center"
+        className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
+        sx={{ minHeight: '100vh', backgroundColor: '#091725' }}
+      >
+      </Box>
+      {/* Blog section */}
+      <Box 
+        display="flex" 
+        alignItems="center"
+        justifyContent="center"
+        className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
+        sx={{ minHeight: '100vh'}}
+      >
+      </Box>
+      {/*Contact section*/}
+      <Box 
+        display="flex" 
+        alignItems="center"
+        justifyContent="center"
+        className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
+        sx={{ minHeight: '100vh', backgroundColor: '#091725' }}
+      ></Box>
+
     </ThemeProvider>
   </>)
 }
