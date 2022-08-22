@@ -3,17 +3,19 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Sidebar from '@/src/components/sidebar/Sidebar'
 import Landing from '@/src/components/Landing'
-import { Grid, Box, CssBaseline } from '@mui/material'
+import { Grid, Box, CssBaseline, Button } from '@mui/material'
 import React, { useRef, useState } from 'react'
 import styles from '@/src/components/landing.module.css';
 import { useLayoutEffect } from 'react'
 import { useEffect, createContext } from 'react'
-import { createTheme, ThemeProvider } from '@mui/material'
+import { createTheme, ThemeProvider,  ThemeOptions, PaletteMode, useTheme, } from '@mui/material'
 import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import ToggleOnIcon from '@mui/icons-material/ToggleOn';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeToggle from '@/src/components/DarkModeToggle'
+
+const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 const Home: NextPage = () => {
 
@@ -51,9 +53,24 @@ const Home: NextPage = () => {
   } , [])
 
 
-  //MUI Custom Theme based on the mui.com website theme
-  const theme = createTheme({
+  const [mode, setMode] = React.useState<PaletteMode>('light');
+  const colorMode = React.useMemo(
+    () => ({
+      // The dark mode switch would invoke this method
+      toggleColorMode: () => {
+        setMode((prevMode: PaletteMode) =>
+          prevMode === 'light' ? 'dark' : 'light',
+        );
+      },
+    }),
+    [],
+  );
+
+
+  //Custom Pallette for Light/Dark mode theme
+  const getDesignTokens = (mode: PaletteMode) => ({
     palette: {
+      mode,
       primary: {
         main: '#2196F3',
         light: '#0072E5',
@@ -78,88 +95,111 @@ const Home: NextPage = () => {
         light: '#ffb74d',
         dark: '#f57c00',
       },
+
       background: {
-        default: '#0A1929',
-        paper: '#001e3c',
-      },
+      ...(mode === 'dark'
+      ? {
+          default: '#0A1929',
+          dark: '#091725',
+          paper: '#001e3c',
+        }
+      : {
+          default: '#FFFFFF',
+          dark: '#FAF9F6',
+          paper: '#001e3c',
+      }),
+    },
+      
       text: {
-        primary: '#ffffff',
+        ...(mode === 'dark'
+        ? {
+            primary: '#ffffff',
+          }
+        : {
+            primary: '#000000',
+        }),
       },
+
       //change hover color opacity to 0.08 to make it more visible
       action: {
         hover: '#0072E56E',
         //change opacity to make it lighter
-        hoverOpacity: 0.02,
+        hoverOpacity: 0.08,
       },
     },
   });
 
+  // Update the theme only if the mode changes
+  const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
+
   return (<>
-  <ThemeProvider theme={theme}>
-    <CssBaseline />
+    <ColorModeContext.Provider value={colorMode}>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
 
-      <Sidebar/>
-      <Grid display="flex" wrap='nowrap' className={styles.darkModeToggle}>
-        <Grid item >
-          <DarkModeToggle/>
-        </Grid>
-      </Grid> 
-      {/* Landing */}
-      <Box 
-        display="flex" 
-        alignItems="center"
-        justifyContent="center"
-        className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
-        sx={{ minHeight: '100vh' }}
-      >
-        <Landing/>
-      </Box>
-      {/*About section*/}
-      <Box 
-        display="flex" 
-        alignItems="center"
-        justifyContent="center"
-        className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
-        sx={{ minHeight: '100vh', backgroundColor: '#091725' }}
-      >
-      </Box>
-      {/* Skills section */}
-      <Box 
-        display="flex" 
-        alignItems="center"
-        justifyContent="center"
-        className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
-        sx={{ minHeight: '100vh'}}
-      >
-      </Box>
-      {/*Projects section*/}
-      <Box 
-        display="flex" 
-        alignItems="center"
-        justifyContent="center"
-        className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
-        sx={{ minHeight: '100vh', backgroundColor: '#091725' }}
-      >
-      </Box>
-      {/* Blog section */}
-      <Box 
-        display="flex" 
-        alignItems="center"
-        justifyContent="center"
-        className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
-        sx={{ minHeight: '100vh'}}
-      >
-      </Box>
-      {/*Contact section*/}
-      <Box 
-        display="flex" 
-        alignItems="center"
-        justifyContent="center"
-        className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
-        sx={{ minHeight: '100vh', backgroundColor: '#091725' }}
-      ></Box>
+        <Sidebar/>
+        <Grid display="flex" wrap='nowrap' className={styles.darkModeToggle}>
+          <Grid item >
+            <DarkModeToggle/>
+          </Grid>
+        </Grid> 
+        {/* Landing */}
+        <Box 
+          display="flex" 
+          alignItems="center"
+          justifyContent="center"
+          className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
+          sx={{ minHeight: '100vh' }}
+        >
+          <Landing/>
+        </Box>
+        {/*About section*/}
+        <Box 
+          display="flex" 
+          alignItems="center"
+          justifyContent="center"
+          className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
+          sx={{ minHeight: '100vh', backgroundColor: 'background.dark' }}
+        >
+        </Box>
+        {/* Skills section */}
+        <Box 
+          display="flex" 
+          alignItems="center"
+          justifyContent="center"
+          className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
+          sx={{ minHeight: '100vh'}}
+        >
+        </Box>
+        {/*Projects section*/}
+        <Box 
+          display="flex" 
+          alignItems="center"
+          justifyContent="center"
+          className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
+          sx={{ minHeight: '100vh', backgroundColor: 'background.dark' }}
+        >
+        </Box>
+        {/* Blog section */}
+        <Box 
+          display="flex" 
+          alignItems="center"
+          justifyContent="center"
+          className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
+          sx={{ minHeight: '100vh'}}
+        >
+        </Box>
+        {/*Contact section*/}
+        <Box 
+          display="flex" 
+          alignItems="center"
+          justifyContent="center"
+          className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
+          sx={{ minHeight: '100vh', backgroundColor: 'background.dark' }}
+        ></Box>
 
-    </ThemeProvider>
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   </>)
 }
 
