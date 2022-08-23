@@ -131,18 +131,17 @@ const Home: NextPage = () => {
 
   // Update the theme only if the mode changes
   const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
-
+ 
   return (<>
     <ColorModeContext.Provider value={colorMode}>
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
         <Sidebar/>
-        <Grid display="flex" wrap='nowrap' className={styles.darkModeToggle}>
-          <Grid item >
-            <DarkModeToggle/>
-          </Grid>
+        <Grid display="flex" wrap='nowrap' className={styles.darkModeToggle} onClick={colorMode.toggleColorMode}>
+          <DarkModeToggle />
         </Grid> 
+        
         {/* Landing */}
         <Box 
           display="flex" 
