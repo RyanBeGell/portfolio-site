@@ -84,7 +84,9 @@ const Home: NextPage = () => {
         light: '#64b5f6',
         dark: '#1976d2',
       },
+      
       divider: 'rgba(255,255,255,0.12)',
+
       success: {
         main: '#66bb6a',
         light: '#81c784',
@@ -106,7 +108,7 @@ const Home: NextPage = () => {
       : {
           default: '#FFFFFF',
           dark: '#FAF9F6',
-          paper: '#001e3c',
+          paper: '#2196F3',
       }),
     },
       
@@ -120,11 +122,19 @@ const Home: NextPage = () => {
         }),
       },
 
-      //change hover color opacity to 0.08 to make it more visible
+      //change hover color opacity to 0.1 to make it more visible
       action: {
-        hover: '#0072E56E',
-        //change opacity to make it lighter
-        hoverOpacity: 0.08,
+        ...(mode === 'dark'
+        ? {
+          hover: '#0072E56E',
+          //change opacity to make it lighter
+          hoverOpacity: 0.1,
+          }
+        : {
+          hover: '#42A6F5',
+          //change opacity to make it lighter
+          hoverOpacity: 0.1,
+        }),
       },
     },
   });
@@ -132,16 +142,17 @@ const Home: NextPage = () => {
   // Update the theme only if the mode changes
   const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
  
+  console.log(mode);
   return (<>
     <ColorModeContext.Provider value={colorMode}>
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
         <Sidebar/>
-        <Grid display="flex" wrap='nowrap' className={styles.darkModeToggle} onClick={colorMode.toggleColorMode}>
-          <DarkModeToggle />
-        </Grid> 
-        
+        <Box className={styles.darkModeToggle} onClick={colorMode.toggleColorMode}>
+          <DarkModeToggle mode={mode}/>
+        </Box> 
+
         {/* Landing */}
         <Box 
           display="flex" 
