@@ -14,10 +14,12 @@
     /* Transition to be added if the content shift is visible on load in deployment server */
     transition-duration: 1000ms;
     transition-property: margin-left;
+    padding: 8px;
 }
 
 .shiftContentLeft{
     margin-left: 282px; 
+    padding: 8px;
     /* Transition to be added if the content shift is visible on load in deployment server */
 }
 
@@ -44,10 +46,7 @@
     top: 0;
     right: 0;
     z-index:100;
-
-    /* The MUI icon naturally already has 8px above*/
-    margin-top: 8px;
-    margin-right: 16px;
+    margin: 8px;
 }
 
 /* animation for my down arrow */
