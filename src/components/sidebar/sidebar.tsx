@@ -42,28 +42,28 @@ export default function Sidebar(){
         alignItems="center">
         <Avatar className={styles.avatar} src={"/avatar.svg"} alt="Avatar"/>
       </Box>
-      <Typography variant={"h5"} className={styles.name} color="">
+      <Typography variant={"h5"} className={styles.name} color="#FFFFFF">
         Ryan BeGell
       </Typography>
       <Divider />
       <List>
         {['Home', 'About', 'Skills', 'Projects', 'Blog', 'Contact'].map((text, index) => (
-          <ListItem key={text} sx={{px:"12px", py:"4px"}} className={styles.navItem}>
+          <ListItem key={text} variant={"h2"} sx={{px:"12px", py:"4px"}} className={styles.navItem}>
             <ListItemButton sx={{ borderRadius: 2,}}>
               <ListItemIcon>
                 {
-                  index === 0? <HomeIcon  color="primary"/> :
-                  index === 1? <PersonIcon  color="primary"/>:
-                  index === 2? <EqualizerIcon  color="primary"/>:
-                  index === 3? <IntegrationInstructionsRoundedIcon color="primary"/>:
-                  index === 4? <HistoryEduIcon color="primary"/>:
-                  index === 5? <ContactMailRoundedIcon color="primary"/>:null
+                  index === 0? <HomeIcon /> :
+                  index === 1? <PersonIcon />:
+                  index === 2? <EqualizerIcon />:
+                  index === 3? <IntegrationInstructionsRoundedIcon />:
+                  index === 4? <HistoryEduIcon />:
+                  index === 5? <ContactMailRoundedIcon />:null
                 }
               </ListItemIcon>
               {index===4? 
               //conditionally render the underline based on where the user is on the page - only highlighting blog temporarily
-              <ListItemText primary={text} sx={{ml:"-12px",}} className={styles.underlineNavItem}/>:
-              <ListItemText primary={text} sx={{ml:"-12px",}}/>}
+              <ListItemText primary={text} sx={{ml:"-12px", color:"#FFFFFF"}} className={styles.underlineNavItem}/>:
+              <ListItemText primary={text} sx={{ml:"-12px", color:"#FFFFFF"}}/>}
             </ListItemButton>
           </ListItem>
         ))}
@@ -72,7 +72,7 @@ export default function Sidebar(){
   );
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex'}}>
       <CssBaseline />
           <IconButton
             color="inherit"
@@ -97,7 +97,7 @@ export default function Sidebar(){
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth},
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth,  p:"16px", border: 0},
           }}
         >
           {drawer}
@@ -108,7 +108,7 @@ export default function Sidebar(){
           anchor="left"
           sx={{
             display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth},
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth,  p:"16px", border: 0},
           }}
           open
         >
