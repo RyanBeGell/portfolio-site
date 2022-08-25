@@ -48,22 +48,22 @@ export default function Sidebar(){
       <Divider />
       <List>
         {['Home', 'About', 'Skills', 'Projects', 'Blog', 'Contact'].map((text, index) => (
-          <ListItem key={text} variant={"h2"} sx={{px:"12px", py:"4px"}} className={styles.navItem}>
+          <ListItem key={text} sx={{px:"12px", py:"4px",}} className={styles.navItem}>
             <ListItemButton sx={{ borderRadius: 2,}}>
-              <ListItemIcon>
+              <ListItemIcon sx={{color:'#ffffff'}}>
                 {
                   index === 0? <HomeIcon /> :
                   index === 1? <PersonIcon />:
                   index === 2? <EqualizerIcon />:
                   index === 3? <IntegrationInstructionsRoundedIcon />:
                   index === 4? <HistoryEduIcon />:
-                  index === 5? <ContactMailRoundedIcon />:null
+                  index === 5? <ContactMailRoundedIcon/>:null
                 }
               </ListItemIcon>
               {index===4? 
               //conditionally render the underline based on where the user is on the page - only highlighting blog temporarily
-              <ListItemText primary={text} sx={{ml:"-12px", color:"#FFFFFF"}} className={styles.underlineNavItem}/>:
-              <ListItemText primary={text} sx={{ml:"-12px", color:"#FFFFFF"}}/>}
+              <ListItemText primary={text} sx={{ml:"-12px", color:"#FFFFFF", }} className={styles.underlineNavItem}/>:
+              <ListItemText primary={text} sx={{ml:"-12px", color:"#FFFFFF", }}/>}
             </ListItemButton>
           </ListItem>
         ))}
@@ -97,7 +97,7 @@ export default function Sidebar(){
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth,  p:"16px", border: 0},
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth,  p:"16px", border: 0, },
           }}
         >
           {drawer}
@@ -108,7 +108,7 @@ export default function Sidebar(){
           anchor="left"
           sx={{
             display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth,  p:"16px", border: 0},
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth,  p:"16px", border: 0, backgroundColor:'background.nav'},
           }}
           open
         >

@@ -2,32 +2,23 @@ import { BottomNavigation, BottomNavigationAction, createTheme, ThemeProvider} f
 import { LinkedIn, GitHub, Email } from "@mui/icons-material";
 import Paper from '@mui/material/Paper';
 import styles from './sidebar.module.css';
+import { Box, Grid, Divider } from "@mui/material";
 
 const SidebarFooter = () => {
 
-  //Main theme needs to be overridden to have a different MUI paper
-  const theme = createTheme({
-    palette: {
-      background: {
-        default: '#0A1929',
-        paper: '#0A1929',
-      },
-        text: {
-            secondary: 'rgba(255, 255, 255, 0.7)',
-        }
-  }
-  });
+  const year: number = new Date().getFullYear();
 
-
-  return (
-      <Paper sx={{ position: 'fixed', bottom: 0, left: 0, width: 280}} elevation={12}>
-        <BottomNavigation>
-          <BottomNavigationAction icon={<LinkedIn color="primary" className={styles.footerIcon}/>}/>
-          <BottomNavigationAction icon={<GitHub color="primary" className={styles.footerIcon}/>}/>
-          <BottomNavigationAction icon={<Email color="primary" className={styles.footerIcon}/>}/>
-        </BottomNavigation>
-      </Paper>
-  );
+  return (<>
+  <Box sx={{ position: 'fixed', bottom: 0, left: 0, width: '282px',px:"16px"}} >
+    <Divider />
+      <Grid container alignItems="center" justifyContent="center" sx={{p:"16px"}}>
+        <Divider />
+        <span className={styles.copyright}>
+          &copy; {year} Ryan BeGell
+        </span>
+      </Grid>
+  </Box>
+  </>);
 };
 
 export default SidebarFooter;

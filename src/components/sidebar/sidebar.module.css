@@ -34,3 +34,8 @@
   text-underline-offset: 10px;
   text-decoration: underline #2196F3 2px;
 }
+
+.copyright{
+  font-size: 14px;
+  color: #FFFFFF;
+}
