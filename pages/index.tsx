@@ -72,9 +72,17 @@ const Home: NextPage = () => {
     palette: {
       mode,
       primary: {
-        main: '#2196F3',
-        light: '#0072E5',
-        dark: '#007FFF',
+        ...(mode === 'dark'
+        ? {
+            main: '#2196F3',
+            light: '#0072E5',
+            dark: '#007FFF',
+          }
+        : {
+            main: '#0d6efd',
+            light: '#0072E5',
+            dark: '#007FFF',
+        }),
       },
       secondary: {
         main: '#f50057',
@@ -110,7 +118,7 @@ const Home: NextPage = () => {
           default: '#FFFFFF',
           dark: '#FAF9F6',
           paper: '#001e3c',
-          nav: '#2196F3',
+          nav: '#0d6efd',
       }),
     },
       
@@ -118,25 +126,33 @@ const Home: NextPage = () => {
         ...(mode === 'dark'
         ? {
             primary: '#ffffff',
-            contrast: '#2196F3'
+            contrast: '#2196F3',
+            subtitle: '#bfbfbf',
           }
         : {
             primary: '#000000',
-            contrast: '#114b7a'
+            contrast: '#114b7a',
+            subtitle: '#d9d9d9',
         }),
       },
 
-      //change hover color opacity to 0.1 to make it more visible
       action: {
         ...(mode === 'dark'
         ? {
           hover: '#0072E56E',
-          hoverOpacity: 0.1,
           }
         : {
-          hover: '#1769aa',
-          hoverOpacity: 0.1,
+          hover: '#025de4',
         }),
+      },
+      overrides: {
+        MuiCssBaseline: {
+          '@global': {
+            body: {
+              transition: 'all 2s linear',
+            },
+          },
+        },
       },
     },
   });

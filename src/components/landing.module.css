@@ -1,12 +1,8 @@
-.firstName {
+.name {
     font-family: "Neutraface Text Bold";
     margin-bottom: 8px;
 }
 
-.lastName {
-    color: #2196F3;
-    font-family: "Neutraface Text Bold";
-}
 
 .shiftContentRight{
     /* Sidebar is 280px wide */
@@ -27,7 +23,6 @@
     transform: scale(1.5);
     transition-duration: .3s;
     transition-property: transform;
-    color: #42a5f5;
     cursor: pointer;
   }
 
