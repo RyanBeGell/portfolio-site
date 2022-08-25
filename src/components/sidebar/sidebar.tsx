@@ -45,11 +45,14 @@ export default function Sidebar(){
       <Typography variant={"h5"} className={styles.name} color="#FFFFFF">
         Ryan BeGell
       </Typography>
+      <Typography variant={"subtitle2"} className={styles.workAvailability} color="text.subtitle">
+        {/* Available for work */}
+      </Typography>
       <Divider />
       <List>
         {['Home', 'About', 'Skills', 'Projects', 'Blog', 'Contact'].map((text, index) => (
-          <ListItem key={text} sx={{px:"12px", py:"4px",}} className={styles.navItem}>
-            <ListItemButton sx={{ borderRadius: 2,}}>
+          <ListItem key={text} sx={{px:"12px", py:"4px",}}>
+            <ListItemButton sx={{ borderRadius: 2,}} className={styles.navItem}>
               <ListItemIcon sx={{color:'#ffffff'}}>
                 {
                   index === 0? <HomeIcon /> :
@@ -71,9 +74,7 @@ export default function Sidebar(){
     </div>
   );
 
-  return (
-    <Box sx={{ display: 'flex'}}>
-      <CssBaseline />
+  return (<>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -116,7 +117,6 @@ export default function Sidebar(){
           <SidebarFooter/>
         </Drawer>
       </Box>
-    </Box>
-  );
+    </>);
 }
 
