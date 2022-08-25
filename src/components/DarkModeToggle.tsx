@@ -3,7 +3,11 @@ import Image from 'next/image';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 
-export default function DarkModeToggle(props: any) {
+export interface Props{
+    mode: String;
+}
+
+export default function DarkModeToggle(props: Props) {
     return (
     <>
                 {/* Conditionally render className (Toggle styling) depending on mode prop */}
