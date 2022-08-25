@@ -104,11 +104,13 @@ const Home: NextPage = () => {
           default: '#0A1929',
           dark: '#091725',
           paper: '#001e3c',
+          nav: '#001e3c',
         }
       : {
           default: '#FFFFFF',
           dark: '#FAF9F6',
-          paper: '#2196F3',
+          paper: '#001e3c',
+          nav: '#2196F3',
       }),
     },
       
@@ -116,9 +118,11 @@ const Home: NextPage = () => {
         ...(mode === 'dark'
         ? {
             primary: '#ffffff',
+            contrast: '#2196F3'
           }
         : {
             primary: '#000000',
+            contrast: '#114b7a'
         }),
       },
 
@@ -127,12 +131,10 @@ const Home: NextPage = () => {
         ...(mode === 'dark'
         ? {
           hover: '#0072E56E',
-          //change opacity to make it lighter
           hoverOpacity: 0.1,
           }
         : {
-          hover: '#42A6F5',
-          //change opacity to make it lighter
+          hover: '#1769aa',
           hoverOpacity: 0.1,
         }),
       },
