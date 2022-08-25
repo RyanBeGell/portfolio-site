@@ -2,7 +2,7 @@ import { BottomNavigation, BottomNavigationAction, createTheme, ThemeProvider} f
 import { LinkedIn, GitHub, Email } from "@mui/icons-material";
 import Paper from '@mui/material/Paper';
 import styles from './sidebar.module.css';
-import { Box, Grid, Divider } from "@mui/material";
+import { Box, Grid, Divider, Typography } from "@mui/material";
 
 const SidebarFooter = () => {
 
@@ -13,9 +13,9 @@ const SidebarFooter = () => {
     <Divider />
       <Grid container alignItems="center" justifyContent="center" sx={{p:"16px"}}>
         <Divider />
-        <span className={styles.copyright}>
+        <Typography variant={"subtitle2"} color="text.subtitle">
           &copy; {year} Ryan BeGell
-        </span>
+        </Typography>
       </Grid>
   </Box>
   </>);
