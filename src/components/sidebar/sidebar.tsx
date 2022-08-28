@@ -109,12 +109,17 @@ export default function Sidebar(){
           anchor="left"
           sx={{
             display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth,  p:"16px", border: 0, backgroundColor:'background.nav'},
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth,  p:"16px", border: 0, backgroundColor:'background.nav',},
           }}
           open
         >
           {drawer}
-          <SidebarFooter/>
+          <List sx={{ marginTop: `auto`, mb:0, p:0, }} >
+            <Divider/>
+            <ListItem sx={{m:0, p:0}}>
+              <SidebarFooter/>
+            </ListItem>
+          </List>
         </Drawer>
       </Box>
     </>);
