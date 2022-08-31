@@ -23,7 +23,19 @@ import { Avatar } from '@mui/material';
 import SidebarFooter from './SidebarFooter';
 import { useEffect } from 'react';
 import Typography from '@mui/material/Typography';
-
+import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
+import Switch from '@mui/material/Switch';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import ListSubheader from '@mui/material/ListSubheader';
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import ContactMailOutlinedIcon from '@mui/icons-material/ContactMailOutlined';
+import HistoryEduOutlinedIcon from '@mui/icons-material/HistoryEduOutlined';
+import IntegrationInstructionsOutlinedIcon from '@mui/icons-material/IntegrationInstructionsOutlined';
+import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import PaletteOutlinedIcon from '@mui/icons-material/PaletteOutlined';
+import SquareRoundedIcon from '@mui/icons-material/SquareRounded';
 
 const drawerWidth = 282;
 
@@ -51,22 +63,22 @@ export default function Sidebar(){
       <Divider />
       <List>
         {['Home', 'About', 'Skills', 'Projects', 'Blog', 'Contact'].map((text, index) => (
-          <ListItem key={text} sx={{px:"12px", py:"4px",}}>
-            <ListItemButton sx={{ borderRadius: 2,}} className={styles.navItem}>
+          <ListItem key={text} sx={{px:"0px", py:"4px",}}>
+            <ListItemButton sx={{ borderRadius: 3,}} className={styles.navItem}>
               <ListItemIcon sx={{color:'#ffffff'}}>
                 {
-                  index === 0? <HomeIcon /> :
-                  index === 1? <PersonIcon />:
-                  index === 2? <EqualizerIcon />:
-                  index === 3? <IntegrationInstructionsRoundedIcon />:
-                  index === 4? <HistoryEduIcon />:
-                  index === 5? <ContactMailRoundedIcon/>:null
+                  index === 0? <HomeOutlinedIcon /> :
+                  index === 1? <PersonOutlineOutlinedIcon />:
+                  index === 2? <FormatListBulletedOutlinedIcon />:
+                  index === 3? <IntegrationInstructionsOutlinedIcon />:
+                  index === 4? <HistoryEduOutlinedIcon />:
+                  index === 5? <ContactMailOutlinedIcon/>:null
                 }
               </ListItemIcon>
               {index===4? 
               //conditionally render the underline based on where the user is on the page - only highlighting blog temporarily
-              <ListItemText primary={text} sx={{ml:"-12px", color:"#FFFFFF", }} className={styles.underlineNavItem}/>:
-              <ListItemText primary={text} sx={{ml:"-12px", color:"#FFFFFF", }}/>}
+              <ListItemText primary={text} sx={{ml:"-16px", color:"#FFFFFF", }} className={styles.underlineNavItem}/>:
+              <ListItemText primary={text} sx={{ml:"-16px", color:"#FFFFFF", }}/>}
             </ListItemButton>
           </ListItem>
         ))}
@@ -114,6 +126,37 @@ export default function Sidebar(){
           open
         >
           {drawer}
+          <Divider/>
+          <List
+            sx={{bgcolor: 'background.nav'}}
+            // To be used if more theme options added
+            // subheader={
+            //   <ListSubheader sx={{bgcolor: 'background.nav', pt:'8px'}}>
+            //     Theme
+            //   </ListSubheader>
+            // }
+          >
+          <ListItem sx={{}}>
+            <ListItemIcon >
+              <DarkModeOutlinedIcon/>
+            </ListItemIcon>
+            <ListItemText primary="Dark Mode" sx={{ml:"-16px"}} />
+            <Switch
+              edge="end"
+            />
+          </ListItem>
+          {/* To be used if more theme options added  */}
+          {/* <ListItem sx={{}}>
+            <ListItemIcon >
+              <PaletteOutlinedIcon/>
+            </ListItemIcon>
+            <ListItemText primary="Color" sx={{ml:"-16px"}} />
+            <SquareRoundedIcon edge="end"/>
+            <SquareRoundedIcon edge="end"/>
+            <SquareRoundedIcon edge="end"/>
+            <SquareRoundedIcon edge="end"/>
+          </ListItem> */}
+          </List>
           <List sx={{ marginTop: `auto`, mb:0, p:0, }} >
             <Divider/>
             <ListItem sx={{m:0, p:0}}>

@@ -18,12 +18,6 @@
     margin-bottom: 16px;
   }
 
-.footerIcon:hover {
-  transform: scale(1.5);
-  transition-duration: .3s;
-  transition-property: transform;
-}
-
 .navItem{
    /* Avoid blurry text on transform */
   backface-visibility: hidden;
@@ -31,7 +25,7 @@
 }
 
 .navItem:hover {
-  transform: scale(1.05);
+  transform: scale(1.01);
   transition-duration: .3s;
   transition-property: transform;
 }
