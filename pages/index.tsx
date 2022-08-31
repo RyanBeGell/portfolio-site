@@ -13,8 +13,6 @@ import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import ToggleOnIcon from '@mui/icons-material/ToggleOn';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
-import DarkModeToggle from '@/src/components/DarkModeToggle'
-
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 const Home: NextPage = () => {
@@ -53,7 +51,7 @@ const Home: NextPage = () => {
   } , [])
 
 
-  const [mode, setMode] = React.useState<PaletteMode>('light');
+  const [mode, setMode] = React.useState<PaletteMode>('dark');
   const colorMode = React.useMemo(
     () => ({
       // The dark mode switch would invoke this method
@@ -145,15 +143,6 @@ const Home: NextPage = () => {
           hover: '#025de4',
         }),
       },
-      overrides: {
-        MuiCssBaseline: {
-          '@global': {
-            body: {
-              transition: 'all 2s linear',
-            },
-          },
-        },
-      },
     },
   });
 
@@ -161,15 +150,14 @@ const Home: NextPage = () => {
   const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
  
   console.log(mode);
-  return (<>
+  return (<Box>
     <ColorModeContext.Provider value={colorMode}>
     <ThemeProvider theme={theme}>
       <CssBaseline />
-
-        <Sidebar/>
-        <Box className={styles.darkModeToggle} onClick={colorMode.toggleColorMode}>
+        <Sidebar mode={mode} toggleColorMode={colorMode.toggleColorMode}/>
+        {/* <Box className={styles.darkModeToggle} onClick={colorMode.toggleColorMode}>
           <DarkModeToggle mode={mode}/>
-        </Box> 
+        </Box>  */}
 
         {/* Landing */}
         <Box 
@@ -177,7 +165,7 @@ const Home: NextPage = () => {
           alignItems="center"
           justifyContent="center"
           className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
-          sx={{ minHeight: '100vh' }}
+          sx={{ minHeight: '100vh'}}
         >
           <Landing/>
         </Box>
@@ -228,7 +216,7 @@ const Home: NextPage = () => {
 
       </ThemeProvider>
     </ColorModeContext.Provider>
-  </>)
+  </Box>)
 }
 
 export default Home

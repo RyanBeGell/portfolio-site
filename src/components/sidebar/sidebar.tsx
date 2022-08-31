@@ -19,7 +19,7 @@ import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 import ContactMailRoundedIcon from '@mui/icons-material/ContactMailRounded';
 import IntegrationInstructionsRoundedIcon from '@mui/icons-material/IntegrationInstructionsRounded';
 import styles from './sidebar.module.css';
-import { Avatar } from '@mui/material';
+import { Avatar, PaletteMode } from '@mui/material';
 import SidebarFooter from './SidebarFooter';
 import { useEffect } from 'react';
 import Typography from '@mui/material/Typography';
@@ -37,9 +37,14 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import PaletteOutlinedIcon from '@mui/icons-material/PaletteOutlined';
 import SquareRoundedIcon from '@mui/icons-material/SquareRounded';
 
+export interface Props{
+  toggleColorMode : () => void;
+  mode: PaletteMode;
+}
+
 const drawerWidth = 282;
 
-export default function Sidebar(){
+export default function Sidebar(props: Props){
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -136,13 +141,15 @@ export default function Sidebar(){
             //   </ListSubheader>
             // }
           >
-          <ListItem sx={{}}>
-            <ListItemIcon >
+          <ListItem sx={{color:'#ffffff'}}>
+            <ListItemIcon sx={{color:'#ffffff'}}>
               <DarkModeOutlinedIcon/>
             </ListItemIcon>
             <ListItemText primary="Dark Mode" sx={{ml:"-16px"}} />
             <Switch
               edge="end"
+              onClick={props.toggleColorMode}
+              defaultChecked
             />
           </ListItem>
           {/* To be used if more theme options added  */}
