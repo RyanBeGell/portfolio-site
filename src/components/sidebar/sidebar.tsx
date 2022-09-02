@@ -11,17 +11,13 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
 import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
-import EqualizerIcon from '@mui/icons-material/Equalizer';
 import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 import ContactMailRoundedIcon from '@mui/icons-material/ContactMailRounded';
 import IntegrationInstructionsRoundedIcon from '@mui/icons-material/IntegrationInstructionsRounded';
-import styles from './sidebar.module.css';
 import { Avatar, PaletteMode } from '@mui/material';
 import SidebarFooter from './SidebarFooter';
-import { useEffect } from 'react';
 import Typography from '@mui/material/Typography';
 import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
 import Switch from '@mui/material/Switch';
@@ -82,8 +78,8 @@ export default function Sidebar(props: Props){
               </ListItemIcon>
               {index===4? 
               //conditionally render the underline based on where the user is on the page - only highlighting blog temporarily
-              <ListItemText primary={text} sx={{ml:"-16px", color:"#FFFFFF", }} className={styles.underlineNavItem}/>:
-              <ListItemText primary={text} sx={{ml:"-16px", color:"#FFFFFF", }}/>}
+              <ListItemText primary={text} primaryTypographyProps={{fontWeight: 'bold'}} sx={{ml:"-16px", color:"#FFFFFF"}} />:
+              <ListItemText primary={text}  sx={{ml:"-16px", color:"#FFFFFF"}}/>}
             </ListItemButton>
           </ListItem>
         ))}
