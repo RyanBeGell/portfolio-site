@@ -19,30 +19,12 @@
     /* Transition to be added if the content shift is visible on load in deployment server */
 }
 
-.ArrowIcon:hover {
-    transform: scale(1.5);
-    transition-duration: .3s;
-    transition-property: transform;
-    cursor: pointer;
-  }
-
   .ArrowIcon{
     position: absolute;
-    top: calc(100vh - 60px);
+    top: calc(100vh - 70px);
     text-align: center;
-    font-size: 30px;
     animation: jumpInfinite 3s infinite;
   }
-
-
-/* Place the dark mode toggle top right of screen*/
-.darkModeToggle {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index:100;
-    margin: 8px;
-}
 
 /* animation for my down arrow */
   @keyframes jumpInfinite {
