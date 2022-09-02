@@ -1,7 +1,5 @@
 import { BottomNavigation, BottomNavigationAction, createTheme, Hidden, ThemeProvider} from "@mui/material";
 import { LinkedIn, GitHub, Email } from "@mui/icons-material";
-import Paper from '@mui/material/Paper';
-import styles from './sidebar.module.css';
 import { Box, Grid, Divider, Typography } from "@mui/material";
 
 const SidebarFooter = () => {
