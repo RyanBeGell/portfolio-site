@@ -137,10 +137,12 @@ const Home: NextPage = () => {
       action: {
         ...(mode === 'dark'
         ? {
-          hover: '#0072E56E',
+          hover: '#0072E540',
+          arrow: '#0072E52B'
           }
         : {
-          hover: '#025de4',
+          hover: '#0254cdAD',
+          arrow: '#0d6efd12'
         }),
       },
     },

@@ -6,6 +6,7 @@ import ReactTyped from 'react-typed';
 import Avatar from '@mui/material/Avatar';
 // import mui south icon
 import SouthIcon from '@mui/icons-material/South';
+import IconButton from '@mui/material/IconButton';
 
 export default function Landing(){
 
@@ -41,6 +42,8 @@ export default function Landing(){
                  height={787}/>
         </Grid>
     </Grid>
-        <SouthIcon color="primary" className={styles.ArrowIcon}/>
+    <IconButton className={styles.ArrowIcon} sx={{ "&:hover": { backgroundColor: 'action.arrow' } }}>
+        <SouthIcon color="primary" sx={{fontSize: '32px'}} />
+    </IconButton>
     </>)
 }
