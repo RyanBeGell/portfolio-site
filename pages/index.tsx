@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Sidebar from '@/src/components/sidebar/Sidebar'
 import Landing from '@/src/components/Landing'
-import { Grid, Box, CssBaseline, Button } from '@mui/material'
+import { Grid, Box, CssBaseline } from '@mui/material'
 import React, { useRef, useState } from 'react'
 import styles from '@/src/components/landing.module.css';
 import { useLayoutEffect } from 'react'
@@ -13,6 +13,10 @@ import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import ToggleOnIcon from '@mui/icons-material/ToggleOn';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
+import * as Scroll from 'react-scroll';
+import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+
+
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 const Home: NextPage = () => {
@@ -162,15 +166,17 @@ const Home: NextPage = () => {
         </Box>  */}
 
         {/* Landing */}
-        <Box 
-          display="flex" 
-          alignItems="center"
-          justifyContent="center"
-          className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
-          sx={{ minHeight: '100vh'}}
-        >
-          <Landing/>
-        </Box>
+        <Element name="landing">
+          <Box 
+            display="flex" 
+            alignItems="center"
+            justifyContent="center"
+            className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
+            sx={{ minHeight: '100vh'}}
+          >
+            <Landing/>
+          </Box>
+        </Element>
         {/*About section*/}
         <Box 
           display="flex" 
