@@ -4,7 +4,7 @@ export interface Props{
     fill: string
   }
   
-  const JavaScriptLogo=  (props: Props) => (
+  const TypeScriptLogo=  (props: Props) => (
       <svg
         fill={props.fill}
         width={props.width}
@@ -18,4 +18,4 @@ export interface Props{
     </svg>
     );
     
-    export default JavaScriptLogo;
+    export default TypeScriptLogo;
