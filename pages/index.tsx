@@ -15,7 +15,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import * as Scroll from 'react-scroll';
 import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
-
+import Skills from '@/src/components/Skills'
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -122,8 +122,7 @@ const Home: NextPage = () => {
           paper: '#001e3c',
           nav: '#0d6efd',
       }),
-    },
-      
+    },  
       text: {
         ...(mode === 'dark'
         ? {
@@ -150,6 +149,12 @@ const Home: NextPage = () => {
         }),
       },
     },
+    //  Override MUI from changing paper opacity automatically in dark mode based on elevation
+    components: {
+      MuiPaper: {
+        styleOverrides: { root: { backgroundImage: 'unset' } },
+      },
+    }
   });
 
   // Update the theme only if the mode changes
@@ -183,8 +188,9 @@ const Home: NextPage = () => {
           alignItems="center"
           justifyContent="center"
           className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
-          sx={{ minHeight: '100vh', backgroundColor: 'background.dark' }}
+          sx={{ backgroundColor: 'background.dark' }}
         >
+          
         </Box>
         {/* Skills section */}
         <Box 
@@ -192,8 +198,8 @@ const Home: NextPage = () => {
           alignItems="center"
           justifyContent="center"
           className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
-          sx={{ minHeight: '100vh'}}
         >
+          <Skills/>
         </Box>
         {/*Projects section*/}
         <Box 
@@ -201,7 +207,7 @@ const Home: NextPage = () => {
           alignItems="center"
           justifyContent="center"
           className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
-          sx={{ minHeight: '100vh', backgroundColor: 'background.dark' }}
+          sx={{ backgroundColor: 'background.dark' }}
         >
         </Box>
         {/* Blog section */}
@@ -210,7 +216,7 @@ const Home: NextPage = () => {
           alignItems="center"
           justifyContent="center"
           className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
-          sx={{ minHeight: '100vh'}}
+          sx={{}}
         >
         </Box>
         {/*Contact section*/}
@@ -219,7 +225,7 @@ const Home: NextPage = () => {
           alignItems="center"
           justifyContent="center"
           className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
-          sx={{ minHeight: '100vh', backgroundColor: 'background.dark' }}
+          sx={{ backgroundColor: 'background.dark' }}
         ></Box>
 
       </ThemeProvider>
