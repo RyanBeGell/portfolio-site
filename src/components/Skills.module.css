@@ -1,0 +1,5 @@
+
+/* Allows for new line characters in Icon names Array to be rendered */
+.iconName{
+    white-space: pre-wrap;
+}
