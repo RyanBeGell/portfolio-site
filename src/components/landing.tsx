@@ -25,11 +25,8 @@ export default function Landing(){
                     strings={["Full Stack Software Developer"]}
                     smartBackspace={false}
                     shuffle={false}
-                    backDelay={1}
-                    fadeOut={false}
-                    fadeOutDelay={100}
                     loopCount={0}
-                    showCursor
+                    showCursor={true}
                     cursorChar="_"
                 />
             </Typography>
