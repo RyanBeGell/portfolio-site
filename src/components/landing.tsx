@@ -13,7 +13,7 @@ export default function Landing(){
 
     return (
         <>
-    <Grid container direction="row" alignItems="center" justifyContent="center" display="flex" sx={{p:5}} wrap='nowrap'>
+    <Grid container direction="row" alignItems="center" justifyContent="center" display="flex" wrap='nowrap'>
         <Grid item sx={{pr:8}}>
             <Typography variant={"h1"} className={styles.name}noWrap>
                 Ryan <Typography component="span" variant={"h1"} className={styles.name} color="primary"> BeGell</Typography>
