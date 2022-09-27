@@ -27,8 +27,8 @@ export default function Skills(){
     const primary = theme.palette.primary.main;
 
     return(<>
-    <SkillsIllustration  height={500} width={500} primary={ theme.palette.primary.main} secondary={ theme.palette.background.default}/>
-    <Box sx={{p:5}} justifyContent="center">
+    <SkillsIllustration  height={500} width={500} primary={ theme.palette.primary.main} secondary={ theme.palette.background.default} text={theme.palette.text.primary}/>
+    <Box justifyContent="center">
     {/* Front End Section/Icons */}
     <Typography variant={'h4'} sx={{py:'16px'}}>
         Front End
