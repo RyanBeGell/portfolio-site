@@ -16,6 +16,7 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import * as Scroll from 'react-scroll';
 import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import Skills from '@/src/components/Skills'
+import Projects from '@/src/components/Projects'
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -118,8 +119,8 @@ const Home: NextPage = () => {
         }
       : {
           default: '#FFFFFF',
-          dark: '#FAF9F6',
-          paper: '#001e3c',
+          dark: '#F5F5F5',
+          paper: '#FFFFFF',
           nav: '#0d6efd',
       }),
     },  
@@ -154,7 +155,7 @@ const Home: NextPage = () => {
       MuiPaper: {
         styleOverrides: { root: { backgroundImage: 'unset' } },
       },
-    }
+    },
   });
 
   // Update the theme only if the mode changes
@@ -209,6 +210,7 @@ const Home: NextPage = () => {
           className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
           sx={{ backgroundColor: 'background.dark' }}
         >
+          <Projects/>
         </Box>
         {/* Blog section */}
         <Box 
