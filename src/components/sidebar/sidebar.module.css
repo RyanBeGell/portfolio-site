@@ -22,12 +22,11 @@
    /* Avoid blurry text on transform */
   backface-visibility: hidden;
   will-change: transform;
+  transition: all ease-in-out .1s;
 }
 
 .navItem:hover {
   transform: scale(1.01);
-  transition-duration: .3s;
-  transition-property: transform;
 }
 
 .underlineNavItem{
