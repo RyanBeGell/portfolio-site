@@ -17,6 +17,8 @@ import * as Scroll from 'react-scroll';
 import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import Skills from '@/src/components/Skills'
 import Projects from '@/src/components/Projects'
+import RecentBlogPosts from '@/src/components/RecentBlogPosts'
+import Contact from '@/src/components/Contact'
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -57,6 +59,7 @@ const Home: NextPage = () => {
 
 
   const [mode, setMode] = React.useState<PaletteMode>('dark');
+
   const colorMode = React.useMemo(
     () => ({
       // The dark mode switch would invoke this method
@@ -118,7 +121,7 @@ const Home: NextPage = () => {
           nav: '#001e3c',
         }
       : {
-          default: '#FFFFFF',
+          default: '#F2F2F2',
           dark: '#F5F5F5',
           paper: '#FFFFFF',
           nav: '#0d6efd',
@@ -155,14 +158,19 @@ const Home: NextPage = () => {
       MuiPaper: {
         styleOverrides: { root: { backgroundImage: 'unset' } },
       },
-    },
+    },   
   });
 
   // Update the theme only if the mode changes
   const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
  
   console.log(mode);
-  return (<Box>
+  return (
+  <Box 
+  alignItems="center"
+  justifyContent="center"
+  className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
+  >
     <ColorModeContext.Provider value={colorMode}>
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -177,59 +185,29 @@ const Home: NextPage = () => {
             display="flex" 
             alignItems="center"
             justifyContent="center"
-            className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
             sx={{ minHeight: '100vh'}}
           >
             <Landing/>
           </Box>
         </Element>
         {/*About section*/}
-        <Box 
-          display="flex" 
-          alignItems="center"
-          justifyContent="center"
-          className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
-          sx={{ backgroundColor: 'background.dark' }}
-        >
-          
+        <Box sx={{ backgroundColor: 'background.dark' }}>
+          Ree
         </Box>
         {/* Skills section */}
-        <Box 
-          display="flex" 
-          alignItems="center"
-          justifyContent="center"
-          className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
-        >
-          <Skills/>
-        </Box>
+        <Skills/>
         {/*Projects section*/}
-        <Box 
-          display="flex" 
-          alignItems="center"
-          justifyContent="center"
-          className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
-          sx={{ backgroundColor: 'background.dark' }}
-        >
+        <Box sx={{ backgroundColor: 'background.dark'}}>
           <Projects/>
         </Box>
         {/* Blog section */}
-        <Box 
-          display="flex" 
-          alignItems="center"
-          justifyContent="center"
-          className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
-          sx={{}}
-        >
-        </Box>
+        <RecentBlogPosts themeMode={mode}/>
         {/*Contact section*/}
         <Box 
-          display="flex" 
-          alignItems="center"
-          justifyContent="center"
-          className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
           sx={{ backgroundColor: 'background.dark' }}
-        ></Box>
-
+        >
+          <Contact/>
+        </Box>
       </ThemeProvider>
     </ColorModeContext.Provider>
   </Box>)
