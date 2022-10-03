@@ -74,9 +74,9 @@ export default function Sidebar(props: Props){
       <Divider />
       <List>
         {['Home', 'About', 'Skills', 'Projects', 'Blog', 'Contact'].map((text, index) => (
-          <ListItem key={text} sx={{px:"0px", py:"4px",}}>
-            <ListItemButton sx={{ borderRadius: 3,}} className={styles.navItem}>
-              <ListItemIcon sx={{color:'#ffffff'}}>
+          <ListItem key={text} sx={{px:"0px", py:"4px",}} color='primary.main'>
+            <ListItemButton sx={{ borderRadius: 3,"&:hover": {color:'primary.main',bgColor:'primary.main',}, alignItems:'center' }} className={styles.navItem}>
+              <ListItemIcon sx={{color:'#ffffff',}}>
                 {
                   index === 0? <HomeOutlinedIcon /> :
                   index === 1? <PersonOutlineOutlinedIcon />:
