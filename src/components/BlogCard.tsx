@@ -5,8 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions, Chip, Grid } from '@mui/material';
 import styles from '@/src/components/Card.module.css'
-import ImageListItem from '@mui/material/ImageListItem';
-import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
+import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 
 export interface Props{
     title?: string, //temporarily optional
@@ -40,7 +39,7 @@ export default function ProjectCard(props:Props) {
             </Typography>
         </CardContent>
         <CardActions>
-            <Button>Read More <ArrowRightAltIcon/></Button>
+            <Button endIcon={<DoubleArrowIcon/>}>Read More</Button>
         </CardActions>
         </Card>
     </Grid>
