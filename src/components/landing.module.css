@@ -10,12 +10,10 @@
     /* Transition to be added if the content shift is visible on load in deployment server */
     transition-duration: 1000ms;
     transition-property: margin-left;
-    padding: 8px;
 }
 
 .shiftContentLeft{
     margin-left: 282px; 
-    padding: 8px;
     /* Transition to be added if the content shift is visible on load in deployment server */
 }
 
