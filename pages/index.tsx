@@ -19,6 +19,7 @@ import Skills from '@/src/components/Skills'
 import Projects from '@/src/components/Projects'
 import RecentBlogPosts from '@/src/components/RecentBlogPosts'
 import Contact from '@/src/components/Contact'
+import AboutMe from '@/src/components/AboutMe'
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -121,8 +122,8 @@ const Home: NextPage = () => {
           nav: '#001e3c',
         }
       : {
-          default: '#F2F2F2',
-          dark: '#F5F5F5',
+          default: '#f9fafa',
+          dark: '#f5f6f6',
           paper: '#FFFFFF',
           nav: '#0d6efd',
       }),
@@ -192,7 +193,7 @@ const Home: NextPage = () => {
         </Element>
         {/*About section*/}
         <Box sx={{ backgroundColor: 'background.dark' }}>
-          Ree
+          <AboutMe/>
         </Box>
         {/* Skills section */}
         <Skills/>
