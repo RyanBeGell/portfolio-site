@@ -1,7 +1,6 @@
 .centerBox
 {
-  width:50%;
-  height:50%;
-  margin:0 auto;
+  display: inline-block;
   padding: 48px;
+  margin: 0 auto;
 }
