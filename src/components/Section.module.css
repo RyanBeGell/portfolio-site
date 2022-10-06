@@ -1,0 +1,24 @@
+.section::before {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 40px;
+    background: #0d6efd;
+    position: absolute;
+    box-sizing: border-box;
+}
+
+
+.sectionDark::before {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 40px;
+    background: #2196F3;
+    position: absolute;
+    box-sizing: border-box;
+}
+
+.sectionDark{
+    margin-left: 15px;
+}
