@@ -168,8 +168,6 @@ const Home: NextPage = () => {
   console.log(mode);
   return (
   <Box 
-  alignItems="center"
-  justifyContent="center"
   className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
   >
     <ColorModeContext.Provider value={colorMode}>
@@ -189,10 +187,15 @@ const Home: NextPage = () => {
             sx={{ minHeight: '100vh'}}
           >
             <Landing/>
-          </Box>
+          </Box> 
         </Element>
+        <Box 
+        display='inline-block'
+        alignItems="center"
+        justifyContent="center"
+        sx={{width:'100%',flexDirection: 'column'}}>
         {/*About section*/}
-        <Box sx={{ backgroundColor: 'background.dark' }}>
+        <Box sx={{ backgroundColor: 'background.dark', }} >
           <AboutMe/>
         </Box>
         {/* Skills section */}
@@ -208,6 +211,7 @@ const Home: NextPage = () => {
           sx={{ backgroundColor: 'background.dark' }}
         >
           <Contact/>
+        </Box>
         </Box>
       </ThemeProvider>
     </ColorModeContext.Provider>
