@@ -29,7 +29,7 @@ export default function RecentBlogPosts(props: Props){
 
     return(<>
     <Box className="centerBox">
-        <Grid>
+        <Grid sx={{ maxWidth:1150}}>
             <Grid item>
                 <SectionTitle title="Recent Blog Posts"/>
             </Grid>
@@ -59,8 +59,8 @@ export default function RecentBlogPosts(props: Props){
             </Grid>
             <Grid item justifyContent={'center'} textAlign='center'>
                 {/* Render button outlined in dark mode, contained in light mode */}
-                <Button size='large' variant={`${props.themeMode=='dark'?'outlined':'contained'}`}>
-                    View Blog &nbsp;<ArrowCircleRightIcon/>
+                <Button size='large' endIcon={<ArrowCircleRightIcon/>} variant={`${props.themeMode=='dark'?'outlined':'contained'}`}>
+                    View Blog
                 </Button>
             </Grid>
         </Grid>
