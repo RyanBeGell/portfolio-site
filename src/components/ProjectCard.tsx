@@ -20,8 +20,8 @@ export interface Props{
 */
 export default function ProjectCard(props:Props) {
   return (
-    <Grid item xs={12} sm={6} md={4}>
-    <Card sx={{ maxWidth: 400,  "&:hover": { opacity:'1' } }} className={styles.card}> 
+    <Grid item  xs={12} sm={4} md={4} sx={{ minWidth:'310px'}}>
+    <Card raised className={styles.card} sx={{ maxWidth:345}}> 
       <CardActionArea  onClick={props.handleOpen} sx={{color: 'primary.main', }}>
         <CardMedia
           component="img"
@@ -39,11 +39,11 @@ export default function ProjectCard(props:Props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small">
-          <LanguageIcon/> &nbsp; LIVE DEMO
+        <Button size="small" startIcon={<LanguageIcon/>}>
+          LIVE DEMO
         </Button>
-        <Button size="small">
-          <GitHubIcon/> &nbsp; VIEW ON GITHUB
+        <Button size="small" startIcon={<GitHubIcon/>}>
+          VIEW ON GITHUB
         </Button>
       </CardActions>
     </Card>
