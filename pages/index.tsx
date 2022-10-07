@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Sidebar from '@/src/components/sidebar/Sidebar'
 import Landing from '@/src/components/Landing'
-import { Grid, Box, CssBaseline } from '@mui/material'
+import { Grid, Box, CssBaseline, Divider } from '@mui/material'
 import React, { useRef, useState } from 'react'
 import styles from '@/src/components/landing.module.css';
 import { useLayoutEffect } from 'react'
@@ -99,9 +99,6 @@ const Home: NextPage = () => {
         light: '#64b5f6',
         dark: '#1976d2',
       },
-      
-      divider: 'rgba(255,255,255,0.12)',
-
       success: {
         main: '#66bb6a',
         light: '#81c784',
@@ -117,7 +114,8 @@ const Home: NextPage = () => {
       ...(mode === 'dark'
       ? {
           default: '#0A1929',
-          dark: '#091725',
+          dark: '#0A1929',
+          // dark: '#091725',
           paper: '#001e3c',
           nav: '#001e3c',
         }
@@ -184,34 +182,33 @@ const Home: NextPage = () => {
             display="flex" 
             alignItems="center"
             justifyContent="center"
-            sx={{ minHeight: '100vh'}}
+            sx={{ minHeight: '100vh', bgcolor:'background.dark'}}
           >
             <Landing/>
           </Box> 
         </Element>
-        <Box 
-        display='inline-block'
-        alignItems="center"
-        justifyContent="center"
-        sx={{width:'100%',flexDirection: 'column'}}>
-        {/*About section*/}
-        <Box sx={{ backgroundColor: 'background.dark', }} >
-          <AboutMe/>
-        </Box>
-        {/* Skills section */}
-        <Skills/>
-        {/*Projects section*/}
-        <Box sx={{ backgroundColor: 'background.dark'}}>
-          <Projects/>
-        </Box>
-        {/* Blog section */}
-        <RecentBlogPosts themeMode={mode}/>
-        {/*Contact section*/}
-        <Box 
-          sx={{ backgroundColor: 'background.dark' }}
-        >
-          <Contact/>
-        </Box>
+        {mode==='dark'?<Divider/>:null}
+          <Box 
+          display='flex'
+          alignItems="center"
+          justifyContent='center'
+          sx={{width:'100%',flexDirection: 'column',}}>
+          {/*About section*/}
+          <Box sx={{mx:'48px'}}>
+            <AboutMe/>
+            <Divider/>
+          {/* Skills section */}
+            <Skills/>
+            <Divider/>
+          {/*Projects section*/}
+            <Projects/>
+            <Divider/>
+          {/* Blog section */}
+          <RecentBlogPosts themeMode={mode}/>
+          <Divider/>
+          {/*Contact section*/}
+            <Contact/>
+          </Box>
         </Box>
       </ThemeProvider>
     </ColorModeContext.Provider>
