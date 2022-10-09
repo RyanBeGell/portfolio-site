@@ -4,11 +4,9 @@ import Image from 'next/image'
 import Sidebar from '@/src/components/sidebar/Sidebar'
 import Landing from '@/src/components/Landing'
 import { Grid, Box, CssBaseline, Divider } from '@mui/material'
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, createContext, useEffect, useLayoutEffect, useMemo } from 'react'
 import styles from '@/src/components/landing.module.css';
-import { useLayoutEffect } from 'react'
-import { useEffect, createContext } from 'react'
-import { createTheme, ThemeProvider,  ThemeOptions, PaletteMode, useTheme, } from '@mui/material'
+import { createTheme, ThemeProvider,  ThemeOptions, PaletteMode, useTheme} from '@mui/material'
 import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import ToggleOnIcon from '@mui/icons-material/ToggleOn';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
@@ -21,7 +19,8 @@ import RecentBlogPosts from '@/src/components/RecentBlogPosts'
 import Contact from '@/src/components/Contact'
 import AboutMe from '@/src/components/AboutMe'
 
-const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
+export const colorModeToggleContext = React.createContext({ toggleColorMode: () => {} });
+export const ColorModeContext = createContext<Any>(null);
 
 const Home: NextPage = () => {
 
@@ -61,7 +60,7 @@ const Home: NextPage = () => {
 
   const [mode, setMode] = React.useState<PaletteMode>('dark');
 
-  const colorMode = React.useMemo(
+  const colorMode = useMemo(
     () => ({
       // The dark mode switch would invoke this method
       toggleColorMode: () => {
@@ -168,7 +167,7 @@ const Home: NextPage = () => {
   <Box 
   className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
   >
-    <ColorModeContext.Provider value={colorMode}>
+    <ColorModeContext.Provider value={{mode}}>
     <ThemeProvider theme={theme}>
       <CssBaseline />
         <Sidebar mode={mode} toggleColorMode={colorMode.toggleColorMode}/>
