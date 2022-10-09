@@ -20,8 +20,8 @@ export interface Props{
 */
 export default function ProjectCard(props:Props) {
   return (
-    <Grid item  xs={12} sm={4} md={4} sx={{ minWidth:'310px'}}>
-    <Card raised className={styles.card} sx={{ maxWidth:345}}> 
+    <Grid item  xs={12} sm={12} md={6} lg={4}>
+    <Card raised className={styles.card} sx={{minWidth:270}}> 
       <CardActionArea  onClick={props.handleOpen} sx={{color: 'primary.main', }}>
         <CardMedia
           component="img"
