@@ -20,7 +20,7 @@ import Contact from '@/src/components/Contact'
 import AboutMe from '@/src/components/AboutMe'
 
 export const colorModeToggleContext = React.createContext({ toggleColorMode: () => {} });
-export const ColorModeContext = createContext<Any>(null);
+export const ColorModeContext = createContext<any>(null);
 
 const Home: NextPage = () => {
 
