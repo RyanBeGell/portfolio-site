@@ -18,17 +18,33 @@ import Projects from '@/src/components/Projects'
 import RecentBlogPosts from '@/src/components/RecentBlogPosts'
 import Contact from '@/src/components/Contact'
 import AboutMe from '@/src/components/AboutMe'
+import { getDesignTokens } from '@/src/createPallette'
 
-export const colorModeToggleContext = React.createContext({ toggleColorMode: () => {} });
 export const ColorModeContext = createContext<any>(null);
 
 const Home: NextPage = () => {
 
   const [sideNavOpen, setSideNavOpen] = useState(false);
 
-  //useEffect to get the current width and determine if the side nav is open or not
+  const [mode, setMode] = React.useState<PaletteMode>('dark');
+  // Update the theme only if the mode changes
+  const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
+ 
+  const colorMode = useMemo(
+    () => ({
+      // The dark mode switch would invoke this method
+      toggleColorMode: () => {
+        setMode((prevMode: PaletteMode) =>
+          prevMode === 'light' ? 'dark' : 'light',
+        );
+      },
+    }),
+    [],
+  );
+
+  //useLayoutEffect to get the current width and determine if the side nav is open or not
   useLayoutEffect(() => {
-    //MUI responsive drawer closes when the width is less than 600px
+    //Responsive side nav drawer closes when the width is less than 600px
     if(window.innerWidth < 600) {
       setSideNavOpen(false);
     } else {
@@ -56,113 +72,7 @@ const Home: NextPage = () => {
       window.removeEventListener('resize', handleResize);
     };
   } , [])
-
-
-  const [mode, setMode] = React.useState<PaletteMode>('dark');
-
-  const colorMode = useMemo(
-    () => ({
-      // The dark mode switch would invoke this method
-      toggleColorMode: () => {
-        setMode((prevMode: PaletteMode) =>
-          prevMode === 'light' ? 'dark' : 'light',
-        );
-      },
-    }),
-    [],
-  );
-
-
-  //Custom Pallette for Light/Dark mode theme
-  const getDesignTokens = (mode: PaletteMode) => ({
-    palette: {
-      mode,
-      primary: {
-        ...(mode === 'dark'
-        ? {
-            main: '#2196F3',
-            light: '#0072E5',
-            dark: '#007FFF',
-          }
-        : {
-            main: '#0d6efd',
-            light: '#0072E5',
-            dark: '#007FFF',
-        }),
-      },
-      secondary: {
-        main: '#f50057',
-      },
-      info: {
-        main: '#42a5f5',
-        light: '#64b5f6',
-        dark: '#1976d2',
-      },
-      success: {
-        main: '#66bb6a',
-        light: '#81c784',
-        dark: '#388e3c',
-      },
-      warning: {
-        main: '#ffa726',
-        light: '#ffb74d',
-        dark: '#f57c00',
-      },
-
-      background: {
-      ...(mode === 'dark'
-      ? {
-          default: '#0A1929',
-          dark: '#0A1929',
-          // dark: '#091725',
-          paper: '#001e3c',
-          nav: '#001e3c',
-        }
-      : {
-          default: '#f9fafa',
-          dark: '#f5f6f6',
-          paper: '#FFFFFF',
-          nav: '#0d6efd',
-      }),
-    },  
-      text: {
-        ...(mode === 'dark'
-        ? {
-            primary: '#ffffff',
-            contrast: '#2196F3',
-            subtitle: '#bfbfbf',
-          }
-        : {
-            primary: '#000000',
-            contrast: '#114b7a',
-            subtitle: '#d9d9d9',
-        }),
-      },
-
-      action: {
-        ...(mode === 'dark'
-        ? {
-          hover: '#0072E540',
-          arrow: '#0072E52B'
-          }
-        : {
-          hover: '#0254cdAD',
-          arrow: '#0d6efd12'
-        }),
-      },
-    },
-    //  Override MUI from changing paper opacity automatically in dark mode based on elevation
-    components: {
-      MuiPaper: {
-        styleOverrides: { root: { backgroundImage: 'unset' } },
-      },
-    },   
-  });
-
-  // Update the theme only if the mode changes
-  const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
  
-  console.log(mode);
   return (
   <Box 
   className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
@@ -170,11 +80,8 @@ const Home: NextPage = () => {
     <ColorModeContext.Provider value={{mode}}>
     <ThemeProvider theme={theme}>
       <CssBaseline />
-        <Sidebar mode={mode} toggleColorMode={colorMode.toggleColorMode}/>
-        {/* <Box className={styles.darkModeToggle} onClick={colorMode.toggleColorMode}>
-          <DarkModeToggle mode={mode}/>
-        </Box>  */}
-
+        {/* passing function to change color mode to sideNav to use on DarkMode switch*/}
+        <Sidebar toggleColorMode={colorMode.toggleColorMode}/>
         {/* Landing */}
         <Element name="landing">
           <Box 
@@ -188,10 +95,9 @@ const Home: NextPage = () => {
         </Element>
         {mode==='dark'?<Divider/>:null}
           <Box 
-          display='flex'
-          alignItems="center"
-          justifyContent='center'
-          sx={{width:'100%',flexDirection: 'column',}}>
+            className="centerFlexBox"
+            sx={{width:'100%'}}
+            >
           {/*About section*/}
           <Box sx={{mx:'48px'}}>
             <AboutMe/>
@@ -203,7 +109,7 @@ const Home: NextPage = () => {
             <Projects/>
             <Divider/>
           {/* Blog section */}
-          <RecentBlogPosts themeMode={mode}/>
+          <RecentBlogPosts/>
           <Divider/>
           {/*Contact section*/}
             <Contact/>
