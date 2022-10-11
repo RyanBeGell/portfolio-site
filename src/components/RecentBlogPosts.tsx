@@ -21,11 +21,16 @@ import Grow from '@mui/material/Grow';
 import Fade from '@mui/material/Fade';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import SectionTitle from './SectionTitle';
+import { ColorModeContext } from '../../pages/_app';
+import { useContext } from 'react';
 
 export interface Props{
     themeMode?: string, //Takes in themeMode prop to conditionally render button style 
-  }
+}
+
 export default function RecentBlogPosts(props: Props){
+
+    const {mode} = useContext(ColorModeContext);
 
     return(<>
     <Box className="centerBox">
@@ -59,7 +64,7 @@ export default function RecentBlogPosts(props: Props){
             </Grid>
             <Grid item justifyContent={'center'} textAlign='center'>
                 {/* Render button outlined in dark mode, contained in light mode */}
-                <Button size='large' endIcon={<ArrowCircleRightIcon/>} variant={`${props.themeMode=='dark'?'outlined':'contained'}`}>
+                <Button size='large' endIcon={<ArrowCircleRightIcon/>} variant={`${mode=='dark'?'outlined':'contained'}`}>
                     View Blog
                 </Button>
             </Grid>
