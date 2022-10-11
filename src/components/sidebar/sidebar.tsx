@@ -32,11 +32,12 @@ import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import PaletteOutlinedIcon from '@mui/icons-material/PaletteOutlined';
 import SquareRoundedIcon from '@mui/icons-material/SquareRounded';
-
+import { scrollToHome, scrollToAbout, scrollToBlog, scrollToContact, scrollToProjects, scrollToSkills } from '@/src/scrollers';
+import { ColorModeContext } from '../../../pages/_app';
+import { useContext } from 'react';
 
 export interface Props{
   toggleColorMode : () => void;
-  mode: PaletteMode;
 }
 
 const drawerWidth = 282;
@@ -44,18 +45,12 @@ const drawerWidth = 282;
 export default function Sidebar(props: Props){
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const {mode} = useContext(ColorModeContext);
 
-  //Determines whether or not the dark mode switch is active, props.toggleColorMode changes theme
-  const [darkMode, setDarkMode] = React.useState(true);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
-  const handleThemeSwitch =  () =>{
-    const currentState = !darkMode;
-    setDarkMode(currentState);
-  }
 
   const drawer = (
     <div>
@@ -71,14 +66,26 @@ export default function Sidebar(props: Props){
       {/* <Typography variant={"subtitle2"} className={styles.workAvailability} color="text.subtitle">
             Available for work 
           </Typography> */}
-      <Divider />
+      {mode==='light'?<Divider sx={{background:'rgba(255,255,255, 0.3)'}}/>:<Divider/>}
       <List>
         {['Home', 'About', 'Skills', 'Projects', 'Blog', 'Contact'].map((text, index) => (
           <ListItem key={text} sx={{px:"0px", py:"4px",}} color='primary.main'>
-            <ListItemButton sx={{ borderRadius: 3,"&:hover": {color:'primary.main',bgColor:'primary.main',}, alignItems:'center' }} className={styles.navItem}>
+            <ListItemButton 
+              sx={{ borderRadius: 3,"&:hover": {color:'primary.main',bgColor:'primary.main',}, alignItems:'center' }}
+              className={styles.navItem} 
+              onClick=
+              { 
+                index === 0? scrollToHome:
+                index === 1? scrollToAbout:
+                index === 2? scrollToSkills:
+                index === 3? scrollToProjects:
+                index === 4? scrollToBlog:
+                index === 5? scrollToContact:undefined
+              }
+            >
               <ListItemIcon sx={{color:'#ffffff',}}>
                 {
-                  index === 0? <HomeOutlinedIcon /> :
+                  index === 0? <HomeOutlinedIcon />:
                   index === 1? <PersonOutlineOutlinedIcon />:
                   index === 2? <FormatListBulletedOutlinedIcon />:
                   index === 3? <IntegrationInstructionsOutlinedIcon />:
@@ -98,37 +105,40 @@ export default function Sidebar(props: Props){
   );
 
   return (<>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ m: 1, display: { sm: 'none' } }}
-          >
-            <MenuIcon />
-          </IconButton>
-      <Box
-        component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 },}}
-        aria-label="navigation"
+    <IconButton
+      color="inherit"
+      aria-label="open drawer"
+      edge="start"
+      onClick={handleDrawerToggle}
+      sx={{ m: 1, display: { sm: 'none' } }}
       >
-        <Drawer
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
+        <MenuIcon />
+      </IconButton>
+    <Box
+      component="nav"
+      sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 },}}
+      aria-label="navigation"
+    >
+      <Drawer
+        variant="temporary"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        ModalProps={{
+          keepMounted: true,}} // Better open performance on mobile.
           sx={{
-            display: { xs: 'block', sm: 'none',},
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth,  p:"16px", border: 0, backgroundColor:'background.nav',},
-          }}
+              display: { xs: 'block', sm: 'none',},
+              '& .MuiDrawer-paper': { 
+                boxSizing: 'border-box', 
+                width: drawerWidth,  
+                p:"16px", border: 0, 
+                backgroundColor:'background.nav',},
+            }}
+      >
+        {drawer}
+        {mode==='light'?<Divider sx={{background:'rgba(255,255,255, 0.3)'}}/>:<Divider/>}
+        <List
+          sx={{bgcolor: 'background.nav'}}
         >
-          {drawer}
-          <Divider/>
-          <List
-            sx={{bgcolor: 'background.nav'}}
-          >
           <ListItem sx={{color:'#ffffff'}}>
             <ListItemIcon sx={{color:'#ffffff'}}>
               <DarkModeOutlinedIcon/>
@@ -136,13 +146,13 @@ export default function Sidebar(props: Props){
             <ListItemText primary="Dark Mode" sx={{ml:"-16px"}} />
             <Switch
               edge="end"
-              onClick={() => {handleThemeSwitch(); props.toggleColorMode();}}
-              checked={darkMode}
+              onClick={() => {props.toggleColorMode();}}
+              checked={mode==='dark'}
             />
           </ListItem>
           </List>
           <List sx={{ marginTop: `auto`, mb:0, p:0, }} >
-            <Divider/>
+            {mode==='light'?<Divider sx={{background:'rgba(255,255,255, 0.3)'}}/>:<Divider/>}
             <ListItem sx={{m:0, p:0}}>
               <SidebarFooter/>
             </ListItem>
@@ -159,7 +169,7 @@ export default function Sidebar(props: Props){
           open
         >
           {drawer}
-          <Divider/>
+          {mode==='light'?<Divider sx={{background:'rgba(255,255,255, 0.3)'}}/>:<Divider/>}
           <List
             sx={{bgcolor: 'background.nav'}}
           >
@@ -170,13 +180,13 @@ export default function Sidebar(props: Props){
             <ListItemText primary="Dark Mode" sx={{ml:"-16px"}} />
             <Switch
               edge="end"
-              onClick={() => {handleThemeSwitch(); props.toggleColorMode();}}
-              checked={darkMode}
+              onClick={() => {props.toggleColorMode();}}
+              checked={mode==='dark'}
             />
           </ListItem>
           </List>
           <List sx={{ marginTop: `auto`, mb:0, p:0, }} >
-            <Divider/>
+          {mode==='light'?<Divider sx={{background:'rgba(255,255,255, 0.3)'}}/>:<Divider/>}
             <ListItem sx={{m:0, p:0}}>
               <SidebarFooter/>
             </ListItem>
