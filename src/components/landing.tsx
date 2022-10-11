@@ -1,27 +1,30 @@
-import { Grid, Typography, BottomNavigation, BottomNavigationAction, Paper, Box } from "@mui/material";
+import { Grid, Typography, Box } from "@mui/material";
 import styles from './landing.module.css';
 import programming from './programming_desk.svg';
 import Image from "next/image";
 import ReactTyped from 'react-typed';
 import Avatar from '@mui/material/Avatar';
-// import mui south icon
 import SouthIcon from '@mui/icons-material/South';
 import IconButton from '@mui/material/IconButton';
 
 export default function Landing(){
 
-
     return (<>
         <Box 
-            display="flex" 
-            alignItems="center"
-            justifyContent="center"
+            className='centerFlexBox'
             sx={{ minHeight: '100vh'}}
           >
-            <Grid container direction="row" alignItems="center" justifyContent="center" display="flex" wrap='nowrap'>
+            <Grid container direction="row" className='centerFlexBox'>
                 <Grid item sx={{pr:8}}>
-                    <Typography variant={"h1"} className={styles.name}noWrap>
-                        Ryan <Typography component="span" variant={"h1"} className={styles.name} color="primary"> BeGell</Typography>
+                    <Typography variant={"h1"} className={styles.name}>
+                        Ryan 
+                        <Typography 
+                        component="span"
+                        variant={"h1"}
+                        className={styles.name}
+                        color="primary">
+                            &nbsp;BeGell
+                        </Typography>
                     </Typography>
                     <Typography variant={"h4"} noWrap>
                         <ReactTyped
@@ -41,12 +44,13 @@ export default function Landing(){
                         src="/programming.svg"
                         alt="ManAtDesk"
                         width={900.94}
-                        height={787}/>
+                        height={787}
+                    />
                 </Grid>
             </Grid>
             <IconButton className={styles.ArrowIcon} color='primary'>
                 <SouthIcon color="primary" sx={{fontSize: '32px'}} />
             </IconButton>
-    </Box>
+        </Box>
     </>)
 }
