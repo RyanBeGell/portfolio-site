@@ -35,6 +35,8 @@ import SquareRoundedIcon from '@mui/icons-material/SquareRounded';
 import { scrollToHome, scrollToAbout, scrollToBlog, scrollToContact, scrollToProjects, scrollToSkills } from '@/src/scrollers';
 import { ColorModeContext } from '../../../pages/_app';
 import { useContext } from 'react';
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 export interface Props{
   toggleColorMode : () => void;
@@ -44,14 +46,89 @@ const drawerWidth = 282;
 
 export default function Sidebar(props: Props){
 
+  const router = useRouter()
+
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const {mode} = useContext(ColorModeContext);
-
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
+  /*
+    Simple function to create a delay in milliseconds,
+    used to delay scrolling after a redirect
+  */
+  function sleep (ms:number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  /*
+    Handle click methods for sideNav buttons.
+    Scrolls to section using ReactScroll if already on "/" route,
+    otherwise redirects to main page, delays for 300ms, and scrolls to section.
+  */
+  const handleHomeButtonClick = () => {
+    if (router.pathname !== "/") {
+      router.push('/');
+    } else {
+        scrollToHome();
+       }
+    }
+    
+  const handleAboutButtonClick = () => {
+    if (router.pathname !== "/") {
+      router.push('/');
+      sleep(300).then(() => {
+        scrollToAbout();
+      });
+    } else {
+        scrollToAbout();
+       }
+    }
+
+  const handleSkillsButtonClick = () => {
+    if (router.pathname !== "/") {
+      router.push('/');
+      sleep(300).then(() => {
+        scrollToSkills();
+      });
+    } else {
+        scrollToSkills();
+      }
+    }    
+
+  const handleProjectsButtonClick = () => {
+    if (router.pathname !== "/") {
+      router.push('/');
+      sleep(300).then(() => {
+        scrollToProjects();
+      });
+    } else {
+        scrollToProjects();
+      }
+    }  
+
+  const handleBlogButtonClick = () => {
+    if (router.pathname !== "/") {
+      router.push('/');
+      sleep(300).then(() => {
+        scrollToBlog();
+      });
+    } else {
+        scrollToBlog();
+      }
+    }
+  const handleContactButtonClick = () => {
+    if (router.pathname !== "/") {
+      router.push('/');
+      sleep(300).then(() => {
+        scrollToContact();
+      });
+    } else {
+        scrollToContact();
+      }
+    }    
   const drawer = (
     <div>
       <Box
@@ -75,12 +152,12 @@ export default function Sidebar(props: Props){
               className={styles.navItem} 
               onClick=
               { 
-                index === 0? scrollToHome:
-                index === 1? scrollToAbout:
-                index === 2? scrollToSkills:
-                index === 3? scrollToProjects:
-                index === 4? scrollToBlog:
-                index === 5? scrollToContact:undefined
+                index === 0? handleHomeButtonClick:
+                index === 1? handleAboutButtonClick:
+                index === 2? handleSkillsButtonClick:
+                index === 3? handleProjectsButtonClick:
+                index === 4? handleBlogButtonClick:
+                index === 5? handleContactButtonClick:undefined
               }
             >
               <ListItemIcon sx={{color:'#ffffff',}}>
