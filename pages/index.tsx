@@ -26,16 +26,6 @@ const Home: NextPage = () => {
   const {mode} = useContext(ColorModeContext);
 
   return (<>
-          {/* Landing */}
-          <Element name="home">
-            <Box 
-              className="centerFlexBox"
-              sx={{ minHeight: '100vh', bgcolor:'background.dark', width:'100%'}}
-            >
-              <Landing/>
-            </Box> 
-          </Element>
-            { mode==='dark'?<Divider/>:null }
               <Box sx={{mx:'48px'}}>
                 <Element name="about">
                   <AboutMe/>
