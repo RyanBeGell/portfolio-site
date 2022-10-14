@@ -14,12 +14,6 @@ class MyDocument extends Document {
             type="text/css"
           />
 
-          {/*syntax highlighting for mdx blog posts via. prism */}
-          <link
-            rel="stylesheet"
-            href="https://unpkg.com/dracula-prism/dist/css/dracula-prism.css"
-          />
-
           {/*Recommended Roboto font for MUI components*/}
           <link
             rel="stylesheet"
@@ -33,7 +27,7 @@ class MyDocument extends Document {
           />
 
         </Head>
-        <body>
+        <body class="line-numbers">
           <Main />
           <NextScript />
         </body>
