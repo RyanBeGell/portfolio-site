@@ -1,5 +1,6 @@
 import '@/src/components/global.css'
 import "@/src/prism-overrides.css";
+import '@/src/PrismaTheme.css'
 import { AppProps } from 'next/app';
 import Sidebar from '@/src/components/sidebar/Sidebar'
 import type { NextPage } from 'next'
@@ -15,7 +16,6 @@ import ToggleOnIcon from '@mui/icons-material/ToggleOn';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import * as Scroll from 'react-scroll';
-import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import Skills from '@/src/components/Skills'
 import Projects from '@/src/components/Projects'
 import RecentBlogPosts from '@/src/components/RecentBlogPosts'
@@ -23,6 +23,7 @@ import Contact from '@/src/components/Contact'
 import AboutMe from '@/src/components/AboutMe'
 import { getDesignTokens } from '@/src/createPallette'
 import router, { useRouter } from 'next/router';
+import { Element} from 'react-scroll'
 export const ColorModeContext = createContext<any>(null);
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -87,15 +88,44 @@ function MyApp({ Component, pageProps }: AppProps) {
       >
         {/* passing function to change color mode to sideNav to use on DarkMode switch*/}
         <Sidebar toggleColorMode={colorMode.toggleColorMode}/>
+
+        {/* Conditionally render layout for blog posts and normal content */}
+        {router.pathname.includes("blog/posts")?
         <Box 
-          className="centerFlexBox"
+          className={`${mode==='light'?'blogLightContainer':'centerFlexBox'}`}
           flexDirection="column"
           sx={{width:'100%',}}
         >
-          <Box className={`${router.pathname.includes("blog/posts")?'blogPost':'centerLeft'}`}>
+          <Box className={`${mode==='light'?'blogPostLight':'blogPostDark'}`}>
+            < Component {...pageProps} />
+          </Box>
+        </Box>: router.pathname === ("/")? 
+        <>
+        <Element name="home">
+                <Box
+                  className="centerFlexBox"
+                  sx={{ minHeight: '100vh', bgcolor: 'background.dark', width: '100%', }}
+                >
+                  <Landing />
+                </Box>
+              </Element><Box
+                className="centerFlexBox"
+                flexDirection="column"
+              >
+                  <Box className={'centerLeft'}>
+                    <Component {...pageProps} />
+                  </Box>
+                </Box>
+        </>:
+        <Box 
+        className="centerFlexBox"
+        flexDirection="column"
+        >
+          <Box className={'centerLeft'}>
             < Component {...pageProps} />
           </Box>
         </Box>
+        }        
         </Box>
     </ThemeProvider>
   </ColorModeContext.Provider>
