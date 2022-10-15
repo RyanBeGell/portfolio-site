@@ -23,6 +23,6 @@
       "@/styles/*": ["styles/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_app.js", "src/createPallette.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_app.tsx", "src/createPallette.js"],
   "exclude": ["node_modules"]
 }
