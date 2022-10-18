@@ -79,7 +79,7 @@ export default function Sidebar(props: Props){
   const handleAboutButtonClick = () => {
     if (router.pathname !== "/") {
       router.push('/');
-      sleep(300).then(() => {
+      sleep(200).then(() => {
         scrollToAbout();
       });
     } else {
@@ -90,7 +90,7 @@ export default function Sidebar(props: Props){
   const handleSkillsButtonClick = () => {
     if (router.pathname !== "/") {
       router.push('/');
-      sleep(300).then(() => {
+      sleep(200).then(() => {
         scrollToSkills();
       });
     } else {
@@ -101,7 +101,7 @@ export default function Sidebar(props: Props){
   const handleProjectsButtonClick = () => {
     if (router.pathname !== "/") {
       router.push('/');
-      sleep(300).then(() => {
+      sleep(200).then(() => {
         scrollToProjects();
       });
     } else {
@@ -112,7 +112,7 @@ export default function Sidebar(props: Props){
   const handleBlogButtonClick = () => {
     if (router.pathname !== "/") {
       router.push('/');
-      sleep(300).then(() => {
+      sleep(200).then(() => {
         scrollToBlog();
       });
     } else {
@@ -122,7 +122,7 @@ export default function Sidebar(props: Props){
   const handleContactButtonClick = () => {
     if (router.pathname !== "/") {
       router.push('/');
-      sleep(300).then(() => {
+      sleep(200).then(() => {
         scrollToContact();
       });
     } else {
