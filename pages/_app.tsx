@@ -1,5 +1,4 @@
 import '@/src/components/global.css'
-import "@/src/prism-overrides.css";
 import '@/src/PrismaTheme.css'
 import { AppProps } from 'next/app';
 import Sidebar from '@/src/components/sidebar/Sidebar'
@@ -24,6 +23,11 @@ import AboutMe from '@/src/components/AboutMe'
 import { getDesignTokens } from '@/src/createPallette'
 import router, { useRouter } from 'next/router';
 import { Element} from 'react-scroll'
+import MainLayout from '@/src/components/layouts/MainLayout';
+import BlogLayout from '@/src/components/layouts/BlogLayout';
+
+
+
 export const ColorModeContext = createContext<any>(null);
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -80,55 +84,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   return(<>
-  <ColorModeContext.Provider value={{mode}}>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Box 
-        className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
-      >
-        {/* passing function to change color mode to sideNav to use on DarkMode switch*/}
-        <Sidebar toggleColorMode={colorMode.toggleColorMode}/>
-
-        {/* Conditionally render layout for blog posts and normal content */}
-        {router.pathname.includes("blog/posts")?
-        <Box 
-          className={`${mode==='light'?'blogLightContainer':'centerFlexBox'}`}
-          flexDirection="column"
-          sx={{width:'100%',}}
-        >
-          <Box className={`${mode==='light'?'blogPostLight':'blogPostDark'}`}>
-            < Component {...pageProps} />
-          </Box>
-        </Box>: router.pathname === ("/")? 
-        <>
-        <Element name="home">
-                <Box
-                  className="centerFlexBox"
-                  sx={{ minHeight: '100vh', bgcolor: 'background.dark', width: '100%', }}
-                >
-                  <Landing />
-                </Box>
-              </Element><Box
-                className="centerFlexBox"
-                flexDirection="column"
-              >
-                  <Box className={'centerLeft'}>
-                    <Component {...pageProps} />
-                  </Box>
-                </Box>
-        </>:
-        <Box 
-        className="centerFlexBox"
-        flexDirection="column"
-        >
-          <Box className={'centerLeft'}>
-            < Component {...pageProps} />
-          </Box>
-        </Box>
-        }        
-        </Box>
-    </ThemeProvider>
-  </ColorModeContext.Provider>
+    {router.pathname.includes("blog/posts")?
+      <BlogLayout>
+        < Component {...pageProps} />
+      </BlogLayout>: 
+      <MainLayout>
+        < Component {...pageProps} />
+      </MainLayout>}
   </>)
 }
 
