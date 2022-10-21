@@ -26,8 +26,6 @@ import { Element} from 'react-scroll'
 import MainLayout from '@/src/components/layouts/MainLayout';
 import BlogLayout from '@/src/components/layouts/BlogLayout';
 
-
-
 export const ColorModeContext = createContext<any>(null);
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -49,48 +47,47 @@ function MyApp({ Component, pageProps }: AppProps) {
     }),
     [],
   );
-
-  //useLayoutEffect to get the current width and determine if the side nav is open or not
+  
+  //On mount get the current width and determine if the side nav is open or not
   useLayoutEffect(() => {
     //Responsive side nav drawer closes when the width is less than 600px
-    if(window.innerWidth < 600) {
-      setSideNavOpen(false);
-    } else {
-      setSideNavOpen(true);
-    }
+      setSideNavOpen(window.innerWidth > 600);
   } , [])
 
   /*
-  useLayoutEffect hook to listen on component mount and watch for resize events.
-
-  The useLayoutEffect hook over useEffect here because updates scheduled inside
-  useLayoutEffect will be flushed synchronously before the browser has a chance to paint.
-  This helps avoids flickering as things are repositioned on the screen.
+    Listen on component mount and watch for resize events.
   */
   useLayoutEffect(() => {
     const handleResize = () => {
-      if(window.innerWidth < 600) {
-        setSideNavOpen(false);
-      } else {
-        setSideNavOpen(true);
-      }
+      setSideNavOpen(window.innerWidth > 600);
     };
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  } , [])
-
+  } , [])  
+  
   const router = useRouter();
 
   return(<>
-    {router.pathname.includes("blog/posts")?
-      <BlogLayout>
-        < Component {...pageProps} />
-      </BlogLayout>: 
-      <MainLayout>
-        < Component {...pageProps} />
-      </MainLayout>}
+    <ColorModeContext.Provider value={{mode}}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Box 
+            className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
+          >
+            {/* passing function to change color mode to sideNav to use on DarkMode switch*/}
+            <Sidebar toggleColorMode={colorMode.toggleColorMode}/>
+              {router.pathname.includes("blog/posts")?
+                <BlogLayout>
+                  < Component {...pageProps} />
+                </BlogLayout>: 
+                <MainLayout>
+                  < Component {...pageProps} />
+                </MainLayout>}
+          </Box>
+        </ThemeProvider>
+    </ColorModeContext.Provider>
   </>)
 }
 
