@@ -2,29 +2,15 @@ import '@/src/components/global.css'
 import '@/src/PrismaTheme.css'
 import { AppProps } from 'next/app';
 import Sidebar from '@/src/components/sidebar/Sidebar'
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import Landing from '@/src/components/Landing'
-import { Grid, Box, CssBaseline, Divider } from '@mui/material'
-import React, { useRef, useState, createContext, useEffect, useLayoutEffect, useMemo } from 'react'
+import {  Box, CssBaseline, } from '@mui/material'
+import React, { useState, createContext, useLayoutEffect, useMemo } from 'react'
 import styles from '@/src/components/landing.module.css';
-import { createTheme, ThemeProvider,  ThemeOptions, PaletteMode, useTheme} from '@mui/material'
-import ToggleOffIcon from '@mui/icons-material/ToggleOff';
-import ToggleOnIcon from '@mui/icons-material/ToggleOn';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import LightModeIcon from '@mui/icons-material/LightMode';
-import * as Scroll from 'react-scroll';
-import Skills from '@/src/components/Skills'
-import Projects from '@/src/components/Projects'
-import RecentBlogPosts from '@/src/components/RecentBlogPosts'
-import Contact from '@/src/components/Contact'
-import AboutMe from '@/src/components/AboutMe'
+import { createTheme, ThemeProvider,PaletteMode} from '@mui/material'
 import { getDesignTokens } from '@/src/createPallette'
-import router, { useRouter } from 'next/router';
-import { Element} from 'react-scroll'
-import MainLayout from '@/src/components/layouts/MainLayout';
+import { useRouter } from 'next/router';
+import DefaultLayout from '@/src/components/layouts/DefaultLayout';
 import BlogLayout from '@/src/components/layouts/BlogLayout';
+import LandingLayout from '@/src/components/layouts/LandingLayout';
 
 export const ColorModeContext = createContext<any>(null);
 
@@ -81,10 +67,13 @@ function MyApp({ Component, pageProps }: AppProps) {
               {router.pathname.includes("blog/posts")?
                 <BlogLayout>
                   < Component {...pageProps} />
-                </BlogLayout>: 
-                <MainLayout>
+                </BlogLayout>:router.pathname.match("/")?
+                <LandingLayout>
                   < Component {...pageProps} />
-                </MainLayout>}
+                </LandingLayout>:
+                <DefaultLayout>
+                  < Component {...pageProps} />
+                </DefaultLayout>}
           </Box>
         </ThemeProvider>
     </ColorModeContext.Provider>
