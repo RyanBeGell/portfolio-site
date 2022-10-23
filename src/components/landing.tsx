@@ -6,6 +6,7 @@ import ReactTyped from 'react-typed';
 import Avatar from '@mui/material/Avatar';
 import SouthIcon from '@mui/icons-material/South';
 import IconButton from '@mui/material/IconButton';
+import { scrollToAbout } from '@/src/scrollers';
 
 export default function Landing(){
 
@@ -48,7 +49,7 @@ export default function Landing(){
                     />
                 </Grid>
             </Grid>
-            <IconButton className={styles.ArrowIcon} color='primary'>
+            <IconButton className={styles.ArrowIcon} color='primary' onClick={scrollToAbout}>
                 <SouthIcon color="primary" sx={{fontSize: '32px'}} />
             </IconButton>
         </Box>
