@@ -55,6 +55,7 @@
 	border: 1px solid rgba(255, 255, 255, 0.12);
 	min-height: 90vh;
 	border-radius: 4px;
+  background-color: transparent !important;
   }
 
 h1 {
