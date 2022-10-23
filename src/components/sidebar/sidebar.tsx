@@ -143,7 +143,7 @@ export default function Sidebar(props: Props){
       {/* <Typography variant={"subtitle2"} className={styles.workAvailability} color="text.subtitle">
             Available for work 
           </Typography> */}
-      {mode==='light'?<Divider sx={{background:'rgba(255,255,255, 0.3)'}}/>:<Divider/>}
+      {mode==='light'?<Divider sx={{borderColor:'rgba(255,255,255, 0.3)'}}/>:<Divider/>}
       <List>
         {['Home', 'About', 'Skills', 'Projects', 'Blog', 'Contact'].map((text, index) => (
           <ListItem key={text} sx={{px:"0px", py:"4px",}} color='primary.main'>
@@ -246,7 +246,7 @@ export default function Sidebar(props: Props){
           open
         >
           {drawer}
-          {mode==='light'?<Divider sx={{background:'rgba(255,255,255, 0.3)'}}/>:<Divider/>}
+          {mode==='light'?<Divider sx={{borderColor:'rgba(255,255,255, 0.3)'}}/>:<Divider/>}
           <List
             sx={{bgcolor: 'background.nav'}}
           >
@@ -263,7 +263,7 @@ export default function Sidebar(props: Props){
           </ListItem>
           </List>
           <List sx={{ marginTop: `auto`, mb:0, p:0, }} >
-          {mode==='light'?<Divider sx={{background:'rgba(255,255,255, 0.3)'}}/>:<Divider/>}
+          {mode==='light'?<Divider sx={{borderColor:'rgba(255,255,255, 0.3)'}}/>:<Divider/>}
             <ListItem sx={{m:0, p:0}}>
               <SidebarFooter/>
             </ListItem>
