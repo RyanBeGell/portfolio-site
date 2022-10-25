@@ -11,7 +11,8 @@ import { useRouter } from 'next/router';
 import DefaultLayout from '@/src/components/layouts/DefaultLayout';
 import BlogLayout from '@/src/components/layouts/BlogLayout';
 import LandingLayout from '@/src/components/layouts/LandingLayout';
-
+import BlogNavBar from '@/src/components/BlogNavBar';
+import BlogAppBar from '@/src/components/BlogAppBar';
 export const ColorModeContext = createContext<any>(null);
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -60,14 +61,15 @@ function MyApp({ Component, pageProps }: AppProps) {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Box 
-            className={sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
+            className={!router.pathname.includes("blog") && sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
           >
             {/* passing function to change color mode to sideNav to use on DarkMode switch*/}
-            <Sidebar toggleColorMode={colorMode.toggleColorMode}/>
+            {router.pathname === "/"?
+            <Sidebar toggleColorMode={colorMode.toggleColorMode}/>: <BlogAppBar toggleColorMode={colorMode.toggleColorMode}/>}
               {router.pathname.includes("blog/posts")?
                 <BlogLayout>
                   < Component {...pageProps} />
-                </BlogLayout>:router.pathname.match("/")?
+                </BlogLayout>:router.pathname === "/"?
                 <LandingLayout>
                   < Component {...pageProps} />
                 </LandingLayout>:
