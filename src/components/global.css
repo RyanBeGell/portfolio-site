@@ -36,9 +36,10 @@
   align-items: center;
   justify-content: center;
   padding:48px;
-  margin-top: 48px;
+  /* 64px fixed app bar, MUI sticky not working */
+  margin-top: 112px;
   margin-bottom: 48px;
-  max-width: 900px;
+  max-width: 1000px;
   min-height: 90vh;
   background-color: #FFFFFF;
   border-radius: 4px;
@@ -49,9 +50,10 @@
 	align-items: center;
 	justify-content: center;
 	padding:48px;
-	margin-top: 48px;
+  /* 64px fixed app bar, MUI sticky not working */
+	margin-top: 112px;
 	margin-bottom: 48px;
-	max-width: 900px;
+	max-width: 1000px;
 	border: 1px solid rgba(255, 255, 255, 0.12);
 	min-height: 90vh;
 	border-radius: 4px;
@@ -116,4 +118,25 @@ pre{
 }
 code{
   background: #001e3c !important;
+}
+
+.neutraface {
+  font-family: "Neutraface Text Bold";
+}
+
+.appBar{
+  justify-content: space-between;
+}
+
+.centerModal{
+  position: absolute;
+  width:500px;
+  margin:auto;
+  top:50%;
+}
+.xButton{
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 16px;
 }

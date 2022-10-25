@@ -44,12 +44,16 @@ export const getDesignTokens = (mode: PaletteMode) => ({
         // dark: '#091725',
         paper: '#001e3c',
         nav: '#001e3c',
+        blogNav:'#001e3c',
+        paperDivider:'rgb(19, 47, 76)',
       }
     : {
         default: '#f9fafa',
         dark: '#f5f6f6',
         paper: '#FFFFFF',
         nav: '#0d6efd',
+        blogNav:'transparent',
+        paperDivider:'rgb(224, 227, 231)',
     }),
   },  
     text: {
