@@ -52,7 +52,7 @@ export const getDesignTokens = (mode: PaletteMode) => ({
         dark: '#f5f6f6',
         paper: '#FFFFFF',
         nav: '#0d6efd',
-        blogNav:'transparent',
+        blogNav:'#FFFFFF',
         paperDivider:'rgb(224, 227, 231)',
     }),
   },  
