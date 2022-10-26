@@ -2,7 +2,7 @@ import '@/src/components/global.css'
 import '@/src/PrismaTheme.css'
 import { AppProps } from 'next/app';
 import Sidebar from '@/src/components/sidebar/Sidebar'
-import {  Box, CssBaseline, } from '@mui/material'
+import {  Box, CssBaseline, GlobalStyles, } from '@mui/material'
 import React, { useState, createContext, useLayoutEffect, useMemo } from 'react'
 import styles from '@/src/components/landing.module.css';
 import { createTheme, ThemeProvider,PaletteMode} from '@mui/material'
@@ -60,6 +60,22 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ColorModeContext.Provider value={{mode}}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
+
+          {/* Custom code snippet highlighting for light/dark mode */}
+          {mode==='light'?
+            <GlobalStyles
+              styles={{
+                pre:{ backgroundColor: '#001e3c !important' },
+                code: { backgroundColor: '#001e3c !important' },
+              }}
+            />:
+            <GlobalStyles
+              styles={{
+                pre:{ backgroundColor: '#0A1929 !important' },
+                code: { backgroundColor: '#0A1929 !important' },
+              }}
+            />
+          }
           <Box 
             className={!router.pathname.includes("blog") && sideNavOpen? styles.shiftContentLeft: styles.shiftContentRight}
           >
