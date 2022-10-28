@@ -12,7 +12,7 @@ import DefaultLayout from '@/src/components/layouts/DefaultLayout';
 import BlogLayout from '@/src/components/layouts/BlogLayout';
 import LandingLayout from '@/src/components/layouts/LandingLayout';
 import BlogNavBar from '@/src/components/BlogNavBar';
-import BlogAppBar from '@/src/components/BlogAppBar';
+import BlogAppBar from '@/src/components/blog/BlogAppBar';
 export const ColorModeContext = createContext<any>(null);
 
 function MyApp({ Component, pageProps }: AppProps) {

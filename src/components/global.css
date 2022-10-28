@@ -54,10 +54,9 @@
 	margin-top: 112px;
 	margin-bottom: 48px;
 	max-width: 1000px;
-	border: 1px solid rgba(255, 255, 255, 0.12);
 	min-height: 90vh;
 	border-radius: 4px;
-  background-color: transparent !important;
+  background-color: #001e3c;
   }
 
 h1 {
@@ -113,12 +112,9 @@ h6 {
 }
 
 pre{
-  background: #001e3c !important;
   border-radius: 10px;
 }
-code{
-  background: #001e3c !important;
-}
+
 
 .neutraface {
   font-family: "Neutraface Text Bold";
@@ -139,4 +135,12 @@ code{
   top: 0;
   right: 0;
   margin: 16px;
+}
+
+.transparent{
+  background-color: transparent important!;
+}
+
+.normal{
+
 }
