@@ -1,11 +1,10 @@
-import * as React from 'react';
+import styles from '@/src/components/Card.module.css';
+import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
+import { Button, CardActions, Chip, Grid } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions, Chip, Grid } from '@mui/material';
-import styles from '@/src/components/Card.module.css'
-import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 
 export interface Props{
     title?: string, //temporarily optional

@@ -1,25 +1,24 @@
-import { useTheme } from '@mui/material/styles';
-import Grid from '@mui/material/Grid';
 import { Divider } from '@mui/material';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import Box  from '@mui/material/Box';
-import styles from './Skills.module.css'
-import SkillsIllustration from 'public/SkillsIllustration'
-import ReactLogo from 'public/Icons/ReactLogo';
-import JavaScriptLogo from 'public/Icons/JavaScriptLogo';
-import TypeScriptLogo from 'public/Icons/TypeScriptLogo';
+import AWSLogo from 'public/Icons/AWSLogo';
 import CSS3Logo from 'public/Icons/CSS3Logo';
+import DockerLogo from 'public/Icons/DockerLogo';
 import HTML5Logo from 'public/Icons/HTML5Logo';
+import JavaLogo from 'public/Icons/JavaLogo';
+import JavaScriptLogo from 'public/Icons/JavaScriptLogo';
 import MUILogo from 'public/Icons/MUILogo';
 import NextLogo from 'public/Icons/NextLogo';
-import OracleLogo from 'public/Icons/OracleLogo';
-import AWSLogo from 'public/Icons/AWSLogo';
-import DockerLogo from 'public/Icons/DockerLogo';
-import JavaLogo from 'public/Icons/JavaLogo';
 import NodeLogo from 'public/Icons/NodeLogo';
+import OracleLogo from 'public/Icons/OracleLogo';
 import PostgresLogo from 'public/Icons/PostgresLogo';
+import ReactLogo from 'public/Icons/ReactLogo';
 import SpringLogo from 'public/Icons/SpringLogo';
+import TypeScriptLogo from 'public/Icons/TypeScriptLogo';
 import SectionTitle from './SectionTitle';
+import styles from './Skills.module.css';
 
 export default function Skills(){
 

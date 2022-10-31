@@ -1,13 +1,11 @@
-import * as React from 'react';
+import styles from '@/src/components/Card.module.css';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LanguageIcon from '@mui/icons-material/Language';
+import { Button, CardActionArea, CardActions, Grid } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LanguageIcon from '@mui/icons-material/Language';
-import { Button, CardActionArea, CardActions, Grid } from '@mui/material';
-import styles from '@/src/components/Card.module.css'
-import ImageListItem from '@mui/material/ImageListItem';
 export interface Props{
     title?: string, //temporarily optional
     body?: string, //temporarily optional

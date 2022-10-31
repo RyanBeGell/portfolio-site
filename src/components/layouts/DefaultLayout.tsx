@@ -1,20 +1,18 @@
-import { Box } from '@mui/material'
-import React, { useState, useContext } from 'react'
-import { ColorModeContext } from 'pages/_app'
-export default function DefaultLayout({children}:any){
+import { Box } from '@mui/material';
+import { ColorModeContext } from 'pages/_app';
+import { useContext, useState } from 'react';
 
-    const [sideNavOpen, setSideNavOpen] = useState(false);
-    const {mode} = useContext(ColorModeContext);
-    
+export default function DefaultLayout({ children }: any) {
+  const [sideNavOpen, setSideNavOpen] = useState(false);
+  const { mode } = useContext(ColorModeContext);
 
-  return(<>
-        <Box 
-        className="centerFlexBox"
-        flexDirection="column"
-        >
-          <Box className={'centerLeft'}>
-            <main>{children}</main>
-          </Box>
+  return (
+    <>
+      <Box className="centerFlexBox" flexDirection="column">
+        <Box className={'centerLeft'}>
+          <main>{children}</main>
         </Box>
-  </>)
+      </Box>
+    </>
+  );
 }
