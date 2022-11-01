@@ -1,6 +1,6 @@
 import AboutMe from '@/src/components/AboutMe';
 import Contact from '@/src/components/Contact';
-import Projects from '@/src/components/Projects';
+import Projects from '@/src/components/ProjectsGrid';
 import RecentBlogPosts from '@/src/components/RecentBlogPosts';
 import Skills from '@/src/components/Skills';
 import { Box, Divider } from '@mui/material';
