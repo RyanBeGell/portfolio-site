@@ -9,9 +9,7 @@ export default function BlogLayout({ children }: any) {
   return (
     <>
       <Box
-        className={`${
-          mode === 'light' ? 'blogLightContainer' : 'centerFlexBox'
-        }`}
+        className={`${mode === 'light' ? 'blogLightContainer' : 'centerFlexBox'}`}
         flexDirection="column"
         sx={{ width: '100%' }}
       >

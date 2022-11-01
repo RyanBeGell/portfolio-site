@@ -4,7 +4,7 @@ import {
   scrollToContact,
   scrollToHome,
   scrollToProjects,
-  scrollToSkills,
+  scrollToSkills
 } from '@/src/scrollers';
 import ContactMailOutlinedIcon from '@mui/icons-material/ContactMailOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';

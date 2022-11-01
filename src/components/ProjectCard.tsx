@@ -19,12 +19,12 @@ export interface Props{
 export default function ProjectCard(props:Props) {
   return (
     <Grid item  xs={12} sm={12} md={6} lg={4}>
-    <Card raised className={styles.card} sx={{minWidth:270}}> 
+    <Card raised className={styles.card}> 
       <CardActionArea  onClick={props.handleOpen} sx={{color: 'primary.main', }}>
         <CardMedia
           component="img"
           height="140"
-          image="https://animals.sandiegozoo.org/sites/default/files/2017-12/iguana-grand-cayman-blue.jpg"
+          image={props.image}
           alt="green iguana"
         />
         <CardContent>

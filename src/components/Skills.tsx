@@ -21,15 +21,15 @@ import SectionTitle from './SectionTitle';
 import styles from './Skills.module.css';
 
 export default function Skills(){
-
+    
     const theme = useTheme();
     const primary = theme.palette.primary.main;
 
     return(<>
     <Box className="centerBox">
-      <Grid>
-        <Grid item>
-            <SectionTitle title="Skills"/>
+    <Grid>
+      <Grid item>
+        <SectionTitle title="Skills"/>
         </Grid>
         <Grid item sx={{mt:'-8px'}}>
             {/* Front End Section/Icons */}
@@ -37,53 +37,53 @@ export default function Skills(){
                 Front End
             </Typography>
             <Grid container spacing={4}>
-            {['ReactJS', 'JavaScript', 'TypeScript', 'CSS3', 'HTML5','Material UI', 'NextJS',].map((name, index) => (
-                    <Grid item textAlign="center" key={name}>
-                        {
-                            index === 0? <ReactLogo height={64} width ={64} fill={primary}/>:
-                            index === 1? <JavaScriptLogo height={64} width ={64} fill={primary}/>:
-                            index === 2? <TypeScriptLogo height={64} width ={64} fill={primary}/>:
-                            index === 3? <CSS3Logo height={64} width ={64} fill={primary}/>:
-                            index === 4? <HTML5Logo height={64} width ={64} fill={primary}/>:
-                            index === 5? <MUILogo height={64} width ={64} fill={primary}/>:
-                            index === 6? <NextLogo height={64} width ={64} fill={primary}/>:
-                            index === 7? <NextLogo height={64} width ={64} fill={primary}/>:
-                            index === 8? <NextLogo height={64} width ={64} fill={primary}/>:
-                            index === 9? <NextLogo height={64} width ={64} fill={primary}/>:
-                            index === 10? <NextLogo height={64} width ={64} fill={primary}/>:null
-                        }
-                        <Divider sx={{bgcolor: (theme) => theme.palette.primary.main, height: 2, my:1}}/>
-                        <Typography variant={'body1'} sx={{color:'primary.main'}}>
-                            {name}
-                        </Typography>
-                    </Grid>
-                    ))}
+              {['ReactJS', 'JavaScript', 'TypeScript', 'CSS3', 'HTML5','Material UI', 'NextJS',].map((name, index) => (
+                <Grid item textAlign="center" key={name}>
+                  {
+                    index === 0? <ReactLogo height={64} width ={64} fill={primary}/>:
+                    index === 1? <JavaScriptLogo height={64} width ={64} fill={primary}/>:
+                    index === 2? <TypeScriptLogo height={64} width ={64} fill={primary}/>:
+                    index === 3? <CSS3Logo height={64} width ={64} fill={primary}/>:
+                    index === 4? <HTML5Logo height={64} width ={64} fill={primary}/>:
+                    index === 5? <MUILogo height={64} width ={64} fill={primary}/>:
+                    index === 6? <NextLogo height={64} width ={64} fill={primary}/>:
+                    index === 7? <NextLogo height={64} width ={64} fill={primary}/>:
+                    index === 8? <NextLogo height={64} width ={64} fill={primary}/>:
+                    index === 9? <NextLogo height={64} width ={64} fill={primary}/>:
+                    index === 10? <NextLogo height={64} width ={64} fill={primary}/>:null
+                  }
+                  <Divider sx={{bgcolor: (theme) => theme.palette.primary.main, height: 2, my:1}}/>
+                    <Typography variant={'body1'} sx={{color:'primary.main'}}>
+                      {name}
+                    </Typography>
+                  </Grid>
+              ))}
             </Grid>
             <Typography variant='h5'  sx={{py:'16px'}}>
                 Back End
             </Typography>
             <Grid container spacing={4}>
             {['Java', 'Spring', 'NodeJS', 'PostgreSQL', 'Oracle DB', 'Docker', 'Amazon\nWeb Services'].map((name, index) => (
-                    <Grid item textAlign="center" columnSpacing={4} key={name}>
-                        {
-                            index === 0? <JavaLogo height={64} width ={64} fill={primary}/>:
-                            index === 1? <SpringLogo height={64} width ={64} fill={primary}/>:
-                            index === 2? <NodeLogo height={64} width ={64} fill={primary}/>:
-                            index === 3? <PostgresLogo height={64} width ={64} fill={primary}/>:
-                            index === 4? <OracleLogo height={64} width ={64} fill={primary}/>:
-                            index === 5? <DockerLogo height={64} width ={64} fill={primary}/>:
-                            index === 6? <AWSLogo height={64} width ={64} fill={primary}/>:
-                            null
-                        }
-                        <Divider sx={{bgcolor: (theme) => theme.palette.primary.main, height: 2, my:1}}/>
-                        <Typography variant={'body1'} sx={{color:'primary.main'}} className={styles.iconName}>
-                            {name}
-                        </Typography>
-                    </Grid>
-                    ))}
-            </Grid>
+              <Grid item textAlign="center" columnSpacing={4} key={name}>
+                {
+                  index === 0? <JavaLogo height={64} width ={64} fill={primary}/>:
+                  index === 1? <SpringLogo height={64} width ={64} fill={primary}/>:
+                  index === 2? <NodeLogo height={64} width ={64} fill={primary}/>:
+                  index === 3? <PostgresLogo height={64} width ={64} fill={primary}/>:
+                  index === 4? <OracleLogo height={64} width ={64} fill={primary}/>:
+                  index === 5? <DockerLogo height={64} width ={64} fill={primary}/>:
+                  index === 6? <AWSLogo height={64} width ={64} fill={primary}/>:
+                  null
+                }
+                <Divider sx={{bgcolor: (theme) => theme.palette.primary.main, height: 2, my:1}}/>
+                <Typography variant={'body1'} sx={{color:'primary.main'}} className={styles.iconName}>
+                  {name}
+                </Typography>
+              </Grid>
+            ))}
+          </Grid>
         </Grid>
-    </Grid>
+      </Grid>
     </Box>
-    </>)
+  </>)
 }

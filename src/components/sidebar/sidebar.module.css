@@ -1,40 +1,40 @@
 .avatar {
-    width: 104px;
-    height: 104px;
-    border: White solid 5px;
-    /* Change border to '#2196F3' when real photo added*/
-    margin-top: 24px;
-  }
+  width: 104px;
+  height: 104px;
+  border: White solid 5px;
+  /* Change border to '#2196F3' when real photo added*/
+  margin-top: 24px;
+}
 
-  .name {
-    text-align: center;
-    font-family: "Neutraface Text Bold";
-    margin-top: 16px;
-    margin-bottom: 8px;
-  }
+.name {
+  text-align: center;
+  font-family: 'Neutraface Text Bold';
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
 
-  .workAvailability {
-    text-align: center;
-    margin-bottom: 16px;
-  }
+.workAvailability {
+  text-align: center;
+  margin-bottom: 16px;
+}
 
-.navItem{
-   /* Avoid blurry text on transform */
+.navItem {
+  /* Avoid blurry text on transform */
   backface-visibility: hidden;
   will-change: transform;
-  transition: all ease-in-out .1s;
+  transition: all ease-in-out 0.1s;
 }
 
 .navItem:hover {
   transform: scale(1.01);
 }
 
-.underlineNavItem{
+.underlineNavItem {
   text-underline-offset: 10px;
-  text-decoration: underline #2196F3 2px;
+  text-decoration: underline #2196f3 2px;
 }
 
-.copyright{
+.copyright {
   font-size: 14px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
