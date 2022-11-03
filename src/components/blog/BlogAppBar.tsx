@@ -12,6 +12,8 @@ import InputBase from '@mui/material/InputBase';
 import { styled, useTheme } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Image from 'next/image';
+import router from 'next/router';
+import { Router, useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import { ColorModeContext } from '../../../pages/_app';
 import StyledIconButton from '../StyledIconButton';
@@ -61,6 +63,14 @@ export default function BlogAppBar(props: Props) {
   }));
 
   const StyledInputBase = styled(InputBase)(({ theme }) => ({}));
+  const router = useRouter();
+  
+  function handleRedirect(path:string){
+    if(path==='Portfolio')
+      router.push('/');
+    else if(path==='Blog')
+      router.push('/blog/home');
+  }
 
   return (
     <>
@@ -100,6 +110,7 @@ export default function BlogAppBar(props: Props) {
             <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
               {pages.map((item) => (
                 <Button
+                  onClick={() => handleRedirect(item)}
                   key={item}
                   sx={{
                     color: 'text.primary',
