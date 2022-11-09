@@ -31,6 +31,7 @@ import React, { useContext } from 'react';
 import { ColorModeContext } from '../../../pages/_app';
 import styles from './sidebar.module.css';
 import SidebarFooter from './SidebarFooter';
+import LaunchIcon from '@mui/icons-material/Launch';
 
 export interface Props {
   toggleColorMode: () => void;
@@ -48,6 +49,9 @@ export default function Sidebar(props: Props) {
     setMobileOpen(!mobileOpen);
   };
 
+  const handleBlogButtonClick = () => {
+    router.push('/blog/home');
+  }
   
   const drawer = (
     <div>
@@ -86,7 +90,7 @@ export default function Sidebar(props: Props) {
                   index === 1? scrollToAbout:
                   index === 2? scrollToSkills:
                   index === 3? scrollToProjects:
-                  index === 4? scrollToBlog:
+                  index === 4? handleBlogButtonClick:
                   index === 5? scrollToContact:undefined
                 }
               >
@@ -107,7 +111,8 @@ export default function Sidebar(props: Props) {
                     primaryTypographyProps={{ fontWeight: 'bold' }}
                     sx={{ ml: '-16px', color: '#FFFFFF' }}
                   />
-                ) : (
+                )
+                 : (
                   <ListItemText
                     primary={text}
                     sx={{ ml: '-16px', color: '#FFFFFF' }}
