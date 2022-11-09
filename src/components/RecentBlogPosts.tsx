@@ -17,7 +17,7 @@ export default function RecentBlogPosts(props: Props) {
   const { mode } = useContext(ColorModeContext);
   const router = useRouter();
 
-  function handleRedirect(path: string) {
+  const handleRedirect = () => {
     router.push('/blog/home');
   }
 
@@ -50,7 +50,7 @@ export default function RecentBlogPosts(props: Props) {
               size="large"
               endIcon={<ArrowCircleRightIcon />}
               variant={`${mode == 'dark' ? 'outlined' : 'contained'}`}
-              onClick={() => handleRedirect}
+              onClick={handleRedirect}
             >
               View Blog
             </Button>
