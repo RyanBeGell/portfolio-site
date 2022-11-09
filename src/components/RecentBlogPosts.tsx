@@ -2,6 +2,7 @@ import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import { ColorModeContext } from '../../pages/_app';
 import RecentBlogPostsData from '../data/RecentBlogPostsData';
@@ -14,6 +15,11 @@ export interface Props {
 
 export default function RecentBlogPosts(props: Props) {
   const { mode } = useContext(ColorModeContext);
+  const router = useRouter();
+
+  function handleRedirect(path: string) {
+    router.push('/blog/home');
+  }
 
   return (
     <>
@@ -44,6 +50,7 @@ export default function RecentBlogPosts(props: Props) {
               size="large"
               endIcon={<ArrowCircleRightIcon />}
               variant={`${mode == 'dark' ? 'outlined' : 'contained'}`}
+              onClick={() => handleRedirect}
             >
               View Blog
             </Button>
