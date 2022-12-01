@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import { ColorModeContext } from '../../pages/_app';
 import RecentBlogPostsData from '../data/RecentBlogPostsData';
-import BlogCard from './BlogCard';
+import BlogCard from './blog/BlogCard';
 import SectionTitle from './SectionTitle';
 
 export interface Props {

@@ -1,10 +1,12 @@
 import BlogAppBar from '@/src/components/blog/BlogAppBar';
-import '@/src/components/global.css';
+import '@/src/global.css';
 import styles from '@/src/components/landing.module.css';
 import BlogLayout from '@/src/components/layouts/BlogLayout';
 import DefaultLayout from '@/src/components/layouts/DefaultLayout';
 import LandingLayout from '@/src/components/layouts/LandingLayout';
 import Sidebar from '@/src/components/sidebar/Sidebar';
+import { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
 import { getDesignTokens } from '@/src/createPallette';
 import '@/src/PrismaTheme.css';
 import {
@@ -15,14 +17,13 @@ import {
   PaletteMode,
   ThemeProvider,
 } from '@mui/material';
-import { AppProps } from 'next/app';
-import { useRouter } from 'next/router';
 import React, {
   createContext,
   useLayoutEffect,
   useMemo,
   useState,
 } from 'react';
+
 export const ColorModeContext = createContext<any>(null);
 
 function MyApp({ Component, pageProps }: AppProps) {
