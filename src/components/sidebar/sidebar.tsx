@@ -80,7 +80,7 @@ export default function Sidebar(props: Props) {
               <ListItemButton
                 sx={{
                   borderRadius: 3,
-                  '&:hover': { color: 'primary.main', bgColor: 'primary.main' },
+                  '&:hover': { color: 'primary.main', bgColor: 'primary.main', textDecoration: `${index === 4? 'underline white':null}` },
                   alignItems: 'center',
                 }}
                 className={styles.navItem}
@@ -104,20 +104,10 @@ export default function Sidebar(props: Props) {
                     index === 5? <ContactMailOutlinedIcon/>:null
                   }
                 </ListItemIcon>
-                {index === 4 ? (
-                  //conditionally render the underline based on where the user is on the page - only highlighting blog temporarily
-                  <ListItemText
-                    primary={text}
-                    primaryTypographyProps={{ fontWeight: 'bold' }}
-                    sx={{ ml: '-16px', color: '#FFFFFF' }}
-                  />
-                )
-                 : (
                   <ListItemText
                     primary={text}
                     sx={{ ml: '-16px', color: '#FFFFFF' }}
                   />
-                )}
               </ListItemButton>
             </ListItem>
           )
