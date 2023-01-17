@@ -7,14 +7,10 @@
 .shiftContentRight{
     /* Sidebar is 280px wide */
     margin-left: 0px;   
-    /* Transition to be added if the content shift is visible on load in deployment server */
-    transition-duration: 1000ms;
-    transition-property: margin-left;
 }
 
 .shiftContentLeft{
     margin-left: 282px; 
-    /* Transition to be added if the content shift is visible on load in deployment server */
 }
 
   .ArrowIcon{
