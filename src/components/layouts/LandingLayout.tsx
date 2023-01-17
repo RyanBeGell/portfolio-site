@@ -14,7 +14,7 @@ export default function LandingLayout({ children }: any) {
       <Element name="home">
         <Box
           className="centerFlexBox"
-          sx={{ minHeight: '100vh', bgcolor: 'background.dark', width: '100%' }}
+          sx={{ minHeight: '100vh', bgcolor: 'background.light', width: '100%' }}
         >
           <Landing />
         </Box>
