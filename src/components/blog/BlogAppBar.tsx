@@ -6,6 +6,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
@@ -23,6 +24,7 @@ export interface Props {
 }
 
 export default function BlogAppBar(props: Props) {
+  
   const { mode } = useContext(ColorModeContext);
   const theme = useTheme();
 
@@ -82,9 +84,10 @@ export default function BlogAppBar(props: Props) {
             backgroundColor: `${
               scrollPosition.scrollY > 48 ? 'transparent' : 'background.blogNav'
             }`,
-            backdropFilter: 'blur(20px)',
+            backdropFilter: 'blur(8px)',
           }}
         >
+          <Container maxWidth="xl">
           <Toolbar>
             <IconButton
               color="primary"
@@ -112,6 +115,7 @@ export default function BlogAppBar(props: Props) {
                 <Button
                   onClick={() => handleRedirect(item)}
                   key={item}
+                  size='large'
                   sx={{
                     color: 'text.primary',
                     '&:hover': {
@@ -145,10 +149,10 @@ export default function BlogAppBar(props: Props) {
                     borderColor: 'background.paperDivider',
                     borderRadius: '10px',
                     '&:hover': {
-                      border: '1px solid',
                       borderColor: 'primary.main',
                       borderRadius: '10px',
                     },
+                    
                     // vertical padding + font size from searchIcon
                     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
                     transition: theme.transitions.create('width'),
@@ -157,7 +161,7 @@ export default function BlogAppBar(props: Props) {
                       width: '12ch',
                       '&:focus': {
                         width: '20ch',
-                        border: '1px solid',
+                        border: '2px solid',
                         borderColor: 'primary.main',
                         borderRadius: '10px',
                       },
@@ -177,6 +181,7 @@ export default function BlogAppBar(props: Props) {
               )}
             </StyledIconButton>
           </Toolbar>
+          </Container>
         </AppBar>
       </Box>
     </>
