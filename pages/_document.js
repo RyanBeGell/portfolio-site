@@ -27,7 +27,7 @@ class MyDocument extends Document {
           />
 
         </Head>
-        <body class="line-numbers">
+        <body>
           <Main />
           <NextScript />
         </body>
