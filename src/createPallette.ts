@@ -49,7 +49,7 @@ export const getDesignTokens = (mode: PaletteMode) => ({
       }
     : {
         default: '#f9fafa',
-        dark: '#f5f6f6',
+        light: '#FFFFFF',
         paper: '#FFFFFF',
         nav: '#0d6efd',
         blogNav:'#FFFFFF',
