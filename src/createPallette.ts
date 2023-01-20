@@ -61,12 +61,27 @@ export const getDesignTokens = (mode: PaletteMode) => ({
       ? {
           primary: '#ffffff',
           contrast: '#2196F3',
-          subtitle: '#bfbfbf',
+          secondary: 'rgba(255, 255, 255, 0.7)',
+          navFooter:'#bfbfbf',
+          blogIcons: 'rgba(255, 255, 255, 0.7)',
         }
       : {
           primary: '#000000',
           contrast: '#114b7a',
-          subtitle: '#d9d9d9',
+          blogIcons: 'rgba(168, 168, 168, 1)',
+          secondary:'rgba(117, 117, 117, 1)',
+          navFooter:'#C1C7CE',
+      }),
+    },
+    typography: {
+      ...(mode === 'dark'
+      ? {
+        p:{
+          color:'rgba(255, 255, 255, 0.7) !important'
+        }
+      }
+      : {
+
       }),
     },
 

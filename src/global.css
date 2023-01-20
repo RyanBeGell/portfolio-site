@@ -35,7 +35,9 @@
   align-self: left;
   align-items: center;
   justify-content: center;
-  padding:48px;
+  padding-top:60px;
+  padding-left: 16%;
+  padding-right: 16%;
   /* 64px fixed app bar, MUI sticky not working */
   margin-top: 112px;
   margin-bottom: 48px;
@@ -49,7 +51,9 @@
 	align-self: left;
 	align-items: center;
 	justify-content: center;
-	padding:48px;
+  padding-top:60px;
+  padding-left: 16%;
+  padding-right: 16%;
   /* 64px fixed app bar, MUI sticky not working */
 	margin-top: 112px;
 	margin-bottom: 48px;
@@ -110,7 +114,9 @@ h6 {
   line-height: 1.6;
   letter-spacing: 0.0075em;
 }
-
+.blogPostDark p {
+  color:rgba(255, 255, 255, 0.7);
+}
 pre{
   border-radius: 10px;
 }
@@ -139,8 +145,4 @@ pre{
 
 .transparent{
   background-color: transparent important!;
-}
-
-.normal{
-
 }
