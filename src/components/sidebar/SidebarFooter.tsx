@@ -11,7 +11,7 @@ const SidebarFooter = () => {
         justifyContent="center"
         sx={{ pt: '16px' }}
       >
-        <Typography variant={'subtitle2'} color="text.subtitle">
+        <Typography variant={'subtitle2'} color="text.navFooter">
           &copy; {year} Ryan BeGell
         </Typography>
       </Grid>
