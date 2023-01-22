@@ -14,10 +14,11 @@ export default function Home() {
               justifyContent="center"
             >
               {BlogPostsCardData.map((item) => (
-                <BlogCard
+                <BlogCard key={item.title}
                   title={item.title}
                   body={item.body}
                   image={item.image}
+                  path={item.path}
                 />
               ))}
             </Grid>
