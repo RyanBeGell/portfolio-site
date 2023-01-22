@@ -21,7 +21,7 @@ export default function ProjectsGrid() {
           <Grid item>
             <Grid container spacing={4} justifyContent="center">
               {ProjectData.map((item) => (
-                <ProjectCard
+                <ProjectCard key={item.title}
                   handleOpen={handleOpen}
                   title={item.title}
                   body={item.body}
