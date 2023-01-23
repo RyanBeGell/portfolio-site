@@ -146,3 +146,8 @@ pre{
 .transparent{
   background-color: transparent important!;
 }
+
+.name {
+  font-family: "Neutraface Text Bold";
+  margin-bottom: 8px;
+}

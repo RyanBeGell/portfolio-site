@@ -12,12 +12,12 @@ export default function Landing() {
 			<Box className="centerFlexBox" sx={{ minHeight: '100vh' }}>
 				<Grid container direction="row" className="centerFlexBox">
 					<Grid item sx={{ pr: 8 }}>
-						<Typography variant={'h1'} className={styles.name}>
+						<Typography variant={'h1'} className={"name"}>
 							Ryan
 							<Typography
 								component="span"
 								variant={'h1'}
-								className={styles.name}
+								className={"name"}
 								color="primary"
 							>
 								&nbsp;BeGell
