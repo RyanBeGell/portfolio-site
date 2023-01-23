@@ -3,6 +3,7 @@ import DragHandleRoundedIcon from '@mui/icons-material/DragHandleRounded';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import MarkEmailUnreadOutlinedIcon from '@mui/icons-material/MarkEmailUnreadOutlined';
 import SearchIcon from '@mui/icons-material/Search';
+import { Tooltip } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -170,14 +171,20 @@ export default function BlogAppBar(props: Props) {
                 }}
               />
             </Search>
-            <StyledIconButton>
-              <MarkEmailUnreadOutlinedIcon />
-            </StyledIconButton>
+              <StyledIconButton>
+              <Tooltip title="Follow by Email"  placement="bottom"  PopperProps={{ sx:{mt:'10px !important'} }}>
+                <MarkEmailUnreadOutlinedIcon />
+                </Tooltip>
+              </StyledIconButton>
             <StyledIconButton onClick={props.toggleColorMode}>
               {mode === 'light' ? (
+              <Tooltip title="Dark mode"  placement="bottom"  PopperProps={{ sx:{mt:'10px !important'} }}>
                 <DarkModeOutlinedIcon fontSize="medium" />
+              </Tooltip>
               ) : (
+              <Tooltip title="Light mode"  placement="bottom"  PopperProps={{ sx:{mt:'10px !important'} }}>
                 <LightModeOutlinedIcon />
+              </Tooltip>
               )}
             </StyledIconButton>
           </Toolbar>
