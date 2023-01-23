@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid';
 import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import { ColorModeContext } from '../../pages/_app';
-import RecentBlogPostsData from '../data/RecentBlogPostsData';
+import BlogPostCardData from '../data/BlogPostCardData';
 import BlogCard from './blog/BlogCard';
 import SectionTitle from './SectionTitle';
 
@@ -21,6 +21,9 @@ export default function RecentBlogPosts(props: Props) {
     router.push('/blog/home');
   }
 
+  //Get the information from the last 3 blog posts from the data file 
+  const RecentBlogPosts = BlogPostCardData.slice(BlogPostCardData.length-3, BlogPostCardData.length);
+
   return (
     <>
       <Box className="centerBox">
@@ -35,11 +38,12 @@ export default function RecentBlogPosts(props: Props) {
               sx={{ pb: '48px' }}
               justifyContent="center"
             >
-              {RecentBlogPostsData.map((item) => (
-                <BlogCard
+              {RecentBlogPosts.map((item) => (
+                <BlogCard key={item.title}
                   title={item.title}
                   body={item.body}
                   image={item.image}
+                  path={item.path}
                 />
               ))}
             </Grid>
