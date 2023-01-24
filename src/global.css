@@ -151,3 +151,15 @@ pre{
   font-family: "Neutraface Text Bold";
   margin-bottom: 8px;
 }
+
+.ellipsisBox {
+  max-height: 55px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 640px) {
+  .ellipsisBox {
+    display: none;
+  }
+}
