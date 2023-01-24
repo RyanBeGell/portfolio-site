@@ -6,13 +6,14 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import BlogCard2 from '@/src/components/blog/BlogCard2'
 import { Divider, Typography } from "@mui/material";
-
+import styles from '@/src/components/Card.module.css';
 
 export default function Home() {
   return (<>
       <Box className="centerBox">
+      <Box sx={{maxWidth:'850px', mx:'32px'}}>
       <Typography variant={'h3'} className={"name"}>
-							Ryan BeGell
+							Dev Blog
 				</Typography>
         <Divider sx={{mb:'32px', pt:'24px', borderBottomWidth:'1.5px' }}/>
         {/* <Grid sx={{ maxWidth: 1150 }}>
@@ -34,10 +35,11 @@ export default function Home() {
             </Grid>
           </Grid>
         </Grid> */}
-        <BlogCard2/>
-        <BlogCard2/>
-        <BlogCard2/>
-        <BlogCard2/>
+          <BlogCard className={styles.card}/>
+          <BlogCard/>
+          <BlogCard/>
+          <BlogCard/>
+        </Box>
       </Box>
 
   </>)
