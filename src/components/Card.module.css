@@ -1,5 +1,5 @@
 .card:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
     box-shadow: 0 10px 5px rgba(8, 8, 8, 0.3);
     transition: all ease-in-out .1s;
 }
