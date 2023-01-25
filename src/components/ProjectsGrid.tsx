@@ -19,7 +19,7 @@ export default function ProjectsGrid() {
         <Grid sx={{ maxWidth: 1150 }}>
           <SectionTitle title="Projects" />
           <Grid item>
-            <Grid container spacing={4} justifyContent="center">
+            <Grid container spacing={3} justifyContent="center">
               {ProjectData.map((item) => (
                 <ProjectCard key={item.title}
                   handleOpen={handleOpen}
