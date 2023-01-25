@@ -171,22 +171,17 @@ export default function BlogAppBar(props: Props) {
                 }}
               />
             </Search>
-              <StyledIconButton>
-              <Tooltip title="Follow by Email"  placement="bottom"  PopperProps={{ sx:{mt:'10px !important'} }}>
+              <StyledIconButton title="Subscribe to email notifications">
                 <MarkEmailUnreadOutlinedIcon />
-                </Tooltip>
               </StyledIconButton>
-            <StyledIconButton onClick={props.toggleColorMode}>
-              {mode === 'light' ? (
-              <Tooltip title="Dark mode"  placement="bottom"  PopperProps={{ sx:{mt:'10px !important'} }}>
-                <DarkModeOutlinedIcon fontSize="medium" />
-              </Tooltip>
-              ) : (
-              <Tooltip title="Light mode"  placement="bottom"  PopperProps={{ sx:{mt:'10px !important'} }}>
-                <LightModeOutlinedIcon />
-              </Tooltip>
-              )}
-            </StyledIconButton>
+              {mode === 'light' ? 
+                <StyledIconButton  title="Dark mode" onClick={props.toggleColorMode}>
+                    <DarkModeOutlinedIcon fontSize="medium" />
+                  </StyledIconButton>:
+                  <StyledIconButton  title="Light mode" onClick={props.toggleColorMode}>
+                  <LightModeOutlinedIcon />
+                </StyledIconButton>
+              }
           </Toolbar>
           </Container>
         </AppBar>
