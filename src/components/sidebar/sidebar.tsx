@@ -4,8 +4,8 @@ import {
   scrollToContact,
   scrollToHome,
   scrollToProjects,
-  scrollToSkills
-} from '@/src/scrollers';
+  scrollToSkills,
+} from '@/src/components/sidebar/scrollers';
 import ContactMailOutlinedIcon from '@mui/icons-material/ContactMailOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
@@ -31,7 +31,6 @@ import React, { useContext } from 'react';
 import { ColorModeContext } from '../../../pages/_app';
 import styles from './sidebar.module.css';
 import SidebarFooter from './SidebarFooter';
-import LaunchIcon from '@mui/icons-material/Launch';
 
 export interface Props {
   toggleColorMode: () => void;
@@ -51,8 +50,8 @@ export default function Sidebar(props: Props) {
 
   const handleBlogButtonClick = () => {
     router.push('/blog/home');
-  }
-  
+  };
+
   const drawer = (
     <div>
       <Box display="flex" justifyContent="center" alignItems="center">
@@ -80,34 +79,49 @@ export default function Sidebar(props: Props) {
               <ListItemButton
                 sx={{
                   borderRadius: 3,
-                  '&:hover': { color: 'primary.main', bgColor: 'primary.main', textDecoration: `${index === 4? 'underline white':null}` },
+                  '&:hover': {
+                    color: 'primary.main',
+                    bgColor: 'primary.main',
+                    textDecoration: `${index === 4 ? 'underline white' : null}`,
+                  },
                   alignItems: 'center',
                 }}
                 className={styles.navItem}
-                onClick=
-                { 
-                  index === 0? scrollToHome:
-                  index === 1? scrollToAbout:
-                  index === 2? scrollToSkills:
-                  index === 3? scrollToProjects:
-                  index === 4? handleBlogButtonClick:
-                  index === 5? scrollToContact:undefined
+                onClick={
+                  index === 0
+                    ? scrollToHome
+                    : index === 1
+                    ? scrollToAbout
+                    : index === 2
+                    ? scrollToSkills
+                    : index === 3
+                    ? scrollToProjects
+                    : index === 4
+                    ? scrollToBlog
+                    : index === 5
+                    ? scrollToContact
+                    : undefined
                 }
               >
-                <ListItemIcon sx={{color:'#ffffff',}}>
-                  {
-                    index === 0? <HomeOutlinedIcon />:
-                    index === 1? <PersonOutlineOutlinedIcon />:
-                    index === 2? <FormatListBulletedOutlinedIcon />:
-                    index === 3? <IntegrationInstructionsOutlinedIcon />:
-                    index === 4? <HistoryEduOutlinedIcon />:
-                    index === 5? <ContactMailOutlinedIcon/>:null
-                  }
+                <ListItemIcon sx={{ color: '#ffffff' }}>
+                  {index === 0 ? (
+                    <HomeOutlinedIcon />
+                  ) : index === 1 ? (
+                    <PersonOutlineOutlinedIcon />
+                  ) : index === 2 ? (
+                    <FormatListBulletedOutlinedIcon />
+                  ) : index === 3 ? (
+                    <IntegrationInstructionsOutlinedIcon />
+                  ) : index === 4 ? (
+                    <HistoryEduOutlinedIcon />
+                  ) : index === 5 ? (
+                    <ContactMailOutlinedIcon />
+                  ) : null}
                 </ListItemIcon>
-                  <ListItemText
-                    primary={text}
-                    sx={{ ml: '-16px', color: '#FFFFFF' }}
-                  />
+                <ListItemText
+                  primary={text}
+                  sx={{ ml: '-16px', color: '#FFFFFF' }}
+                />
               </ListItemButton>
             </ListItem>
           )
