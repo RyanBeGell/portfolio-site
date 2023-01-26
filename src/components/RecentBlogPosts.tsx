@@ -27,27 +27,31 @@ export default function RecentBlogPosts(props: Props) {
   return (
     <>
       <Box className="centerBox">
-        <Grid sx={{ maxWidth: 1150 }}>
-          <Grid item>
+        <Box sx={{ maxWidth: 1150 }}>
+          <Box>
             <SectionTitle title="Recent Blog Posts" />
-          </Grid>
-          <Grid item>
-            <Grid
+          </Box>
+          <Box sx={{ pb: '48px'}}>
+            <Grid 
+              item
               container
-              spacing={4}
-              sx={{ pb: '48px' }}
-              justifyContent="center"
+              xs={12}
+              sx={{width: '100%',}}
             >
-              {RecentBlogPosts.map((item) => (
-                <BlogCard key={item.title}
-                  title={item.title}
-                  body={item.body}
-                  image={item.image}
-                  path={item.path}
-                />
-              ))}
+              <Grid item xl={6} lg={6} md={12} sx={{pb:'12px', pr: { xl:'12px', lg:'12px'}}}>
+                <BlogCard/>
+              </Grid>
+              <Grid item xl={6} lg={6} md={12} sx={{pb:'12px', pl: { xl:'12px', lg:'12px'}}} >
+                <BlogCard/>
+              </Grid>
+              <Grid item xl={6} lg={6} md={12} sx={{pt:'12px', pr: { xl:'12px', lg:'12px'}}} >
+                <BlogCard/>
+              </Grid>
+              <Grid item xl={6} lg={6} md={12} sx={{pt:'12px', pl: { xl:'12px', lg:'12px'}}} >
+                <BlogCard/>
+              </Grid>
             </Grid>
-          </Grid>
+          </Box>
           <Grid item justifyContent={'center'} textAlign="center">
             {/* Render button outlined in dark mode, contained in light mode */}
             <Button
@@ -59,7 +63,7 @@ export default function RecentBlogPosts(props: Props) {
               View Blog
             </Button>
           </Grid>
-        </Grid>
+        </Box>
       </Box>
     </>
   );
