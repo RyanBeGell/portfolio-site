@@ -60,9 +60,9 @@ export default function Sidebar(props: Props) {
       <Typography variant={'h5'} className={styles.name} color="#FFFFFF">
         Ryan BeGell
       </Typography>
-      {/* <Typography variant={"subtitle2"} className={styles.workAvailability} color="text.subtitle">
-            Available for work 
-          </Typography> */}
+      <Typography variant={"subtitle2"} className={styles.subtitle} color="text.navFooter">
+        Software Developer
+      </Typography>
       {mode === 'light' ? (
         <Divider sx={{ borderColor: 'rgba(255,255,255, 0.3)' }} />
       ) : (
