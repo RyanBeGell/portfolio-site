@@ -4,7 +4,6 @@ import BlogCard from '@/src/components/blog/BlogCard';
 import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import BlogCard2 from '@/src/components/blog/BlogCard2'
 import { Divider, Typography } from "@mui/material";
 import styles from '@/src/components/Card.module.css';
 
