@@ -24,23 +24,23 @@ export interface Props {
 export default function BlogCard(props: Props) {
   const theme = useTheme();
   const [showExcerpt, setShowExcerpt] = useState(true);
+  const [smallBox, setSmallBox] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
-  const [imgHeightWidth, setImgHeightWidth] = useState({ height: '220px', width: '220px' });
+
+  const imgHeightWidth = {
+    height: smallBox ? '150px' : '220px',
+    width: smallBox ? '150px' : '220px',
+  };
 
   useEffect(() => {
     const handleResize = () => {
       if (cardRef.current) {
         const cardWidth = cardRef.current.offsetWidth;
-        // if (cardWidth >= 550) {
-        //   setShowExcerpt(true);
-        // } else {
-        //   setShowExcerpt(false);
-        // }
         if (cardWidth < 450) {
-          setImgHeightWidth({height: '150px', width: '150px'})
+          setSmallBox(true);
           setShowExcerpt(false);
         } else {
-          setImgHeightWidth({height: '220px', width: '220px'})
+          setSmallBox(false);
           setShowExcerpt(true);
         }
       }
