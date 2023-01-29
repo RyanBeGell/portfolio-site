@@ -28,8 +28,8 @@ export default function BlogCard(props: Props) {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const imgHeightWidth = {
-    height: smallBox ? '150px' : '220px',
-    width: smallBox ? '150px' : '220px',
+    height: smallBox ? '128px' : '200px',
+    width: smallBox ? '128px' : '200px',
   };
 
   useEffect(() => {
@@ -55,9 +55,9 @@ export default function BlogCard(props: Props) {
   }, [cardRef, showExcerpt]);
 
   return (
-    <Card raised ref={cardRef} sx={{ display: 'flex' }}>
+    <Card raised ref={cardRef} sx={{ display: 'flex', }}>
       <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-        <CardContent sx={{ pl: '24px !important', pt: '24px' }}>
+        <CardContent sx={{ pl: smallBox ? '16px ' : '24px ', pt: smallBox ? '16px' : '24px', pr:'0px' }}>
           <Typography
             variant="subtitle2"
             component="span"
@@ -84,8 +84,9 @@ export default function BlogCard(props: Props) {
           </Typography>
           <Typography
             component="div"
-            variant="h5"
+            variant={smallBox ? "h6" : "h5"}
             sx={{ mt: '8px', mb: '8px' }}
+            className="clamp3"
           >
             I Asked ChatGPT to Create Comics, Then I Drew Them
           </Typography>
@@ -127,8 +128,10 @@ export default function BlogCard(props: Props) {
           component="img"
           sx={{ 
               height: imgHeightWidth.height, 
-              width: imgHeightWidth.width, 
-              py:'24px', pl:'24px', pr:'24px', 
+              width: imgHeightWidth.width,
+              py: smallBox ? '16px' : '24px', 
+              pl:smallBox ? '16px' : '24px',
+              pr:smallBox ? '16px' : '24px',
           }}
           image="https://mui.com/static/images/cards/live-from-space.jpg"
           alt="Live from space album cover"
