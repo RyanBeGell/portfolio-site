@@ -82,7 +82,6 @@ export default function Sidebar(props: Props) {
                   '&:hover': {
                     color: 'primary.main',
                     bgColor: 'primary.main',
-                    textDecoration: `${index === 4 ? 'underline white' : null}`,
                   },
                   alignItems: 'center',
                 }}
@@ -100,7 +99,7 @@ export default function Sidebar(props: Props) {
                     ? scrollToBlog
                     : index === 5
                     ? scrollToContact
-                    : undefined
+                    : scrollToHome
                 }
               >
                 <ListItemIcon sx={{ color: '#ffffff' }}>
