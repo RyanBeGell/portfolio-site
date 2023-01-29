@@ -18,7 +18,7 @@ import router from 'next/router';
 import { Router, useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import { ColorModeContext } from '../../../pages/_app';
-import StyledIconButton from '../StyledIconButton';
+import StyledIconButton from './StyledIconButton';
 
 export interface Props {
   toggleColorMode: () => void;
@@ -77,34 +77,19 @@ export default function BlogAppBar(props: Props) {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1,}}>
         <AppBar
           position="fixed"
           sx={{
             // change background color to transparent after scrolling 48px
             backgroundColor: `${
-              scrollPosition.scrollY > 48 ? 'transparent' : 'background.blogNav'
+              scrollPosition.scrollY > 48 ? 'background.blogNav' : 'background.paper'
             }`,
             backdropFilter: 'blur(8px)',
           }}
         >
-          <Container maxWidth="xl">
-          <Toolbar>
-            <IconButton
-              color="primary"
-              sx={{
-                display: { sx: 'flex', sm: 'none' },
-                border: '1px solid',
-                borderRadius: '10px',
-                borderColor: 'background.paperDivider',
-                mr: '16px',
-                '&:hover': {
-                  borderColor: 'primary.main',
-                },
-              }}
-            >
-              <DragHandleRoundedIcon />
-            </IconButton>
+          <Container maxWidth="xl" sx={{ px:'20px',}}>
+          <Toolbar sx={{ justifyContent: {xs: 'space-between', sm: 'none'}, p:0}}>
             <Image src="/favicon.png" alt="logo" width={38} height={38} />
             <Divider
               orientation="vertical"
@@ -131,7 +116,7 @@ export default function BlogAppBar(props: Props) {
             <Search
               sx={{
                 mr: '5px',
-                bgcolor: 'background.dark',
+                bgcolor: 'background.default',
                 borderRadius: '10px',
                 display: { xs: 'none', sm: 'block' },
               }}
@@ -171,6 +156,7 @@ export default function BlogAppBar(props: Props) {
                 }}
               />
             </Search>
+            <Box>
               <StyledIconButton title="Subscribe to email notifications">
                 <MarkEmailUnreadOutlinedIcon />
               </StyledIconButton>
@@ -182,6 +168,22 @@ export default function BlogAppBar(props: Props) {
                   <LightModeOutlinedIcon />
                 </StyledIconButton>
               }
+              <IconButton
+                color="primary"
+                sx={{
+                  display: { sx: 'flex', sm: 'none' },
+                  border: '1px solid',
+                  borderRadius: '10px',
+                  borderColor: 'background.paperDivider',
+                  mx: '5px',
+                  '&:hover': {
+                    borderColor: 'primary.main',
+                  },
+                }}
+              >
+              <DragHandleRoundedIcon />
+            </IconButton>
+            </Box>
           </Toolbar>
           </Container>
         </AppBar>
