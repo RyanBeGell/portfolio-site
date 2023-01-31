@@ -4,22 +4,20 @@
   }
 
 .modal{
-    position: absolute;
-    top: 30%;
-    left: 25%;
-    transform: translate(-50%, -50%);
-    border: 1px solid white;
-    border-radius: 8px;
-    height:40%;
-    width:50%;
+
     padding:16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
 }
 
 .xButton{
     position: absolute;
     top: 0;
     right: 0;
-    margin: 16px;
+    margin: 8px;
 }
 
 .section::before {
