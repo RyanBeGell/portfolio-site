@@ -1,9 +1,15 @@
 import styles from '@/src/components/Projects.module.css';
 import CloseIcon from '@mui/icons-material/Close';
-import Box from '@mui/material/Box';
-import Grow from '@mui/material/Grow';
-import Modal from '@mui/material/Modal';
-import Typography from '@mui/material/Typography';
+import { Button, Grid } from '@mui/material';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import Image from 'next/image';
+import Carousel from './carousel';
 
 export interface Props {
   open: boolean;
@@ -11,30 +17,31 @@ export interface Props {
 }
 
 export default function ProjectModal(props: Props) {
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+
   return (
-    <Modal open={props.open} onClose={props.handleClose}>
-      <Grow in={props.open}>
-        <Box className={styles.modal} sx={{ bgcolor: 'background.paper' }}>
-          <CloseIcon
-            fontSize="large"
-            onClick={props.handleClose}
-            className={styles.xButton}
-            sx={{
-              color: 'text.secondary',
-              '&:hover': {
-                color: 'red',
-                cursor: 'pointer',
-              },
-            }}
-          />
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Yo this is a modal
-          </Typography>
-        </Box>
-      </Grow>
-    </Modal>
+    <Dialog
+      fullScreen={fullScreen}
+      maxWidth={'xl'}
+      // fullWidth={true}
+      open={props.open}
+      onClose={props.handleClose}
+      aria-labelledby="responsive-dialog-title"
+    >
+      {/* <CloseIcon
+        fontSize="large"
+        onClick={props.handleClose}
+        className={styles.xButton}
+        sx={{
+          color: 'text.secondary',
+          '&:hover': {
+            color: 'red',
+            cursor: 'pointer',
+          },
+        }}
+      /> */}
+      <Carousel/>
+    </Dialog>
   );
 }
