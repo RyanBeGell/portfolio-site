@@ -1,25 +1,44 @@
 import React, { useState } from 'react';
-import { Button, Paper, IconButton, Box } from '@mui/material';
+import { IconButton, Box } from '@mui/material';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { useTheme } from '@mui/material/styles';
-import styles from './Carousel.module.css';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
+import styles from './carousel.module.css';
+import Fade from '@mui/material/Fade';
 
 const images = [
   'https://via.placeholder.com/500x500.png?text=Image1',
   'https://via.placeholder.com/500x500.png?text=Image2',
-  'https://via.placeholder.com/500x500.png?text=Image3'
+  'https://via.placeholder.com/500x500.png?text=Image3',
+  'https://via.placeholder.com/500x500.png?text=Image4'
 ];
 
 const Carousel: React.FC = () => {
   const [index, setIndex] = useState(0);
-
+  
   return (
-    <>
-      <img className="w-full" src={images[index]} alt="Image" />
-      <Box display="flex" justifyContent="center" mt={2}>
+    <Box  sx={{ position: 'relative', height:'500px', width:'500px', overflow:'hidden'}}>
+      <img src={images[index]} alt="Image" />
+      <IconButton 
+          color='primary'
+          disabled={index===0}
+          sx={{ color:'rgba(117, 117, 117, 1)', '&:hover': {color:'primary.main'} }}
+          className={styles.navigateButton} 
+          onClick={() => setIndex(index - 1)}
+      >
+        <NavigateBeforeIcon fontSize="large" />
+      </IconButton>
+      <IconButton 
+          color='primary'
+          disabled={index===3}
+          sx={{ color:'rgba(117, 117, 117, 1)', '&:hover': {color:'primary.main'} }}
+          className={styles.navigateButton} 
+          onClick={() => setIndex(index + 1)}
+      >
+        <NavigateNextIcon fontSize="large" />
+      </IconButton>
+      <Box display="flex" justifyContent="center" sx={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', pb:'16px' }}>
         {images.map((_, i) => (
           <IconButton key={i} onClick={() => setIndex(i)}>
             {index === i ? (
@@ -30,9 +49,8 @@ const Carousel: React.FC = () => {
           </IconButton>
         ))}
       </Box>
-    </>
+    </Box>
   );
 };
-
 
 export default Carousel;
