@@ -1,10 +1,10 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { useState } from 'react';
-import ProjectData from '../data/ProjectCardData';
+import ProjectData from '../../data/ProjectCardData';
+import SectionTitle from '../portfolio/SectionTitle';
 import ProjectCard from './ProjectCard';
 import ProjectModal from './ProjectModal';
-import SectionTitle from './SectionTitle';
 
 export default function ProjectsGrid() {
   //State for Modal
@@ -21,7 +21,8 @@ export default function ProjectsGrid() {
           <Grid item>
             <Grid container spacing={3} justifyContent="center">
               {ProjectData.map((item) => (
-                <ProjectCard key={item.title}
+                <ProjectCard
+                  key={item.title}
                   handleOpen={handleOpen}
                   title={item.title}
                   body={item.body}

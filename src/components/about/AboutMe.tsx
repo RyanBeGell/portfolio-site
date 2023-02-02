@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import SectionTitle from './SectionTitle';
+import SectionTitle from '../portfolio/SectionTitle';
 
 export default function AboutMe() {
   return (

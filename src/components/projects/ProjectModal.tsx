@@ -1,15 +1,7 @@
-import styles from '@/src/components/Projects.module.css';
-import CloseIcon from '@mui/icons-material/Close';
-import { Button, Grid } from '@mui/material';
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import Image from 'next/image';
-import Carousel from './carousel';
+import Carousel from '../carousel/carousel';
 
 export interface Props {
   open: boolean;
@@ -41,7 +33,7 @@ export default function ProjectModal(props: Props) {
           },
         }}
       /> */}
-      <Carousel/>
+      <Carousel />
     </Dialog>
   );
 }

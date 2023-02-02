@@ -1,14 +1,14 @@
 import BlogAppBar from '@/src/components/blog/BlogAppBar';
 import '@/src/global.css';
-import styles from '@/src/components/landing.module.css';
+import styles from '@/src/components/landing/landing.module.css';
 import BlogLayout from '@/src/components/layouts/BlogLayout';
 import DefaultLayout from '@/src/components/layouts/DefaultLayout';
 import LandingLayout from '@/src/components/layouts/LandingLayout';
 import Sidebar from '@/src/components/sidebar/Sidebar';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
-import { getDesignTokens } from '@/src/createPallette';
-import '@/src/PrismaTheme.css';
+import { getDesignTokens } from '@/src/theme/createPallette';
+import '@/src/theme/PrismaTheme.css';
 import {
   Box,
   createTheme,

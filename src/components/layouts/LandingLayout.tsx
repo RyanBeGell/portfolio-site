@@ -1,4 +1,4 @@
-import Landing from '@/src/components/Landing';
+import Landing from '@/src/components/landing/Landing';
 import { Box } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import { ColorModeContext } from 'pages/_app';

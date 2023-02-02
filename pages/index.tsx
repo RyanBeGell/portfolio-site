@@ -1,8 +1,8 @@
-import AboutMe from '@/src/components/AboutMe';
-import Contact from '@/src/components/Contact';
-import Projects from '@/src/components/ProjectsGrid';
-import RecentBlogPosts from '@/src/components/RecentBlogPosts';
-import Skills from '@/src/components/Skills';
+import AboutMe from '@/src/components/about/AboutMe';
+import Contact from '@/src/components/contact/Contact';
+import Projects from '@/src/components/projects';
+import RecentBlogPosts from '@/src/components/recent-blog-posts/RecentBlogPosts';
+import Skills from '@/src/components/skills/Skills';
 import { Box, Divider } from '@mui/material';
 import type { NextPage } from 'next';
 import { useContext } from 'react';

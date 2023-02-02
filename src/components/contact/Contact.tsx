@@ -3,8 +3,8 @@ import { Button } from '@mui/material';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { useContext } from 'react';
-import { ColorModeContext } from '../../pages/_app';
-import SectionTitle from './SectionTitle';
+import { ColorModeContext } from '../../../pages/_app';
+import SectionTitle from '../portfolio/SectionTitle';
 
 export default function Contact() {
   const { mode } = useContext(ColorModeContext);
@@ -23,10 +23,15 @@ export default function Contact() {
             label="First Name"
             name="First Name"
             autoComplete="off"
-            sx={{ width: '49%', mr: '2%', "&:hover  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-              borderColor: "primary.main"
-            },}}
-            color='primary'
+            sx={{
+              width: '49%',
+              mr: '2%',
+              '&:hover  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline':
+                {
+                  borderColor: 'primary.main',
+                },
+            }}
+            color="primary"
           />
           <TextField
             margin="normal"
@@ -34,9 +39,13 @@ export default function Contact() {
             label="Last Name"
             name="Last Name"
             autoComplete="off"
-            sx={{ width: '49%', "&:hover  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-              borderColor: "primary.main"
-            }, }}
+            sx={{
+              width: '49%',
+              '&:hover  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline':
+                {
+                  borderColor: 'primary.main',
+                },
+            }}
           />
           <TextField
             margin="normal"
@@ -45,9 +54,12 @@ export default function Contact() {
             id="email"
             label="Email Address"
             name="email"
-            sx={{ "&:hover  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-              borderColor: "primary.main"
-            },}}
+            sx={{
+              '&:hover  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline':
+                {
+                  borderColor: 'primary.main',
+                },
+            }}
           />
           <TextField
             margin="normal"
@@ -56,9 +68,12 @@ export default function Contact() {
             id="subject"
             label="Subject"
             name="subject"
-            sx={{ "&:hover  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-              borderColor: "primary.main"
-            },}}
+            sx={{
+              '&:hover  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline':
+                {
+                  borderColor: 'primary.main',
+                },
+            }}
           />
           <TextField
             margin="normal"
@@ -69,9 +84,12 @@ export default function Contact() {
             id="message"
             label="Your message here"
             name="message"
-            sx={{ "&:hover  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-              borderColor: "primary.main"
-            },}}
+            sx={{
+              '&:hover  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline':
+                {
+                  borderColor: 'primary.main',
+                },
+            }}
           />
           <Button
             size="large"

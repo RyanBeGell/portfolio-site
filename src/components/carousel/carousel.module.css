@@ -1,0 +1,22 @@
+.imageWrapper {
+  position: relative;
+}
+
+.image {
+  width: 100%;
+}
+
+.navigateButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.navigateButton:first-of-type {
+  left: 0;
+}
+
+.navigateButton:last-of-type {
+  right: 0;
+}
+
