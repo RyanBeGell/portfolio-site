@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import styles from './Section.module.css';
+import styles from './SectionTitle.module.css';
 
 export interface Props{
     title: string,

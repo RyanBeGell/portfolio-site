@@ -17,8 +17,8 @@ import PostgresLogo from 'public/Icons/PostgresLogo';
 import ReactLogo from 'public/Icons/ReactLogo';
 import SpringLogo from 'public/Icons/SpringLogo';
 import TypeScriptLogo from 'public/Icons/TypeScriptLogo';
-import SectionTitle from '../portfolio/SectionTitle';
-import styles from './Skills.module.css';
+import SectionTitle from '../SectionTitle/SectionTitle';
+import styles from './SkillsSection.module.css';
 
 export default function Skills() {
   const theme = useTheme();

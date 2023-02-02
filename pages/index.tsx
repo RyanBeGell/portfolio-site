@@ -1,8 +1,8 @@
-import AboutMe from '@/src/components/about/AboutMe';
-import Contact from '@/src/components/contact/Contact';
-import Projects from '@/src/components/projects';
-import RecentBlogPosts from '@/src/components/recent-blog-posts/RecentBlogPosts';
-import Skills from '@/src/components/skills/Skills';
+import AboutMe from '@/src/components/portfolio/about/AboutMe';
+import Contact from '@/src/components/portfolio/Contact/Contact';
+import ProjectsSection from '@/src/components/portfolio/ProjectsSection/Projects';
+import RecentBlogPostsSection from '@/src/components/portfolio/RecentBlogPosts/RecentBlogPosts';
+import Skills from '@/src/components/portfolio/SkillsSection/SkillsSection';
 import { Box, Divider } from '@mui/material';
 import type { NextPage } from 'next';
 import { useContext } from 'react';
@@ -24,11 +24,11 @@ const Home: NextPage = () => {
         </Element>
         <Divider />
         <Element name="projects">
-          <Projects />
+          <ProjectsSection />
         </Element>
         <Divider />
         <Element name="blog">
-          <RecentBlogPosts />
+          <RecentBlogPostsSection />
         </Element>
         <Divider />
         <Element name="contact">

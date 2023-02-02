@@ -1,12 +1,12 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { useState } from 'react';
-import ProjectData from '../../data/ProjectCardData';
-import SectionTitle from '../portfolio/SectionTitle';
-import ProjectCard from './ProjectCard';
-import ProjectModal from './ProjectModal';
+import ProjectData from './ProjectCard/ProjectCardData';
+import SectionTitle from '../SectionTitle/SectionTitle';
+import ProjectCard from './ProjectCard/ProjectCard';
+import ProjectModal from './ProjectModal/ProjectModal';
 
-export default function ProjectsGrid() {
+export default function ProjectsSection() {
   //State for Modal
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);

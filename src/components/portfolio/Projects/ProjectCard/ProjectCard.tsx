@@ -1,4 +1,4 @@
-import styles from './Card.module.css';
+import styles from './ProjectCard.module.css';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LanguageIcon from '@mui/icons-material/Language';
 import { Button, CardActionArea, CardActions, Grid } from '@mui/material';

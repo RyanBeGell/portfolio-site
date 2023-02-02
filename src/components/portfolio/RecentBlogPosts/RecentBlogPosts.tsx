@@ -4,16 +4,16 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import { useRouter } from 'next/router';
 import { useContext } from 'react';
-import { ColorModeContext } from '../../../pages/_app';
-import BlogPostCardData from '../../data/BlogPostCardData';
-import BlogCard from '../blog/BlogCard';
-import SectionTitle from '../portfolio/SectionTitle';
+import { ColorModeContext } from '../../../../pages/_app';
+import BlogPostCardData from '../../blog/BlogCard/BlogCardData';
+import BlogCard from '../../blog/BlogCard/BlogCard';
+import SectionTitle from '../SectionTitle/SectionTitle';
 
 export interface Props {
   themeMode?: string; //Takes in themeMode prop to conditionally render button style
 }
 
-export default function RecentBlogPosts(props: Props) {
+export default function RecentBlogPostsSection(props: Props) {
   const { mode } = useContext(ColorModeContext);
   const router = useRouter();
 

@@ -1,12 +1,10 @@
-import BlogAppBar from '@/src/components/blog/BlogAppBar';
-import '@/src/global.css';
+import BlogAppBar from '@/src/components/blog/AppBar/BlogAppBar';
 import styles from '@/src/components/landing/landing.module.css';
-import BlogLayout from '@/src/components/layouts/BlogLayout';
-import DefaultLayout from '@/src/components/layouts/DefaultLayout';
-import LandingLayout from '@/src/components/layouts/LandingLayout';
-import Sidebar from '@/src/components/sidebar/Sidebar';
-import { AppProps } from 'next/app';
-import { useRouter } from 'next/router';
+import BlogLayout from '@/src/components/layouts/blog/BlogLayout';
+import DefaultLayout from '@/src/components/layouts/portfolio/DefaultLayout';
+import LandingLayout from '@/src/components/layouts/portfolio/LandingLayout';
+import Sidebar from '@/src/components/portfolio/Sidebar/Sidebar';
+import '@/src/global.css';
 import { getDesignTokens } from '@/src/theme/createPallette';
 import '@/src/theme/PrismaTheme.css';
 import {
@@ -17,6 +15,8 @@ import {
   PaletteMode,
   ThemeProvider,
 } from '@mui/material';
+import { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
 import React, {
   createContext,
   useLayoutEffect,

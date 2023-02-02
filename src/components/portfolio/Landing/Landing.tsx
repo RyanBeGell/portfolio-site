@@ -1,4 +1,4 @@
-import { scrollToAbout } from '@/src/components/sidebar/scrollers';
+import { scrollToAbout } from '@/src/components/portfolio/Sidebar/react-scroll/scrollers';
 import SouthIcon from '@mui/icons-material/South';
 import { Box, Grid, Typography } from '@mui/material';
 import IconButton from '@mui/material/IconButton';

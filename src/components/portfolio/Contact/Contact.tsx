@@ -3,8 +3,8 @@ import { Button } from '@mui/material';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { useContext } from 'react';
-import { ColorModeContext } from '../../../pages/_app';
-import SectionTitle from '../portfolio/SectionTitle';
+import { ColorModeContext } from '../../../../pages/_app';
+import SectionTitle from '../SectionTitle/SectionTitle';
 
 export default function Contact() {
   const { mode } = useContext(ColorModeContext);

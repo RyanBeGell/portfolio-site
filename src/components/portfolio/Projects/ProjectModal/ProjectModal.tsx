@@ -1,7 +1,7 @@
 import Dialog from '@mui/material/Dialog';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import Carousel from '../carousel/carousel';
+import Carousel from './carousel/carousel';
 
 export interface Props {
   open: boolean;

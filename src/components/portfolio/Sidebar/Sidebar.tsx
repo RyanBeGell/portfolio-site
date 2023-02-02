@@ -5,7 +5,7 @@ import {
   scrollToHome,
   scrollToProjects,
   scrollToSkills,
-} from '@/src/components/sidebar/scrollers';
+} from '@/src/components/portfolio/Sidebar/react-scroll/scrollers';
 import ContactMailOutlinedIcon from '@mui/icons-material/ContactMailOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
@@ -28,9 +28,9 @@ import Switch from '@mui/material/Switch';
 import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/router';
 import React, { useContext } from 'react';
-import { ColorModeContext } from '../../../pages/_app';
+import { ColorModeContext } from '../../../../pages/_app';
+import SidebarFooter from './Footer/SidebarFooter';
 import styles from './sidebar.module.css';
-import SidebarFooter from './SidebarFooter';
 
 export interface Props {
   toggleColorMode: () => void;
@@ -60,7 +60,11 @@ export default function Sidebar(props: Props) {
       <Typography variant={'h5'} className={styles.name} color="#FFFFFF">
         Ryan BeGell
       </Typography>
-      <Typography variant={"subtitle2"} className={styles.subtitle} color="text.navFooter">
+      <Typography
+        variant={'subtitle2'}
+        className={styles.subtitle}
+        color="text.navFooter"
+      >
         Software Developer
       </Typography>
       {mode === 'light' ? (
