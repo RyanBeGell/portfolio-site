@@ -1,4 +1,13 @@
+import CloseIcon from '@mui/icons-material/Close';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LanguageIcon from '@mui/icons-material/Language';
+import { Grid } from '@mui/material';
+import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Carousel from './carousel/carousel';
@@ -15,16 +24,15 @@ export default function ProjectModal(props: Props) {
   return (
     <Dialog
       fullScreen={fullScreen}
-      maxWidth={'xl'}
-      // fullWidth={true}
       open={props.open}
       onClose={props.handleClose}
+      maxWidth={'xl'}
       aria-labelledby="responsive-dialog-title"
     >
-      {/* <CloseIcon
+      <CloseIcon
         fontSize="large"
         onClick={props.handleClose}
-        className={styles.xButton}
+        className={'xButton'}
         sx={{
           color: 'text.secondary',
           '&:hover': {
@@ -32,8 +40,67 @@ export default function ProjectModal(props: Props) {
             cursor: 'pointer',
           },
         }}
-      /> */}
-      <Carousel />
+      />
+      <Grid
+        display="flex"
+        direction={fullScreen ? 'column' : 'row'}
+        sx={{
+          alignItems: fullScreen ? 'center' : '',
+          justifyContent: fullScreen ? 'center' : '',
+        }}
+      >
+        <Grid
+          item
+          sx={{
+            py:'24px',
+            pl:'24px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            pr: `${fullScreen ? '24px' : ''}`,
+          }}
+        >
+          <Carousel />
+        </Grid>
+        <Grid
+          item
+          display="flex"
+          flexDirection="column"
+          sx={{ width: '548px', p: '24px' }}
+        >
+          <DialogTitle id="responsive-dialog-title">
+            {"Use Google's location service?"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Let Google help apps determine location. This means sending
+              anonymous location data to Google, even when no apps are running.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              marginTop: 'auto',
+              py: '16px',
+              px: '24px',
+            }}
+          >
+            <Button
+              fullWidth
+              color="primary"
+              variant={'contained'}
+              sx={{ mr: '8px' }}
+              startIcon={<LanguageIcon />}
+            >
+              LIVE DEMO
+            </Button>
+            <Button fullWidth variant={'outlined'} startIcon={<GitHubIcon />}>
+              GITHUB
+            </Button>
+          </DialogActions>
+        </Grid>
+      </Grid>
     </Dialog>
   );
 }
