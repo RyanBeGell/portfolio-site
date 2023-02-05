@@ -21,7 +21,6 @@
     "paths": {
       "@/src/*": ["src/*"],
       "@/styles/*": ["styles/*"],
-      "@*": ["*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_app.tsx", "src/createPallette.js", "pages/blog/home.tsx"],
