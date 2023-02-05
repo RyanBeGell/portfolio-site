@@ -1,8 +1,8 @@
 import BlogAppBar from '@/src/components/blog/AppBar/BlogAppBar';
-import styles from '@/src/components/landing/landing.module.css';
-import BlogLayout from '@/src/components/layouts/blog/BlogLayout';
-import DefaultLayout from '@/src/components/layouts/portfolio/DefaultLayout';
-import LandingLayout from '@/src/components/layouts/portfolio/LandingLayout';
+import styles from '@/src/components/portfolio/Landing/Landing.module.css';
+import BlogLayout from '@/src/layouts/blog/BlogLayout';
+import DefaultLayout from '@/src/layouts/portfolio/DefaultLayout';
+import LandingLayout from '@/src/layouts/portfolio/LandingLayout';
 import Sidebar from '@/src/components/portfolio/Sidebar/Sidebar';
 import '@/src/global.css';
 import { getDesignTokens } from '@/src/theme/createPallette';

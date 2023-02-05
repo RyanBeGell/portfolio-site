@@ -7,7 +7,7 @@ import Alert from '@mui/material/Alert';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
-import { ColorModeContext } from '@pages/_app';
+import { ColorModeContext } from 'pages/_app';
 import { useContext, useState } from 'react';
 
 export interface Props {

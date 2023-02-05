@@ -18,7 +18,7 @@ import ReactLogo from 'public/Icons/ReactLogo';
 import SpringLogo from 'public/Icons/SpringLogo';
 import TypeScriptLogo from 'public/Icons/TypeScriptLogo';
 import SectionTitle from '../SectionTitle/SectionTitle';
-import styles from './SkillsSection.module.css';
+import styles from './Skills.module.css';
 
 export default function Skills() {
   const theme = useTheme();
