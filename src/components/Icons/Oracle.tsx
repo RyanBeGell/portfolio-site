@@ -4,7 +4,7 @@ export interface Props{
     fill: string
   }
   
-  const OracleLogo=  (props: Props) => (
+  const Oracle =  (props: Props) => (
       <svg
         fill={props.fill}
         width={props.width}
@@ -16,4 +16,4 @@ export interface Props{
       </svg>
     );
     
-    export default OracleLogo;
+    export default Oracle;

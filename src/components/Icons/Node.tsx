@@ -4,7 +4,7 @@ export interface Props{
     fill: string
   }
   
-  const NodeLogo=  (props: Props) => (
+  const Node =  (props: Props) => (
       <svg
         fill={props.fill}
         width={props.width}
@@ -18,4 +18,4 @@ export interface Props{
     </svg>
     );
     
-    export default NodeLogo;
+    export default Node;

@@ -4,7 +4,7 @@ export interface Props{
     fill: string
   }
   
-  const SpringLogo=  (props: Props) => (
+  const Spring =  (props: Props) => (
       <svg
         fill={props.fill}
         width={props.width}
@@ -20,4 +20,4 @@ export interface Props{
     </svg>
     );
     
-    export default SpringLogo;
+    export default Spring;

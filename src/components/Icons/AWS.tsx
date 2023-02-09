@@ -4,7 +4,7 @@ export interface Props{
     fill: string
   }
   
-  const AWSLogo=  (props: Props) => (
+  const AWS =  (props: Props) => (
       <svg
         fill={props.fill}
         width={props.width}
@@ -16,4 +16,4 @@ export interface Props{
       </svg>
     );
     
-    export default AWSLogo;
+    export default AWS;

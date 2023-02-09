@@ -4,7 +4,7 @@ export interface Props{
     fill: string
   }
   
-  const ReactLogo=  (props: Props) => (
+  const React =  (props: Props) => (
       <svg
         fill={props.fill}
         width={props.width}
@@ -22,4 +22,4 @@ export interface Props{
     </svg>
     );
     
-    export default ReactLogo;
+    export default React;

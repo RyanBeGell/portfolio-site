@@ -4,7 +4,7 @@ export interface Props{
     fill: string
   }
   
-  const MUILogo=  (props: Props) => (
+  const MaterialUI =  (props: Props) => (
       <svg
         fill={props.fill}
         width={props.width}
@@ -24,4 +24,4 @@ export interface Props{
     </svg>
     );
     
-    export default MUILogo;
+    export default MaterialUI;

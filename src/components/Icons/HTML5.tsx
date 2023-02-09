@@ -4,7 +4,7 @@ export interface Props{
     fill: string
   }
   
-  const JavaLogo =  (props: Props) => (
+  const HTML5 =  (props: Props) => (
       <svg
         fill={props.fill}
         width={props.width}
@@ -20,4 +20,4 @@ export interface Props{
       </svg>
     );
     
-    export default JavaLogo;
+    export default HTML5;

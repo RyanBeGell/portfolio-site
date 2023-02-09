@@ -4,7 +4,7 @@ export interface Props{
     fill: string
   }
   
-  const CSS3Logo=  (props: Props) => (
+  const CSS3=  (props: Props) => (
       <svg
         fill={props.fill}
         width={props.width}
@@ -18,4 +18,4 @@ export interface Props{
     </svg>
     );
     
-    export default CSS3Logo;
+    export default CSS3;

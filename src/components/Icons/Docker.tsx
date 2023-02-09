@@ -5,7 +5,7 @@ export interface Props{
     fill: string
   }
   
-  const DockerLogo=  (props: Props) => (
+  const Docker =  (props: Props) => (
       <svg
         fill={props.fill}
         width={props.width}
@@ -21,4 +21,4 @@ export interface Props{
     </svg>
     );
     
-    export default DockerLogo;
+    export default Docker;

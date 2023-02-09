@@ -5,7 +5,7 @@ export interface Props{
     fill: string
   }
   
-  const PostgresLogo=  (props: Props) => (
+  const Postgres =  (props: Props) => (
       <svg
         fill={props.fill}
         width={props.width}
@@ -17,4 +17,4 @@ export interface Props{
     </svg>
     );
     
-    export default PostgresLogo;
+    export default Postgres;
