@@ -1,7 +1,8 @@
+import IconsGrid from '@/src/components/IconsGrid';
 import CloseIcon from '@mui/icons-material/Close';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LanguageIcon from '@mui/icons-material/Language';
-import { Grid } from '@mui/material';
+import { Box, Divider, Grid, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -52,8 +53,8 @@ export default function ProjectModal(props: Props) {
         <Grid
           item
           sx={{
-            py:'24px',
-            pl:'24px',
+            py: '24px',
+            pl: '24px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -68,14 +69,40 @@ export default function ProjectModal(props: Props) {
           flexDirection="column"
           sx={{ width: '548px', p: '24px' }}
         >
-          <DialogTitle id="responsive-dialog-title">
-            {"Use Google's location service?"}
-          </DialogTitle>
+          <DialogTitle>{"Use Google's location service?"}</DialogTitle>
           <DialogContent>
             <DialogContentText>
               Let Google help apps determine location. This means sending
               anonymous location data to Google, even when no apps are running.
+              <p>
+                Let Google help apps determine location. This means sending
+                anonymous location data to Google, even when no apps are
+                running. This means sending anonymous location data to Google,
+                even when no apps are running.
+              </p>
             </DialogContentText>
+            <Box >
+              {/* Front End Section/Icons */}
+              <Typography variant={'body1'} sx={{ py: '8px',}}>
+                Technologies used
+              </Typography>
+                  <IconsGrid
+                    componentNames={[
+                      'ReactJS',
+                      'TypeScript',
+                      'MaterialUI',
+                      'NextJS',
+                      'ReactJS',
+                      'TypeScript',
+                      'MaterialUI',
+                      'NextJS',
+                    ]}
+                    height={24}
+                    width={24}
+                    spacing={2}
+                    noTitle={true}
+                  />
+            </Box>
           </DialogContent>
           <DialogActions
             sx={{
