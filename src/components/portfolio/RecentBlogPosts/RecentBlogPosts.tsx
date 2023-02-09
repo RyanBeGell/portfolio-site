@@ -5,8 +5,8 @@ import Grid from '@mui/material/Grid';
 import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import { ColorModeContext } from '../../../../pages/_app';
-import BlogPostCardData from '../../blog/BlogCard/BlogCardData';
-import BlogCard from '../../blog/BlogCard/BlogCard';
+import BlogPostCardData from '../../blog/Card/BlogCardData';
+import BlogCard from '../../blog/Card/BlogCard';
 import SectionTitle from '../SectionTitle/SectionTitle';
 
 export interface Props {
