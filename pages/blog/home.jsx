@@ -1,5 +1,5 @@
-import BlogCard from '@/src/components/blog/BlogCard';
-import BlogPostsCardData from '@/src/data/BlogPostCardData';
+import BlogCard from '@/src/components/blog/Card/BlogCard'
+import BlogPostsCardData from '@/src/components/blog/Card/BlogCardData';
 import { Divider, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
