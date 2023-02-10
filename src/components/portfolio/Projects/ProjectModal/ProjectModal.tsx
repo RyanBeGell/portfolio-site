@@ -1,8 +1,8 @@
-import IconsGrid from '@/src/components/IconsGrid';
+import IconsGrid from '@/src/components/Icons/Grid/IconsGrid';
 import CloseIcon from '@mui/icons-material/Close';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LanguageIcon from '@mui/icons-material/Language';
-import { Box, Divider, Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -81,27 +81,27 @@ export default function ProjectModal(props: Props) {
                 even when no apps are running.
               </p>
             </DialogContentText>
-            <Box >
+            <Box>
               {/* Front End Section/Icons */}
-              <Typography variant={'body1'} sx={{ py: '8px',}}>
+              <Typography variant={'body1'} sx={{ py: '8px' }}>
                 Technologies used
               </Typography>
-                  <IconsGrid
-                    componentNames={[
-                      'ReactJS',
-                      'TypeScript',
-                      'MaterialUI',
-                      'NextJS',
-                      'ReactJS',
-                      'TypeScript',
-                      'MaterialUI',
-                      'NextJS',
-                    ]}
-                    height={24}
-                    width={24}
-                    spacing={2}
-                    noTitle={true}
-                  />
+              <IconsGrid
+                componentNames={[
+                  'ReactJS',
+                  'TypeScript',
+                  'MaterialUI',
+                  'NextJS',
+                  'ReactJS',
+                  'TypeScript',
+                  'MaterialUI',
+                  'NextJS',
+                ]}
+                height={24}
+                width={24}
+                spacing={2}
+                noTitle={true}
+              />
             </Box>
           </DialogContent>
           <DialogActions

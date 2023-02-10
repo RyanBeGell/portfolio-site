@@ -1,11 +1,9 @@
-import { Divider } from '@mui/material';
+import IconsGrid from '@/src/components/Icons/Grid/IconsGrid';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import SectionTitle from '../SectionTitle/SectionTitle';
-import styles from './Skills.module.css';
-import IconsGrid from '@/src/components/IconsGrid';
 
 export default function Skills() {
   const theme = useTheme();
@@ -23,7 +21,7 @@ export default function Skills() {
             <Typography variant={'h5'} sx={{ pb: '16px' }}>
               Front End
             </Typography>
-            <IconsGrid 
+            <IconsGrid
               componentNames={[
                 'ReactJS',
                 'JavaScript',
@@ -32,15 +30,15 @@ export default function Skills() {
                 'HTML5',
                 'MaterialUI',
                 'NextJS',
-              ]} 
-              height={64} 
+              ]}
+              height={64}
               width={64}
               spacing={4}
             />
             <Typography variant="h5" sx={{ py: '16px' }}>
               Back End
             </Typography>
-            <IconsGrid 
+            <IconsGrid
               componentNames={[
                 'Java',
                 'Spring',
@@ -49,8 +47,8 @@ export default function Skills() {
                 'OracleDB',
                 'Docker',
                 'AWS',
-              ]} 
-              height={64} 
+              ]}
+              height={64}
               width={64}
               spacing={4}
             />
