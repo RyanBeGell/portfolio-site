@@ -1,4 +1,4 @@
-import IconsGrid from '@/src/components/Icons/Grid/IconsGrid';
+import IconsGrid from '@/src/Icons/Grid/IconsGrid';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { useTheme } from '@mui/material/styles';

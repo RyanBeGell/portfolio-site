@@ -1,4 +1,4 @@
-import * as Icons from '@/src/components/Icons';
+import * as Icons from '@/src/Icons';
 import { Divider, Grid, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import React from 'react';
