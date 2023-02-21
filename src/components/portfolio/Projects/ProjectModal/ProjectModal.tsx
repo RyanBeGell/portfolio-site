@@ -44,10 +44,10 @@ export default function ProjectModal(props: Props) {
       />
       <Grid
         display="flex"
-        direction={fullScreen ? 'column' : 'row'}
         sx={{
           alignItems: fullScreen ? 'center' : '',
           justifyContent: fullScreen ? 'center' : '',
+          flexDirection: fullScreen ? 'column' : 'row',
         }}
       >
         <Grid
@@ -94,10 +94,8 @@ export default function ProjectModal(props: Props) {
                   'TypeScript',
                   'MaterialUI',
                   'NextJS',
-                  'ReactJS',
-                  'TypeScript',
-                  'MaterialUI',
-                  'NextJS',
+                  'Java',
+                  'Spring',
                 ]}
                 height={24}
                 width={24}
