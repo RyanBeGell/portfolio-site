@@ -4,7 +4,7 @@ import { Box, Grid, Typography } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import Image from 'next/image';
 import ReactTyped from 'react-typed';
-import styles from './landing.module.css';
+import styles from './Landing.module.css';
 
 export default function Landing() {
   return (
