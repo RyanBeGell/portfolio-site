@@ -1,12 +1,13 @@
-
-.shiftContentRight{
-    /* Sidebar is 280px wide */
-    margin-left: 0px;   
-}
-
 .shiftContentLeft{
     margin-left: 282px; 
 }
+
+@media screen and (max-width: 600px) {
+  .shiftContentLeft{
+    margin-left: 0px;   
+  }
+}
+
 
   .ArrowIcon{
     position: absolute;
