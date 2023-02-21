@@ -1,5 +1,5 @@
 import * as Icons from '@/src/components/Icons';
-import { Divider, Grid, Typography } from '@mui/material';
+import { Box, Divider, Grid, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import React from 'react';
 
@@ -23,13 +23,13 @@ const IconsGrid: React.FC<Props> = ({
 
   return (
     <Grid container spacing={spacing}>
-      {componentNames.map((name) => {
+      {componentNames.map((name,index) => {
         const DynamicComponent = (Icons as Record<string, any>)[name];
         return (
-          <>
-            <Grid item textAlign="center">
+          //index is stable here, this array doesn't change after build time
+          <Box key={index} >
+            <Grid textAlign="center">
               <DynamicComponent
-                key={name}
                 height={height}
                 width={width}
                 fill={primary}
@@ -49,7 +49,7 @@ const IconsGrid: React.FC<Props> = ({
                 </>
               )}
             </Grid>
-          </>
+          </Box>
         );
       })}
     </Grid>
