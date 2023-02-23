@@ -9,9 +9,9 @@ import styles from './Landing.module.css';
 export default function Landing() {
   return (
     <>
-      <Box className="centerFlexBox" sx={{ minHeight: '100vh' }}>
-        <Grid container direction="row" className="centerFlexBox">
-          <Grid item sx={{ pr: 8 }}>
+      <Box className="centerFlexBox" sx={{ minHeight: '100vh', mx:'32px' }}>
+        <Grid  direction="row" className="centerFlexBox">
+          <Grid item>
             <Typography variant={'h1'} className={'name'}>
               Ryan
               <Typography
@@ -36,7 +36,7 @@ export default function Landing() {
               />
             </Typography>
           </Grid>
-          <Grid item>
+          <Grid item className={styles.image} sx={{ pl: 8 }} >
             <Image
               src="/programming.svg"
               alt="ManAtDesk"
