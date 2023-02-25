@@ -11,9 +11,9 @@ export default function BlogLayout({ children }: any) {
       <Box
         className={`${mode === 'light' ? 'blogLightContainer' : 'centerFlexBox'}`}
         flexDirection="column"
-        sx={{ width: '100%' }}
+        sx={{ width: '100%',}}
       >
-        <Box className={'blogPost'}>
+        <Box className={'blogPost'} sx={{mx:'48px'}}>
           <Paper
             className={`${mode === 'light' ? 'blogPostLight' : 'blogPostDark'}`}
             elevation={8}
