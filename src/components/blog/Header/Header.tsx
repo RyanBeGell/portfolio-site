@@ -113,60 +113,14 @@ export default function Header(props: Props) {
                   }}
                 />
               </Tooltip>
-              <CustomTooltip
-                open={open}
-                sx={{}}
-                title={
-                  <>
-                    {mode == 'light' ? (
-                      <Alert
-                        onClose={handleClose}
-                        severity="success"
-                        variant={'filled'}
-                        sx={{ width: '100%' }}
-                      >
-                        Link copied
-                      </Alert>
-                    ) : (
-                      <Alert
-                        onClose={handleClose}
-                        severity="success"
-                        sx={{ width: '100%' }}
-                      >
-                        Link copied
-                      </Alert>
-                    )}
-                  </>
-                }
-                placement="top"
-                leaveDelay={2000}
-                /* 
-                 Since the Link icon is transformed diagonal, 
-                 it's vertical anchor is 5.18px higher , 
-                 so -5.18px negative bottom margin
-                 on it's tooltip to compensate 
-                */ 
-                PopperProps={{ sx: { mb: '-5.18px !important' } }}
-              >
-                {!open ? (
-                  <Tooltip
-                    title="Copy link"
-                    placement="top"
-                    arrow
-                    PopperProps={{ sx: { mb: '-5.18px !important' } }}
-                  >
-                    {/* Mui link icon is horizontal, -45 deg rotate because I think it looks a bit nicer diagonal */}
-                    <LinkIcon
-                      onClick={handleClick}
-                      sx={{
-                        color: 'text.blogIcons',
-                        transform: 'rotate(-45deg)',
-                        fontSize: '25px',
-                        '&:hover': { color: '#666666', cursor: 'pointer' },
-                      }}
-                    />
-                  </Tooltip>
-                ) : (
+              {!open && (
+                <Tooltip
+                  title="Copy link"
+                  placement="top"
+                  arrow
+                  PopperProps={{ sx: { mb: '-5.18px !important' } }}
+                >
+                  {/* Mui link icon is horizontal, -45 deg rotate because I think it looks a bit nicer diagonal */}
                   <LinkIcon
                     onClick={handleClick}
                     sx={{
@@ -176,8 +130,55 @@ export default function Header(props: Props) {
                       '&:hover': { color: '#666666', cursor: 'pointer' },
                     }}
                   />
-                )}
-              </CustomTooltip>
+                </Tooltip>
+              )}
+              {open && (
+                <CustomTooltip
+                  open={open}
+                  sx={{}}
+                  title={
+                    <>
+                      {mode == 'light' ? (
+                        <Alert
+                          onClose={handleClose}
+                          severity="success"
+                          variant={'filled'}
+                          sx={{ width: '100%' }}
+                        >
+                          Link copied
+                        </Alert>
+                      ) : (
+                        <Alert
+                          onClose={handleClose}
+                          severity="success"
+                          sx={{ width: '100%' }}
+                        >
+                          Link copied
+                        </Alert>
+                      )}
+                    </>
+                  }
+                  placement="top"
+                  leaveDelay={2000}
+                  /* 
+                  Since the Link icon is transformed diagonal, 
+                  it's vertical anchor is 5.18px higher , 
+                  so -5.18px negative bottom margin
+                  on it's tooltip to compensate 
+                  */
+                  PopperProps={{ sx: { mb: '-5.18px !important' } }}
+                >
+                  <LinkIcon
+                    onClick={handleClick}
+                    sx={{
+                      color: 'text.blogIcons',
+                      transform: 'rotate(-45deg)',
+                      fontSize: '25px',
+                      '&:hover': { color: '#666666', cursor: 'pointer' },
+                    }}
+                  />
+                </CustomTooltip>
+              )}
             </Box>
           </Grid>
         </Grid>
