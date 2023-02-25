@@ -8,8 +8,7 @@ import styles from './Landing.module.css';
 
 export default function Landing() {
   return (
-    <>
-      <Box className="centerFlexBox" sx={{ minHeight: '100vh', mx:'32px' }}>
+      <Box className="centerFlexBox" sx={{ minHeight: '100vh', mx:'48px' }}>
         <Grid  direction="row" className="centerFlexBox">
           <Grid item>
             <Typography variant={'h1'} className={'name'}>
@@ -36,12 +35,12 @@ export default function Landing() {
               />
             </Typography>
           </Grid>
-          <Grid item className={styles.image} sx={{ pl: 8 }} >
+          <Grid item className={styles.image} sx={{ pl: '32px' }} >
             <Image
               src="/programming.svg"
               alt="ManAtDesk"
-              width={900.94}
-              height={787}
+              width={700}
+              height={600}
             />
           </Grid>
         </Grid>
@@ -53,6 +52,5 @@ export default function Landing() {
           <SouthIcon color="primary" sx={{ fontSize: '32px' }} />
         </IconButton>
       </Box>
-    </>
   );
 }
