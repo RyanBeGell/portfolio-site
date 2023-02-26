@@ -9,7 +9,7 @@ import styles from './Landing.module.css';
 export default function Landing() {
   return (
       <Box className="centerFlexBox" sx={{ minHeight: '100vh', mx:'48px' }}>
-        <Grid  direction="row" className="centerFlexBox">
+        <Grid  className="centerFlexBox">
           <Grid item>
             <Typography variant={'h1'} className={'name'}>
               Ryan
