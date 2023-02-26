@@ -1,7 +1,7 @@
 import * as Icons from '@/src/components/Icons';
-import { Divider, Grid, Typography } from '@mui/material';
+import { Box, Divider, Grid, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import React from 'react';
+import Tooltip from '@mui/material/Tooltip';
 
 export interface Props {
   componentNames: string[];
@@ -27,14 +27,28 @@ const IconsGrid: React.FC<Props> = ({
         const DynamicComponent = (Icons as Record<string, any>)[name];
         return (
           <Grid item textAlign="center" key={index}>
-            <DynamicComponent
-              key={name}
-              height={height}
-              width={width}
-              fill={primary}
-            />
+            {/* If no title, render a tooltip to show what the icon is on hover */}
+            {noTitle && (
+              <Tooltip title={name}>
+                {/* Div(Box) allows for tooltip to work */}
+                <Box>
+                  <DynamicComponent
+                    key={name}
+                    height={height}
+                    width={width}
+                    fill={primary}
+                  />
+                </Box>
+              </Tooltip>
+            )}
             {!noTitle && (
               <>
+                <DynamicComponent
+                  key={name}
+                  height={height}
+                  width={width}
+                  fill={primary}
+                />
                 <Divider
                   sx={{
                     bgcolor: (theme) => theme.palette.primary.main,
