@@ -8,6 +8,7 @@ import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
 import { useRef } from 'react'
+import ShareDialog from '../ShareDialogue/ShareDialogue';
 
 
 export interface Props {
@@ -19,6 +20,8 @@ export interface Props {
   chip1?: string;
   chip2?: string;
   chip3?: string;
+  open: boolean;
+  handleClose: () => void;
 }
 
 export default function BlogCard(props: Props) {
@@ -26,6 +29,15 @@ export default function BlogCard(props: Props) {
   const [showExcerpt, setShowExcerpt] = useState(true);
   const [smallBox, setSmallBox] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const imgHeightWidth = {
     height: smallBox ? '128px' : '200px',
@@ -113,6 +125,7 @@ export default function BlogCard(props: Props) {
           <Chip label="ChatGPT" size="small" sx={{ mx: '4px' }} />
           <Chip label="AI" size="small" sx={{ ml: '4px', mr: '8px' }} />
           <ShareIcon
+            onClick={handleClickOpen}
             sx={{
               ml: 'auto',
               color: 'text.blogIcons',
@@ -122,6 +135,7 @@ export default function BlogCard(props: Props) {
             }}
           />
         </Box>
+        <ShareDialog open={open} handleClose={handleClose} />
       </Box>
       <Box  display='flex' alignItems='center' >
       <CardMedia
