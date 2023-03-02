@@ -2,7 +2,7 @@ import IconsGrid from '@/src/components/Icons/Grid/IconsGrid';
 import CloseIcon from '@mui/icons-material/Close';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LanguageIcon from '@mui/icons-material/Language';
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Grid, IconButton, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -30,18 +30,16 @@ export default function ProjectModal(props: Props) {
       maxWidth={'xl'}
       aria-labelledby="responsive-dialog-title"
     >
-      <CloseIcon
-        fontSize="large"
-        onClick={props.handleClose}
-        className={'xButton'}
-        sx={{
-          color: 'text.secondary',
-          '&:hover': {
-            color: 'red',
-            cursor: 'pointer',
-          },
-        }}
-      />
+          <IconButton
+            onClick={props.handleClose}
+            className="xButton"
+            sx={{
+              color: 'text.secondary',
+              ':hover': { color: 'red' },
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
       <Grid
         display="flex"
         sx={{
@@ -69,7 +67,9 @@ export default function ProjectModal(props: Props) {
           flexDirection="column"
           sx={{ width: '548px', p: '24px' }}
         >
-          <DialogTitle>{"Use Google's location service?"}</DialogTitle>
+          <DialogTitle>
+            {"Use Google's location service?"}
+            </DialogTitle>
           <DialogContent>
             <DialogContentText>
               Let Google help apps determine location. This means sending
