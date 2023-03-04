@@ -1,3 +1,13 @@
+:root {
+  --twitterBlue: #1DA1F2;
+  --linkedInBlue:#0077b5;
+  --redditOrange: #FF5700;
+  --whatsAppGreen: #25D366;
+  --gmailRed: #BB001B;
+  --linkIconGray: #666666;
+}
+
+
 .centerLeft
 {
   align-self: left;
@@ -22,6 +32,7 @@
 .centerBox{
   padding-top: 48px;
   padding-bottom: 48px;
+  max-width: 1150px;
 }
 
 .blogLightContainer{
