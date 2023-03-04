@@ -1,14 +1,11 @@
 import LinkIcon from '@mui/icons-material/Link';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import RedditIcon from '@mui/icons-material/Reddit';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import { Avatar, Box, Typography } from '@mui/material';
+import { Avatar, Box, Popper, Typography } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import Grid from '@mui/material/Grid';
-import { styled } from '@mui/material/styles';
-import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
+import Tooltip from '@mui/material/Tooltip';
 import { ColorModeContext } from 'pages/_app';
-import { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
+import HeaderIcon from './HeaderIcon';
 
 export interface Props {
   date: String;
@@ -19,26 +16,28 @@ export interface Props {
 export default function Header(props: Props) {
   const { mode } = useContext(ColorModeContext);
 
-  const [open, setOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<
+    (EventTarget & SVGSVGElement) | null
+  >(null);
 
-  function handleClick() {
-    navigator.clipboard.writeText('http://localhost:3000/blog/posts/onions');
-    setOpen(true);
-    setTimeout(() => setOpen(false), 2000);
-  }
+  const handleClick = (event: React.MouseEvent<SVGSVGElement>) => {
+    //anchorE1 === null because we don't want this to run with the popper active
+    if (anchorEl === null) {
+      setAnchorEl(event.currentTarget);
+      navigator.clipboard.writeText('http://localhost:3000/blog/posts/onions');
+      setTimeout(() => {
+        setAnchorEl(null);
+      }, 2000); // close the popover after 2 seconds
+    }
+  };
 
-  function handleClose() {
-    setOpen(false);
-  }
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
-  const CustomTooltip = styled(({ className, ...props }: TooltipProps) => (
-    <Tooltip {...props} classes={{ popper: className }} />
-  ))(({ theme }) => ({
-    [`& .${tooltipClasses.tooltip}`]: {
-      padding: '0px',
-      backgroundColor: 'transparent',
-    },
-  }));
+  const open = Boolean(anchorEl);
+
+  const id = open ? 'simple-popover' : undefined;
 
   return (
     <>
@@ -78,107 +77,48 @@ export default function Header(props: Props) {
           </Grid>
           <Grid item xs={4} display="flex" justifyContent="flex-end">
             <Box position="relative" sx={{ top: '25%' }}>
-              <Tooltip title="Share on Reddit" placement="top" arrow>
-                <RedditIcon
-                  sx={{
-                    color: 'text.blogIcons',
-                    mr: '8px',
-                    fontSize: '25px',
-                    '&:hover': { color: '#FF5700', cursor: 'pointer' },
-                  }}
-                />
-              </Tooltip>
-              <Tooltip title="Share on Twitter" placement="top" arrow>
-                <TwitterIcon
-                  sx={{
-                    color: 'text.blogIcons',
-                    mr: '8px',
-                    fontSize: '25px',
-                    '&:hover': { color: '#1DA1F2', cursor: 'pointer' },
-                  }}
-                />
-              </Tooltip>
+              <HeaderIcon type="LinkedIn" color="linkedInBlue" />
+              <HeaderIcon type="Reddit" color="redditOrange" />
+              <HeaderIcon type="Twitter" color="twitterBlue" />
+              <HeaderIcon type="Email" color="gmailRed" />
               <Tooltip
-                title="Share on LinkedIn"
+                title="Copy link"
                 placement="top"
                 arrow
-                color="text.primary"
+                PopperProps={{
+                  modifiers: [
+                    {
+                      name: 'offset',
+                      options: {
+                        offset: [0, -5.18], // creates -5.18px of space between popper and reference element
+                      },
+                    },
+                  ],
+                }}
               >
-                <LinkedInIcon
+                {/* Mui link icon is horizontal, -45 deg rotate because I think it looks a bit nicer diagonal */}
+                <LinkIcon
+                  onClick={handleClick}
                   sx={{
                     color: 'text.blogIcons',
-                    mr: '8px',
+                    transform: 'rotate(-45deg)',
                     fontSize: '25px',
-                    '&:hover': { color: '#0077b5 ', cursor: 'pointer' },
+                    '&:hover': { color: '#666666', cursor: 'pointer' },
                   }}
                 />
               </Tooltip>
-              {!open && (
-                <Tooltip
-                  title="Copy link"
-                  placement="top"
-                  arrow
-                  PopperProps={{ sx: { mb: '-5.18px !important' } }}
-                >
-                  {/* Mui link icon is horizontal, -45 deg rotate because I think it looks a bit nicer diagonal */}
-                  <LinkIcon
-                    onClick={handleClick}
-                    sx={{
-                      color: 'text.blogIcons',
-                      transform: 'rotate(-45deg)',
-                      fontSize: '25px',
-                      '&:hover': { color: '#666666', cursor: 'pointer' },
-                    }}
-                  />
-                </Tooltip>
-              )}
-              {open && (
-                <CustomTooltip
-                  open={open}
-                  sx={{}}
-                  title={
-                    <>
-                      {mode == 'light' ? (
-                        <Alert
-                          onClose={handleClose}
-                          severity="success"
-                          variant={'filled'}
-                          sx={{ width: '100%' }}
-                        >
-                          Link copied
-                        </Alert>
-                      ) : (
-                        <Alert
-                          onClose={handleClose}
-                          severity="success"
-                          sx={{ width: '100%' }}
-                        >
-                          Link copied
-                        </Alert>
-                      )}
-                    </>
-                  }
-                  placement="top"
-                  leaveDelay={2000}
-                  /* 
-                  Since the Link icon is transformed diagonal, 
-                  it's vertical anchor is 5.18px higher , 
-                  so -5.18px negative bottom margin
-                  on it's tooltip to compensate 
-                  */
-                  PopperProps={{ sx: { mb: '-5.18px !important' } }}
-                >
-                  <LinkIcon
-                    onClick={handleClick}
-                    sx={{
-                      color: 'text.blogIcons',
-                      transform: 'rotate(-45deg)',
-                      fontSize: '25px',
-                      '&:hover': { color: '#666666', cursor: 'pointer' },
-                    }}
-                  />
-                </CustomTooltip>
-              )}
+              <Popper
+                id={id}
+                open={open}
+                anchorEl={anchorEl}
+                placement="top"
+                //setting z index above the tooltip (toolTip is 1500)
+                style={{ zIndex: 1501 }}
+              >
+                <Alert onClose={handleClose} severity="success">
+                  Link copied
+                </Alert>
+              </Popper>
             </Box>
           </Grid>
         </Grid>
