@@ -184,3 +184,34 @@ pre{
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.trigger-icons:hover > .first {
+  transform: translateY(-15px);
+  transition-duration: .2s;
+}
+
+.trigger-icons:hover > .second {
+  transform: translateY(32px);
+  transition-duration: .2s;
+}
+
+.trigger-icons:hover > svg {
+  transform: translateY(10px);
+  transition-duration: .2s;
+}
+
+
+.trigger-icons:not(:hover) > .first {
+  transform: translateY(0);
+  transition-duration: .2s;
+}
+
+.trigger-icons:not(:hover) > .second {
+  transform: translateY(0);
+  transition-duration: .2s;
+}
+
+.trigger-icons:not(:hover) > svg {
+  transform: translateY(0);
+  transition-duration: .2s;
+}
