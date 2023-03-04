@@ -4,7 +4,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import RedditIcon from '@mui/icons-material/Reddit';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import { InputAdornment, Typography } from '@mui/material';
+import { Grid, InputAdornment, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
@@ -55,41 +55,52 @@ export default function ShareDialog(props: Props) {
           <Typography variant="body1" sx={{ mb: '16px' }}>
             Share this link via
           </Typography>
-          <IconButton
-            size="large"
-            sx={{ border: '1px solid', mr: '8px', color: '#0077b5' }}
-          >
-            <LinkedInIcon fontSize="inherit" />
-          </IconButton>
-          <IconButton
-            size="large"
-            sx={{ border: '1px solid', mx: '8px', color: '#FF5700' }}
-          >
-            <RedditIcon fontSize="inherit" />
-          </IconButton>
-          <IconButton
-            size="large"
-            sx={{ border: '1px solid', mx: '8px', color: '#1DA1F2' }}
-          >
-            <TwitterIcon fontSize="inherit" />
-          </IconButton>
-          <IconButton
-            size="large"
-            sx={{ border: '1px solid', mx: '8px', color: '#25D366' }}
-          >
-            <WhatsAppIcon fontSize="inherit" />
-          </IconButton>
-          <IconButton
-            size="large"
-            sx={{ border: '1px solid', mx: '8px', color: '#ff2800' }}
-          >
-            <EmailIcon fontSize="inherit" />
-          </IconButton>
-          
+          <Grid container direction="row" spacing={3}>
+            <Grid item>
+              <IconButton
+                size="large"
+                sx={{ border: '1px solid', color: 'var(--linkedInBlue)' }}
+              >
+                <LinkedInIcon fontSize="inherit" />
+              </IconButton>
+            </Grid>
+            <Grid item>
+              <IconButton
+                size="large"
+                sx={{ border: '1px solid', color: 'var(--redditOrange)' }}
+              >
+                <RedditIcon fontSize="inherit" />
+              </IconButton>
+            </Grid>
+            <Grid item>
+              <IconButton
+                size="large"
+                sx={{ border: '1px solid', color: 'var(--twitterBlue)' }}
+              >
+                <TwitterIcon fontSize="inherit" />
+              </IconButton>
+            </Grid>
+            <Grid item>
+              <IconButton
+                size="large"
+                sx={{ border: '1px solid', color: 'var(--whatsAppGreen)' }}
+              >
+                <WhatsAppIcon fontSize="inherit" />
+              </IconButton>
+            </Grid>
+            <Grid item>
+              <IconButton
+                size="large"
+                sx={{ border: '1px solid', color: 'var(--gmailRed)' }}
+              >
+                <EmailIcon fontSize="inherit" />
+              </IconButton>
+            </Grid>
+          </Grid>
           <Typography variant="body1" sx={{ my: '16px' }}>
             Copy Link
           </Typography>
-          
+
           <div>
             <TextField
               value={link}
