@@ -48,3 +48,11 @@ export const scrollToHome =  () => {
       offset: 0, 
     })
   }
+    export const scrollToCertifications=  () => {
+      scroller.scrollTo('certifications', {
+        duration: 500,
+        delay: 100,
+        smooth: true,
+        offset: 0, 
+      })
+  }

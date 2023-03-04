@@ -5,6 +5,7 @@ import {
   scrollToHome,
   scrollToProjects,
   scrollToSkills,
+  scrollToCertifications
 } from '@/src/components/portfolio/Sidebar/react-scroll/scrollers';
 import ContactMailOutlinedIcon from '@mui/icons-material/ContactMailOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
@@ -31,6 +32,14 @@ import React, { useContext } from 'react';
 import { ColorModeContext } from '../../../../pages/_app';
 import SidebarFooter from './Footer/SidebarFooter';
 import styles from './sidebar.module.css';
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
+import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOutlined';
+import FolderSpecialIcon from '@mui/icons-material/FolderSpecial';
+import FolderSpecialOutlinedIcon from '@mui/icons-material/FolderSpecialOutlined';
+import CodeIcon from '@mui/icons-material/Code';
+import DataObjectIcon from '@mui/icons-material/DataObject';
+import CreateIcon from '@mui/icons-material/Create';
+import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 
 export interface Props {
   toggleColorMode: () => void;
@@ -73,7 +82,7 @@ export default function Sidebar(props: Props) {
         <Divider />
       )}
       <List>
-        {['Home', 'About', 'Skills', 'Projects', 'Blog', 'Contact'].map(
+        {['Home', 'About', 'Skills', 'Certifications', 'Projects', 'Blog', 'Contact'].map(
           (text, index) => (
             <ListItem
               key={text}
@@ -98,10 +107,12 @@ export default function Sidebar(props: Props) {
                     : index === 2
                     ? scrollToSkills
                     : index === 3
-                    ? scrollToProjects
+                    ? scrollToCertifications
                     : index === 4
-                    ? scrollToBlog
+                    ? scrollToProjects
                     : index === 5
+                    ? scrollToBlog
+                    : index === 6
                     ? scrollToContact
                     : scrollToHome
                 }
@@ -112,12 +123,14 @@ export default function Sidebar(props: Props) {
                   ) : index === 1 ? (
                     <PersonOutlineOutlinedIcon />
                   ) : index === 2 ? (
-                    <FormatListBulletedOutlinedIcon />
+                    <CodeIcon/>
                   ) : index === 3 ? (
-                    <IntegrationInstructionsOutlinedIcon />
+                    <WorkspacePremiumIcon/>      
                   ) : index === 4 ? (
-                    <HistoryEduOutlinedIcon />
+                    <FolderSpecialOutlinedIcon />
                   ) : index === 5 ? (
+                    <HistoryEduOutlinedIcon />
+                  ) : index === 6 ? (
                     <ContactMailOutlinedIcon />
                   ) : null}
                 </ListItemIcon>
