@@ -1,9 +1,11 @@
 import AboutMe from '@/src/components/portfolio/about/AboutMe';
+import Certifications from '@/src/components/portfolio/certifications/Certifications';
 import Contact from '@/src/components/portfolio/Contact/Contact';
 import ProjectsSection from '@/src/components/portfolio/Projects/Projects';
 import RecentBlogPostsSection from '@/src/components/portfolio/RecentBlogPosts/RecentBlogPosts';
 import Skills from '@/src/components/portfolio/Skills/Skills';
 import { Box, Divider } from '@mui/material';
+import { Certificate } from 'crypto';
 import type { NextPage } from 'next';
 import { useContext } from 'react';
 import { Element } from 'react-scroll';
@@ -21,6 +23,10 @@ const Home: NextPage = () => {
         <Divider />
         <Element name="skills">
           <Skills />
+        </Element>
+        <Divider />
+        <Element name="Certifications">
+          <Certifications/>
         </Element>
         <Divider />
         <Element name="projects">
