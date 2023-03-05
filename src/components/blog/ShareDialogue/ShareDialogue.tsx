@@ -37,7 +37,7 @@ export default function ShareDialog(props: Props) {
   return (
     <>
       <Dialog open={props.open} onClose={props.handleClose}>
-        <DialogTitle>
+        <DialogTitle sx={{mt:'8px'}}>
           Share
           <IconButton
             onClick={props.handleClose}
@@ -108,7 +108,7 @@ export default function ShareDialog(props: Props) {
               fullWidth
               disabled
               variant="outlined"
-              sx={{ bgcolor: 'background.default' }}
+              sx={{ bgcolor: 'background.default', mb:'16px' }}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end" sx={{ cursor: 'pointer' }}>
