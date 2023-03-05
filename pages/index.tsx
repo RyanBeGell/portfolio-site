@@ -25,7 +25,7 @@ const Home: NextPage = () => {
           <Skills />
         </Element>
         <Divider />
-        <Element name="Certifications">
+        <Element name="certifications">
           <Certifications/>
         </Element>
         <Divider />
