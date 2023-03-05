@@ -25,6 +25,9 @@ export default function Home() {
                   body={item.body}
                   image={item.image}
                   path={item.path}
+                  date={item.date}
+                  chips={item.chips}
+                  minsToRead={item.minsToRead}
                 />
               </Grid>
             ))}

@@ -1,27 +1,23 @@
 import ShareIcon from '@mui/icons-material/Share';
-import { Chip } from '@mui/material';
+import { Chip, Grid } from '@mui/material';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import IconButton from '@mui/material/IconButton';
 import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import { useEffect, useState } from 'react';
-import { useRef } from 'react'
+import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
 import ShareDialog from '../ShareDialogue/ShareDialogue';
-
-
 export interface Props {
-  title?: string; //temporarily optional
-  body?: string; //temporarily optional
-  path?: string;
-  image?: string; //temporarily optional
-  date?: string;
-  chip1?: string;
-  chip2?: string;
-  chip3?: string;
-  open: boolean;
-  handleClose: () => void;
+  title: string;
+  body: string;
+  path: string;
+  image: string;
+  date: string;
+  minsToRead: number;
+  chips?: string[];
 }
 
 export default function BlogCard(props: Props) {
@@ -67,16 +63,23 @@ export default function BlogCard(props: Props) {
   }, [cardRef, showExcerpt]);
 
   return (
-    <Card raised ref={cardRef} sx={{ display: 'flex', }}>
+    <Card raised ref={cardRef} sx={{ display: 'flex' }}>
       <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-        <CardContent sx={{ pl: smallBox ? '16px ' : '24px ', pt: smallBox ? '16px' : '24px', pr:'0px' }}>
+        <CardContent
+          sx={{
+            pl: smallBox ? '16px ' : '24px ',
+            pt: smallBox ? '8px' : '16px',
+            pr: '0px',
+            pb: smallBox ? '8px !important' : '16px !important',
+          }}
+        >
           <Typography
             variant="subtitle2"
             component="span"
             noWrap
             sx={{ color: 'text.secondary' }}
           >
-            {'Jan 22, 2022'}
+            {props.date}
           </Typography>
           <Typography
             variant="subtitle2"
@@ -92,16 +95,25 @@ export default function BlogCard(props: Props) {
             noWrap
             sx={{ color: 'text.secondary' }}
           >
-            {2 + ' min read'}
+            {props.minsToRead + ' min read'}
           </Typography>
-          <Typography
-            component="div"
-            variant={smallBox ? "h6" : "h5"}
-            sx={{ mt: '8px', mb: '8px' }}
-            className="clamp3"
-          >
-            I Asked ChatGPT to Create Comics, Then I Drew Them
-          </Typography>
+          <Link href={`/blog/posts/${props.path}`}>
+            <Typography
+              component="div"
+              variant={smallBox ? 'h6' : 'h5'}
+              sx={{
+                mt: '8px',
+                mb: '8px',
+                cursor: 'pointer',
+                '&:hover': {
+                  textDecoration: 'underline',
+                },
+              }}
+              className="clamp3"
+            >
+              {props.title}
+            </Typography>
+          </Link>
           <Box className="ellipsisBox">
             <Typography
               variant="subtitle1"
@@ -109,47 +121,43 @@ export default function BlogCard(props: Props) {
               component="div"
               className={`${showExcerpt === true ? null : 'invisible'}`}
             >
-              By now you’ve likely heard of ChatGPT, the open AI chatbot that
-              seemingly does everything from being able to write code, write...
-              By now you’ve likely heard of ChatGPT, the open AI chatbot that
-              seemingly does everything from being able to write code, write...
-              By now you’ve likely heard of ChatGPT, the open AI chatbot that
-              seemingly does everything from being able to write code, write...
-              By now you’ve likely heard of ChatGPT, the open AI chatbot that
-              seemingly does everything from being able to write code, write...
+              {props.body}
             </Typography>
           </Box>
+          <Box display="flex" sx={{ mt: '16px', alignItems: 'center' }}>
+            <Grid container spacing={1} sx={{ alignItems: 'center' }}>
+              {props.chips?.map((chip, index) => (
+                <Grid item key={chip}>
+                  <Chip label={chip} size="small" />
+                </Grid>
+              ))}
+            </Grid>
+            <IconButton
+              onClick={handleClickOpen}
+              sx={{
+                ml: 'auto',
+                color: 'text.blogIcons',
+                '&:hover': { color: 'primary.main' },
+              }}
+            >
+              <ShareIcon />
+            </IconButton>
+          </Box>
         </CardContent>
-        <Box display="flex" sx={{ px: '24px', mt: 'auto', mb: '24px' }}>
-          <Chip label="Music" size="small" sx={{ mr: '4px' }} />
-          <Chip label="ChatGPT" size="small" sx={{ mx: '4px' }} />
-          <Chip label="AI" size="small" sx={{ ml: '4px', mr: '8px' }} />
-          <ShareIcon
-            onClick={handleClickOpen}
-            sx={{
-              ml: 'auto',
-              color: 'text.blogIcons',
-              fontSize: '25px',
-              mr:'-24px',
-              '&:hover': { color: 'primary.main', cursor: 'pointer' },
-            }}
-          />
-        </Box>
         <ShareDialog open={open} handleClose={handleClose} />
       </Box>
-      <Box  display='flex' alignItems='center' >
-      <CardMedia
+      <Box display="flex" alignItems="center">
+        <CardMedia
           component="img"
-          sx={{ 
-              height: imgHeightWidth.height, 
-              width: imgHeightWidth.width,
-              py: smallBox ? '16px' : '24px', 
-              pl:smallBox ? '16px' : '24px',
-              pr:smallBox ? '16px' : '24px',
+          sx={{
+            height: imgHeightWidth.height,
+            width: imgHeightWidth.width,
+            py: smallBox ? '16px' : '24px',
+            px: smallBox ? '16px' : '24px',
           }}
           image="https://mui.com/static/images/cards/live-from-space.jpg"
           alt="Live from space album cover"
-      />
+        />
       </Box>
     </Card>
   );
