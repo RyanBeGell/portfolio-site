@@ -24,6 +24,14 @@ export default function ShareDialog(props: Props) {
 
   const link = 'www.example.com/blog/post/example';
 
+  const icons = [
+    { color: 'linkedInBlue', Icon: LinkedInIcon },
+    { color: 'redditOrange', Icon: RedditIcon },
+    { color: 'twitterBlue', Icon: TwitterIcon },
+    { color: 'whatsAppGreen', Icon: WhatsAppIcon },
+    { color: 'gmailRed', Icon: EmailIcon },
+  ];
+
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(link);
@@ -35,98 +43,65 @@ export default function ShareDialog(props: Props) {
   };
 
   return (
-    <>
-      <Dialog open={props.open} onClose={props.handleClose}>
-        <DialogTitle sx={{mt:'8px'}}>
-          Share
-          <IconButton
-            onClick={props.handleClose}
-            sx={{
-              float: 'right',
-              color: 'text.secondary',
-              ':hover': { color: 'red' },
+    <Dialog open={props.open} onClose={props.handleClose}>
+      <DialogTitle sx={{ mt: '8px' }}>
+        Share
+        <IconButton
+          onClick={props.handleClose}
+          sx={{
+            float: 'right',
+            color: 'text.secondary',
+            ':hover': { color: 'red' },
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+      </DialogTitle>
+      <Divider sx={{ mx: '24px' }} />
+      <DialogContent>
+        <Typography variant="body1" sx={{ mb: '16px' }}>
+          Share this link via
+        </Typography>
+        <Grid container direction="row" spacing={3}>
+          {icons.map(({ color, Icon }, index) => (
+            <Grid item key={index}>
+              <IconButton
+                size="large"
+                sx={{ border: '1px solid', color: `var(--${color})` }}
+              >
+                <Icon fontSize="inherit" />
+              </IconButton>
+            </Grid>
+          ))}
+        </Grid>
+        <Typography variant="body1" sx={{ my: '16px' }}>
+          Copy Link
+        </Typography>
+        <div>
+          <TextField
+            value={link}
+            size="small"
+            fullWidth
+            disabled
+            variant="outlined"
+            sx={{ bgcolor: 'background.default', mb: '16px' }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end" sx={{ cursor: 'pointer' }}>
+                  <Button
+                    size="small"
+                    variant="contained"
+                    sx={{ mr: '-9px', textTransform: 'none' }}
+                    onClick={() => (!copySuccess ? handleCopy() : undefined)}
+                  >
+                    {copySuccess === true ? 'Copied' : 'Copy'}
+                  </Button>
+                </InputAdornment>
+              ),
             }}
-          >
-            <CloseIcon />
-          </IconButton>
-        </DialogTitle>
-        <Divider sx={{ mx: '24px' }} />
-        <DialogContent>
-          <Typography variant="body1" sx={{ mb: '16px' }}>
-            Share this link via
-          </Typography>
-          <Grid container direction="row" spacing={3}>
-            <Grid item>
-              <IconButton
-                size="large"
-                sx={{ border: '1px solid', color: 'var(--linkedInBlue)' }}
-              >
-                <LinkedInIcon fontSize="inherit" />
-              </IconButton>
-            </Grid>
-            <Grid item>
-              <IconButton
-                size="large"
-                sx={{ border: '1px solid', color: 'var(--redditOrange)' }}
-              >
-                <RedditIcon fontSize="inherit" />
-              </IconButton>
-            </Grid>
-            <Grid item>
-              <IconButton
-                size="large"
-                sx={{ border: '1px solid', color: 'var(--twitterBlue)' }}
-              >
-                <TwitterIcon fontSize="inherit" />
-              </IconButton>
-            </Grid>
-            <Grid item>
-              <IconButton
-                size="large"
-                sx={{ border: '1px solid', color: 'var(--whatsAppGreen)' }}
-              >
-                <WhatsAppIcon fontSize="inherit" />
-              </IconButton>
-            </Grid>
-            <Grid item>
-              <IconButton
-                size="large"
-                sx={{ border: '1px solid', color: 'var(--gmailRed)' }}
-              >
-                <EmailIcon fontSize="inherit" />
-              </IconButton>
-            </Grid>
-          </Grid>
-          <Typography variant="body1" sx={{ my: '16px' }}>
-            Copy Link
-          </Typography>
-
-          <div>
-            <TextField
-              value={link}
-              size="small"
-              fullWidth
-              disabled
-              variant="outlined"
-              sx={{ bgcolor: 'background.default', mb:'16px' }}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end" sx={{ cursor: 'pointer' }}>
-                    <Button
-                      size="small"
-                      variant="contained"
-                      sx={{ mr: '-9px', textTransform: 'none' }}
-                      onClick={() => (!copySuccess ? handleCopy() : undefined)}
-                    >
-                      {copySuccess === true ? 'Copied' : 'Copy'}
-                    </Button>
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </div>
-        </DialogContent>
-      </Dialog>
-    </>
+          />
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 }
