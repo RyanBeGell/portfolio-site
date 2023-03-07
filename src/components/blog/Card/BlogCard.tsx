@@ -5,7 +5,6 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
-import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
@@ -21,9 +20,8 @@ export interface Props {
 }
 
 export default function BlogCard(props: Props) {
-  const theme = useTheme();
   const [showExcerpt, setShowExcerpt] = useState(true);
-  const [smallBox, setSmallBox] = useState(false);
+  const [boxSize, setBoxSize] = useState<'small' | 'medium' | 'large'>('large');
   const cardRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
 
@@ -36,8 +34,8 @@ export default function BlogCard(props: Props) {
   };
 
   const imgHeightWidth = {
-    height: smallBox ? '128px' : '200px',
-    width: smallBox ? '128px' : '200px',
+    height: boxSize === 'small' ? '128px' : '200px',
+    width: boxSize === 'small' ? '128px' : '200px',
   };
 
   useEffect(() => {
@@ -45,17 +43,16 @@ export default function BlogCard(props: Props) {
       if (cardRef.current) {
         const cardWidth = cardRef.current.offsetWidth;
         if (cardWidth < 450) {
-          setSmallBox(true);
-          setShowExcerpt(false);
+          setBoxSize('small');
+        } else if (cardWidth < 520) {
+          setBoxSize('medium');
         } else {
-          setSmallBox(false);
-          setShowExcerpt(true);
+          setBoxSize('large');
         }
       }
     };
     handleResize();
     window.addEventListener('resize', handleResize);
-
     //clear out the last event listener
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -67,10 +64,10 @@ export default function BlogCard(props: Props) {
       <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
         <CardContent
           sx={{
-            pl: smallBox ? '16px ' : '24px ',
-            pt: smallBox ? '8px' : '16px',
+            pl: boxSize === 'small' ? '16px ' : '24px ',
+            pt: boxSize === 'small' ? '8px' : '16px',
             pr: '0px',
-            pb: smallBox ? '8px !important' : '16px !important',
+            pb: boxSize === 'small' ? '8px !important' : '16px !important',
           }}
         >
           <Typography
@@ -100,7 +97,7 @@ export default function BlogCard(props: Props) {
           <Link href={`/blog/posts/${props.path}`}>
             <Typography
               component="div"
-              variant={smallBox ? 'h6' : 'h5'}
+              variant={boxSize === 'large' ? 'h5' : 'h6'}
               sx={{
                 mt: '8px',
                 mb: '8px',
@@ -119,7 +116,7 @@ export default function BlogCard(props: Props) {
               variant="subtitle1"
               color="text.secondary"
               component="div"
-              className={`${showExcerpt === true ? null : 'invisible'}`}
+              className={`${boxSize === 'small' ? 'invisible' : null}`}
             >
               {props.body}
             </Typography>
@@ -152,8 +149,8 @@ export default function BlogCard(props: Props) {
           sx={{
             height: imgHeightWidth.height,
             width: imgHeightWidth.width,
-            py: smallBox ? '16px' : '24px',
-            px: smallBox ? '16px' : '24px',
+            py: boxSize === 'small' ? '16px' : '24px',
+            px: boxSize === 'small' ? '16px' : '24px',
           }}
           image="https://mui.com/static/images/cards/live-from-space.jpg"
           alt="Live from space album cover"
