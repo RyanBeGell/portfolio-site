@@ -1,4 +1,4 @@
-.avatar {
+#avatar {
   width: 104px;
   height: 104px;
   border: White solid 5px;
@@ -6,35 +6,21 @@
   margin-top: 24px;
 }
 
-.name {
+#name {
   text-align: center;
   font-family: 'Neutraface Text Bold';
   margin-top: 16px;
   margin-bottom: 8px;
+  color:"#FFFFFF";
 }
 
-.subtitle {
-  text-align: center;
-  margin-bottom: 16px;
-}
-
-.navItem {
+#navItem {
   /* Avoid blurry text on transform */
   backface-visibility: hidden;
   will-change: transform;
   transition: all ease-in-out 0.1s;
 }
 
-.navItem:hover {
-  transform: scale(1.01);
-}
-
-.underlineNavItem {
-  text-underline-offset: 10px;
-  text-decoration: underline #2196f3 2px;
-}
-
-.copyright {
-  font-size: 14px;
-  color: #ffffff;
+#navItem:hover {
+  transform: scale(1.02);
 }

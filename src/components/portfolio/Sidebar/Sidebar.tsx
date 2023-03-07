@@ -64,14 +64,14 @@ export default function Sidebar(props: Props) {
   const drawer = (
     <div>
       <Box display="flex" justifyContent="center" alignItems="center">
-        <Avatar className={styles.avatar} src={'/avatar.svg'} alt="Avatar" />
+        <Avatar id={styles.avatar} src={'/avatar.svg'} alt="Avatar" />
       </Box>
-      <Typography variant={'h5'} className={styles.name} color="#FFFFFF">
+      <Typography variant={'h5'} id={styles.name} color="#FFFFFF">
         Ryan BeGell
       </Typography>
       <Typography
         variant={'subtitle2'}
-        className={styles.subtitle}
+        sx={{mb:'16px', textAlign:'center'}}
         color="text.navFooter"
       >
         Software Developer
@@ -98,7 +98,7 @@ export default function Sidebar(props: Props) {
                   },
                   alignItems: 'center',
                 }}
-                className={styles.navItem}
+                id={styles.navItem}
                 onClick={
                   index === 0
                     ? scrollToHome

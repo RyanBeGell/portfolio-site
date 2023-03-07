@@ -8,8 +8,7 @@
   }
 }
 
-
-  .ArrowIcon{
+  #ArrowIcon{
     position: absolute;
     top: calc(100vh - 70px);
     text-align: center;

@@ -36,6 +36,7 @@ export default function RecentBlogPostsSection(props: Props) {
               {RecentBlogPosts.map((post, index) => (
                 <Grid
                   item
+                  key={index}
                   xl={6}
                   lg={6}
                   md={12}

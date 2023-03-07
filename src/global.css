@@ -43,35 +43,30 @@
   }
 
 .blogPostLight{
-  align-self: left;
-  align-items: center;
-  justify-content: center;
-  padding-top:60px;
-  padding-left: 16%;
-  padding-right: 16%;
-  /* 64px fixed app bar, MUI sticky not working */
-  margin-top: 112px;
-  margin-bottom: 48px;
-  max-width: 1000px;
-  min-height: 90vh;
+
   background-color: #FFFFFF;
   border-radius: 4px;
+  margin-bottom: 48px;
 }
 
 .blogPostDark{
-	align-self: left;
-	align-items: center;
-	justify-content: center;
-  padding-top:60px;
-  padding-left: 16%;
-  padding-right: 16%;
-  /* 64px fixed app bar, MUI sticky not working */
-	margin-top: 112px;
-	margin-bottom: 48px;
-	max-width: 1000px;
-	min-height: 90vh;
+
 	border-radius: 4px;
   background-color: #001e3c;
+  margin-bottom: 48px;
+  }
+
+  .blogBox{
+    align-self: left;
+    align-items: center;
+    justify-content: center;
+    padding-top:60px;
+    padding-left: 16%;
+    padding-right: 16%;
+    /* 64px fixed app bar, MUI sticky not working */
+    margin-top: 112px;
+    max-width: 1000px;
+    min-height: 90vh;
   }
 
 h1 {
@@ -183,35 +178,4 @@ pre{
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.trigger-icons:hover > .first {
-  transform: translateY(-15px);
-  transition-duration: .2s;
-}
-
-.trigger-icons:hover > .second {
-  transform: translateY(32px);
-  transition-duration: .2s;
-}
-
-.trigger-icons:hover > svg {
-  transform: translateY(10px);
-  transition-duration: .2s;
-}
-
-
-.trigger-icons:not(:hover) > .first {
-  transform: translateY(0);
-  transition-duration: .2s;
-}
-
-.trigger-icons:not(:hover) > .second {
-  transform: translateY(0);
-  transition-duration: .2s;
-}
-
-.trigger-icons:not(:hover) > svg {
-  transform: translateY(0);
-  transition-duration: .2s;
 }

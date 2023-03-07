@@ -1,0 +1,36 @@
+
+
+.customIcon:hover > #title{
+  transform: translateY(-15px);
+  transition-duration: .2s;
+}
+
+.customIcon:hover > #divider {
+  transform: translateY(32px);
+  transition-duration: .2s;
+}
+
+.customIcon:hover > svg {
+  transform: translateY(10px);
+  transition-duration: .2s;
+}
+
+
+.customIcon:not(:hover) > #title {
+  transform: translateY(0);
+  transition-duration: .2s;
+}
+
+.customIcon:not(:hover) > #divider {
+  transform: translateY(0);
+  transition-duration: .2s;
+}
+
+.customIcon:not(:hover) > svg {
+  transform: translateY(0);
+  transition-duration: .2s;
+}
+
+.customIcon{
+  cursor: pointer;
+}

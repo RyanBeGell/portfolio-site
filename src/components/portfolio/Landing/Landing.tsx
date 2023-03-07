@@ -35,7 +35,7 @@ export default function Landing() {
               />
             </Typography>
           </Grid>
-          <Grid item className={styles.image} sx={{ pl: '32px' }} >
+          <Grid item sx={{ pl: '32px' }} >
             <Image
               src="/programming.svg"
               alt="ManAtDesk"
@@ -45,7 +45,7 @@ export default function Landing() {
           </Grid>
         </Grid>
         <IconButton
-          className={styles.ArrowIcon}
+          id={styles.ArrowIcon}
           color="primary"
           onClick={scrollToAbout}
         >
