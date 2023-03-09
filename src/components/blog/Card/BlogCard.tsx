@@ -65,7 +65,7 @@ export default function BlogCard(props: Props) {
         <CardContent
           sx={{
             pl: boxSize === 'small' ? '16px ' : '24px ',
-            pt: boxSize === 'small' ? '8px' : '16px',
+            pt: boxSize === 'small' ? '12px' : '16px',
             pr: '0px',
             pb: boxSize === 'small' ? '8px !important' : '16px !important',
           }}
