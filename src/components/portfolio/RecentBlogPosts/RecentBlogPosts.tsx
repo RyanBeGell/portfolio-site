@@ -2,7 +2,7 @@ import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { useContext } from 'react';
 import { ColorModeContext } from '../../../../pages/_app';
 import BlogCard from '../../blog/Card/BlogCard';
@@ -15,11 +15,6 @@ export interface Props {
 
 export default function RecentBlogPostsSection(props: Props) {
   const { mode } = useContext(ColorModeContext);
-  const router = useRouter();
-
-  const handleRedirect = () => {
-    router.push('/blog/home');
-  };
 
   //Get the information from the last 4 blog posts from the data file
   const RecentBlogPosts = BlogPostCardData.slice(0, 4);
@@ -32,7 +27,7 @@ export default function RecentBlogPostsSection(props: Props) {
             <SectionTitle title="Recent Blog Posts" />
           </Box>
           <Box sx={{ pb: '48px' }}>
-            <Grid item container xs={12} sx={{ width: '100%' }} >
+            <Grid item container xs={12} sx={{ width: '100%' }}>
               {RecentBlogPosts.map((post, index) => (
                 <Grid
                   item
@@ -69,14 +64,15 @@ export default function RecentBlogPostsSection(props: Props) {
           </Box>
           <Grid item justifyContent={'center'} textAlign="center">
             {/* Render button outlined in dark mode, contained in light mode */}
-            <Button
-              size="large"
-              endIcon={<ArrowCircleRightIcon />}
-              variant={`${mode == 'dark' ? 'outlined' : 'contained'}`}
-              onClick={handleRedirect}
-            >
-              View Blog
-            </Button>
+            <Link href="/blog">
+              <Button
+                size="large"
+                endIcon={<ArrowCircleRightIcon />}
+                variant={`${mode == 'dark' ? 'outlined' : 'contained'}`}
+              >
+                View Blog
+              </Button>
+            </Link>
           </Grid>
         </Box>
       </Box>
