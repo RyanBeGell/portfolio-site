@@ -6,6 +6,7 @@ export default function AboutMe() {
     <>
       <Box className="centerBox">
         <SectionTitle title="About Me" />
+        {"This is sample text. ".repeat(20)}
       </Box>
     </>
   );
