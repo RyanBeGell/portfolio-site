@@ -1,45 +1,34 @@
-import {
-  scrollToAbout,
-  scrollToBlog,
-  scrollToContact,
-  scrollToHome,
-  scrollToProjects,
-  scrollToSkills,
-  scrollToCertifications
-} from '@/src/components/portfolio/Sidebar/react-scroll/scrollers';
+import CodeIcon from '@mui/icons-material/Code';
 import ContactMailOutlinedIcon from '@mui/icons-material/ContactMailOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
-import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
+import DragHandleRounded from '@mui/icons-material/DragHandleRounded';
+import FolderSpecialOutlinedIcon from '@mui/icons-material/FolderSpecialOutlined';
 import HistoryEduOutlinedIcon from '@mui/icons-material/HistoryEduOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import IntegrationInstructionsOutlinedIcon from '@mui/icons-material/IntegrationInstructionsOutlined';
-import MenuIcon from '@mui/icons-material/Menu';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import { Avatar } from '@mui/material';
+import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import { useTheme } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
+import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React, { useContext } from 'react';
+import { scroller } from 'react-scroll';
 import { ColorModeContext } from '../../../../pages/_app';
+import StyledIconButton from '../../blog/AppBar/StyledIconButton/StyledIconButton';
 import SidebarFooter from './Footer/SidebarFooter';
 import styles from './sidebar.module.css';
-import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
-import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOutlined';
-import FolderSpecialIcon from '@mui/icons-material/FolderSpecial';
-import FolderSpecialOutlinedIcon from '@mui/icons-material/FolderSpecialOutlined';
-import CodeIcon from '@mui/icons-material/Code';
-import DataObjectIcon from '@mui/icons-material/DataObject';
-import CreateIcon from '@mui/icons-material/Create';
-import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 
 export interface Props {
   toggleColorMode: () => void;
@@ -48,6 +37,7 @@ export interface Props {
 const drawerWidth = 282;
 
 export default function Sidebar(props: Props) {
+  const theme = useTheme();
   const router = useRouter();
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -61,6 +51,19 @@ export default function Sidebar(props: Props) {
     router.push('/blog/home');
   };
 
+  const handleNavigationClick = (text: string) => {
+    // close nav drawer before scrolling when on mobile
+    if (mobileOpen) {
+      setMobileOpen(false);
+    }
+    scroller.scrollTo(text.toLowerCase(), {
+      duration: 500,
+      delay: 100,
+      smooth: true,
+      offset: mobileOpen ? -56 : 0,
+    });
+  };
+
   const drawer = (
     <div>
       <Box display="flex" justifyContent="center" alignItems="center">
@@ -71,7 +74,7 @@ export default function Sidebar(props: Props) {
       </Typography>
       <Typography
         variant={'subtitle2'}
-        sx={{mb:'16px', textAlign:'center'}}
+        sx={{ mb: '16px', textAlign: 'center' }}
         color="text.navFooter"
       >
         Software Developer
@@ -82,81 +85,85 @@ export default function Sidebar(props: Props) {
         <Divider />
       )}
       <List>
-        {['Home', 'About', 'Skills', 'Certifications', 'Projects', 'Blog', 'Contact'].map(
-          (text, index) => (
-            <ListItem
-              key={text}
-              sx={{ px: '0px', py: '4px' }}
-              color="primary.main"
+        {[
+          'Home',
+          'About',
+          'Skills',
+          'Certifications',
+          'Projects',
+          'Blog',
+          'Contact',
+        ].map((text, index) => (
+          <ListItem
+            key={text}
+            sx={{ px: '0px', py: '4px' }}
+            color="primary.main"
+          >
+            <ListItemButton
+              sx={{
+                borderRadius: 3,
+                '&:hover': {
+                  color: 'primary.main',
+                  bgColor: 'primary.main',
+                },
+                alignItems: 'center',
+              }}
+              id={styles.navItem}
+              onClick={() => handleNavigationClick(text)}
             >
-              <ListItemButton
-                sx={{
-                  borderRadius: 3,
-                  '&:hover': {
-                    color: 'primary.main',
-                    bgColor: 'primary.main',
-                  },
-                  alignItems: 'center',
-                }}
-                id={styles.navItem}
-                onClick={
-                  index === 0
-                    ? scrollToHome
-                    : index === 1
-                    ? scrollToAbout
-                    : index === 2
-                    ? scrollToSkills
-                    : index === 3
-                    ? scrollToCertifications
-                    : index === 4
-                    ? scrollToProjects
-                    : index === 5
-                    ? scrollToBlog
-                    : index === 6
-                    ? scrollToContact
-                    : scrollToHome
-                }
-              >
-                <ListItemIcon sx={{ color: '#ffffff' }}>
-                  {index === 0 ? (
-                    <HomeOutlinedIcon />
-                  ) : index === 1 ? (
-                    <PersonOutlineOutlinedIcon />
-                  ) : index === 2 ? (
-                    <CodeIcon/>
-                  ) : index === 3 ? (
-                    <WorkspacePremiumIcon/>      
-                  ) : index === 4 ? (
-                    <FolderSpecialOutlinedIcon />
-                  ) : index === 5 ? (
-                    <HistoryEduOutlinedIcon />
-                  ) : index === 6 ? (
-                    <ContactMailOutlinedIcon />
-                  ) : null}
-                </ListItemIcon>
-                <ListItemText
-                  primary={text}
-                  sx={{ ml: '-16px', color: '#FFFFFF' }}
-                />
-              </ListItemButton>
-            </ListItem>
-          )
-        )}
+              <ListItemIcon sx={{ color: '#ffffff' }}>
+                {index === 0 ? (
+                  <HomeOutlinedIcon />
+                ) : index === 1 ? (
+                  <PersonOutlineOutlinedIcon />
+                ) : index === 2 ? (
+                  <CodeIcon />
+                ) : index === 3 ? (
+                  <WorkspacePremiumIcon />
+                ) : index === 4 ? (
+                  <FolderSpecialOutlinedIcon />
+                ) : index === 5 ? (
+                  <HistoryEduOutlinedIcon />
+                ) : index === 6 ? (
+                  <ContactMailOutlinedIcon />
+                ) : null}
+              </ListItemIcon>
+              <ListItemText
+                primary={text}
+                sx={{ ml: '-16px', color: '#FFFFFF' }}
+              />
+            </ListItemButton>
+          </ListItem>
+        ))}
       </List>
     </div>
   );
 
   return (
     <>
-      <IconButton
-        color="inherit"
-        aria-label="open drawer"
-        edge="start"
-        onClick={handleDrawerToggle}
-        sx={{ m: 1, display: { sm: 'none' } }}
+      <AppBar
+        position="fixed"
+        sx={{
+          display: { xs: 'block', sm: 'none' },
+          backgroundColor: 'background.blogNav',
+          backdropFilter: 'blur(8px)',
+        }}
       >
-        <MenuIcon />
-      </IconButton>
+        <Toolbar>
+          <Image
+            src="/favicon.png"
+            alt="logo"
+            width={38}
+            height={38}
+            className="hover-pointer"
+            onClick={() => handleNavigationClick('home')}
+          />
+          <Box sx={{ flexGrow: 1 }} />
+          <StyledIconButton onClick={handleDrawerToggle}>
+            <DragHandleRounded />
+          </StyledIconButton>
+        </Toolbar>
+      </AppBar>
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
@@ -166,6 +173,7 @@ export default function Sidebar(props: Props) {
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
+          disableRestoreFocus={true}
           ModalProps={{
             keepMounted: true,
           }} // Better open performance on mobile.
