@@ -10,7 +10,8 @@ import type { NextPage } from 'next';
 import { useContext } from 'react';
 import { Element } from 'react-scroll';
 import { ColorModeContext } from './_app';
-
+import NavDrawer
+ from '@/src/components/blog/AppBar/NavDrawer';
 const Home: NextPage = () => {
   const { mode } = useContext(ColorModeContext);
 
@@ -42,6 +43,7 @@ const Home: NextPage = () => {
         </Element>
         <Divider />
         <Box className="centerFlexBox">Footer will go here</Box>
+        <NavDrawer/>
       </Box>
     </>
   );
