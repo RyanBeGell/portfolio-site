@@ -179,3 +179,7 @@ pre{
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.hover-pointer:hover{
+  cursor: pointer;
+}
