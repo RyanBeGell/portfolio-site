@@ -13,6 +13,7 @@ import InputBase from '@mui/material/InputBase';
 import { styled, useTheme } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import { ColorModeContext } from '../../../../pages/_app';
@@ -89,7 +90,9 @@ export default function BlogAppBar(props: Props) {
             <Toolbar
               sx={{ justifyContent: { xs: 'space-between', sm: 'none' }, p: 0 }}
             >
-              <Image src="/favicon.png" alt="logo" width={38} height={38} />
+              <Link href="/" className="pointer-hover">
+                <Image src="/favicon.png" alt="logo" width={38} height={38}  className="hover-pointer"/>
+              </Link>
               <Divider
                 orientation="vertical"
                 flexItem={true}
