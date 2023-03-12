@@ -37,7 +37,7 @@ export default function Landing() {
           <Typography variant={'h4'} noWrap>
             <ReactTyped
               loop={false}
-              typeSpeed={80}
+              typeSpeed={50}
               strings={['Full Stack Software Developer']}
               smartBackspace={false}
               shuffle={false}
