@@ -68,7 +68,7 @@ export default function BlogAppBar(props: Props) {
 
   function handleRedirect(path: string) {
     if (path === 'Portfolio') router.push('/');
-    else if (path === 'Blog') router.push('/blog/home');
+    else if (path === 'Blog') router.push('/blog');
   }
 
   return (
