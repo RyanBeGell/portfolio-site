@@ -17,10 +17,8 @@ export default function Home() {
           />
           <Grid container spacing={3}>
             {BlogPostsCardData.map((item, index) => (
-              <Grid item>
-                {/* Index for key because index won't change; fixed array from data file. */}
+              <Grid item key={index}>
                 <BlogCard
-                  key={index}
                   title={item.title}
                   body={item.body}
                   image={item.image}
