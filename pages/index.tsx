@@ -1,17 +1,16 @@
 import AboutMe from '@/src/components/portfolio/about/AboutMe';
 import Certifications from '@/src/components/portfolio/Certifications/Certifications';
 import Contact from '@/src/components/portfolio/Contact/Contact';
+import Footer from '@/src/components/portfolio/Footer/Footer';
 import ProjectsSection from '@/src/components/portfolio/Projects/Projects';
 import RecentBlogPostsSection from '@/src/components/portfolio/RecentBlogPosts/RecentBlogPosts';
 import Skills from '@/src/components/portfolio/Skills/Skills';
 import { Box, Divider } from '@mui/material';
-import { Certificate } from 'crypto';
 import type { NextPage } from 'next';
 import { useContext } from 'react';
 import { Element } from 'react-scroll';
 import { ColorModeContext } from './_app';
-import NavDrawer
- from '@/src/components/blog/AppBar/NavDrawer';
+
 const Home: NextPage = () => {
   const { mode } = useContext(ColorModeContext);
 
@@ -27,7 +26,7 @@ const Home: NextPage = () => {
         </Element>
         <Divider />
         <Element name="certifications">
-          <Certifications/>
+          <Certifications />
         </Element>
         <Divider />
         <Element name="projects">
@@ -41,9 +40,6 @@ const Home: NextPage = () => {
         <Element name="contact">
           <Contact />
         </Element>
-        <Divider />
-        <Box className="centerFlexBox">Footer will go here</Box>
-        <NavDrawer/>
       </Box>
     </>
   );
