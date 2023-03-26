@@ -1,3 +1,4 @@
+import Footer from '@/src/components/portfolio/Footer/Footer';
 import Landing from '@/src/components/portfolio/Landing/Landing';
 import { Box } from '@mui/material';
 import Divider from '@mui/material/Divider';
@@ -14,7 +15,11 @@ export default function LandingLayout({ children }: any) {
       <Element name="home">
         <Box
           className="centerFlexBox"
-          sx={{ minHeight: '100vh', bgcolor: 'background.light', width: '100%' }}
+          sx={{
+            minHeight: '100vh',
+            bgcolor: 'background.light',
+            width: '100%',
+          }}
         >
           <Landing />
         </Box>
@@ -25,6 +30,12 @@ export default function LandingLayout({ children }: any) {
           <main>{children}</main>
         </Box>
       </Box>
+      <Box sx={{ width: '100%'}}>
+          <Divider />
+          <Box sx={{ mx:'48px', my:'24px' }}>
+            <Footer />
+          </Box>
+        </Box>
     </>
   );
 }
