@@ -1,21 +1,16 @@
-import { Grid, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 const SidebarFooter = () => {
   const year: number = new Date().getFullYear();
 
   return (
-    <>
-      <Grid
-        container
-        alignItems="center"
-        justifyContent="center"
-        sx={{ pt: '16px' }}
+      <Typography
+        variant={'subtitle2'}
+        color="text.navFooter"
+        sx={{ pt: '16px', width:'100%', textAlign:'center' }}
       >
-        <Typography variant={'subtitle2'} color="text.navFooter">
-          &copy; {year} Ryan BeGell
-        </Typography>
-      </Grid>
-    </>
+        &copy; {year} Ryan BeGell
+      </Typography>
   );
 };
 
