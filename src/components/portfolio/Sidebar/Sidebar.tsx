@@ -6,7 +6,7 @@ import FolderSpecialOutlinedIcon from '@mui/icons-material/FolderSpecialOutlined
 import HistoryEduOutlinedIcon from '@mui/icons-material/HistoryEduOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremiumOutlined';
 import { Avatar } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
