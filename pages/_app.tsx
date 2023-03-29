@@ -1,4 +1,5 @@
 import BlogAppBar from '@/src/components/blog/AppBar/BlogAppBar';
+import Footer from '@/src/components/portfolio/Footer/Footer';
 import styles from '@/src/components/portfolio/Landing/Landing.module.css';
 import Sidebar from '@/src/components/portfolio/Sidebar/Sidebar';
 import '@/src/global.css';
@@ -11,6 +12,7 @@ import {
   Box,
   createTheme,
   CssBaseline,
+  Divider,
   GlobalStyles,
   PaletteMode,
   ThemeProvider,
@@ -86,6 +88,21 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <Component {...pageProps} />
               </DefaultLayout>
             )}
+            {/* Global Footer */}
+            <Box sx={{ width: '100%',backgroundColor:'background.light' }}>
+              {mode==='dark'? <Divider/> :null}
+              <Box sx={{ mx: '48px' }}>
+                <Box
+                  sx={{
+                    py: '48px',
+                    maxWidth: '1150px',
+                    margin: '0 auto',
+                  }}
+                >
+                  <Footer />
+                </Box>
+              </Box>
+            </Box>
           </Box>
         </ThemeProvider>
       </ColorModeContext.Provider>
