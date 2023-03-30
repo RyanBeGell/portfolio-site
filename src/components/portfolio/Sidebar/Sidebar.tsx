@@ -144,7 +144,7 @@ export default function Sidebar(props: Props) {
       <AppBar
         position="fixed"
         sx={{
-          display: { xs: 'block', sm: 'none' },
+          display: { sm: 'block', md: 'none' },
           backgroundColor: 'background.blogNav',
           backdropFilter: 'blur(8px)',
         }}
@@ -178,7 +178,7 @@ export default function Sidebar(props: Props) {
             keepMounted: true,
           }} // Better open performance on mobile.
           sx={{
-            display: { xs: 'block', sm: 'none' },
+            display: { sm: 'block', md: 'none' },
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: drawerWidth,
@@ -225,7 +225,7 @@ export default function Sidebar(props: Props) {
           variant="permanent"
           anchor="left"
           sx={{
-            display: { xs: 'none', sm: 'block' },
+            display: { xs: 'none', md: 'block' },
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: drawerWidth,
