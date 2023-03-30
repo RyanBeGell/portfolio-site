@@ -8,7 +8,7 @@ export default function Certifications() {
       <Box className="centerBox">
         <SectionTitle title="Certifications" />
         <Grid container direction="row" >
-          <Grid container justifyContent="center" item xs={4}>
+          <Grid container justifyContent="center" item xs={6} sm={6} md={4}>
             <img
               src="/AWS-Certified-Cloud-Practitioner.png"
               height="200"
@@ -16,7 +16,7 @@ export default function Certifications() {
               className={styles.cert} 
             />
           </Grid>
-          <Grid container justifyContent="center" item xs={4}>
+          <Grid container justifyContent="center" item xs={6} sm={6} md={4}>
           <img
               src="/AWS-Certified-Developer-Associate_badge.png"
               height="200"
@@ -24,7 +24,7 @@ export default function Certifications() {
               className={styles.cert} 
             />
           </Grid>
-          <Grid container justifyContent="center" item xs={4} >
+          <Grid container justifyContent="center" item xs={12} sm={12} md={4}>
           <img
               src="/AWS-Certified-Cloud-Practitioner.png"
               height="200"
