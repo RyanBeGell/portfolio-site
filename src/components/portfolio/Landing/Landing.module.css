@@ -2,7 +2,7 @@
     margin-left: 282px; 
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
   .shiftContentLeft{
     margin-left: 0px;   
   }
