@@ -27,7 +27,7 @@ export default function BlogAppBar(props: Props) {
   const { mode } = useContext(ColorModeContext);
   const theme = useTheme();
 
-  const pages = ['Blog', 'Portfolio'];
+  const pages = ['Home','Blog'];
 
   // For open/close of email subscribe modal
   const [open, setOpen] = useState(false);
@@ -67,7 +67,7 @@ export default function BlogAppBar(props: Props) {
   const router = useRouter();
 
   function handleRedirect(path: string) {
-    if (path === 'Portfolio') router.push('/');
+    if (path === 'Home') router.push('/');
     else if (path === 'Blog') router.push('/blog');
   }
 
