@@ -150,6 +150,10 @@ export default function Sidebar(props: Props) {
         }}
       >
         <Toolbar>
+        <StyledIconButton onClick={handleDrawerToggle}>
+            <DragHandleRounded />
+          </StyledIconButton>
+          <Box sx={{ flexGrow: 1 }} />
           <Image
             src="/favicon.png"
             alt="logo"
@@ -158,10 +162,6 @@ export default function Sidebar(props: Props) {
             className="hover-pointer"
             onClick={() => handleNavigationClick('home')}
           />
-          <Box sx={{ flexGrow: 1 }} />
-          <StyledIconButton onClick={handleDrawerToggle}>
-            <DragHandleRounded />
-          </StyledIconButton>
         </Toolbar>
       </AppBar>
       <Box
