@@ -8,8 +8,9 @@ export default function DefaultLayout({ children }: any) {
 
   return (
     <>
-      <Box className="centerFlexBox" flexDirection="column">
-        <Box className={'centerLeft'}>
+    {/* main content 100vh-121px to account for footer */}
+      <Box className="centerAlign" flexDirection="column" sx={{ position: 'relative', minHeight: 'calc(100vh - 122px)'}} >
+        <Box className={'centerLeft'} >
           <main>{children}</main>
         </Box>
       </Box>

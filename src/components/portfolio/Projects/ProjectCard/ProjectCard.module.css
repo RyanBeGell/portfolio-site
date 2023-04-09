@@ -5,4 +5,7 @@
 
 #card{
     transition: all ease-in-out .2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

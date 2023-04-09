@@ -5,7 +5,7 @@ const Footer = () => {
   const year: number = new Date().getFullYear();
 
   return (
-    <Box display="flex" justifyContent="space-between" alignItems={'center'}>
+    <Box display="flex" justifyContent="space-between" alignItems={'center'} >
       <Typography variant={'subtitle2'} color="text.navFooter">
         &copy; {year} Ryan BeGell
       </Typography>
