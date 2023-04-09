@@ -7,6 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import ShareDialog from '../ShareDialogue/ShareDialogue';
 export interface Props {
@@ -24,6 +25,7 @@ export default function BlogCard(props: Props) {
   const [boxSize, setBoxSize] = useState<'small' | 'medium' | 'large'>('large');
   const cardRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -125,7 +127,20 @@ export default function BlogCard(props: Props) {
             <Grid container spacing={1} sx={{ alignItems: 'center' }}>
               {props.chips?.map((chip, index) => (
                 <Grid item key={chip}>
-                  <Chip label={chip} size="small" />
+                  {router.pathname === '/' ? (
+                    <Chip
+                      label={chip}
+                      size="small"
+                      onClick={() =>
+                        router.push({
+                          pathname: '/blog',
+                          query: { tag: chip },
+                        })
+                      }
+                    />
+                  ) : (
+                    <Chip label={chip} size="small" />
+                  )}
                 </Grid>
               ))}
             </Grid>
