@@ -1,5 +1,5 @@
 import BlogPostsCardData from '@/src/components/blog/Card/BlogCardData';
-import { Box, Chip, Divider, Grid, Paper, Typography } from '@mui/material';
+import { Box, Chip, Divider, Grid, Paper } from '@mui/material';
 import { useRouter } from 'next/router';
 import { ColorModeContext } from 'pages/_app';
 import { useContext, useState } from 'react';
@@ -34,19 +34,30 @@ export default function BlogLayout({ children }: any) {
             </Box>
 
             {BlogPost && (
-              <Box sx={{pt:'8px'}}>
-                <Divider sx={{ borderBottomWidth: '2px' }} />
+              <Box sx={{ pt: '8px' }}>
+                <Divider sx={{ borderBottomWidth: '1px' }} />
                 <Grid
                   container
                   spacing={1}
-                  sx={{ alignItems: 'center', py: '24px',px:'16px', textAlign:'center' }}
+                  sx={{
+                    alignItems: 'center',
+                    py: '24px',
+                    px: '16px',
+                    textAlign: 'center',
+                  }}
                 >
-                  <Grid item >
-                  Tagged: 
-                  </Grid>
+                  <Grid item>Tagged:</Grid>
                   {BlogPost.chips?.map((chip, index) => (
                     <Grid item key={chip}>
-                      <Chip label={chip} />
+                      <Chip
+                        label={chip}
+                        onClick={() =>
+                          router.push({
+                            pathname: '/blog',
+                            query: { tag: chip },
+                          })
+                        }
+                      />
                     </Grid>
                   ))}
                 </Grid>
