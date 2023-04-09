@@ -1,5 +1,5 @@
 .cert {
-  transition: all ease-in-out .2s;
+  transition: all ease-in-out .1s;
 }
 
 .cert:hover {
