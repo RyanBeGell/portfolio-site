@@ -6,7 +6,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { ColorModeContext } from 'pages/_app';
 import React, { useContext, useState } from 'react';
 import HeaderIcon from './HeaderIcon';
-
+import Image from 'next/image';
 export interface Props {
   date: String;
   minRead: Number;
@@ -44,12 +44,10 @@ export default function Header(props: Props) {
       <Box sx={{ mb: '32px' }}>
         <Grid container spacing={0}>
           <Grid item xs={8}>
-            <Avatar
-              src={'/avatar.svg'}
-              alt="Avatar"
-              sx={{ height: '48px', width: '48px', float: 'left', mr: '16px' }}
-            />
-            <Typography variant="subtitle1">Ryan BeGell</Typography>
+            <Box sx={{ height: '48px', width: '48px', float: 'left', mr: '16px' }}>
+          <Image height={48} width={48} src="/favicon.png" />
+          </Box>
+            <Typography variant="subtitle1" fontWeight={'bold'}>Ryan BeGell</Typography>
             <Typography
               variant="subtitle2"
               component="span"
