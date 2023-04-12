@@ -1,5 +1,5 @@
 import Landing from '@/src/components/portfolio/Landing/Landing';
-import { Box } from '@mui/material';
+import { Box, useTheme } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import { ColorModeContext } from 'pages/_app';
 import { useContext, useState } from 'react';
@@ -9,6 +9,8 @@ export default function LandingLayout({ children }: any) {
   const [sideNavOpen, setSideNavOpen] = useState(false);
   const { mode } = useContext(ColorModeContext);
 
+  const theme = useTheme();
+
   return (
     <>
       <Element name="home">
@@ -16,7 +18,9 @@ export default function LandingLayout({ children }: any) {
           className="centerFlexBox"
           sx={{
             minHeight: '100vh',
-            bgcolor: 'background.light',
+            background: theme.palette.mode === 'dark'
+            ? 'radial-gradient(ellipse at center, #001e3c 10%, #0A1929 75%)'
+            : '#FFFFFF',
             width: '100%',
           }}
         >
