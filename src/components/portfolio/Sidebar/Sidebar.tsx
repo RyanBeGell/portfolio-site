@@ -17,10 +17,10 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { useTheme } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { useTheme } from '@mui/material/styles';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React, { useContext } from 'react';
@@ -102,11 +102,7 @@ export default function Sidebar(props: Props) {
             <ListItemButton
               sx={{
                 borderRadius: 3,
-                '&:hover': {
-                  color: 'primary.main',
-                  bgColor: 'primary.main',
-                },
-                alignItems: 'center',
+                color: 'primary.main',
               }}
               id={styles.navItem}
               onClick={() => handleNavigationClick(text)}
@@ -150,7 +146,7 @@ export default function Sidebar(props: Props) {
         }}
       >
         <Toolbar>
-        <StyledIconButton onClick={handleDrawerToggle}>
+          <StyledIconButton onClick={handleDrawerToggle}>
             <DragHandleRounded />
           </StyledIconButton>
           <Box sx={{ flexGrow: 1 }} />
