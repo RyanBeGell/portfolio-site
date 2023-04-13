@@ -40,12 +40,12 @@ export default function ProjectCard(props:Props) {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions sx={{display:'flex', justifyContent:'center'}}>
+      <CardActions>
         <Button size="small" startIcon={<LanguageIcon/>} sx={{flex: 1}}>
           LIVE DEMO
         </Button>
         <Button size="small" startIcon={<GitHubIcon/>} sx={{flex: 1}}>
-          VIEW ON GITHUB
+          GITHUB
         </Button>
       </CardActions>
     </Card>
