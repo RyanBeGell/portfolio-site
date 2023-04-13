@@ -2,6 +2,7 @@ import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import DragHandleRoundedIcon from '@mui/icons-material/DragHandleRounded';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import MarkEmailUnreadOutlinedIcon from '@mui/icons-material/MarkEmailUnreadOutlined';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import SearchIcon from '@mui/icons-material/Search';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -115,7 +116,7 @@ export default function BlogAppBar(props: Props) {
                   </Button>
                 ))}
               </Box>
-              <Search
+              {/* <Search
                 sx={{
                   mr: '5px',
                   bgcolor: 'background.default',
@@ -157,10 +158,13 @@ export default function BlogAppBar(props: Props) {
                     },
                   }}
                 />
-              </Search>
+              </Search> */}
               <Box>
                 <StyledIconButton title="Subscribe to email notifications">
                   <MarkEmailUnreadOutlinedIcon />
+                </StyledIconButton>
+                <StyledIconButton title="Github Repository">
+                  <GitHubIcon />
                 </StyledIconButton>
                 {mode === 'light' ? (
                   <StyledIconButton
