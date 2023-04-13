@@ -73,29 +73,14 @@ export default function BlogCard(props: Props) {
           }}
         >
           <Typography
-            variant="subtitle2"
+            variant="body2"
             component="span"
             noWrap
             sx={{ color: 'text.secondary' }}
           >
-            {props.date}
+            {props.date + ' · ' + props.minsToRead + ' min read'}
           </Typography>
-          <Typography
-            variant="subtitle2"
-            component="span"
-            noWrap
-            sx={{ color: 'text.secondary', px: '8px' }}
-          >
-            ·
-          </Typography>
-          <Typography
-            variant="subtitle2"
-            component="span"
-            noWrap
-            sx={{ color: 'text.secondary' }}
-          >
-            {props.minsToRead + ' min read'}
-          </Typography>
+
           <Link href={`/blog/posts/${props.path}`}>
             <Typography
               component="div"
@@ -115,7 +100,7 @@ export default function BlogCard(props: Props) {
           </Link>
           <Box className="ellipsisBox">
             <Typography
-              variant="subtitle1"
+              variant="body2"
               color="text.secondary"
               component="div"
               className={`${boxSize === 'small' ? 'invisible' : null}`}
