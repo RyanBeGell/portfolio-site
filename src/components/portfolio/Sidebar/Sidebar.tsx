@@ -225,7 +225,7 @@ export default function Sidebar(props: Props) {
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: drawerWidth,
-              p: '16px',
+              p: '16px', 
               border: 0,
               backgroundColor: 'background.nav',
             },
@@ -254,11 +254,7 @@ export default function Sidebar(props: Props) {
             </ListItem>
           </List>
           <List sx={{ marginTop: `auto`, mb: 0, p: 0 }}>
-            {mode === 'light' ? (
-              <Divider sx={{ borderColor: 'rgba(255,255,255, 0.3)' }} />
-            ) : (
-              <Divider />
-            )}
+
             <ListItem sx={{ m: 0, p: 0 }}>
               <SidebarFooter />
             </ListItem>
