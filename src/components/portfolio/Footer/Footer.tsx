@@ -11,13 +11,12 @@ const Footer = () => {
         <Link href="/">
           <Image height={25} width={25} src="/favicon.png" style={{ cursor: 'pointer' }}/>
         </Link>
-          <Divider orientation="vertical" />
         <Divider
           orientation="vertical"
           flexItem
           sx={{ mx: '8px', my: '1px' }}
         />
-        <Typography variant={'subtitle2'} color="text.navFooter">
+        <Typography variant={'body2'} color="text.navFooter">
           &copy; {year} Ryan BeGell
         </Typography>
       </Box>
