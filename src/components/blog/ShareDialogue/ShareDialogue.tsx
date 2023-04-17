@@ -4,7 +4,8 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import RedditIcon from '@mui/icons-material/Reddit';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import { Grid, InputAdornment, Typography } from '@mui/material';
+import FaceBookIcon from '@mui/icons-material/FaceBook';
+import { Grid, InputAdornment, Typography, useTheme } from '@mui/material';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
@@ -13,6 +14,7 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
+import router, { useRouter } from 'next/router';
 
 export interface Props {
   open: boolean;
@@ -20,15 +22,21 @@ export interface Props {
 }
 
 export default function ShareDialog(props: Props) {
+
   const [copySuccess, setCopySuccess] = useState(false);
 
   const link = 'www.example.com/blog/post/example';
 
+  const router = useRouter();
+  const contentShift = router.pathname === '/' ? 'shiftContentRight' : '';
+  const theme = useTheme();
+  const darkMode = theme.palette.mode === 'dark';
+
   const icons = [
     { color: 'linkedInBlue', Icon: LinkedInIcon },
-    { color: 'redditOrange', Icon: RedditIcon },
     { color: 'twitterBlue', Icon: TwitterIcon },
-    { color: 'whatsAppGreen', Icon: WhatsAppIcon },
+    { color: 'redditOrange', Icon: RedditIcon },
+    { color: 'facebookBlue', Icon: FaceBookIcon },
     { color: 'gmailRed', Icon: EmailIcon },
   ];
 
@@ -43,7 +51,7 @@ export default function ShareDialog(props: Props) {
   };
 
   return (
-    <Dialog open={props.open} onClose={props.handleClose}>
+    <Dialog open={props.open} onClose={props.handleClose} className={contentShift}>
       <DialogTitle sx={{ mt: '8px' }}>
         Share
         <IconButton
@@ -65,12 +73,21 @@ export default function ShareDialog(props: Props) {
         <Grid container direction="row" spacing={3}>
           {icons.map(({ color, Icon }, index) => (
             <Grid item key={index}>
-              <IconButton
-                size="large"
-                sx={{ border: '1px solid', color: `var(--${color})` }}
-              >
-                <Icon fontSize="inherit" />
-              </IconButton>
+      {darkMode ? (
+        <IconButton
+          size="large"
+          sx={{ backgroundColor: `var(--${color})`, '&:hover': { color:`var(--${color})`,  }  }}
+        >
+          <Icon fontSize="inherit" />
+        </IconButton>
+      ) : (
+        <IconButton
+          size="large"
+          sx={{ border: '1px solid', color: `var(--${color})` }}
+        >
+          <Icon fontSize="inherit" />
+        </IconButton>
+      )}
             </Grid>
           ))}
         </Grid>

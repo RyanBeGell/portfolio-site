@@ -2,16 +2,20 @@ import CodeIcon from '@mui/icons-material/Code';
 import ContactMailOutlinedIcon from '@mui/icons-material/ContactMailOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import DragHandleRounded from '@mui/icons-material/DragHandleRounded';
+import EmailIcon from '@mui/icons-material/Email';
 import FolderSpecialOutlinedIcon from '@mui/icons-material/FolderSpecialOutlined';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import HistoryEduOutlinedIcon from '@mui/icons-material/HistoryEduOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremiumOutlined';
-import { Avatar } from '@mui/material';
+import { Avatar, Grid, createSvgIcon } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -26,6 +30,7 @@ import { useRouter } from 'next/router';
 import React, { useContext } from 'react';
 import { scroller } from 'react-scroll';
 import { ColorModeContext } from '../../../../pages/_app';
+import CodePen from '../../Icons/Codepen';
 import StyledIconButton from '../../blog/AppBar/StyledIconButton/StyledIconButton';
 import SidebarFooter from './Footer/SidebarFooter';
 import styles from './sidebar.module.css';
@@ -64,6 +69,36 @@ export default function Sidebar(props: Props) {
     });
   };
 
+  const CodePenIcon = createSvgIcon(
+    <svg viewBox="0 0 128 128" width={24} height={24}>
+      <path d="M125.571 39.926l-58.5-39c-1.997-1.23-4.128-1.24-6.142 0l-58.5 39C.929 40.926 0 42.712 0 44.497v39c0 1.786.929 3.572 2.429 4.571l58.5 39.006c1.996 1.229 4.128 1.24 6.142 0l58.5-39.006c1.5-.999 2.429-2.785 2.429-4.57v-39c0-1.786-.929-3.572-2.429-4.572zm-56.07-24.144l43.07 28.715-19.214 12.858L69.5 41.425V15.784zm-11.001 0v25.644L34.642 57.354 15.428 44.498 58.5 15.782zm-47.5 39l13.786 9.215L11 73.212v-18.43zm47.5 57.43L15.428 83.497 34.642 70.64 58.5 86.569v25.643zM64 76.997l-19.428-13 19.428-13 19.428 13-19.428 13zm5.5 35.215V86.569L93.357 70.64l19.214 12.857-43.07 28.715zm47.5-39l-13.786-9.215L117 54.783v18.429z" />
+    </svg>,
+    'CodePenIcon'
+  );
+
+  //sidebar social icons
+  const SocialIconButton = ({ Icon }: { Icon: React.ElementType }) => {
+    const isDarkMode = theme.palette.mode === 'dark';
+    const backgroundColor = isDarkMode ? theme.palette.primary.main : '#FFFFFF';
+    const color = isDarkMode ? 'white' : theme.palette.primary.main;
+    const hoverBackgroundColor = isDarkMode ? '#0072E540': 'rgba(0, 0, 0, 0.7)';
+
+    return (
+      <IconButton
+        sx={{
+          color,
+          backgroundColor,
+          '&:hover': {
+            backgroundColor: hoverBackgroundColor,
+            color: 'primary.main',
+          },
+        }}
+      >
+          <Icon/>
+      </IconButton>
+    );
+  };
+
   const drawer = (
     <div>
       <Box display="flex" justifyContent="center" alignItems="center">
@@ -79,6 +114,30 @@ export default function Sidebar(props: Props) {
       >
         Software Developer
       </Typography>
+      <Grid
+        container
+        spacing={1.5}
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center', // Add this line
+          mb: '16px',
+        }}
+      >
+        <Grid item>
+          <SocialIconButton Icon={GitHubIcon} />
+        </Grid>
+        <Grid item>
+          <SocialIconButton Icon={CodePenIcon} />
+        </Grid>
+        <Grid item>
+          <SocialIconButton Icon={LinkedInIcon} />
+        </Grid>
+        <Grid item>
+          <SocialIconButton Icon={EmailIcon} />
+        </Grid>
+      </Grid>
       {mode === 'light' ? (
         <Divider sx={{ borderColor: 'rgba(255,255,255, 0.3)' }} />
       ) : (
@@ -94,17 +153,14 @@ export default function Sidebar(props: Props) {
           'Blog',
           'Contact',
         ].map((text, index) => (
-          <ListItem
-            key={text}
-            sx={{ px: '0px', py: '4px' }}
-            color="primary.main"
-          >
+          <ListItem key={text} sx={{ p: 0, color: '#ffffff' }}>
             <ListItemButton
               sx={{
-                borderRadius: 3,
-                color: 'primary.main',
+                borderRadius: 2,
+                color: '#FFFFFF',
+                my: '2px',
+                py: '6px',
               }}
-              id={styles.navItem}
               onClick={() => handleNavigationClick(text)}
             >
               <ListItemIcon sx={{ color: '#ffffff' }}>
@@ -225,7 +281,7 @@ export default function Sidebar(props: Props) {
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: drawerWidth,
-              p: '16px', 
+              p: '16px',
               border: 0,
               backgroundColor: 'background.nav',
             },
@@ -254,7 +310,6 @@ export default function Sidebar(props: Props) {
             </ListItem>
           </List>
           <List sx={{ marginTop: `auto`, mb: 0, p: 0 }}>
-
             <ListItem sx={{ m: 0, p: 0 }}>
               <SidebarFooter />
             </ListItem>
