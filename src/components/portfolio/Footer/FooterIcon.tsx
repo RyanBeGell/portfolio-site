@@ -26,8 +26,7 @@ const FooterIcon = ({ type, color }: IconProps) => {
   return (
       <IconComponent
         sx={{
-          color: 'text.navFooter',
-          mr: '8px',
+          color: 'text.secondary',
           fontSize: '25px',
           '&:hover': {
             color: `var(--${color})`,

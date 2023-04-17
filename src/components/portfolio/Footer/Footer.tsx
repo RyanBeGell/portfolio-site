@@ -14,15 +14,25 @@ const Footer = () => {
         <Divider
           orientation="vertical"
           flexItem
-          sx={{ mx: '8px', my: '1px' }}
+          sx={{ mx: '8px', my: '2px' }}
         />
-        <Typography variant={'body2'} color="text.navFooter">
+        <Typography variant={'subtitle2'} color="text.secondary">
           &copy; {year} Ryan BeGell
         </Typography>
       </Box>
       <Box display="flex">
         <FooterIcon type="GitHub" />
+        <Divider
+          orientation="vertical"
+          flexItem
+          sx={{ mx: '8px', my: '2px' }}
+        />
         <FooterIcon type="LinkedIn" color="linkedInBlue" />
+        <Divider
+          orientation="vertical"
+          flexItem
+          sx={{ mx: '8px', my: '2px' }}
+        />
         <FooterIcon type="Email" color="gmailRed" />
       </Box>
     </Box>
