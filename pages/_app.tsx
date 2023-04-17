@@ -66,7 +66,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           )}
           <Box
             className={
-              !router.pathname.includes('blog') ? styles.shiftContentLeft : ''
+              !router.pathname.includes('blog') ? "shiftContentRight" : ''
             }
           >
             {/* passing function to change color mode to sideNav to use on DarkMode switch*/}

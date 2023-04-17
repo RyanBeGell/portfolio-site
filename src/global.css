@@ -4,7 +4,9 @@
   --redditOrange: #FF5700;
   --whatsAppGreen: #25D366;
   --gmailRed: #BB001B;
+  --facebookBlue: #4267B2;
   --linkIconGray: #666666;
+
 }
 
 
@@ -161,4 +163,9 @@ body::-webkit-scrollbar-thumb {
 
 body::-webkit-scrollbar-thumb:hover {
   background-color: #555555;
+}
+
+/* class for black background color and 48px padding*/
+.shiftContentRight{
+  margin-left: 282px; 
 }
