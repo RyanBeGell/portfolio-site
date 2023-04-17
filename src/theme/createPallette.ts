@@ -70,7 +70,7 @@ export const getDesignTokens = (mode: PaletteMode) => ({
           contrast: '#114b7a',
           blogIcons: 'rgba(168, 168, 168, 1)',
           secondary:'rgba(117, 117, 117, 1)',
-          navFooter:'#C1C7CE',
+          navFooter:'#e0e0e0',
       }),
     },
     typography: {
