@@ -93,7 +93,7 @@ export default function BlogCard(props: Props) {
                   textDecoration: 'underline',
                 },
               }}
-              className="clamp3"
+              className="ellipsisBox"
             >
               {props.title}
             </Typography>
@@ -108,11 +108,10 @@ export default function BlogCard(props: Props) {
               {props.body}
             </Typography>
           </Box>
-          <Box display="flex" sx={{ mt: '16px', alignItems: 'center' }}>
+          <Box display="flex" sx={{ mt: '8px', alignItems: 'center' }}>
             <Grid container spacing={1} sx={{ alignItems: 'center' }}>
               {props.chips?.map((chip, index) => (
                 <Grid item key={chip}>
-                  {router.pathname === '/' ? (
                     <Chip
                       label={chip}
                       size="small"
@@ -123,9 +122,6 @@ export default function BlogCard(props: Props) {
                         })
                       }
                     />
-                  ) : (
-                    <Chip label={chip} size="small" />
-                  )}
                 </Grid>
               ))}
             </Grid>
