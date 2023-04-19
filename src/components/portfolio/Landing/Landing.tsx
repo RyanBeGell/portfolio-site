@@ -8,13 +8,13 @@ import styles from './Landing.module.css';
 
 const handleScroll = () => {
   //used to determine offset (mobile app bar is 56px height)
-  const mobile = window.innerWidth < 600;
+  const appBarOpen = window.innerWidth < 1200;
 
   scroller.scrollTo('skills', {
     duration: 500,
     delay: 100,
     smooth: true,
-    offset: mobile ? -56 : 0,
+    offset: appBarOpen ? -56 : 0,
   });
 };
 
@@ -23,7 +23,7 @@ export default function Landing() {
     <Box className="centerFlexBox" sx={{ minHeight: '100vh', mx: '48px' }}>
       <Grid className="centerFlexBox">
         <Grid item>
-          <Typography variant={'h1'} className={'name'}>
+          <Typography variant={'h1'} className={'name'} >
             Ryan
             <Typography
               component="span"
@@ -42,12 +42,12 @@ export default function Landing() {
               smartBackspace={false}
               shuffle={false}
               loopCount={0}
-              showCursor={true}
+              showCursor={false}
               cursorChar="_"
             />
           </Typography>
         </Grid>
-        <Grid item sx={{ pl: '32px' }}>
+        <Grid item sx={{ pl: '32px',  display: { xs: 'none', sm: 'none', md:'block' },}}>
           <Image
             src="/programming.svg"
             alt="ManAtDesk"
