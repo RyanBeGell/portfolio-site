@@ -29,6 +29,7 @@ const SidebarFooter = () => {
       <MUILink
         href="https://github.com/RyanBeGell/portfolio-site"
         target="_blank"
+        rel="noopener"
         color="text.navFooter"
         underline="hover"
         onMouseEnter={handleMouseEnter}
