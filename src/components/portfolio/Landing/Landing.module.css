@@ -1,12 +1,3 @@
-.shiftContentLeft{
-    margin-left: 282px; 
-}
-
-@media screen and (max-width: 900px) {
-  .shiftContentLeft{
-    margin-left: 0px;   
-  }
-}
 
   #ArrowIcon{
     position: absolute;
