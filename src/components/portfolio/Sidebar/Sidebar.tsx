@@ -30,7 +30,6 @@ import { useRouter } from 'next/router';
 import React, { useContext } from 'react';
 import { scroller } from 'react-scroll';
 import { ColorModeContext } from '../../../../pages/_app';
-import CodePen from '../../Icons/Codepen';
 import StyledIconButton from '../../blog/AppBar/StyledIconButton/StyledIconButton';
 import SidebarFooter from './Footer/SidebarFooter';
 import styles from './sidebar.module.css';
@@ -70,7 +69,7 @@ export default function Sidebar(props: Props) {
   };
 
   const CodePenIcon = createSvgIcon(
-    <svg viewBox="0 0 128 128" width={24} height={24}>
+    <svg viewBox="0 0 128 128" >
       <path d="M125.571 39.926l-58.5-39c-1.997-1.23-4.128-1.24-6.142 0l-58.5 39C.929 40.926 0 42.712 0 44.497v39c0 1.786.929 3.572 2.429 4.571l58.5 39.006c1.996 1.229 4.128 1.24 6.142 0l58.5-39.006c1.5-.999 2.429-2.785 2.429-4.57v-39c0-1.786-.929-3.572-2.429-4.572zm-56.07-24.144l43.07 28.715-19.214 12.858L69.5 41.425V15.784zm-11.001 0v25.644L34.642 57.354 15.428 44.498 58.5 15.782zm-47.5 39l13.786 9.215L11 73.212v-18.43zm47.5 57.43L15.428 83.497 34.642 70.64 58.5 86.569v25.643zM64 76.997l-19.428-13 19.428-13 19.428 13-19.428 13zm5.5 35.215V86.569L93.357 70.64l19.214 12.857-43.07 28.715zm47.5-39l-13.786-9.215L117 54.783v18.429z" />
     </svg>,
     'CodePenIcon'
@@ -91,7 +90,7 @@ export default function Sidebar(props: Props) {
           '&:hover': {
             backgroundColor: hoverBackgroundColor,
             color: 'primary.main',
-          },
+          }, 
         }}
       >
           <Icon/>
@@ -153,11 +152,11 @@ export default function Sidebar(props: Props) {
           'Blog',
           'Contact',
         ].map((text, index) => (
-          <ListItem key={text} sx={{ p: 0, color: '#ffffff' }}>
+          <ListItem key={text} sx={{ p: 0 }}>
             <ListItemButton
               sx={{
                 borderRadius: 2,
-                color: '#FFFFFF',
+                color: 'primary.main',
                 my: '2px',
                 py: '6px',
               }}
@@ -196,7 +195,7 @@ export default function Sidebar(props: Props) {
       <AppBar
         position="fixed"
         sx={{
-          display: { sm: 'block', md: 'none' },
+          display: { sm: 'block', lg: 'none' },
           backgroundColor: 'background.blogNav',
           backdropFilter: 'blur(8px)',
         }}
@@ -230,7 +229,7 @@ export default function Sidebar(props: Props) {
             keepMounted: true,
           }} // Better open performance on mobile.
           sx={{
-            display: { sm: 'block', md: 'none' },
+            display: { sm: 'block', lg: 'none' },
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: drawerWidth,
@@ -262,11 +261,6 @@ export default function Sidebar(props: Props) {
             </ListItem>
           </List>
           <List sx={{ marginTop: `auto`, mb: 0, p: 0 }}>
-            {mode === 'light' ? (
-              <Divider sx={{ background: 'rgba(255,255,255, 0.3)' }} />
-            ) : (
-              <Divider />
-            )}
             <ListItem sx={{ m: 0, p: 0 }}>
               <SidebarFooter />
             </ListItem>
@@ -277,7 +271,7 @@ export default function Sidebar(props: Props) {
           variant="permanent"
           anchor="left"
           sx={{
-            display: { xs: 'none', md: 'block' },
+            display: { xs: 'none', lg: 'block' },
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: drawerWidth,
