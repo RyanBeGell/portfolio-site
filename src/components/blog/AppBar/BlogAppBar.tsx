@@ -19,6 +19,7 @@ import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import { ColorModeContext } from '../../../../pages/_app';
 import StyledIconButton from './StyledIconButton/StyledIconButton';
+import MUILink from '@mui/material/Link';
 
 export interface Props {
   toggleColorMode: () => void;
@@ -163,9 +164,11 @@ export default function BlogAppBar(props: Props) {
                 <StyledIconButton title="Subscribe to email notifications">
                   <MarkEmailUnreadOutlinedIcon />
                 </StyledIconButton>
+                <MUILink href="https://github.com/RyanBeGell/portfolio-site" target="_blank" rel="noopener">
                 <StyledIconButton title="Github Repository">
                   <GitHubIcon />
                 </StyledIconButton>
+                </MUILink>
                 {mode === 'light' ? (
                   <StyledIconButton
                     title="Dark mode"
