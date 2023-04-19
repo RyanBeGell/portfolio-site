@@ -27,27 +27,9 @@ export default function RecentBlogPostsSection(props: Props) {
             <SectionTitle title="Recent Blog Posts" />
           </Box>
           <Box sx={{ pb: '48px' }}>
-            <Grid item container xs={12} sx={{ width: '100%' }}>
+            <Grid container spacing={3}>
               {RecentBlogPosts.map((post, index) => (
-                <Grid
-                  item
-                  key={index}
-                  xl={6}
-                  lg={6}
-                  md={12}
-                  sx={{
-                    pb: index < 2 ? '12px' : '0px',
-                    pt: index >= 2 ? '12px' : '0px',
-                    pr:
-                      (index + 1) % 2 === 0
-                        ? { xl: '0px', lg: '0px' }
-                        : { xl: '12px', lg: '12px' },
-                    pl:
-                      (index + 1) % 2 === 0
-                        ? { xl: '12px', lg: '12px' }
-                        : { xl: '0px', lg: '0px' },
-                  }}
-                >
+                <Grid item key={index} xl={6} lg={6} md={6}>
                   <BlogCard
                     key={index}
                     title={post.title}
