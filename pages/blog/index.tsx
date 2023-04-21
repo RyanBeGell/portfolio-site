@@ -1,15 +1,17 @@
 import BlogCard from '@/src/components/blog/Card/BlogCard';
 import BlogPostsCardData from '@/src/components/blog/Card/BlogCardData';
-import { Divider, Typography } from '@mui/material';
+import { Divider, Typography, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import Grid from '@mui/material/Grid';
+import Pagination from '@mui/material/Pagination';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 export default function Home() {
   const router = useRouter();
   const { tag } = router.query;
+  const theme = useTheme();
 
   const [selectedChip, setSelectedChip] = useState<string | null>(
     tag as string | null
@@ -43,7 +45,6 @@ export default function Home() {
       }
     }, [tag]);
 
-
     return chipData.map(({ label }) => (
       <Chip
         key={label}
@@ -57,13 +58,13 @@ export default function Home() {
   };
 
   const filteredPosts = selectedChip
-  ? BlogPostsCardData.filter((post) => post.chips.includes(selectedChip))
-  : BlogPostsCardData;
-  
+    ? BlogPostsCardData.filter((post) => post.chips.includes(selectedChip))
+    : BlogPostsCardData;
+
   return (
     <>
-      <Box className="centerBox">
-        <Box sx={{ maxWidth: '850px' }}>
+      <Box className="centerBox" >
+        <Box sx={{ maxWidth: '835px',}}>
           <Typography variant={'h3'} className={'name'}>
             Dev Blog
           </Typography>

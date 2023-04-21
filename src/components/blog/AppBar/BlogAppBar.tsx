@@ -108,6 +108,7 @@ export default function BlogAppBar(props: Props) {
                     size="large"
                     sx={{
                       color: 'text.primary',
+                      borderRadius:'10px',
                       '&:hover': {
                         color: 'primary.main',
                       },
