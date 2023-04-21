@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import ShareDialog from '../ShareDialogue/ShareDialogue';
+
 export interface Props {
   title: string;
   body: string;
@@ -62,83 +63,80 @@ export default function BlogCard(props: Props) {
   }, [cardRef, showExcerpt]);
 
   return (
-    <Card raised ref={cardRef} sx={{ display: 'flex' }}>
-      <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-        <CardContent
-          sx={{
-            pl: boxSize === 'small' ? '16px ' : '24px ',
-            pt: boxSize === 'small' ? '12px' : '16px',
-            pr: '0px',
-            pb: boxSize === 'small' ? '8px !important' : '16px !important',
-          }}
+    <Card raised ref={cardRef} sx={{ display: 'flex', flexDirection: 'row' }}>
+      <CardContent
+        sx={{
+          pl: boxSize === 'small' ? '16px ' : '24px ',
+          pt: boxSize === 'small' ? '12px' : '16px',
+          pr: '0px',
+          pb: boxSize === 'small' ? '8px !important' : '16px !important',
+        }}
+      >
+        <Typography
+          variant="body2"
+          component="span"
+          noWrap
+          sx={{ color: 'text.secondary' }}
         >
+          {props.date + ' · ' + props.minsToRead + ' min read'}
+        </Typography>
+        <Link href={`/blog/posts/${props.path}`}>
+          <Typography
+            component="div"
+            variant={boxSize === 'large' ? 'h5' : 'h6'}
+            sx={{
+              mt: '8px',
+              mb: '8px',
+              cursor: 'pointer',
+              '&:hover': {
+                textDecoration: 'underline',
+              },
+            }}
+            className="ellipsisBox"
+          >
+            {props.title}
+          </Typography>
+        </Link>
+        <Box className="ellipsisBox">
           <Typography
             variant="body2"
-            component="span"
-            noWrap
-            sx={{ color: 'text.secondary' }}
+            color="text.secondary"
+            component="div"
+            className={`${boxSize === 'small' ? 'invisible' : null}`}
           >
-            {props.date + ' · ' + props.minsToRead + ' min read'}
+            {props.body}
           </Typography>
-
-          <Link href={`/blog/posts/${props.path}`}>
-            <Typography
-              component="div"
-              variant={boxSize === 'large' ? 'h5' : 'h6'}
-              sx={{
-                mt: '8px',
-                mb: '8px',
-                cursor: 'pointer',
-                '&:hover': {
-                  textDecoration: 'underline',
-                },
-              }}
-              className="ellipsisBox"
-            >
-              {props.title}
-            </Typography>
-          </Link>
-          <Box className="ellipsisBox">
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              component="div"
-              className={`${boxSize === 'small' ? 'invisible' : null}`}
-            >
-              {props.body}
-            </Typography>
-          </Box>
-          <Box display="flex" sx={{ mt: '8px', alignItems: 'center' }}>
-            <Grid container spacing={1} sx={{ alignItems: 'center' }}>
-              {props.chips?.map((chip, index) => (
-                <Grid item key={chip}>
-                    <Chip
-                      label={chip}
-                      size="small"
-                      onClick={() =>
-                        router.push({
-                          pathname: '/blog',
-                          query: { tag: chip },
-                        })
-                      }
-                    />
-                </Grid>
-              ))}
-            </Grid>
-            <IconButton
-              onClick={handleClickOpen}
-              sx={{
-                ml: 'auto',
-                color: 'text.blogIcons',
-                '&:hover': { color: 'primary.main' },
-              }}
-            >
-              <ShareIcon />
-            </IconButton>
-          </Box>
-        </CardContent>
-        <ShareDialog open={open} handleClose={handleClose} />
-      </Box>
+        </Box>
+        <Box display="flex" sx={{ mt: '8px', alignItems: 'center' }}>
+          <Grid container spacing={1} sx={{ alignItems: 'center' }}>
+            {props.chips?.map((chip, index) => (
+              <Grid item key={chip}>
+                <Chip
+                  label={chip}
+                  size="small"
+                  onClick={() =>
+                    router.push({
+                      pathname: '/blog',
+                      query: { tag: chip },
+                    })
+                  }
+                />
+              </Grid>
+            ))}
+          </Grid>
+          <IconButton
+            onClick={handleClickOpen}
+            sx={{
+              ml: 'auto',
+              color: 'text.blogIcons',
+              '&:hover': { color: 'primary.main' },
+            }}
+          >
+            <ShareIcon />
+          </IconButton>
+        </Box>
+      </CardContent>
+      <ShareDialog open={open} handleClose={handleClose} />
       <Box display="flex" alignItems="center">
         <CardMedia
           component="img"
@@ -147,6 +145,7 @@ export default function BlogCard(props: Props) {
             width: imgHeightWidth.width,
             py: boxSize === 'small' ? '16px' : '24px',
             px: boxSize === 'small' ? '16px' : '24px',
+            objectFit: 'cover', // add this line to set the object-fit property
           }}
           image="https://mui.com/static/images/cards/live-from-space.jpg"
           alt="Live from space album cover"
