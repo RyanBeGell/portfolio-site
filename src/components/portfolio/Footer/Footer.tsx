@@ -1,16 +1,26 @@
 import { Box, Divider, Typography } from '@mui/material';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import FooterIcon from './FooterIcon';
+
 const Footer = () => {
   const year: number = new Date().getFullYear();
+  const router = useRouter();
+
+  const handleNavigationClick = () => {
+    router.push('/');
+  };
 
   return (
     <Box display="flex" justifyContent="space-between" alignItems={'center'}>
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <Link href="/">
-          <Image height={25} width={25} src="/favicon.png" style={{ cursor: 'pointer' }}/>
-        </Link>
+        <Image
+          onClick={handleNavigationClick}
+          height={25}
+          width={25}
+          src="/favicon.png"
+          style={{ cursor: 'pointer' }}
+        />
         <Divider
           orientation="vertical"
           flexItem

@@ -1,9 +1,8 @@
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import DragHandleRoundedIcon from '@mui/icons-material/DragHandleRounded';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import MarkEmailUnreadOutlinedIcon from '@mui/icons-material/MarkEmailUnreadOutlined';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import SearchIcon from '@mui/icons-material/Search';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -11,15 +10,14 @@ import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
-import { styled, useTheme } from '@mui/material/styles';
+import MUILink from '@mui/material/Link';
 import Toolbar from '@mui/material/Toolbar';
+import { styled, useTheme } from '@mui/material/styles';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import { ColorModeContext } from '../../../../pages/_app';
 import StyledIconButton from './StyledIconButton/StyledIconButton';
-import MUILink from '@mui/material/Link';
 
 export interface Props {
   toggleColorMode: () => void;
@@ -29,7 +27,7 @@ export default function BlogAppBar(props: Props) {
   const { mode } = useContext(ColorModeContext);
   const theme = useTheme();
 
-  const pages = ['Home','Blog'];
+  const pages = ['Home', 'Blog'];
 
   // For open/close of email subscribe modal
   const [open, setOpen] = useState(false);
@@ -92,9 +90,14 @@ export default function BlogAppBar(props: Props) {
             <Toolbar
               sx={{ justifyContent: { xs: 'space-between', sm: 'none' }, p: 0 }}
             >
-              <Link href="/" className="pointer-hover">
-                <Image src="/favicon.png" alt="logo" width={38} height={38}  className="hover-pointer"/>
-              </Link>
+              <Image
+                onClick={() => handleRedirect('Home')}
+                src="/favicon.png"
+                alt="logo"
+                width={38}
+                height={38}
+                className="hover-pointer"
+              />
               <Divider
                 orientation="vertical"
                 flexItem={true}
@@ -108,7 +111,7 @@ export default function BlogAppBar(props: Props) {
                     size="large"
                     sx={{
                       color: 'text.primary',
-                      borderRadius:'10px',
+                      borderRadius: '10px',
                       '&:hover': {
                         color: 'primary.main',
                       },
@@ -165,10 +168,14 @@ export default function BlogAppBar(props: Props) {
                 <StyledIconButton title="Subscribe to email notifications">
                   <MarkEmailUnreadOutlinedIcon />
                 </StyledIconButton>
-                <MUILink href="https://github.com/RyanBeGell/portfolio-site" target="_blank" rel="noopener">
-                <StyledIconButton title="Github Repository">
-                  <GitHubIcon />
-                </StyledIconButton>
+                <MUILink
+                  href="https://github.com/RyanBeGell/portfolio-site"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <StyledIconButton title="Github Repository">
+                    <GitHubIcon />
+                  </StyledIconButton>
                 </MUILink>
                 {mode === 'light' ? (
                   <StyledIconButton
