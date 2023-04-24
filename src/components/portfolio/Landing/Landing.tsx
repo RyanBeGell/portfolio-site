@@ -53,6 +53,7 @@ export default function Landing() {
             alt="ManAtDesk"
             width={700}
             height={600}
+            priority
           />
         </Grid>
       </Grid>
