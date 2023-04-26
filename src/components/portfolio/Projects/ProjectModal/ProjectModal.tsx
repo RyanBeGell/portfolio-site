@@ -76,16 +76,15 @@ export default function ProjectModal(props: Props) {
               anonymous location data to Google, even when no apps are running.
               Let Google help apps determine location. This means sending
               anonymous location data to Google, even when no apps are running.
-              <p>
+              <br /> <br />
                 Let Google help apps determine location. This means sending
                 anonymous location data to Google, even when no apps are
                 running. This means sending anonymous location data to Google,
                 even when no apps are running.
-              </p>
             </DialogContentText>
             <Box>
               {/* Front End Section/Icons */}
-              <Typography variant={'body1'} sx={{ py: '8px' }}>
+              <Typography variant={'body1'} sx={{ pb: '8px', pt:'24px' }}>
                 Technologies used
               </Typography>
               <IconsGrid
