@@ -80,7 +80,7 @@ export default function Sidebar(props: Props) {
     const isDarkMode = theme.palette.mode === 'dark';
     const backgroundColor = isDarkMode ? theme.palette.primary.main : '#FFFFFF';
     const color = isDarkMode ? 'white' : theme.palette.primary.main;
-    const hoverBackgroundColor = isDarkMode ? '#0072E540': 'rgba(0, 0, 0, 0.7)';
+    const hoverBackgroundColor = isDarkMode ? '': 'rgba(0, 0, 0, 0.7)';
 
     return (
       <IconButton
