@@ -1,6 +1,5 @@
 import BlogAppBar from '@/src/components/blog/AppBar/BlogAppBar';
 import Footer from '@/src/components/portfolio/Footer/Footer';
-import styles from '@/src/components/portfolio/Landing/Landing.module.css';
 import Sidebar from '@/src/components/portfolio/Sidebar/Sidebar';
 import '@/src/global.css';
 import BlogLayout from '@/src/layouts/blog/BlogLayout';
@@ -23,10 +22,11 @@ import React, { createContext, useMemo } from 'react';
 
 export const ColorModeContext = createContext<any>(null);
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   const [mode, setMode] = React.useState<PaletteMode>('dark');
   // Update the theme only if the mode changes
   const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
+  const router = useRouter();
 
   const colorMode = useMemo(
     () => ({
@@ -40,14 +40,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     []
   );
 
-  const router = useRouter();
-
   return (
     <>
       <ColorModeContext.Provider value={{ mode }}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-
           {/* Custom code snippet highlighting for light/dark mode */}
           {mode === 'light' ? (
             <GlobalStyles
@@ -66,7 +63,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           )}
           <Box
             className={
-              !router.pathname.includes('blog') ? "shiftContentRight" : ''
+              router.pathname === '/' ? 'shiftContentRight' : ''
             }
           >
             {/* passing function to change color mode to sideNav to use on DarkMode switch*/}
@@ -89,8 +86,8 @@ function MyApp({ Component, pageProps }: AppProps) {
               </DefaultLayout>
             )}
             {/* Global Footer */}
-            <Box sx={{ width: '100%',backgroundColor:'background.light' }}>
-              {mode==='dark'? <Divider/> :null}
+            <Box sx={{ width: '100%', backgroundColor: 'background.light' }}>
+              {mode === 'dark' ? <Divider /> : null}
               <Box sx={{ mx: '48px' }}>
                 <Box
                   sx={{
