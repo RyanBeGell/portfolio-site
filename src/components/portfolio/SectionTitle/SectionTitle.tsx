@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useTheme } from '@mui/material';
 import ScrollAnimation from '../../ScrollAnimation';
 import styles from './SectionTitle.module.css';
 
@@ -8,9 +8,13 @@ export interface Props {
 }
 
 export default function SectionTitle(props: Props) {
+
+  const theme = useTheme();
+  const darkMode = theme.palette.mode === 'dark';
+  
   return (
     <ScrollAnimation animation={'fade'} timeout={500}>
-      <Box className={styles.section}>
+      <Box className={darkMode ? styles.sectionDark : styles.section}>
         <Box sx={{ px: '16px', pb: '48px' }}>
           <Typography variant="h4">&nbsp;{props.title}</Typography>
           {props.title2 ? (
