@@ -5,12 +5,13 @@ import Image from 'next/image';
 import { scroller } from 'react-scroll';
 import ReactTyped from 'react-typed';
 import styles from './Landing.module.css';
+import ScrollAnimation from '../../ScrollAnimation';
 
 const handleScroll = () => {
   //used to determine offset (mobile app bar is 56px height)
   const appBarOpen = window.innerWidth < 1200;
 
-  scroller.scrollTo('skills', {
+  scroller.scrollTo('about', {
     duration: 500,
     delay: 100,
     smooth: true,
@@ -22,6 +23,7 @@ export default function Landing() {
   return (
     <Box className="centerFlexBox" sx={{ minHeight: '100vh', mx: '48px' }}>
       <Grid className="centerFlexBox">
+      <ScrollAnimation animation={'fade'} timeout={500}>
         <Grid item>
           <Typography variant={'h1'} className={'name'} >
             Ryan
@@ -34,6 +36,7 @@ export default function Landing() {
               &nbsp;BeGell
             </Typography>
           </Typography>
+          <ScrollAnimation animation={'fade'} timeout={1000}>
           <Typography variant={'h4'} noWrap>
             <ReactTyped
               loop={false}
@@ -46,7 +49,10 @@ export default function Landing() {
               cursorChar="_"
             />
           </Typography>
+          </ScrollAnimation>
         </Grid>
+        </ScrollAnimation>
+        <ScrollAnimation animation={'fade'} timeout={1500}>
         <Grid item sx={{ pl: '32px',  display: { xs: 'none', sm: 'none', md:'block' },}}>
           <Image
             src="/programming.svg"
@@ -56,6 +62,7 @@ export default function Landing() {
             priority
           />
         </Grid>
+        </ScrollAnimation>
       </Grid>
       <IconButton id={styles.ArrowIcon} color="primary" onClick={handleScroll}>
         <SouthIcon color="primary" sx={{ fontSize: '32px' }} />

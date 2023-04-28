@@ -19,7 +19,6 @@ export default function ProjectCard(props: Props) {
   const theme = useTheme();
 
   return (
-    <Grid item xs={12} sm={6} md={4} lg={4}>
       <Card raised id={styles.card}>
         <CardActionArea
           onClick={props.handleOpen}
@@ -64,6 +63,5 @@ export default function ProjectCard(props: Props) {
           </Button>
         </CardActions>
       </Card>
-    </Grid>
   );
 }

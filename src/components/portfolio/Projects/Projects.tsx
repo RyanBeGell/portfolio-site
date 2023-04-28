@@ -1,9 +1,10 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { useState } from 'react';
-import ProjectData from './ProjectCard/ProjectCardData';
+import ScrollAnimation from '../../ScrollAnimation';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import ProjectCard from './ProjectCard/ProjectCard';
+import ProjectData from './ProjectCard/ProjectCardData';
 import ProjectModal from './ProjectModal/ProjectModal';
 
 export default function ProjectsSection() {
@@ -14,24 +15,28 @@ export default function ProjectsSection() {
 
   return (
     <>
-      <ProjectModal open={open} handleClose={handleClose} />
-      <Box className="centerBox">
-        <Grid sx={{ maxWidth: 1150 }}>
+      <ProjectModal open={open} handleClose={handleClose}  />
+      <Box className="centerBox" >
+        <Box sx={{ maxWidth: 1150 }}>
           <SectionTitle title="Projects" />
-          <Grid item>
-            <Grid container spacing={3} justifyContent="center">
-              {ProjectData.map((item) => (
-                <ProjectCard
-                  key={item.title}
-                  handleOpen={handleOpen}
-                  title={item.title}
-                  body={item.body}
-                  image={item.image}
-                />
-              ))}
-            </Grid>
+          <Grid container spacing={3} justifyContent="center">
+            {ProjectData.map((item, index) => (
+              <Grid item xs={12} sm={6} md={4} lg={4} key={index}>
+                <ScrollAnimation
+                  animation={'fade'}
+                  timeout={1000 + index * 500}
+                >
+                  <ProjectCard
+                    handleOpen={handleOpen}
+                    title={item.title}
+                    body={item.body}
+                    image={item.image}
+                  />
+                </ScrollAnimation>
+              </Grid>
+            ))}
           </Grid>
-        </Grid>
+        </Box>
       </Box>
     </>
   );

@@ -1,7 +1,8 @@
 import * as Icons from '@/src/components/Icons';
 import { Box, Divider, Grid, Typography } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
 import Tooltip from '@mui/material/Tooltip';
+import { useTheme } from '@mui/material/styles';
+import ScrollAnimation from '../../ScrollAnimation';
 import styles from './IconsGrid.module.css';
 
 export interface Props {
@@ -48,30 +49,32 @@ const IconsGrid: React.FC<Props> = ({
               </Tooltip>
             )}
             {!noTitle && (
-              <Box className={styles.customIcon}>
-                <DynamicComponent
-                  key={name}
-                  height={height}
-                  width={width}
-                  fill={primary}
-                />
-                <Divider
-                  id={styles.divider}
-                  sx={{
-                    bgcolor: 'primary.main',
-                    height: 2,
-                    my: 1,
-                    mx: '20%',
-                  }}
-                />
-                <Typography
-                  id={styles.title}
-                  variant={'body1'}
-                  sx={{ color: 'primary.main' }}
-                >
-                  {name}
-                </Typography>
-              </Box>
+              <ScrollAnimation animation={'grow'} timeout={1000 + index * 250}>
+                <Box className={styles.customIcon}>
+                  <DynamicComponent
+                    key={name}
+                    height={height}
+                    width={width}
+                    fill={primary}
+                  />
+                  <Divider
+                    id={styles.divider}
+                    sx={{
+                      bgcolor: 'primary.main',
+                      height: 2,
+                      my: 1,
+                      mx: '20%',
+                    }}
+                  />
+                  <Typography
+                    id={styles.title}
+                    variant={'body1'}
+                    sx={{ color: 'primary.main' }}
+                  >
+                    {name}
+                  </Typography>
+                </Box>
+              </ScrollAnimation>
             )}
           </Grid>
         );

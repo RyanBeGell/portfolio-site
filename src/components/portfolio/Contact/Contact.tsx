@@ -1,9 +1,11 @@
 import SendIcon from '@mui/icons-material/Send';
-import { Button } from '@mui/material';
+import { Button, FormControlLabel } from '@mui/material';
 import Box from '@mui/material/Box';
+import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField';
 import { useContext, useState } from 'react';
 import { ColorModeContext } from '../../../../pages/_app';
+import ScrollAnimation from '../../ScrollAnimation';
 import SectionTitle from '../SectionTitle/SectionTitle';
 
 export default function Contact() {
@@ -24,12 +26,10 @@ export default function Contact() {
     setFormData({ ...formData, [name]: value });
   };
 
-
-const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  event.preventDefault(); 
-  console.log(formData); // will be changed to AWS SES 
-};
-
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log(formData); // will be changed to AWS SES
+  };
 
   return (
     <>
@@ -38,100 +38,124 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
           title="Get in Touch"
           title2="Feel free to contact me anytime"
         />
-        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ maxWidth: 1150 }}>
-          <TextField
-            margin="normal"
-            id="First Name"
-            label="First Name"
-            name="firstName"
-            autoComplete="off"
-            value={formData.firstName}
-            onChange={handleInputChange}
-            sx={{
-              width: '49%',
-              mr: '2%',
-              '&:hover  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline':
-                {
-                  borderColor: 'primary.main',
-                },
-            }}
-            color="primary"
-          />
-          <TextField
-            margin="normal"
-            id="Last Name"
-            label="Last Name"
-            name="lastName"
-            autoComplete="off"
-            value={formData.lastName}
-            onChange={handleInputChange}
-            sx={{
-              width: '49%',
-              '&:hover  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline':
-                {
-                  borderColor: 'primary.main',
-                },
-            }}
-          />
-          <TextField
-            margin="normal"
-            fullWidth
-            autoComplete="off"
-            id="email"
-            label="Email Address"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            sx={{
-              '&:hover  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline':
-                {
-                  borderColor: 'primary.main',
-                },
-            }}
-          />
-          <TextField
-            margin="normal"
-            fullWidth
-            autoComplete="off"
-            id="subject"
-            label="Subject"
-            name="subject"
-            value={formData.subject}
-            onChange={handleInputChange}
-            sx={{
-              '&:hover  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline':
-                {
-                  borderColor: 'primary.main',
-                },
-            }}
-          />
-          <TextField
-            margin="normal"
-            fullWidth
-            multiline
-            rows={6}
-            autoComplete="off"
-            id="message"
-            label="Your message here"
-            name="message"
-            value={formData.message}
-            onChange={handleInputChange}
-            sx={{
-              '&:hover  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline':
-                {
-                  borderColor: 'primary.main',
-                },
-            }}
-          />
-          <Button
-            size="large"
-            variant={`${mode == 'dark' ? 'outlined' : 'contained'}`}
-            sx={{ mt: '16px' }}
-            startIcon={<SendIcon />}
-            type="submit"
-          >
-            Send Message
-          </Button>
+        <Box
+          component="form"
+          noValidate
+          onSubmit={handleSubmit}
+          sx={{ maxWidth: 1150 }}
+        >
+          <ScrollAnimation animation={'fade'} timeout={500}>
+            <div>
+              <TextField
+                margin="normal"
+                id="First Name"
+                label="First Name"
+                name="firstName"
+                autoComplete="off"
+                value={formData.firstName}
+                onChange={handleInputChange}
+                sx={{
+                  width: '49%',
+                  mr: '2%',
+                  '&:hover  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline':
+                    {
+                      borderColor: 'primary.main',
+                    },
+                }}
+                color="primary"
+              />
+              <TextField
+                margin="normal"
+                id="Last Name"
+                label="Last Name"
+                name="lastName"
+                autoComplete="off"
+                value={formData.lastName}
+                onChange={handleInputChange}
+                sx={{
+                  width: '49%',
+                  '&:hover  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline':
+                    {
+                      borderColor: 'primary.main',
+                    },
+                }}
+              />
+            </div>
+          </ScrollAnimation>
+          <ScrollAnimation animation={'fade'} timeout={500}>
+            <TextField
+              margin="normal"
+              fullWidth
+              autoComplete="off"
+              id="email"
+              label="Email Address"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              sx={{
+                '&:hover  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline':
+                  {
+                    borderColor: 'primary.main',
+                  },
+              }}
+            />
+          </ScrollAnimation>
+          <ScrollAnimation animation={'fade'} timeout={500}>
+            <TextField
+              margin="normal"
+              fullWidth
+              autoComplete="off"
+              id="subject"
+              label="Subject"
+              name="subject"
+              value={formData.subject}
+              onChange={handleInputChange}
+              sx={{
+                '&:hover  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline':
+                  {
+                    borderColor: 'primary.main',
+                  },
+              }}
+            />
+          </ScrollAnimation>
+          <ScrollAnimation animation={'fade'} timeout={500}>
+            <TextField
+              margin="normal"
+              fullWidth
+              multiline
+              rows={6}
+              autoComplete="off"
+              id="message"
+              label="Your message here"
+              name="message"
+              value={formData.message}
+              onChange={handleInputChange}
+              sx={{
+                '&:hover  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline':
+                  {
+                    borderColor: 'primary.main',
+                  },
+              }}
+            />
+          </ScrollAnimation>
+          <ScrollAnimation animation={'fade'} timeout={500}>
+            <FormControlLabel
+              control={<Checkbox />}
+              label="Request a copy of my resume"
+              sx={{ color: 'text.secondary' }}
+            />
+          </ScrollAnimation>
+          <ScrollAnimation animation={'fade'} timeout={500}>
+            <Button
+              size="large"
+              variant={`${mode == 'dark' ? 'outlined' : 'contained'}`}
+              sx={{ mt: '16px' }}
+              startIcon={<SendIcon />}
+              type="submit"
+            >
+              Send Message
+            </Button>
+          </ScrollAnimation>
         </Box>
       </Box>
     </>
