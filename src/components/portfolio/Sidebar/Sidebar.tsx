@@ -155,7 +155,7 @@ export default function Sidebar(props: Props) {
           <ListItem key={text} sx={{ p: 0 }}>
             <ListItemButton
               sx={{
-                borderRadius: '10px',
+                borderRadius: '8px',
                 color: 'primary.main',
                 my: '2px',
                 py: '6px',
