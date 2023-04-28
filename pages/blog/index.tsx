@@ -3,8 +3,8 @@ import BlogPostsCardData from '@/src/components/blog/Card/BlogCardData';
 import { Divider, Typography, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
+import Fade from '@mui/material/Fade';
 import Grid from '@mui/material/Grid';
-import Pagination from '@mui/material/Pagination';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
@@ -14,7 +14,7 @@ export default function Home() {
   const theme = useTheme();
 
   const [selectedChip, setSelectedChip] = useState<string | null>(
-    tag as string | null
+    tag ? String(tag) : null
   );
 
   const handleChipClick = (label: string) => () => {
@@ -63,8 +63,8 @@ export default function Home() {
 
   return (
     <>
-      <Box className="centerBox" >
-        <Box sx={{ maxWidth: '835px',}}>
+      <Box className="centerBox" sx={{ mt: '64px' }}>
+        <Box sx={{ maxWidth: '835px' }}>
           <Typography variant={'h3'} className={'name'}>
             Dev Blog
           </Typography>
@@ -72,21 +72,23 @@ export default function Home() {
           <Divider
             sx={{ mb: '24px', pt: '16px', borderBottomWidth: '1.5px' }}
           />
-          <Grid container spacing={3}>
-            {filteredPosts.map((item, index) => (
-              <Grid item key={index}>
-                <BlogCard
-                  title={item.title}
-                  body={item.body}
-                  image={item.image}
-                  path={item.path}
-                  date={item.date}
-                  chips={item.chips}
-                  minsToRead={item.minsToRead}
-                />
-              </Grid>
-            ))}
-          </Grid>
+            <Grid container spacing={3}>
+              {filteredPosts.map((item, index) => (
+              <Fade in={true} timeout={500}  key={index}>
+                <Grid item>
+                  <BlogCard
+                    title={item.title}
+                    body={item.body}
+                    image={item.image}
+                    path={item.path}
+                    date={item.date}
+                    chips={item.chips}
+                    minsToRead={item.minsToRead}
+                  />
+                </Grid>
+                </Fade>
+              ))}
+            </Grid>
         </Box>
       </Box>
     </>
