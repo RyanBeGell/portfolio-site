@@ -5,31 +5,36 @@ import RecentBlogPostsSection from '@/src/components/portfolio/RecentBlogPosts/R
 import Skills from '@/src/components/portfolio/Skills/Skills';
 import AboutMe from '@/src/components/portfolio/about/AboutMe';
 import KeyboardArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded';
-import { Box, Divider, Fade, Tooltip } from '@mui/material';
+import { Box, Divider, Fade } from '@mui/material';
 import Fab from '@mui/material/Fab';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { Element, scroller } from 'react-scroll';
+import { Element } from 'react-scroll';
 
 const Home: NextPage = () => {
   const { pathname } = useRouter();
   const [showScroll, setShowScroll] = useState(false);
 
-  const checkScrollTop = () => {
-    if (!showScroll && window.pageYOffset > 200) {
+  const handleScroll = () => {
+    const scrollPosition = window.pageYOffset;
+    if (!showScroll && scrollPosition > 200) {
       setShowScroll(true);
-    } else if (showScroll && window.pageYOffset <= 200) {
+    } else {
       setShowScroll(false);
     }
   };
-
+  
+  const toggleScrollButton = () => {
+    window.requestAnimationFrame(handleScroll);
+  };
+  
   useEffect(() => {
-    window.addEventListener('scroll', checkScrollTop); // add checkScrollTop function reference here
+    window.addEventListener('scroll', toggleScrollButton);
     return () => {
-      window.removeEventListener('scroll', checkScrollTop); // pass same function reference here
+      window.removeEventListener('scroll', toggleScrollButton);
     };
-  }, [checkScrollTop]); // include checkScrollTop function reference in dependencies array
+  }, [toggleScrollButton]);
 
   //Set scroll history behavior to cause page to scroll to top on refresh
   useEffect(() => {
@@ -49,7 +54,7 @@ const Home: NextPage = () => {
 
   const handleScrollArrowClick = () => {
     setShowScroll(false);
-    window.scrollTo({ top: 0});
+    window.scrollTo({ top: 0 });
   };
 
   return (
@@ -78,12 +83,15 @@ const Home: NextPage = () => {
         <Element name="contact">
           <Contact />
         </Element>
-        <Fade timeout={500} in={showScroll} unmountOnExit >
+        <Fade timeout={500} in={showScroll} unmountOnExit>
           <Fab
             color="primary"
             size="small"
             aria-label="add"
-            onClick={handleScrollArrowClick}
+            onClick={() => {
+              setShowScroll(false);
+              window.scrollTo({ top: 0 });
+            }}
             sx={{
               position: 'fixed',
               bottom: '16px',
