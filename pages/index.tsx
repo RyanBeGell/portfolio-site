@@ -20,7 +20,7 @@ const Home: NextPage = () => {
     const scrollPosition = window.pageYOffset;
     if (!showScroll && scrollPosition > 200) {
       setShowScroll(true);
-    } else {
+    } else if (showScroll && scrollPosition <= 200) {
       setShowScroll(false);
     }
   };
