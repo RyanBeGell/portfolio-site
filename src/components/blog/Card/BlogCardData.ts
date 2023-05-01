@@ -8,6 +8,7 @@ export default [
       chips:['React', 'Java', 'Chat GPT' ],
       path:"onions",
       minsToRead:2,
+      id:1
   },
   {
     title:"I Asked ChatGPT to Create Comics, Then I Drew Them..",
@@ -17,6 +18,7 @@ export default [
     chips:['Java', 'Spring' ],
     path:"onions",
     minsToRead:2,
+    id:2
 },
 {
   title:"I Asked ChatGPT to Create Comics, Then I Drew Them....",
@@ -26,6 +28,7 @@ export default [
   chips:[ 'AI' ],
   path:"onions",
   minsToRead:2,
+  id:3
 },
 {
   title:"I Asked ChatGPT to Create Comics, Then I Drew Them.",
@@ -35,6 +38,7 @@ export default [
   chips:['Node' ],
   path:"onions",
   minsToRead:2,
+  id:4
 },
 {
   title:"I Asked ChatGPT to Create Comics, Then I Drew Them......",
@@ -44,6 +48,7 @@ export default [
   chips:['React', ],
   path:"onions",
   minsToRead:2,
+  id:5
 },
 {
   title:"I Asked ChatGPT to Create Comics, Then I Drew Them.......",
@@ -53,6 +58,7 @@ export default [
   chips:['Java', ],
   path:"onions",
   minsToRead:2,
+  id:6
 },
 
 ]
