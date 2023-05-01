@@ -70,7 +70,7 @@ export default function Home() {
           />
           <Grid container spacing={3}>
             {filteredPosts.map((item, index) => (
-              <Fade in={true} timeout={500} key={index}>
+              <Fade in={true} timeout={500} key={item.id}>
                 <Grid item>
                   <BlogCard
                     title={item.title}
