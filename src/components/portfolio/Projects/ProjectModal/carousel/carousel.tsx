@@ -44,9 +44,9 @@ const Carousel: React.FC = () => {
         {images.map((_, i) => (
           <IconButton key={i} onClick={() => setIndex(i)}>
             {index === i ? (
-              <RadioButtonCheckedIcon fontSize="small" color="primary" />
+              <RadioButtonCheckedIcon fontSize="small" color="primary"  />
             ) : (
-              <RadioButtonUncheckedIcon fontSize="small" color="inherit" />
+              <RadioButtonUncheckedIcon fontSize="small" color="inherit"  sx={{ color:'rgba(117, 117, 117, 1)'}}/>
             )}
           </IconButton>
         ))}
