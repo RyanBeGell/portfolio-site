@@ -17,6 +17,7 @@ import {
   ThemeProvider,
 } from '@mui/material';
 import { AppProps } from 'next/app';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { createContext, useMemo } from 'react';
 
@@ -42,6 +43,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
+      <Head>
+        <title>Ryan BeGell</title>
+      </Head>
       <ColorModeContext.Provider value={{ mode }}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
@@ -61,11 +65,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
               }}
             />
           )}
-          <Box
-            className={
-              router.pathname === '/' ? 'shiftContentRight' : ''
-            }
-          >
+          <Box className={router.pathname === '/' ? 'shiftContentRight' : ''}>
             {/* passing function to change color mode to sideNav to use on DarkMode switch*/}
             {router.pathname === '/' ? (
               <Sidebar toggleColorMode={colorMode.toggleColorMode} />
@@ -105,6 +105,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       </ColorModeContext.Provider>
     </>
   );
-}
+};
 
 export default MyApp;
