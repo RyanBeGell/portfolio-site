@@ -18,9 +18,9 @@ const Carousel: React.FC = () => {
   const [index, setIndex] = useState(0);
   
   return (
-    <Box  sx={{ position: 'relative', height:'500px', width:'500px', overflow:'hidden'}}>
+    <Box  sx={{ position: 'relative', height:'450px', width:'450px', overflow:'hidden'}}>
       <Fade in={true} key={index} timeout={500}>
-        <img src={images[index]} alt="Image" style={{borderRadius:'4px'}}/>
+        <img src={images[index]} alt="Image" style={{borderRadius:'4px', objectFit: 'cover', width: '100%', height: '100%'}}/>
       </Fade>
       <IconButton 
           color='primary'
