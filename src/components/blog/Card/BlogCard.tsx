@@ -114,6 +114,7 @@ export default function BlogCard(props: Props) {
                 <Chip
                   label={chip}
                   size="small"
+                  sx={{borderRadius:1}}
                   onClick={() =>
                     router.push({
                       pathname: '/blog',
