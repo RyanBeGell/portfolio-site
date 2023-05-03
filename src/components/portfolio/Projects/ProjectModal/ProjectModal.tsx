@@ -20,11 +20,11 @@ export interface Props {
 
 export default function ProjectModal(props: Props) {
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const fullScreenModal = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <Dialog
-      fullScreen={fullScreen}
+      fullScreen={fullScreenModal}
       open={props.open}
       onClose={props.handleClose}
       maxWidth={'xl'}
@@ -43,20 +43,19 @@ export default function ProjectModal(props: Props) {
       <Grid
         display="flex"
         sx={{
-          alignItems: fullScreen ? 'center' : '',
-          justifyContent: fullScreen ? 'center' : '',
-          flexDirection: fullScreen ? 'column' : 'row',
+          alignItems: fullScreenModal ? 'center' : '',
+          justifyContent: fullScreenModal ? 'center' : '',
+          flexDirection: fullScreenModal ? 'column' : 'row',
         }}
       >
         <Grid
           item
           sx={{
-            py: '24px',
-            pl: '24px',
+            pl: `${fullScreenModal ? '' : '36px'}`,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            pr: `${fullScreen ? '24px' : ''}`,
+            // p: `${fullScreen ? '24px' : ''}`,
           }}
         >
           <Carousel />
@@ -65,12 +64,12 @@ export default function ProjectModal(props: Props) {
           item
           display="flex"
           flexDirection="column"
-          sx={{ width: '548px', p: '24px' }}
+          sx={{ width: '564px', p:`${fullScreenModal ? '' : '36px'}`, px:`${fullScreenModal ? '36px' : ''}`}}
         >
-          <DialogTitle>
+          <DialogTitle sx={{pt:'0px', px:0}}>
             {"Use Google's location service?"}
             </DialogTitle>
-          <DialogContent>
+          <DialogContent sx={{px:0}}>
             <DialogContentText>
               Let Google help apps determine location. This means sending
               anonymous location data to Google, even when no apps are running.
@@ -108,8 +107,7 @@ export default function ProjectModal(props: Props) {
               display: 'flex',
               justifyContent: 'center',
               marginTop: 'auto',
-              py: '16px',
-              px: '24px',
+              px: '0px',
             }}
           >
             <Button
