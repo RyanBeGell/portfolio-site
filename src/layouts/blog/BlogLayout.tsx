@@ -35,7 +35,7 @@ export default function BlogLayout({ children }: any) {
 
             {BlogPost && (
               <Box sx={{ pt: '8px' }}>
-                <Divider sx={{ borderBottomWidth: '1px' }} />
+                <Divider />
                 <Grid
                   container
                   spacing={1}
