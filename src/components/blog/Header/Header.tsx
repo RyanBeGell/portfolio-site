@@ -113,8 +113,8 @@ export default function Header(props: Props) {
                 //setting z index above the tooltip (toolTip is 1500)
                 style={{ zIndex: 1501 }}
               >
-                <Alert onClose={handleClose} severity="success">
-                  Link copied
+                <Alert onClose={handleClose} severity="success" sx={{backgroundColor: 'background.dark'}}>
+                Link copied
                 </Alert>
               </Popper>
             </Box>
