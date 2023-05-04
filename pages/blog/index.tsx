@@ -92,13 +92,12 @@ export default function Home() {
       <Box className="centerBox" sx={{ mt: '64px' }}>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <Box sx={{ maxWidth: '1000px', width: '100%', mx: 4 }}>
-            <Typography variant={'h3'} className={'name'}>
+            <Typography variant={'h3'} className={'name'}  sx={{mb:'24px !important'}}>
               Dev Blog
             </Typography>
-            <Box sx={{ mb: '8px', pt: '8px', borderBottomWidth: '1.5px' }} />
-            <Grid container spacing={4}>
+            <Grid container spacing={5} alignItems="flex-start">
               <Grid item container xs={12} md={8} spacing={3}>
-                <Grid item xs={12}>
+                <Grid item xs={12} sx={{maxHeight:'1px'}}>
                   <Divider />
                 </Grid>
                 {filteredPosts.map((item, index) => (
