@@ -92,12 +92,15 @@ export default function Home() {
       <Box className="centerBox" sx={{ mt: '64px' }}>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <Box sx={{ maxWidth: '1000px', width: '100%', mx: 4 }}>
-            <Typography variant={'h3'} className={'name'}  sx={{mb:'24px !important'}}>
+            <Typography
+              variant={'h3'}
+              className={'name'}
+            >
               Dev Blog
             </Typography>
-            <Grid container spacing={5} alignItems="flex-start">
+            <Grid container spacing={5} alignItems="flex-start"sx={{pt:'24px'}}>
               <Grid item container xs={12} md={8} spacing={3}>
-                <Grid item xs={12} sx={{maxHeight:'1px'}}>
+                <Grid item xs={12} sx={{ maxHeight: '1px' }}>
                   <Divider />
                 </Grid>
                 {filteredPosts.map((item, index) => (
@@ -117,7 +120,15 @@ export default function Home() {
                 ))}
               </Grid>
               <Grid item xs={12} md={4}>
-                <Paper elevation={8} sx={{ px: 3, py: 2, mb: 3,border: `${darkMode? '1px solid #1e4976': ''}` }}>
+                <Paper
+                  elevation={8}
+                  sx={{
+                    px: 3,
+                    py: 2,
+                    mb: 3,
+                    border: `${darkMode ? '1px solid #1e4976' : ''}`,
+                  }}
+                >
                   <Typography variant="h6">Tags</Typography>
                   <Box sx={{ mt: '8px' }}>
                     {chipData.map((label) => (
@@ -132,7 +143,14 @@ export default function Home() {
                     ))}
                   </Box>
                 </Paper>
-                <Paper  elevation={8} sx={{ p: 3, mb: 3, border: `${darkMode? '1px solid #1e4976': ''}` }}>
+                <Paper
+                  elevation={8}
+                  sx={{
+                    p: 3,
+                    mb: 3,
+                    border: `${darkMode ? '1px solid #1e4976' : ''}`,
+                  }}
+                >
                   <Image
                     src="/favicon.png"
                     alt="logo"
@@ -167,9 +185,14 @@ export default function Home() {
                     <OutlinedInput
                       id="email"
                       size="small"
-                      color="primary"
                       placeholder="example@email.com"
+                      autoComplete='off'
                       fullWidth
+                      sx={{
+                        "&:hover .MuiOutlinedInput-notchedOutline": {
+                          borderColor: "primary.main"
+                        }
+                      }}
                     />
                   </Box>
                   <Button
