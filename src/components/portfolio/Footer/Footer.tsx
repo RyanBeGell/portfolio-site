@@ -1,4 +1,4 @@
-import { Box, Divider, Typography } from '@mui/material';
+import { Box, Divider, Typography, createSvgIcon } from '@mui/material';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import FooterIcon from './FooterIcon';
@@ -10,6 +10,7 @@ const Footer = () => {
   const handleNavigationClick = () => {
     router.push('/');
   };
+
 
   return (
     <Box display="flex" justifyContent="space-between" alignItems={'center'}>
@@ -38,6 +39,12 @@ const Footer = () => {
           sx={{ mx: '8px', my: '2px' }}
         />
         <FooterIcon type="LinkedIn" color="linkedInBlue" />
+        <Divider
+          orientation="vertical"
+          flexItem
+          sx={{ mx: '8px', my: '2px' }}
+        />
+        <FooterIcon type="CodePen" />
         <Divider
           orientation="vertical"
           flexItem
