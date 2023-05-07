@@ -45,7 +45,7 @@ export default function Header(props: Props) {
         <Grid container spacing={0}>
           <Grid item xs={8}>
             <Box sx={{ height: '48px', width: '48px', float: 'left', mr: '16px' }}>
-          <Image height={48} width={48} src="/favicon.png" />
+            <Avatar alt="Ryan BeGell" src="avatar.svg" sx={{height:'48px', width:'48px'}} />
           </Box>
             <Typography variant="subtitle1" fontWeight={'bold'}>Ryan BeGell</Typography>
             <Typography
