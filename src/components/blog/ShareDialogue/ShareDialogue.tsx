@@ -1,10 +1,9 @@
 import CloseIcon from '@mui/icons-material/Close';
 import EmailIcon from '@mui/icons-material/Email';
+import FaceBookIcon from '@mui/icons-material/FaceBook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import RedditIcon from '@mui/icons-material/Reddit';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import FaceBookIcon from '@mui/icons-material/FaceBook';
 import { Grid, InputAdornment, Typography, useTheme } from '@mui/material';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -13,8 +12,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import TextField from '@mui/material/TextField';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
-import router, { useRouter } from 'next/router';
 
 export interface Props {
   open: boolean;
@@ -22,7 +21,6 @@ export interface Props {
 }
 
 export default function ShareDialog(props: Props) {
-
   const [copySuccess, setCopySuccess] = useState(false);
 
   const link = 'www.example.com/blog/post/example';
@@ -51,7 +49,11 @@ export default function ShareDialog(props: Props) {
   };
 
   return (
-    <Dialog open={props.open} onClose={props.handleClose} className={contentShift}>
+    <Dialog
+      open={props.open}
+      onClose={props.handleClose}
+      className={contentShift}
+    >
       <DialogTitle sx={{ mt: '8px' }}>
         Share
         <IconButton
@@ -73,21 +75,21 @@ export default function ShareDialog(props: Props) {
         <Grid container direction="row" spacing={3}>
           {icons.map(({ color, Icon }, index) => (
             <Grid item key={index}>
-      {darkMode ? (
-        <IconButton
-          size="large"
-          sx={{ backgroundColor: `var(--${color})`, '&:hover': { color:`var(--${color})`,  }  }}
-        >
-          <Icon fontSize="inherit" />
-        </IconButton>
-      ) : (
-        <IconButton
-          size="large"
-          sx={{ border: '1px solid', color: `var(--${color})` }}
-        >
-          <Icon fontSize="inherit" />
-        </IconButton>
-      )}
+              <IconButton
+                size="large"
+                sx={{
+                  backgroundColor: `var(--${color})`,
+                  color: 'white',
+                  border: `1px solid var(--${color})`,
+                  '&:hover': {
+                    color: `var(--${color})`,
+                    backgroundColor: 'inherit',
+                    border: '1px solid',
+                  },
+                }}
+              >
+                <Icon fontSize="inherit" />
+              </IconButton>
             </Grid>
           ))}
         </Grid>
