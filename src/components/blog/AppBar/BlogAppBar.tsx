@@ -9,10 +9,9 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import InputBase from '@mui/material/InputBase';
 import MUILink from '@mui/material/Link';
 import Toolbar from '@mui/material/Toolbar';
-import { styled, useTheme } from '@mui/material/styles';
+import { useTheme } from '@mui/material/styles';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
@@ -73,7 +72,7 @@ export default function BlogAppBar(props: Props) {
           }}
         >
           <Container maxWidth="xl" sx={{ px: '20px' }}>
-            <Toolbar
+            <Toolbar 
               sx={{ justifyContent: { xs: 'space-between', sm: 'none' }, p: 0 }}
             >
               <Image
@@ -107,9 +106,6 @@ export default function BlogAppBar(props: Props) {
                 ))}
               </Box>
               <Box>
-                <StyledIconButton title="Subscribe to email notifications">
-                  <MarkEmailUnreadOutlinedIcon />
-                </StyledIconButton>
                 <MUILink
                   href="https://github.com/RyanBeGell/portfolio-site"
                   target="_blank"
