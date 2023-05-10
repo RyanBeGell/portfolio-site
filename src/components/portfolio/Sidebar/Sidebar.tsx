@@ -128,10 +128,10 @@ export default function Sidebar(props: Props) {
           <SocialIconButton Icon={GitHubIcon} />
         </Grid>
         <Grid item>
-          <SocialIconButton Icon={CodePenIcon} />
+          <SocialIconButton Icon={LinkedInIcon} />
         </Grid>
         <Grid item>
-          <SocialIconButton Icon={LinkedInIcon} />
+        <SocialIconButton Icon={CodePenIcon} />
         </Grid>
         <Grid item>
           <SocialIconButton Icon={EmailIcon} />
