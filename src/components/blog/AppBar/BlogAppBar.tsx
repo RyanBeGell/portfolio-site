@@ -1,8 +1,8 @@
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import DragHandleRoundedIcon from '@mui/icons-material/DragHandleRounded';
+import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
-import MarkEmailUnreadOutlinedIcon from '@mui/icons-material/MarkEmailUnreadOutlined';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -72,7 +72,7 @@ export default function BlogAppBar(props: Props) {
           }}
         >
           <Container maxWidth="xl" sx={{ px: '20px' }}>
-            <Toolbar 
+            <Toolbar
               sx={{ justifyContent: { xs: 'space-between', sm: 'none' }, p: 0 }}
             >
               <Image
@@ -105,16 +105,20 @@ export default function BlogAppBar(props: Props) {
                   </Button>
                 ))}
               </Box>
-              <Box>
+              <Box display="flex">
                 <MUILink
                   href="https://github.com/RyanBeGell/portfolio-site"
                   target="_blank"
                   rel="noopener"
                 >
-                  <StyledIconButton title="Github Repository">
+                  <StyledIconButton title="Browse my code on GitHub">
                     <GitHubIcon />
                   </StyledIconButton>
                 </MUILink>
+                <StyledIconButton title="Send me an email">
+                  <EmailIcon />
+                </StyledIconButton>
+
                 {mode === 'light' ? (
                   <StyledIconButton
                     title="Dark mode"
