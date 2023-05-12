@@ -5,13 +5,13 @@ import styles from './Certifications.module.css';
 
 export default function Certifications() {
   const certifications = [
-    { src: '/AWS-Certified-Cloud-Practitioner.png', height: 200, width: 200 },
+    { src: '/AWS-Certified-Cloud-Practitioner.png', height: 190, width: 190 },
     {
       src: '/AWS-Certified-Developer-Associate_badge.png',
-      height: 200,
-      width: 200,
+      height: 190,
+      width: 190,
     },
-    { src: '/AWS-Certified-Cloud-Practitioner.png', height: 200, width: 200 },
+    { src: '/AWS-Certified-Cloud-Practitioner.png', height: 190, width: 190 },
   ];
 
   return (
