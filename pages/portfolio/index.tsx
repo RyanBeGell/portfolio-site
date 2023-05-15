@@ -24,7 +24,7 @@ export default function Portfolio() {
           />
           <ProjectModal open={open} handleClose={handleClose} />
           <Box className="centerBox">
-            <Box sx={{ maxWidth: 1150 }}>
+            <Box sx={{ maxWidth: 1000 }}>
               <Grid container spacing={3} justifyContent="center">
                 {ProjectData.map((item, index) => (
                   <Grid item xs={12} sm={6} md={6} lg={4} key={index}>
