@@ -80,7 +80,9 @@ export default function Sidebar(props: Props) {
     const isDarkMode = theme.palette.mode === 'dark';
     const backgroundColor = isDarkMode ? theme.palette.primary.main : '#FFFFFF';
     const color = isDarkMode ? 'white' : theme.palette.primary.main;
-    const hoverBackgroundColor = isDarkMode ? '' : 'rgba(0, 0, 0, 0.7)';
+    const hoverBackgroundColor = isDarkMode
+      ? 'transparent'
+      : 'rgba(0, 0, 0, 0.7)';
 
     return (
       <IconButton
@@ -89,7 +91,10 @@ export default function Sidebar(props: Props) {
           backgroundColor,
           ':hover': {
             backgroundColor: hoverBackgroundColor,
-            color: 'primary.main',
+            color: isDarkMode ? 'primary.main' : 'primary.main',
+            boxShadow: isDarkMode
+              ? `inset 0 0 0 1px ${theme.palette.primary.main}`
+              : '',
           },
         }}
       >
@@ -131,7 +136,7 @@ export default function Sidebar(props: Props) {
           <SocialIconButton Icon={LinkedInIcon} />
         </Grid>
         <Grid item>
-        <SocialIconButton Icon={CodePenIcon} />
+          <SocialIconButton Icon={CodePenIcon} />
         </Grid>
         <Grid item>
           <SocialIconButton Icon={EmailIcon} />
