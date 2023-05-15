@@ -80,11 +80,10 @@ export default function ShareDialog(props: Props) {
                 sx={{
                   backgroundColor: `var(--${color})`,
                   color: 'white',
-                  border: `1px solid var(--${color})`,
                   '&:hover': {
                     color: `var(--${color})`,
                     backgroundColor: 'inherit',
-                    border: '1px solid',
+                    boxShadow: 'inset 0 0 0 1px',
                   },
                 }}
               >
