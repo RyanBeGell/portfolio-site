@@ -5,7 +5,6 @@ import {
   OutlinedInput,
   Paper,
   Typography,
-  createSvgIcon,
   useTheme,
 } from '@mui/material';
 import Box from '@mui/material/Box';
@@ -21,7 +20,8 @@ export default function Home() {
   const router = useRouter();
   const { tag } = router.query;
   const theme = useTheme();
-
+  const [tagActive, setTagActive] = useState<string>('');
+  const [tagSelected, setTagSelected] = useState<boolean>(false);
   const [selectedChip, setSelectedChip] = useState<string | null>(
     tag ? String(tag) : null
   );
@@ -30,9 +30,11 @@ export default function Home() {
     if (label === selectedChip) {
       setSelectedChip(null);
       router.replace('/blog');
+      setTagSelected(false);
     } else {
       setSelectedChip(label);
       router.replace(`/blog?tag=${label}`);
+      setTagSelected(true);
     }
   };
 
@@ -40,8 +42,10 @@ export default function Home() {
   useEffect(() => {
     if (tag) {
       setSelectedChip(tag as string);
+      setTagSelected(true);
     } else {
       setSelectedChip(null);
+      setTagSelected(false);
     }
   }, [tag]);
 
@@ -55,16 +59,42 @@ export default function Home() {
     ? BlogPostsCardData.filter((post) => post.chips.includes(selectedChip))
     : BlogPostsCardData;
 
+  const RecentBlogPosts = BlogPostsCardData.slice(0, 1);
   const darkMode = theme.palette.mode === 'dark';
 
   return (
     <>
-      <Box className="centerBox" sx={{ mt: '64px', minHeight: '100vh' }}>
+      <Box className="centerBox" sx={{ mt: 2, minHeight: '100vh' }}>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <Box sx={{ maxWidth: '1000px', width: '100%', mx: 4 }}>
-            <Typography variant={'h3'} className={'name'}>
-              Dev Blog
-            </Typography>
+            <Box
+              display="flex"
+              flexDirection="column"
+              justifyContent={'center'}
+              alignItems="center"
+              textAlign={'center'}
+              sx={{ mt: 10, mb: 7 }}
+            >
+              <Typography
+                variant={'h5'}
+                className={'neutraface'}
+                sx={{ mb: 0, color: 'primary.main' }}
+              >
+                Blog
+              </Typography>
+              <Typography variant={'h3'} className={'neutraface'}>
+                My{' '}
+                <Typography
+                  variant={'h3'}
+                  component={'span'}
+                  className={'neutraface'}
+                  sx={{ color: 'primary.main' }}
+                >
+                  latest{' '}
+                </Typography>{' '}
+                development insights
+              </Typography>
+            </Box>
             <Grid
               container
               spacing={5}
@@ -72,8 +102,24 @@ export default function Home() {
               sx={{ pt: '24px' }}
             >
               <Grid item container xs={12} md={8} spacing={3}>
-                <Grid item xs={12} sx={{ maxHeight: '1px' }}>
-                  <Divider />
+                <Grid item xs={12}>
+                  {tagSelected ? (
+                    <Typography variant={'h4'} className="neutraface">
+                      {'Posts tagged as '}
+                      <Typography
+                        component="span"
+                        variant={'h4'}
+                        className="neutraface"
+                        sx={{color:'primary.main'}}
+                      >
+                        {`"${selectedChip}"`}
+                      </Typography>
+                    </Typography>
+                  ) : (
+                    <Typography variant={'h4'} className="neutraface">
+                      {'Posts'}
+                    </Typography>
+                  )}
                 </Grid>
                 {filteredPosts.map((item, index) => (
                   <Fade in={true} timeout={500} key={item.id}>
@@ -91,14 +137,14 @@ export default function Home() {
                   </Fade>
                 ))}
               </Grid>
-              <Grid item xs={12} md={4}>
+              <Grid item xs={12} md={4} sx={{mt:1}}>
                 <Paper
+                  variant={darkMode ? 'outlined' : undefined}
                   elevation={8}
                   sx={{
                     px: 3,
                     py: 2,
                     mb: 3,
-                    border: `${darkMode ? '1px solid #1e4976' : ''}`,
                   }}
                 >
                   <Typography variant="h6">Tags</Typography>
@@ -116,11 +162,11 @@ export default function Home() {
                   </Box>
                 </Paper>
                 <Paper
+                  variant={darkMode ? 'outlined' : undefined}
                   elevation={8}
                   sx={{
                     p: 3,
                     mb: 3,
-                    border: `${darkMode ? '1px solid #1e4976' : ''}`,
                   }}
                 >
                   <Image
@@ -130,10 +176,7 @@ export default function Home() {
                     height={32}
                     className="hover-pointer"
                   />
-                  <Typography
-                    variant="inherit"
-                    sx={{ mt: '16px', fontWeight: 'bold' }}
-                  >
+                  <Typography variant="h6" sx={{ mt: '16px' }}>
                     Keep up to date
                   </Typography>
                   <Typography
