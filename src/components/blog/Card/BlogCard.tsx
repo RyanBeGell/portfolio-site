@@ -1,5 +1,5 @@
 import ShareIcon from '@mui/icons-material/Share';
-import { Chip, Grid } from '@mui/material';
+import { Chip, Grid, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -28,6 +28,9 @@ export default function BlogCard(props: Props) {
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
+  const theme = useTheme();
+  const darkMode = theme.palette.mode === 'dark';
+  
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -63,7 +66,7 @@ export default function BlogCard(props: Props) {
   }, [cardRef, showExcerpt]);
 
   return (
-    <Card raised ref={cardRef} sx={{ display: 'flex', flexDirection: 'row' }}>
+    <Card raised ref={cardRef} variant={darkMode ? 'outlined' : undefined} sx={{ display: 'flex', flexDirection: 'row', }}>
       <CardContent
         sx={{
           pl: boxSize === 'small' ? '16px ' : '24px ',
@@ -83,7 +86,7 @@ export default function BlogCard(props: Props) {
         <Link href={`/blog/posts/${props.path}`}>
           <Typography
             component="div"
-            variant={boxSize === 'large' ? 'h5' : 'h6'}
+            variant={'h6'}
             sx={{
               mt: '8px',
               mb: '8px',
