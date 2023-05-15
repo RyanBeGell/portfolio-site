@@ -28,7 +28,7 @@ export default function Certifications() {
             sm={4}
             md={4}
           >
-            <ScrollAnimation animation={'grow'} timeout={1000 + index * 250}>
+            <ScrollAnimation animation={'fade'} timeout={1000 + index * 500}>
               <img
                 src={cert.src}
                 height={cert.height}
