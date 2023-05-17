@@ -119,42 +119,42 @@ export default function Contact() {
             />
           </ScrollAnimation>
           <ScrollAnimation animation={'fade'} timeout={500}>
-            <TextField
-              margin="normal"
-              fullWidth
-              multiline
-              rows={6}
-              autoComplete="off"
-              id="message"
-              label="Your message here"
-              name="message"
-              value={formData.message}
-              onChange={handleInputChange}
-              sx={{
-                '&:hover  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline':
-                  {
-                    borderColor: 'primary.main',
-                  },
-              }}
-            />
-          </ScrollAnimation>
-          <ScrollAnimation animation={'fade'} timeout={500}>
-            <FormControlLabel
-              control={<Checkbox />}
-              label="Request a copy of my resume"
-              sx={{ color: 'text.secondary' }}
-            />
-          </ScrollAnimation>
-          <ScrollAnimation animation={'fade'} timeout={500}>
-            <Button
-              size="large"
-              variant={`${mode == 'dark' ? 'outlined' : 'contained'}`}
-              sx={{ mt: '16px' }}
-              startIcon={<SendIcon />}
-              type="submit"
-            >
-              Send Message
-            </Button>
+            <div>
+              <TextField
+                margin="normal"
+                fullWidth
+                multiline
+                rows={6}
+                autoComplete="off"
+                id="message"
+                label="Your message here"
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
+                sx={{
+                  '&:hover  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline':
+                    {
+                      borderColor: 'primary.main',
+                    },
+                }}
+              />
+              <FormControlLabel
+                control={<Checkbox />}
+                label="Request a copy of my resume"
+                sx={{ color: 'text.secondary' }}
+              />
+              <div>
+                <Button
+                  size="large"
+                  variant={`${mode == 'dark' ? 'outlined' : 'contained'}`}
+                  sx={{ mt: '16px' }}
+                  startIcon={<SendIcon />}
+                  type="submit"
+                >
+                  Send Message
+                </Button>
+              </div>
+            </div>
           </ScrollAnimation>
         </Box>
       </Box>

@@ -30,7 +30,7 @@ export default function RecentBlogPostsSection( ) {
                 <ScrollAnimation
                   animation={'fade'}
                   //Above md screen has a 2v2 grid, so stagger animation for 2nd in each grid row with index%2 
-                  timeout={mdScreenOrLower ? 1000 + index * 500 : 1000 + index%2 * 500}
+                  timeout={ 1000 }
                 >
                   <BlogCard
                     key={index}
