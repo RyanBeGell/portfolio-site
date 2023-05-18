@@ -64,7 +64,7 @@ export default function Home() {
 
   return (
     <>
-      <Box className="centerBox" sx={{ mt: 2, minHeight: '100vh' }}>
+      <Box className="centerBox" sx={{ minHeight: '100vh' }}>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <Box sx={{ maxWidth: '1000px', width: '100%', mx: 4 }}>
             <Box
