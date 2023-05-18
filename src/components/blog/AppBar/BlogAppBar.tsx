@@ -7,7 +7,6 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MUILink from '@mui/material/Link';
 import Toolbar from '@mui/material/Toolbar';
@@ -26,7 +25,7 @@ export default function BlogAppBar(props: Props) {
   const { mode } = useContext(ColorModeContext);
   const theme = useTheme();
 
-  const pages = ['Blog', 'Portfolio'];
+  const pages = ['Home', 'Blog', 'Portfolio',];
 
   // For open/close of email subscribe modal
   const [open, setOpen] = useState(false);
@@ -60,45 +59,53 @@ export default function BlogAppBar(props: Props) {
     <>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar
-          position="fixed"
+        elevation={0}
           sx={{
+            borderBottom: `1px solid ${theme.palette.divider}`,
             // change background color to transparent after scrolling 48px
-            backgroundColor: `${
-              scrollPosition.scrollY > 48
-                ? 'background.blogNav'
-                : 'background.paper'
-            }`,
+            // backgroundColor: `${
+            //   scrollPosition.scrollY > 48
+            //     ? 'background.blogNav'
+            //     : 'background.paper'
+            // }`,
+            backgroundColor:'background.blogNav',
             backdropFilter: 'blur(8px)',
+            height: '56px',
           }}
         >
-          <Container maxWidth="xl" sx={{ px: '20px' }}>
+          <Container maxWidth="lg" sx={{px:'30px !important'}}>
             <Toolbar
-              sx={{ justifyContent: { xs: 'space-between', sm: 'none' }, p: 0 }}
+            disableGutters
+              sx={{
+                minHeight: '56px !important',
+                justifyContent: { xs: 'space-between', sm: 'none' },
+              }}
             >
               <Image
                 onClick={() => handleRedirect('Home')}
                 src="/favicon.png"
                 alt="logo"
-                width={38}
-                height={38}
+                width={32}
+                height={32}
                 className="hover-pointer"
               />
-              <Divider
-                orientation="vertical"
-                flexItem={true}
-                sx={{ m: '16px', display: { xs: 'none', sm: 'block' } }}
-              />
-              <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
+              <Box
+                sx={{
+                  ml: '20px',
+                  flexGrow: 1,
+                  display: { xs: 'none', sm: 'block' },
+                }}
+              >
                 {pages.map((item) => (
                   <Button
                     onClick={() => handleRedirect(item)}
                     key={item}
-                    size="large"
                     sx={{
                       color: 'text.primary',
                       '&:hover': {
                         color: 'primary.main',
                       },
+                      textTransform: 'none',
                     }}
                   >
                     {item}
@@ -112,11 +119,11 @@ export default function BlogAppBar(props: Props) {
                   rel="noopener"
                 >
                   <StyledIconButton title="Browse my code on GitHub">
-                    <GitHubIcon />
+                    <GitHubIcon fontSize='small'/>
                   </StyledIconButton>
                 </MUILink>
                 <StyledIconButton title="Send me an email">
-                  <EmailIcon />
+                  <EmailIcon fontSize='small'/>
                 </StyledIconButton>
 
                 {mode === 'light' ? (
@@ -124,14 +131,14 @@ export default function BlogAppBar(props: Props) {
                     title="Dark mode"
                     onClick={props.toggleColorMode}
                   >
-                    <DarkModeOutlinedIcon fontSize="medium" />
+                    <DarkModeOutlinedIcon fontSize='small'/>
                   </StyledIconButton>
                 ) : (
                   <StyledIconButton
                     title="Light mode"
                     onClick={props.toggleColorMode}
                   >
-                    <LightModeOutlinedIcon />
+                    <LightModeOutlinedIcon fontSize='small'/>
                   </StyledIconButton>
                 )}
                 <IconButton
