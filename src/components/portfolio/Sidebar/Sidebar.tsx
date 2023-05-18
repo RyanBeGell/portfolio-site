@@ -199,25 +199,28 @@ export default function Sidebar(props: Props) {
     <>
       <AppBar
         position="fixed"
+        elevation={0}
         sx={{
+          borderBottom: `1px solid ${theme.palette.divider}`,
+          height: '56px',
           display: { sm: 'block', lg: 'none' },
           backgroundColor: 'background.blogNav',
           backdropFilter: 'blur(8px)',
         }}
       >
-        <Toolbar>
-          <StyledIconButton onClick={handleDrawerToggle}>
-            <DragHandleRounded />
-          </StyledIconButton>
-          <Box sx={{ flexGrow: 1 }} />
+        <Toolbar sx={{ minHeight: '56px !important' }}>
           <Image
             src="/favicon.png"
             alt="logo"
-            width={38}
-            height={38}
+            width={32}
+            height={32}
             className="hover-pointer"
             onClick={() => handleNavigationClick('home')}
           />
+          <Box sx={{ flexGrow: 1 }} />
+          <StyledIconButton onClick={handleDrawerToggle}>
+            <DragHandleRounded fontSize='small'/>
+          </StyledIconButton>
         </Toolbar>
       </AppBar>
       <Box
