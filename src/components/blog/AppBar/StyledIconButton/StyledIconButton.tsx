@@ -16,10 +16,12 @@ export default function StyledIconButton(props: Props) {
             color="primary"
             onClick={props.onClick}
             sx={{
+              height:'34px',
+              width:'34px',
               borderRadius: '10px',
               border: '1px solid',
               borderColor: 'background.paperDivider',
-              mx: '5px',
+              ml: '10px',
               '&:hover': {
                 borderColor: 'primary.main',
               },
