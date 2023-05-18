@@ -50,6 +50,7 @@ export default function BlogLayout({ children }: any) {
                   {BlogPost.chips?.map((chip, index) => (
                     <Grid item key={chip}>
                       <Chip
+                      sx={{borderRadius:'4px'}}
                         label={chip}
                         onClick={() =>
                           router.push({
