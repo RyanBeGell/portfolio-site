@@ -9,6 +9,15 @@
 
 }
 
+@font-face {
+  font-family: 'Neutraface Text Bold';
+  src: url('/fonts/NeutrafaceTextBold.eot');
+  src: url('/fonts/NeutrafaceTextBold.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/NeutrafaceTextBold.woff2') format('woff2'),
+       url('/fonts/NeutrafaceTextBold.woff') format('woff'),
+       url('/fonts/NeutrafaceTextBold.ttf') format('truetype'),
+       url('/fonts/NeutrafaceTextBold.svg#NeutrafaceTextBold') format('svg');
+}
 
 .centerLeft
 {
@@ -84,7 +93,7 @@ pre{
 
 
 .neutraface {
-  font-family: "Neutraface Text Bold";
+  font-family: "Neutraface Text Bold" !important;
 }
 
 .appBar{
@@ -109,7 +118,7 @@ pre{
 }
 
 .name {
-  font-family: "Neutraface Text Bold";
+  font-family: "Neutraface Text Bold" !important;
   margin-bottom: 8px;
 }
 
