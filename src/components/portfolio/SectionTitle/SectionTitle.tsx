@@ -16,7 +16,7 @@ export default function SectionTitle(props: Props) {
     <ScrollAnimation animation={'fade'} timeout={500}>
       <Box className={darkMode ? styles.sectionDark : styles.section}>
         <Box sx={{ px: '16px', pb: '48px' }}>
-          <Typography variant="h4">&nbsp;{props.title}</Typography>
+          <Typography variant="h4" fontWeight={500}>&nbsp;{props.title}</Typography>
           {props.title2 ? (
             <ScrollAnimation animation={'fade'} timeout={500}>
               <Typography
