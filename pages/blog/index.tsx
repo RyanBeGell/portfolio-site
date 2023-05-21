@@ -27,13 +27,17 @@ export default function Home() {
   );
 
   const handleChipClick = (label: string) => () => {
+    //  Nextjs router query tag uses + for space encoding, 
+    // swapping spaces for + for consistency to avoid %20 ASCII space encoding
+    const encodedTag = label.replace(/\s/g, '+');
+
     if (label === selectedChip) {
       setSelectedChip(null);
       router.replace('/blog');
       setTagSelected(false);
     } else {
       setSelectedChip(label);
-      router.replace(`/blog?tag=${label}`);
+      router.replace(`/blog?tag=${encodedTag}`);
       setTagSelected(true);
     }
   };
@@ -51,7 +55,8 @@ export default function Home() {
 
   // Array of the set of all blog post chips ( aka tags)
   const chipData = Array.from(
-    // flatMap to flatten the array of chips for each blog post into a single array of all chips, set for uniqueness
+    //flattening each blog post's array of chips into a single array of all chips
+    //Afterwards taking the set of that array to get all unique chips
     new Set(BlogPostsCardData.flatMap((post) => post.chips))
   );
 
