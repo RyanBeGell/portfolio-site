@@ -3,13 +3,10 @@
   height: 104px;
   border: White solid 5px;
   /* Change border to '#2196F3' when real photo added*/
-  margin-top: 24px;
 }
 
 #name {
   text-align: center;
   font-family: 'Neutraface Text Bold';
-  margin-top: 16px;
-  margin-bottom: 8px;
   color:"#FFFFFF";
 }
