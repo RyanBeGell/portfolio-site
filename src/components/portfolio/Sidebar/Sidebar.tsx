@@ -105,7 +105,12 @@ export default function Sidebar(props: Props) {
 
   const drawer = (
     <div>
-      <Box display="flex" justifyContent="center" alignItems="center">
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        sx={{ mb: 2, mt: 2 }}
+      >
         <Avatar id={styles.avatar} src={'/avatar.svg'} alt="Avatar" />
       </Box>
       <Typography variant={'h5'} id={styles.name} color="#FFFFFF">
@@ -113,7 +118,7 @@ export default function Sidebar(props: Props) {
       </Typography>
       <Typography
         variant={'subtitle2'}
-        sx={{ mb: '16px', textAlign: 'center' }}
+        sx={{ textAlign: 'center', mb: 2 }}
         color="text.navFooter"
       >
         Software Developer
@@ -126,7 +131,7 @@ export default function Sidebar(props: Props) {
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'center', // Add this line
-          mb: '16px',
+          mb: 3,
         }}
       >
         <Grid item>
@@ -197,15 +202,26 @@ export default function Sidebar(props: Props) {
 
   return (
     <>
+          <Box
+        sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '56px',
+          backgroundColor: 'background.paper',
+          display: { sm: 'block', lg: 'none' },
+        }}
+      />
       <AppBar
         position="fixed"
         elevation={0}
         sx={{
-          borderBottom: `1px solid ${theme.palette.divider}`,
           height: '56px',
           display: { sm: 'block', lg: 'none' },
           backgroundColor: 'background.blogNav',
           backdropFilter: 'blur(8px)',
+          boxShadow: `inset 0px -1px 1px ${theme.palette.divider}`
         }}
       >
         <Toolbar sx={{ minHeight: '56px !important' }}>
@@ -219,7 +235,7 @@ export default function Sidebar(props: Props) {
           />
           <Box sx={{ flexGrow: 1 }} />
           <StyledIconButton onClick={handleDrawerToggle}>
-            <DragHandleRounded fontSize='small'/>
+            <DragHandleRounded fontSize="small" />
           </StyledIconButton>
         </Toolbar>
       </AppBar>
