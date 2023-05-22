@@ -19,7 +19,7 @@ export default function Skills() {
         <Grid item sx={{ mt: '-8px' }}>
           {/* Front End Section/Icons */}
           <ScrollAnimation animation={'fade'} timeout={500}>
-            <Typography variant={'h5'} sx={{ pb: '16px' }}>
+            <Typography variant={'h5'} fontWeight={'500'} sx={{ pb: '16px' }}>
               Front End
             </Typography>
           </ScrollAnimation>
@@ -38,7 +38,7 @@ export default function Skills() {
             spacing={4}
           />
           <ScrollAnimation animation={'fade'} timeout={500}>
-            <Typography variant="h5" sx={{ py: '16px' }}>
+            <Typography variant="h5" fontWeight={'500'} sx={{ py: '16px' }}>
               Back End
             </Typography>
           </ScrollAnimation>
