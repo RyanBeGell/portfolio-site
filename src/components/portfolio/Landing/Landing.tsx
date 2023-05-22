@@ -1,5 +1,5 @@
 import SouthIcon from '@mui/icons-material/South';
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Fade, Grid, Typography } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import Image from 'next/image';
 import { scroller } from 'react-scroll';
@@ -23,7 +23,7 @@ export default function Landing() {
   return (
     <Box className="centerFlexBox" sx={{ minHeight: '100vh', mx: '48px' }}>
       <Grid className="centerFlexBox">
-      <ScrollAnimation animation={'fade'} timeout={500}>
+      <Fade timeout={1000}>
         <Grid item>
           <Typography variant={'h1'} className={'name'} >
             Ryan
@@ -36,7 +36,6 @@ export default function Landing() {
               &nbsp;BeGell
             </Typography>
           </Typography>
-          <ScrollAnimation animation={'fade'} timeout={1000}>
           <Typography variant={'h4'} noWrap>
             <ReactTyped
               loop={false}
@@ -49,10 +48,9 @@ export default function Landing() {
               cursorChar="_"
             />
           </Typography>
-          </ScrollAnimation>
         </Grid>
-        </ScrollAnimation>
-        <ScrollAnimation animation={'fade'} timeout={1500}>
+        </Fade>
+        <Fade timeout={1500}>
         <Grid item sx={{ pl: '32px',  display: { xs: 'none', sm: 'none', md:'block' },}}>
           <Image
             src="/programming.svg"
@@ -62,7 +60,7 @@ export default function Landing() {
             priority
           />
         </Grid>
-        </ScrollAnimation>
+        </Fade>
       </Grid>
       <IconButton id={styles.ArrowIcon} color="primary" onClick={handleScroll}>
         <SouthIcon color="primary" sx={{ fontSize: '32px' }} />
