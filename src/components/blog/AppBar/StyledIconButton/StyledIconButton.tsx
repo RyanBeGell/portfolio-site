@@ -4,26 +4,33 @@ import IconButton from '@mui/material/IconButton';
 export interface Props {
   children?: any;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  title?: String
+  title?: String;
 }
 
 export default function StyledIconButton(props: Props) {
   return (
     <>
       {props.title ? (
-        <Tooltip title={props.title} placement="bottom" PopperProps={{ sx: { mt: '10px !important' } }}>
+        <Tooltip
+          title={props.title}
+          placement="bottom"
+          PopperProps={{ sx: { mt: '10px !important' } }}
+        >
           <IconButton
             color="primary"
             onClick={props.onClick}
             sx={{
-              height:'34px',
-              width:'34px',
-              borderRadius: '10px',
+              height: '34px',
+              width: '34px',
+              borderRadius: '6px',
               border: '1px solid',
               borderColor: 'background.paperDivider',
               ml: '10px',
               '&:hover': {
                 borderColor: 'primary.main',
+                '& .MuiTouchRipple-root': {
+                  display: 'none',
+                },
               },
             }}
           >
