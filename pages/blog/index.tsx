@@ -27,7 +27,7 @@ export default function Home() {
   );
 
   const handleChipClick = (label: string) => () => {
-    //  Nextjs router query tag uses + for space encoding, 
+    //  Nextjs router query tag uses + for space encoding,
     // swapping spaces for + for consistency to avoid %20 ASCII space encoding
     const encodedTag = label.replace(/\s/g, '+');
 
@@ -78,7 +78,7 @@ export default function Home() {
               justifyContent={'center'}
               alignItems="center"
               textAlign={'center'}
-              sx={{ mt: 10, mb: 7 }}
+              sx={{ my: 10 }}
             >
               <Typography
                 variant={'h5'}
@@ -100,6 +100,25 @@ export default function Home() {
                 development insights
               </Typography>
             </Box>
+            <Box>
+              {tagSelected ? (
+                <Typography variant={'h5'}                 fontWeight={'500'}>
+                  {'Posts tagged as '}
+                  <Typography
+                    component="span"
+                    variant={'h5'}
+                    fontWeight={'500'}
+                    sx={{ color: 'primary.main' }}
+                  >
+                    {`"${selectedChip}"`}
+                  </Typography>
+                </Typography>
+              ) : (
+                <Typography variant={'h5'}  fontWeight={'500'}>
+                  {'Posts'}
+                </Typography>
+              )}
+            </Box>
             <Grid
               container
               spacing={5}
@@ -107,25 +126,6 @@ export default function Home() {
               sx={{ pt: '24px' }}
             >
               <Grid item container xs={12} md={8} spacing={3}>
-                <Grid item xs={12}>
-                  {tagSelected ? (
-                    <Typography variant={'h4'} className="neutraface">
-                      {'Posts tagged as '}
-                      <Typography
-                        component="span"
-                        variant={'h4'}
-                        className="neutraface"
-                        sx={{color:'primary.main'}}
-                      >
-                        {`"${selectedChip}"`}
-                      </Typography>
-                    </Typography>
-                  ) : (
-                    <Typography variant={'h4'} className="neutraface">
-                      {'Posts'}
-                    </Typography>
-                  )}
-                </Grid>
                 {filteredPosts.map((item, index) => (
                   <Fade in={true} timeout={500} key={item.id}>
                     <Grid item xs={12}>
@@ -142,17 +142,19 @@ export default function Home() {
                   </Fade>
                 ))}
               </Grid>
-              <Grid item xs={12} md={4} sx={{mt:1}}>
+              <Grid item xs={12} md={4}>
                 <Paper
                   variant={darkMode ? 'outlined' : undefined}
                   elevation={8}
                   sx={{
                     px: 3,
-                    py: 2,
+                    pb: 2,
                     mb: 3,
                   }}
                 >
-                  <Typography variant="h6">Tags</Typography>
+                    <Typography variant='h6' fontWeight={'400'} sx={{ my: 3 }}  >
+                      Filter by tag
+                    </Typography>
                   <Box sx={{ mt: '8px' }}>
                     {chipData.map((label) => (
                       <Chip
@@ -165,15 +167,7 @@ export default function Home() {
                       />
                     ))}
                   </Box>
-                </Paper>
-                <Paper
-                  variant={darkMode ? 'outlined' : undefined}
-                  elevation={8}
-                  sx={{
-                    p: 3,
-                    mb: 3,
-                  }}
-                >
+                  <Divider sx={{my:3}}/>
                   <Image
                     src="/favicon.png"
                     alt="logo"
@@ -181,7 +175,7 @@ export default function Home() {
                     height={32}
                     className="hover-pointer"
                   />
-                  <Typography variant="h6" sx={{ mt: '16px' }}>
+                  <Typography variant='h6' fontWeight={'400'} sx={{ mt: '16px' }}>
                     Keep up to date
                   </Typography>
                   <Typography
