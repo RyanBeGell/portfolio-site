@@ -152,7 +152,7 @@ export default function Home() {
                     mb: 3,
                   }}
                 >
-                    <Typography variant='h6' fontWeight={'400'} sx={{ my: 3 }}  >
+                    <Typography variant='h6' fontWeight={'400'} sx={{ py: 3 }}  >
                       Filter by tag
                     </Typography>
                   <Box sx={{ mt: '8px' }}>
