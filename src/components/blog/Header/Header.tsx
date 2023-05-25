@@ -121,9 +121,6 @@ export default function Header(props: Props) {
           </Grid>
         </Grid>
       </Box>
-      <Box sx={{ pb: '16px' }}>
-        <h4>{props.title}</h4>
-      </Box>
     </>
   );
 }
