@@ -85,7 +85,7 @@ export default function Portfolio() {
                       mb: 3,
                     }}
                   >
-                    <Typography variant='h6' fontWeight={'400'}sx={{ my: 3 }}>
+                    <Typography variant='h6' fontWeight={'400'} sx={{ py: 3 }}>
                       Filter by tag
                     </Typography>
                     {chipData.map((label) => (
@@ -104,7 +104,10 @@ export default function Portfolio() {
                 count={4}
                 shape="rounded"
                 variant="outlined"
-                sx={{ mt: 3 }}
+                color='primary'
+                sx={{ mt: 3,'& .MuiPaginationItem-page.Mui-selected': {
+                  color: 'white',
+                }, }}
               />
             </Box>
           </Box>
