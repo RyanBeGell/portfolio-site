@@ -102,19 +102,19 @@ export default function Home() {
             </Box>
             <Box>
               {tagSelected ? (
-                <Typography variant={'h5'}                 fontWeight={'500'}>
+                <Typography variant={'h4'} className={'neutraface'}>
                   {'Posts tagged as '}
                   <Typography
                     component="span"
-                    variant={'h5'}
-                    fontWeight={'500'}
+                    variant={'h4'}
+                    className={'neutraface'}
                     sx={{ color: 'primary.main' }}
                   >
                     {`"${selectedChip}"`}
                   </Typography>
                 </Typography>
               ) : (
-                <Typography variant={'h5'}  fontWeight={'500'}>
+                <Typography variant={'h4'}  className={'neutraface'}>
                   {'Posts'}
                 </Typography>
               )}
@@ -163,6 +163,7 @@ export default function Home() {
                         clickable
                         color={label === selectedChip ? 'primary' : 'default'}
                         onClick={handleChipClick(label)}
+                        size='medium'
                         sx={{ mr: 1, mb: 1, borderRadius: '4px' }}
                       />
                     ))}
