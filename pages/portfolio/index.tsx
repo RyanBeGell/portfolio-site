@@ -54,8 +54,8 @@ export default function Portfolio() {
             </Box>
             <Box>
               <Typography
-                variant={'h5'}
-                fontWeight={'500'}
+                variant={'h4'}
+                className={'neutraface'}
                 sx={{ mb: 3 }}
               >
                 Projects
@@ -105,8 +105,8 @@ export default function Portfolio() {
                 shape="rounded"
                 variant="outlined"
                 color='primary'
-                sx={{ mt: 3,'& .MuiPaginationItem-page.Mui-selected': {
-                  color: 'white',
+                sx={{ mt: 3, '& .MuiPaginationItem-page.Mui-selected': {
+                  color: 'text.primary',
                 }, }}
               />
             </Box>
@@ -115,34 +115,4 @@ export default function Portfolio() {
       </Box>
     </>
   );
-}
-
-{
-  /* <Box sx={{ mb: 3 }}>
-            {chipData.map((label) => (
-              <Chip
-                key={label}
-                label={label}
-                clickable
-                color={'default'}
-                sx={{ mr: 1, borderRadius: '4px' }}
-              />
-            ))}
-          </Box>
-          <ProjectModal open={open} handleClose={handleClose} />
-          <Box>
-            <Box sx={{ maxWidth: 1000 }}>
-              <Grid container spacing={3} justifyContent="center">
-                {ProjectData.map((item, index) => (
-                  <Grid item xs={12} sm={6} md={6} lg={4} key={index}>
-                    <ProjectCard
-                      handleOpen={handleOpen}
-                      title={item.title}
-                      body={item.body}
-                      image={item.image}
-                    />
-                  </Grid>
-                ))}
-              </Grid>
-            </Box> */
 }
