@@ -17,7 +17,7 @@ export default function ProjectsSection() {
   const handleClose = () => setOpen(false);
   const theme = useTheme();
   const colorMode = theme.palette.mode;
-
+  const TopThreeProjects = ProjectData.slice(0, 3);
   return (
     <>
       <ProjectModal open={open} handleClose={handleClose} />
@@ -25,7 +25,7 @@ export default function ProjectsSection() {
         <Box sx={{ maxWidth: 1150 }}>
           <SectionTitle title="Projects" />
           <Grid container spacing={3} justifyContent="center">
-            {ProjectData.map((item, index) => (
+            {TopThreeProjects.map((item, index) => (
               <Grid item xs={12} sm={6} md={4} lg={4} key={index}>
                 <ScrollAnimation
                   animation={'fade'}
