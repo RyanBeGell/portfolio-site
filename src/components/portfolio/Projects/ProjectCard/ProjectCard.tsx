@@ -46,20 +46,14 @@ export default function ProjectCard(props: Props) {
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions sx={{ alignItems: 'center' }}>
-          <Button
+        <CardActions sx={{mx:'4px'}}>
+        <Button size="small" startIcon={<GitHubIcon />}>
+            {'GITHUB'}
+          </Button>
+          <Button size="small"
             startIcon={<LanguageIcon />}
-            sx={{
-              flex: 1,
-              display: 'flex',
-              alignItems: 'center',
-              alignText: 'center',
-            }}
           >
             {'LIVE DEMO'}
-          </Button>
-          <Button startIcon={<GitHubIcon />} sx={{ flex: 1 }}>
-            {'GITHUB'}
           </Button>
         </CardActions>
       </Card>
