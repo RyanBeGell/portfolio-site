@@ -23,8 +23,8 @@ export default function Landing() {
   return (
     <Box className="centerFlexBox" sx={{ minHeight: '100vh', mx: '48px' }}>
       <Grid className="centerFlexBox">
-      <Fade timeout={1000}>
-        <Grid item>
+      <Fade in={true} timeout={500}>
+        <Grid item sx={{minHeight:'162.02px'}}>
           <Typography variant={'h1'} className={'name'} >
             Ryan
             <Typography
@@ -36,7 +36,7 @@ export default function Landing() {
               &nbsp;BeGell
             </Typography>
           </Typography>
-          <Typography variant={'h4'} noWrap>
+          <Typography variant={'h4'} noWrap sx={{ml:'4px'}}>
             <ReactTyped
               loop={false}
               typeSpeed={50}
@@ -50,7 +50,7 @@ export default function Landing() {
           </Typography>
         </Grid>
         </Fade>
-        <Fade timeout={1500}>
+        <Fade in={true} timeout={1500}>
         <Grid item sx={{ pl: '32px',  display: { xs: 'none', sm: 'none', md:'block' },}}>
           <Image
             src="/programming.svg"
