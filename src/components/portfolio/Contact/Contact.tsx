@@ -1,7 +1,6 @@
 import SendIcon from '@mui/icons-material/Send';
-import { Button, FormControlLabel } from '@mui/material';
+import { Button } from '@mui/material';
 import Box from '@mui/material/Box';
-import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField';
 import { useContext, useState } from 'react';
 import { ColorModeContext } from '../../../../pages/_app';
@@ -137,11 +136,6 @@ export default function Contact() {
                       borderColor: 'primary.main',
                     },
                 }}
-              />
-              <FormControlLabel
-                control={<Checkbox />}
-                label="Request a copy of my resume"
-                sx={{ color: 'text.secondary' }}
               />
               <div>
                 <Button
