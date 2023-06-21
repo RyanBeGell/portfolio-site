@@ -66,7 +66,7 @@ export default function BlogCard(props: Props) {
   }, [cardRef, showExcerpt]);
 
   return (
-    <Card raised ref={cardRef} variant={darkMode ? 'outlined' : undefined} sx={{ display: 'flex', flexDirection: 'row', }}>
+    <Card raised={!darkMode} ref={cardRef} variant={darkMode ? 'outlined' : undefined} sx={{ display: 'flex', flexDirection: 'row', }}>
       <CardContent
         sx={{
           pl: boxSize === 'small' ? '16px ' : '24px ',

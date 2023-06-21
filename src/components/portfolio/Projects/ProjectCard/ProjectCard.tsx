@@ -19,7 +19,7 @@ export default function ProjectCard(props: Props) {
   const theme = useTheme();
   const darkMode = theme.palette.mode === 'dark';
   return (
-      <Card raised id={styles.card} variant={darkMode ? 'outlined' : undefined}>
+      <Card raised={!darkMode} id={styles.card} variant={darkMode ? 'outlined' : undefined}>
         <CardActionArea
           onClick={props.handleOpen}
           sx={{
