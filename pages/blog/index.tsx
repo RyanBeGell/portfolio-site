@@ -69,7 +69,7 @@ export default function Home() {
 
   return (
     <>
-      <Box className="centerBox" sx={{ minHeight: '100vh' }}>
+      <Box className="centerBox" sx={{ minHeight: '100vh-64px' }}>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <Box sx={{ maxWidth: '1000px', width: '100%', mx: 4 }}>
             <Box
@@ -145,7 +145,7 @@ export default function Home() {
               <Grid item xs={12} md={4}>
                 <Paper
                   variant={darkMode ? 'outlined' : undefined}
-                  elevation={8}
+                  elevation={darkMode ? 0 : 8}
                   sx={{
                     px: 3,
                     pb: 2,
