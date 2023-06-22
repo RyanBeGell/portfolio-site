@@ -11,7 +11,6 @@ import {
   Box,
   createTheme,
   CssBaseline,
-  Divider,
   GlobalStyles,
   PaletteMode,
   ThemeProvider,
@@ -86,8 +85,16 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
               </DefaultLayout>
             )}
             {/* Global Footer */}
-            <Box sx={{ width: '100%', backgroundColor: 'background.light' }}>
-              {mode === 'dark' ? <Divider /> : null}
+            <Box
+              sx={{
+                width: '100%',
+                backgroundColor: 'background.light',
+                ...(mode === 'dark' && {
+                  boxShadow: `0px 1px 0px 0px ${theme.palette.divider}`,
+                  height: '1px',
+                }),
+              }}
+            >
               <Box sx={{ mx: '48px' }}>
                 <Box
                   sx={{
