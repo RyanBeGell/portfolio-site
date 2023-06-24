@@ -20,7 +20,6 @@ export default function Home() {
   const router = useRouter();
   const { tag } = router.query;
   const theme = useTheme();
-  const [tagActive, setTagActive] = useState<string>('');
   const [tagSelected, setTagSelected] = useState<boolean>(false);
   const [selectedChip, setSelectedChip] = useState<string | null>(
     tag ? String(tag) : null
@@ -114,7 +113,7 @@ export default function Home() {
                   </Typography>
                 </Typography>
               ) : (
-                <Typography variant={'h4'}  className={'neutraface'}>
+                <Typography variant={'h4'} className={'neutraface'}>
                   {'Posts'}
                 </Typography>
               )}
@@ -152,9 +151,9 @@ export default function Home() {
                     mb: 3,
                   }}
                 >
-                    <Typography variant='h6' fontWeight={'400'} sx={{ py: 3 }}  >
-                      Filter by tag
-                    </Typography>
+                  <Typography variant="h6" fontWeight={'400'} sx={{ py: 3 }}>
+                    Filter by tag
+                  </Typography>
                   <Box sx={{ mt: '8px' }}>
                     {chipData.map((label) => (
                       <Chip
@@ -163,12 +162,12 @@ export default function Home() {
                         clickable
                         color={label === selectedChip ? 'primary' : 'default'}
                         onClick={handleChipClick(label)}
-                        size='medium'
+                        size="medium"
                         sx={{ mr: 1, mb: 1, borderRadius: '4px' }}
                       />
                     ))}
                   </Box>
-                  <Divider sx={{my:3}}/>
+                  <Divider sx={{ my: 3 }} />
                   <Image
                     src="/favicon.png"
                     alt="logo"
@@ -176,7 +175,11 @@ export default function Home() {
                     height={32}
                     className="hover-pointer"
                   />
-                  <Typography variant='h6' fontWeight={'400'} sx={{ mt: '16px' }}>
+                  <Typography
+                    variant="h6"
+                    fontWeight={'400'}
+                    sx={{ mt: '16px' }}
+                  >
                     Keep up to date
                   </Typography>
                   <Typography

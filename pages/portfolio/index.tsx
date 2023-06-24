@@ -1,5 +1,6 @@
 import ProjectCard from '@/src/components/portfolio/Projects/ProjectCard/ProjectCard';
 import ProjectData from '@/src/components/portfolio/Projects/ProjectCard/ProjectCardData';
+import ProjectModal from '@/src/components/portfolio/Projects/ProjectModal/ProjectModal';
 import { Chip, Pagination, Paper, Typography, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -9,11 +10,11 @@ import { useEffect, useState } from 'react';
 export default function Portfolio() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const router = useRouter();
   const { tag } = router.query;
   const theme = useTheme();
-  const [tagActive, setTagActive] = useState<string>('');
   const [tagSelected, setTagSelected] = useState<boolean>(false);
   const [selectedChip, setSelectedChip] = useState<string | null>(
     tag ? String(tag) : null
@@ -55,6 +56,7 @@ export default function Portfolio() {
 
   return (
     <>
+    <ProjectModal open={open} handleClose={handleClose} />
       <Box className="centerBox" sx={{ minHeight: '100vh' }}>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <Box sx={{ maxWidth: '1000px', width: '100%', mx: 4 }}>
