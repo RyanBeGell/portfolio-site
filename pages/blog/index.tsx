@@ -68,7 +68,7 @@ export default function Home() {
 
   return (
     <>
-      <Box className="centerBox" sx={{ minHeight: '100%' }}>
+      <Box className="centerBox" sx={{ minHeight: '100vh-64px' }}>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <Box sx={{ maxWidth: '1000px', width: '100%', mx: 4 }}>
             <Box
@@ -168,13 +168,6 @@ export default function Home() {
                     ))}
                   </Box>
                   <Divider sx={{ my: 3 }} />
-                  <Image
-                    src="/favicon.png"
-                    alt="logo"
-                    width={32}
-                    height={32}
-                    className="hover-pointer"
-                  />
                   <Typography
                     variant="h6"
                     fontWeight={'400'}
