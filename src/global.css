@@ -186,3 +186,8 @@ body {
   margin-left: 0px;   
 }
 }
+
+.stickyPaper {
+  position: sticky;
+  top:80px; /* Adjust the value based on your layout needs */
+}
