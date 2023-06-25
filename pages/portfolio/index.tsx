@@ -57,7 +57,7 @@ export default function Portfolio() {
   return (
     <>
     <ProjectModal open={open} handleClose={handleClose} />
-      <Box className="centerBox" sx={{ minHeight: '100vh' }}>
+      <Box className="centerBox" sx={{ minHeight: '100%' }}>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <Box sx={{ maxWidth: '1000px', width: '100%', mx: 4 }}>
             <Box
@@ -125,6 +125,7 @@ export default function Portfolio() {
                 <Paper
                   variant={darkMode ? 'outlined' : undefined}
                   elevation={8}
+                  className="stickyPaper"
                   sx={{
                     px: 3,
                     pb: 3,
@@ -147,18 +148,6 @@ export default function Portfolio() {
                 </Paper>
               </Grid>
             </Grid>
-            <Pagination
-              count={4}
-              shape="rounded"
-              variant="outlined"
-              color="primary"
-              sx={{
-                mt: 3,
-                '& .MuiPaginationItem-page.Mui-selected': {
-                  color: 'text.primary',
-                },
-              }}
-            />
           </Box>
         </Box>
       </Box>
