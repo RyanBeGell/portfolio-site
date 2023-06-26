@@ -154,7 +154,7 @@ export default function Home() {
                   <Typography variant="h6" fontWeight={'400'} sx={{ py: 3 }}>
                     Filter by tag
                   </Typography>
-                  <Box sx={{ mt: '8px' }}>
+                  <Box>
                     {chipData.map((label) => (
                       <Chip
                         key={label}
@@ -178,7 +178,7 @@ export default function Home() {
                   <Typography
                     variant="caption"
                     component="div"
-                    sx={{ color: 'text.secondary', mb: '16px' }}
+                    sx={{ color: 'text.secondary', mb: '8px' }}
                   >
                     Subscribe for email notifications
                   </Typography>
