@@ -102,7 +102,7 @@ export default function BlogAppBar(props: Props) {
                 target="_blank"
                 rel="noopener"
               >
-                <StyledIconButton title="Browse my code on GitHub">
+                <StyledIconButton title="View site repository">
                   <GitHubIcon fontSize="small" />
                 </StyledIconButton>
               </MUILink>
