@@ -12,7 +12,6 @@ import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import Fade from '@mui/material/Fade';
 import Grid from '@mui/material/Grid';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
@@ -92,7 +91,18 @@ export default function Home() {
                   variant={'h3'}
                   component={'span'}
                   className={'neutraface'}
-                  sx={{ color: 'primary.main' }}
+                  color={`${
+                    theme.palette.mode === 'dark' ? 'primary.light' : undefined
+                  }`}
+                  sx={
+                    theme.palette.mode === 'light'
+                      ? {
+                          background: `linear-gradient(to right, ${theme.palette.primary.light}, ${theme.palette.primary.dark})`,
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                        }
+                      : {}
+                  }
                 >
                   latest{' '}
                 </Typography>{' '}
@@ -118,11 +128,7 @@ export default function Home() {
                 </Typography>
               )}
             </Box>
-            <Grid
-              container
-              spacing={5}
-              sx={{ pt: '24px' }}
-            >
+            <Grid container spacing={5} sx={{ pt: '24px' }}>
               <Grid item container xs={12} md={8} spacing={3}>
                 {filteredPosts.map((item, index) => (
                   <Fade in={true} timeout={500} key={item.id}>
