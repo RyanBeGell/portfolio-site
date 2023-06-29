@@ -1,7 +1,15 @@
 import ProjectCard from '@/src/components/portfolio/Projects/ProjectCard/ProjectCard';
 import ProjectData from '@/src/components/portfolio/Projects/ProjectCard/ProjectCardData';
 import ProjectModal from '@/src/components/portfolio/Projects/ProjectModal/ProjectModal';
-import { Chip, Pagination, Paper, Typography, useTheme } from '@mui/material';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import {
+  Chip,
+  Link,
+  Paper,
+  Tooltip,
+  Typography,
+  useTheme,
+} from '@mui/material';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { useRouter } from 'next/router';
@@ -56,7 +64,7 @@ export default function Portfolio() {
 
   return (
     <>
-    <ProjectModal open={open} handleClose={handleClose} />
+      <ProjectModal open={open} handleClose={handleClose} />
       <Box className="centerBox" sx={{ minHeight: '100%' }}>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <Box sx={{ maxWidth: '1000px', width: '100%', mx: 4 }}>
@@ -80,11 +88,47 @@ export default function Portfolio() {
                   variant={'h3'}
                   component={'span'}
                   className={'neutraface'}
-                  sx={{ color: 'primary.main' }}
+                  color={`${
+                    theme.palette.mode === 'dark' ? 'primary.light' : undefined
+                  }`}
+                  sx={
+                    theme.palette.mode === 'light'
+                      ? {
+                          background: `linear-gradient(to right, ${theme.palette.primary.light}, ${theme.palette.primary.dark})`,
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                        }
+                      : {}
+                  }
                 >
                   Explore
                 </Typography>{' '}
                 my development work
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Check out my projects below or browse my code on&nbsp;
+                <Tooltip
+                  title={
+                    <Box display="flex" alignItems={'center'}>
+                      <GitHubIcon fontSize="small" sx={{ mr: '4px' }} />
+                      RyanBeGell
+                    </Box>
+                  }
+                >
+                  <Link
+                    href="https://github.com/RyanBeGell"
+                    color="inherit"
+                    target="_blank"
+                    rel="noopener"
+                    sx={{
+                      '&:hover': {
+                        color: 'primary.main',
+                      },
+                    }}
+                  >
+                    GitHub
+                  </Link>
+                </Tooltip>
               </Typography>
             </Box>
             <Box>
