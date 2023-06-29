@@ -1,5 +1,5 @@
 import SendIcon from '@mui/icons-material/Send';
-import { Button } from '@mui/material';
+import { Button, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { useContext, useState } from 'react';
@@ -8,7 +8,7 @@ import ScrollAnimation from '../../ScrollAnimation';
 import SectionTitle from '../SectionTitle/SectionTitle';
 
 export default function Contact() {
-  const { mode } = useContext(ColorModeContext);
+  const theme = useTheme();
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -140,7 +140,7 @@ export default function Contact() {
               <div>
                 <Button
                   size="large"
-                  variant={`${mode == 'dark' ? 'outlined' : 'contained'}`}
+                  variant={`${theme.palette.mode === 'dark' ? 'outlined' : 'contained'}`}
                   sx={{ mt: '16px' }}
                   startIcon={<SendIcon />}
                   type="submit"
