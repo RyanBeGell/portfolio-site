@@ -85,7 +85,11 @@ export default function Home() {
               >
                 Blog
               </Typography>
-              <Typography variant={'h3'} className={'neutraface'}>
+              <Typography
+                variant={'h3'}
+                className={'neutraface'}
+                sx={{ my: '10px' }}
+              >
                 My{' '}
                 <Typography
                   variant={'h3'}

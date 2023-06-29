@@ -83,7 +83,7 @@ export default function Portfolio() {
               >
                 Portfolio
               </Typography>
-              <Typography variant={'h3'} className={'neutraface'}>
+              <Typography variant={'h3'} className={'neutraface'} sx={{my:'10px'}}>
                 <Typography
                   variant={'h3'}
                   component={'span'}
