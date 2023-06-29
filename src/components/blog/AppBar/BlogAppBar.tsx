@@ -1,6 +1,5 @@
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import DragHandleRoundedIcon from '@mui/icons-material/DragHandleRounded';
-import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import AppBar from '@mui/material/AppBar';
@@ -13,8 +12,6 @@ import Toolbar from '@mui/material/Toolbar';
 import { useTheme } from '@mui/material/styles';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useContext } from 'react';
-import { ColorModeContext } from '../../../../pages/_app';
 import StyledIconButton from './StyledIconButton/StyledIconButton';
 
 export interface Props {
@@ -22,10 +19,9 @@ export interface Props {
 }
 
 export default function BlogAppBar(props: Props) {
-  const { mode } = useContext(ColorModeContext);
   const theme = useTheme();
-
-  const pages = ['Home', 'Blog', 'Portfolio'];
+  const mode = theme.palette.mode;
+  const pages = ['Home', 'Blog', 'Portfolio', 'Contact'];
 
   const router = useRouter();
 
@@ -86,6 +82,7 @@ export default function BlogAppBar(props: Props) {
                   key={item}
                   sx={{
                     color: 'text.primary',
+                    fontWeight:700,
                     '&:hover': {
                       color: 'primary.main',
                     },
@@ -106,10 +103,6 @@ export default function BlogAppBar(props: Props) {
                   <GitHubIcon fontSize="small" />
                 </StyledIconButton>
               </MUILink>
-              <StyledIconButton title="Send me an email">
-                <EmailIcon fontSize="small" />
-              </StyledIconButton>
-
               {mode === 'light' ? (
                 <StyledIconButton
                   title="Dark mode"
