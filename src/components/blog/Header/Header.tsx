@@ -6,7 +6,6 @@ import Tooltip from '@mui/material/Tooltip';
 import { ColorModeContext } from 'pages/_app';
 import React, { useContext, useState } from 'react';
 import HeaderIcon from './HeaderIcon';
-import Image from 'next/image';
 export interface Props {
   date: String;
   minRead: Number;
@@ -44,10 +43,18 @@ export default function Header(props: Props) {
       <Box sx={{ mb: '32px' }}>
         <Grid container spacing={0}>
           <Grid item xs={8}>
-            <Box sx={{ height: '48px', width: '48px', float: 'left', mr: '16px' }}>
-            <Avatar alt="Ryan BeGell" src="avatar.svg" sx={{height:'48px', width:'48px'}} />
-          </Box>
-            <Typography variant="subtitle1" fontWeight={'bold'}>Ryan BeGell</Typography>
+            <Box
+              sx={{ height: '48px', width: '48px', float: 'left', mr: '16px' }}
+            >
+              <Avatar
+                alt="Ryan BeGell"
+                src="avatar.svg"
+                sx={{ height: '48px', width: '48px' }}
+              />
+            </Box>
+            <Typography variant="subtitle1" fontWeight={'bold'}>
+              Ryan BeGell
+            </Typography>
             <Typography
               variant="subtitle2"
               component="span"
@@ -78,7 +85,6 @@ export default function Header(props: Props) {
               <HeaderIcon type="LinkedIn" color="linkedInBlue" />
               <HeaderIcon type="Reddit" color="redditOrange" />
               <HeaderIcon type="Twitter" color="twitterBlue" />
-              <HeaderIcon type="Email" color="gmailRed" />
               <Tooltip
                 title="Copy link"
                 placement="top"
@@ -113,8 +119,12 @@ export default function Header(props: Props) {
                 //setting z index above the tooltip (toolTip is 1500)
                 style={{ zIndex: 1501 }}
               >
-                <Alert onClose={handleClose} severity="success" sx={{backgroundColor: 'background.dark'}}>
-                Link copied
+                <Alert
+                  onClose={handleClose}
+                  severity="success"
+                  sx={{ backgroundColor: 'background.dark' }}
+                >
+                  Link copied
                 </Alert>
               </Popper>
             </Box>
