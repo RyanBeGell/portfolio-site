@@ -22,14 +22,13 @@ export default function StyledIconButton(props: Props) {
             sx={{
               height: '34px',
               width: '34px',
-              borderRadius: '6px',
-              border: '1px solid',
-              borderColor: 'background.paperDivider',
+              borderRadius: '4px',
               ml: '10px',
               '&:hover': {
-                borderColor: 'primary.main',
+                border: '1px solid',
                 '& .MuiTouchRipple-root': {
                   display: 'none',
+                  
                 },
               },
             }}
