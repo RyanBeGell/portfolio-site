@@ -1,4 +1,4 @@
-import { Tooltip } from '@mui/material';
+import { Tooltip, useTheme } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 
 export interface Props {
@@ -8,6 +8,9 @@ export interface Props {
 }
 
 export default function StyledIconButton(props: Props) {
+
+  const theme = useTheme();
+  
   return (
     <>
       {props.title ? (
@@ -25,7 +28,7 @@ export default function StyledIconButton(props: Props) {
               borderRadius: '4px',
               ml: '10px',
               '&:hover': {
-                border: '1px solid',
+                backgroundColor: theme.palette.mode === 'light' ? 'rgba(0, 0, 0, 0.1)' : 'default',
                 '& .MuiTouchRipple-root': {
                   display: 'none',
                   
