@@ -3,7 +3,6 @@ import { Box, Fade, Grid, Typography } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import Image from 'next/image';
 import { scroller } from 'react-scroll';
-import ReactTyped from 'react-typed';
 import styles from './Landing.module.css';
 import ScrollAnimation from '../../ScrollAnimation';
 
@@ -24,7 +23,7 @@ export default function Landing() {
     <Box className="centerFlexBox" sx={{ minHeight: '100vh', mx: '48px' }}>
       <Grid className="centerFlexBox">
       <Fade in={true} timeout={500}>
-        <Grid item sx={{minHeight:'162.02px'}}>
+        <Grid item>
           <Typography variant={'h1'} className={'name'} >
             Ryan
             <Typography
@@ -37,7 +36,8 @@ export default function Landing() {
             </Typography>
           </Typography>
           <Typography variant={'h4'} noWrap sx={{ml:'4px'}}>
-            <ReactTyped
+          Full Stack Software Developer
+            {/* <ReactTyped
               loop={false}
               typeSpeed={50}
               strings={['Full Stack Software Developer']}
@@ -46,7 +46,7 @@ export default function Landing() {
               loopCount={0}
               showCursor={false}
               cursorChar="_"
-            />
+            /> */}
           </Typography>
         </Grid>
         </Fade>
