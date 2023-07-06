@@ -8,9 +8,8 @@ export interface Props {
 }
 
 export default function StyledIconButton(props: Props) {
-
   const theme = useTheme();
-  
+
   return (
     <>
       {props.title ? (
@@ -28,10 +27,12 @@ export default function StyledIconButton(props: Props) {
               borderRadius: '4px',
               ml: '10px',
               '&:hover': {
-                backgroundColor: theme.palette.mode === 'light' ? 'rgba(0, 0, 0, 0.1)' : 'default',
+                backgroundColor:
+                  theme.palette.mode === 'light'
+                    ? 'rgba(0, 0, 0, 0.1)'
+                    : 'default',
                 '& .MuiTouchRipple-root': {
                   display: 'none',
-                  
                 },
               },
             }}
