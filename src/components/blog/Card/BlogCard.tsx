@@ -30,7 +30,7 @@ export default function BlogCard(props: Props) {
 
   const theme = useTheme();
   const darkMode = theme.palette.mode === 'dark';
-  
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -66,7 +66,12 @@ export default function BlogCard(props: Props) {
   }, [cardRef, showExcerpt]);
 
   return (
-    <Card raised={!darkMode} ref={cardRef} variant={darkMode ? 'outlined' : undefined} sx={{ display: 'flex', flexDirection: 'row', }}>
+    <Card
+      raised={!darkMode}
+      ref={cardRef}
+      variant={darkMode ? 'outlined' : undefined}
+      sx={{ display: 'flex', flexDirection: 'row' }}
+    >
       <CardContent
         sx={{
           pl: boxSize === 'small' ? '16px ' : '24px ',
@@ -117,7 +122,7 @@ export default function BlogCard(props: Props) {
                 <Chip
                   label={chip}
                   size="small"
-                  sx={{borderRadius:1}}
+                  sx={{ borderRadius: 1 }}
                   onClick={() =>
                     router.push({
                       pathname: '/blog',

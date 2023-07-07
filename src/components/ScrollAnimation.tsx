@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { useScrollTrigger, Grow, Fade, Zoom } from '@mui/material';
+import { Fade, Grow, Zoom } from '@mui/material';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface Props {
   children: React.ReactElement;
@@ -7,7 +7,7 @@ interface Props {
   animation: 'grow' | 'fade' | 'zoom';
 }
 
-const ScrollAnimation: React.FC<Props> = (props: Props ) => {
+const ScrollAnimation: React.FC<Props> = (props: Props) => {
   const [triggered, setTriggered] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -38,21 +38,33 @@ const ScrollAnimation: React.FC<Props> = (props: Props ) => {
   const animationComponent = () => {
     switch (props.animation) {
       case 'grow':
-        return <Grow timeout={props.timeout} in={triggered}><div>{props.children}</div></Grow>;
+        return (
+          <Grow timeout={props.timeout} in={triggered}>
+            <div>{props.children}</div>
+          </Grow>
+        );
       case 'fade':
-        return <Fade timeout={props.timeout} in={triggered}><div>{props.children}</div></Fade>;
+        return (
+          <Fade timeout={props.timeout} in={triggered}>
+            <div>{props.children}</div>
+          </Fade>
+        );
       case 'zoom':
-        return <Zoom timeout={props.timeout} in={triggered}><div>{props.children}</div></Zoom>;
+        return (
+          <Zoom timeout={props.timeout} in={triggered}>
+            <div>{props.children}</div>
+          </Zoom>
+        );
       default:
-        return <Fade timeout={props.timeout} in={triggered}><div>{props.children}</div></Fade>;
+        return (
+          <Fade timeout={props.timeout} in={triggered}>
+            <div>{props.children}</div>
+          </Fade>
+        );
     }
-  }
+  };
 
-  return (
-    <div ref={ref}>
-      {animationComponent()}
-    </div>
-  );
+  return <div ref={ref}>{animationComponent()}</div>;
 };
 
 export default ScrollAnimation;

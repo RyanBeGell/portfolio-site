@@ -24,11 +24,11 @@ const Home: NextPage = () => {
       setShowScroll(false);
     }
   };
-  
+
   const toggleScrollButton = () => {
     window.requestAnimationFrame(handleScroll);
   };
-  
+
   useEffect(() => {
     window.addEventListener('scroll', toggleScrollButton);
     return () => {

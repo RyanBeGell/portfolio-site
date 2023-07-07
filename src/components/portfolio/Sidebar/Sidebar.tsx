@@ -202,7 +202,7 @@ export default function Sidebar(props: Props) {
 
   return (
     <>
-          <Box
+      <Box
         sx={{
           position: 'absolute',
           top: 0,
@@ -221,7 +221,7 @@ export default function Sidebar(props: Props) {
           display: { sm: 'block', lg: 'none' },
           backgroundColor: 'background.blogNav',
           backdropFilter: 'blur(8px)',
-          boxShadow: `inset 0px -1px 1px ${theme.palette.divider}`
+          boxShadow: `inset 0px -1px 1px ${theme.palette.divider}`,
         }}
       >
         <Toolbar sx={{ minHeight: '56px !important' }}>

@@ -1,10 +1,6 @@
 import EmailIcon from '@mui/icons-material/Email';
-import LinkIcon from '@mui/icons-material/Link';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import RedditIcon from '@mui/icons-material/Reddit';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import Tooltip from '@mui/material/Tooltip';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { createSvgIcon } from '@mui/material';
 
 type IconType = 'GitHub' | 'LinkedIn' | 'Email' | 'CodePen';
@@ -25,24 +21,23 @@ const icons = {
   GitHub: GitHubIcon,
   LinkedIn: LinkedInIcon,
   Email: EmailIcon,
-  CodePen: CodePenIcon
+  CodePen: CodePenIcon,
 };
 
 const FooterIcon = ({ type, color }: IconProps) => {
-
   const IconComponent = icons[type];
 
   return (
-      <IconComponent
-        sx={{
-          color: 'text.secondary',
-          fontSize: '25px',
-          '&:hover': {
-            color: `var(--${color})`,
-            cursor: 'pointer',
-          },
-        }}
-      />
+    <IconComponent
+      sx={{
+        color: 'text.secondary',
+        fontSize: '25px',
+        '&:hover': {
+          color: `var(--${color})`,
+          cursor: 'pointer',
+        },
+      }}
+    />
   );
 };
 

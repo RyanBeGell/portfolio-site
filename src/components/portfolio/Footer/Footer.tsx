@@ -1,4 +1,4 @@
-import { Box, Divider, Typography, createSvgIcon } from '@mui/material';
+import { Box, Divider, Typography } from '@mui/material';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import FooterIcon from './FooterIcon';
@@ -10,7 +10,6 @@ const Footer = () => {
   const handleNavigationClick = () => {
     router.push('/');
   };
-
 
   return (
     <Box display="flex" justifyContent="space-between" alignItems={'center'}>

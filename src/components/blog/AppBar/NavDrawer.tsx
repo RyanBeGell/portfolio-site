@@ -1,6 +1,5 @@
 import DragHandleRoundedIcon from '@mui/icons-material/DragHandleRounded';
-import SearchIcon from '@mui/icons-material/Search';
-import { InputBase, ListItemButton } from '@mui/material';
+import { ListItemButton } from '@mui/material';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import React from 'react';

@@ -41,7 +41,7 @@ export default function ProjectsSection() {
               </Grid>
             ))}
           </Grid>
-          <Box justifyContent={'center'} textAlign={'center'} sx={{mt:6}}>
+          <Box justifyContent={'center'} textAlign={'center'} sx={{ mt: 6 }}>
             <ScrollAnimation animation={'fade'} timeout={500}>
               <Link href="/portfolio">
                 <Button

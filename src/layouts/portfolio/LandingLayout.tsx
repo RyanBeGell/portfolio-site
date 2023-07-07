@@ -18,9 +18,10 @@ export default function LandingLayout({ children }: any) {
           className="centerFlexBox"
           sx={{
             minHeight: '100vh',
-            background: theme.palette.mode === 'dark'
-            ? 'radial-gradient(ellipse at center, #001e3c 10%, #0A1929 75%)'
-            : '#FFFFFF',
+            background:
+              theme.palette.mode === 'dark'
+                ? 'radial-gradient(ellipse at center, #001e3c 10%, #0A1929 75%)'
+                : '#FFFFFF',
             width: '100%',
           }}
         >

@@ -46,7 +46,11 @@ export default function Contact() {
               >
                 Contact
               </Typography>
-              <Typography variant={'h3'} className={'neutraface'} sx={{my:'10px'}}>
+              <Typography
+                variant={'h3'}
+                className={'neutraface'}
+                sx={{ my: '10px' }}
+              >
                 Reach out and{' '}
                 <Typography
                   variant={'h3'}
