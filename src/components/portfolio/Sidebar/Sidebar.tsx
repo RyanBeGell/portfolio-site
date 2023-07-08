@@ -32,7 +32,7 @@ import { scroller } from 'react-scroll';
 import { ColorModeContext } from '../../../../pages/_app';
 import StyledIconButton from '../../blog/AppBar/StyledIconButton/StyledIconButton';
 import SidebarFooter from './Footer/SidebarFooter';
-import styles from './sidebar.module.css';
+import styles from './Sidebar.module.css';
 
 export interface Props {
   toggleColorMode: () => void;

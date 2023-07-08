@@ -1,6 +1,6 @@
 import CloseIcon from '@mui/icons-material/Close';
 import EmailIcon from '@mui/icons-material/Email';
-import FaceBookIcon from '@mui/icons-material/FaceBook';
+import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import RedditIcon from '@mui/icons-material/Reddit';
 import TwitterIcon from '@mui/icons-material/Twitter';
@@ -34,7 +34,7 @@ export default function ShareDialog(props: Props) {
     { color: 'linkedInBlue', Icon: LinkedInIcon },
     { color: 'twitterBlue', Icon: TwitterIcon },
     { color: 'redditOrange', Icon: RedditIcon },
-    { color: 'facebookBlue', Icon: FaceBookIcon },
+    { color: 'facebookBlue', Icon: FacebookIcon },
     { color: 'gmailRed', Icon: EmailIcon },
   ];
 
