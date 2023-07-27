@@ -29,7 +29,7 @@ export default function StyledIconButton(props: Props) {
               '&:hover': {
                 backgroundColor:
                   theme.palette.mode === 'light'
-                    ? 'rgba(0, 0, 0, 0.1)'
+                    ? 'rgba(0, 0, 0, 0.04)'
                     : 'default',
                 '& .MuiTouchRipple-root': {
                   display: 'none',
