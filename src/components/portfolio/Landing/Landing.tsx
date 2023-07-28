@@ -4,6 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import Image from 'next/image';
 import { scroller } from 'react-scroll';
 import styles from './Landing.module.css';
+import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 
 const handleScroll = () => {
   //used to determine offset (mobile app bar is 56px height)
@@ -68,7 +69,7 @@ export default function Landing() {
         </Fade>
       </Grid>
       <IconButton id={styles.ArrowIcon} color="primary" onClick={handleScroll}>
-        <SouthIcon color="primary" sx={{ fontSize: '32px' }} />
+        <KeyboardDoubleArrowDownIcon color="primary" sx={{ fontSize: '32px' }} />
       </IconButton>
     </Box>
   );
