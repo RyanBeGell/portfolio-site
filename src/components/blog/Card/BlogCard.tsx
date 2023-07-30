@@ -145,7 +145,7 @@ export default function BlogCard(props: Props) {
           </IconButton>
         </Box>
       </CardContent>
-      <ShareDialog open={open} handleClose={handleClose} />
+      <ShareDialog open={open} handleClose={handleClose} link={"https://RyanBeGell.com/blog/posts/" + props.path}/>
       <Box display="flex" alignItems="center">
         <CardMedia
           component="img"

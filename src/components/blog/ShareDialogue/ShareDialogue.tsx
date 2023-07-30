@@ -18,12 +18,11 @@ import { useState } from 'react';
 export interface Props {
   open: boolean;
   handleClose: () => void;
+  link: string;
 }
 
 export default function ShareDialog(props: Props) {
   const [copySuccess, setCopySuccess] = useState(false);
-
-  const link = 'www.example.com/blog/post/example';
 
   const router = useRouter();
   const contentShift = router.pathname === '/' ? 'shiftContentRight' : '';
@@ -40,7 +39,7 @@ export default function ShareDialog(props: Props) {
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(link);
+      await navigator.clipboard.writeText(props.link);
       setCopySuccess(true);
       setTimeout(() => setCopySuccess(false), 3000);
     } catch (err) {
@@ -97,7 +96,7 @@ export default function ShareDialog(props: Props) {
         </Typography>
         <div>
           <TextField
-            value={link}
+            value={props.link}
             size="small"
             fullWidth
             disabled
