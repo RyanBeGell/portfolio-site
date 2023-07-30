@@ -1,11 +1,5 @@
-.cert {
-  transition: all ease-in-out .1s;
-}
-
 .cert:hover {
-  transform: scale(1.05);
   filter: drop-shadow(0 10px 5px rgba(0, 0, 0, 0.5));
-  cursor: pointer;
 }
 
 .cert span {
