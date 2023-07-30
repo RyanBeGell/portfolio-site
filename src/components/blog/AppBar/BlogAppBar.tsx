@@ -61,14 +61,21 @@ export default function BlogAppBar(props: Props) {
               justifyContent: { xs: 'space-between', sm: 'none' },
             }}
           >
-            <Image
-              onClick={() => handleRedirect('Home')}
-              src="/favicon.png"
-              alt="logo"
-              width={32}
-              height={32}
-              className="hover-pointer"
-            />
+            <Box
+              sx={{
+                display: 'flex' , // Change 'block' to 'flex'
+                alignItems: 'center',
+              }}
+              className="hover-pointer grow-on-hover"
+            >
+              <Image
+                onClick={() => handleRedirect('Home')}
+                src="/favicon.png"
+                alt="logo"
+                width={32}
+                height={32}
+              />
+            </Box>
             <Box
               sx={{
                 ml: '20px',
