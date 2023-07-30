@@ -33,7 +33,7 @@ export default function Certifications() {
                 src={cert.src}
                 height={cert.height}
                 width={cert.width}
-                className={styles.cert}
+                className={`${styles.cert} hover-pointer grow-on-hover`}
               />
             </ScrollAnimation>
           </Grid>
