@@ -191,3 +191,12 @@ body {
   position: sticky;
   top:80px; /* Adjust the value based on your layout needs */
 }
+
+/* CSS */
+.grow-on-hover:hover {
+  transform: scale(1.05); /* You can adjust the scale factor as needed */
+}
+
+.grow-on-hover {
+  transition: transform 0.2s ease; /* Adjust the duration and easing as needed */
+}
