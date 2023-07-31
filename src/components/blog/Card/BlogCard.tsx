@@ -156,7 +156,7 @@ export default function BlogCard(props: Props) {
             px: boxSize === 'small' ? '16px' : '24px',
             objectFit: 'cover', // add this line to set the object-fit property
           }}
-          image="https://mui.com/static/images/cards/live-from-space.jpg"
+          image="https://via.placeholder.com/500x500.png?text=Image2"
           alt="Live from space album cover"
         />
       </Box>
