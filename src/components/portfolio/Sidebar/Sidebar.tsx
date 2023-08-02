@@ -30,10 +30,10 @@ import { useRouter } from 'next/router';
 import React, { useContext } from 'react';
 import { scroller } from 'react-scroll';
 import { ColorModeContext } from '../../../../pages/_app';
+import CodePenIcon from '../../Icons/CodePenIcon';
 import StyledIconButton from '../../blog/AppBar/StyledIconButton/StyledIconButton';
 import SidebarFooter from './Footer/SidebarFooter';
 import styles from './Sidebar.module.css';
-import CodePenIcon from '../../Icons/CodePenIcon';
 
 export interface Props {
   toggleColorMode: () => void;
@@ -70,7 +70,7 @@ export default function Sidebar(props: Props) {
   };
 
   //sidebar social icons
-  const SocialIconButton = ({ Icon }: { Icon: React.ElementType }) => {
+  const SocialIconButton = ({ Icon, href }: { Icon: React.ElementType, href: string  }) => {
     const isDarkMode = theme.palette.mode === 'dark';
     const backgroundColor = isDarkMode ? theme.palette.primary.main : '#FFFFFF';
     const color = isDarkMode
@@ -82,6 +82,9 @@ export default function Sidebar(props: Props) {
 
     return (
       <IconButton
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
         sx={{
           color,
           backgroundColor,
@@ -131,16 +134,16 @@ export default function Sidebar(props: Props) {
         }}
       >
         <Grid item>
-          <SocialIconButton Icon={GitHubIcon} />
+          <SocialIconButton Icon={GitHubIcon} href={'https://github.com/RyanBeGell'}/>
         </Grid>
         <Grid item>
-          <SocialIconButton Icon={LinkedInIcon} />
+          <SocialIconButton Icon={LinkedInIcon} href={'https://LinkedIn.com/RyanBeGell'}/>
         </Grid>
         <Grid item>
-          <SocialIconButton Icon={CodePenIcon} />
+          <SocialIconButton Icon={CodePenIcon} href={'https://CodePen.com/RyanBeGell'}/>
         </Grid>
         <Grid item>
-          <SocialIconButton Icon={EmailIcon} />
+          <SocialIconButton Icon={EmailIcon} href={'mailto:ryanbegell@outlook.com'} />
         </Grid>
       </Grid>
       {mode === 'light' ? (
