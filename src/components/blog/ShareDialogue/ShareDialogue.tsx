@@ -47,6 +47,45 @@ export default function ShareDialog(props: Props) {
     }
   };
 
+  const handleLinkedInShare = () => {
+    window.open(
+      `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(props.link)}`,
+      '_blank'
+    );
+  };
+
+  const handleTwitterShare = () => {
+    window.open(
+      `https://twitter.com/intent/tweet?url=${encodeURIComponent(props.link)}`,
+      '_blank'
+    );
+  };
+
+  const handleRedditShare = () => {
+    window.open(
+      `https://www.reddit.com/submit?url=${encodeURIComponent(props.link)}`,
+      '_blank'
+    );
+  };
+
+  const handleFacebookShare = () => {
+    window.open(
+      `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(props.link)}`,
+      '_blank'
+    );
+  };
+  
+  const handleEmailShare = () => {
+    const recipient = window.prompt('Enter the recipient\'s email address:');
+    if (recipient) {
+      const subject = 'Check out this link!';
+      const body = props.link;
+      window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(
+        subject
+      )}&body=${encodeURIComponent(body)}`;
+    }
+  };  
+  
   return (
     <Dialog
       open={props.open}
