@@ -49,7 +49,9 @@ export default function ShareDialog(props: Props) {
 
   const handleLinkedInShare = () => {
     window.open(
-      `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(props.link)}`,
+      `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+        props.link
+      )}`,
       '_blank'
     );
   };
@@ -70,22 +72,21 @@ export default function ShareDialog(props: Props) {
 
   const handleFacebookShare = () => {
     window.open(
-      `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(props.link)}`,
+      `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+        props.link
+      )}`,
       '_blank'
     );
   };
-  
+
   const handleEmailShare = () => {
-    const recipient = window.prompt('Enter the recipient\'s email address:');
-    if (recipient) {
-      const subject = 'Check out this link!';
-      const body = props.link;
-      window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(
-        subject
-      )}&body=${encodeURIComponent(body)}`;
-    }
-  };  
-  
+    const subject = 'Check out this link!';
+    const body = props.link;
+    window.location.href = `mailto:?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+  };
+
   return (
     <Dialog
       open={props.open}
@@ -123,6 +124,27 @@ export default function ShareDialog(props: Props) {
                     backgroundColor: 'inherit',
                     boxShadow: 'inset 0 0 0 1px',
                   },
+                }}
+                onClick={() => {
+                  switch (index) {
+                    case 0:
+                      handleLinkedInShare();
+                      break;
+                    case 1:
+                      handleTwitterShare();
+                      break;
+                    case 2:
+                      handleRedditShare();
+                      break;
+                    case 3:
+                      handleFacebookShare();
+                      break;
+                    case 4:
+                      handleEmailShare();
+                      break;
+                    default:
+                      break;
+                  }
                 }}
               >
                 <Icon fontSize="inherit" />
