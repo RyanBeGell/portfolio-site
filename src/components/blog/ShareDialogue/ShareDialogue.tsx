@@ -70,14 +70,15 @@ export default function ShareDialog(props: Props) {
     );
   };
 
+  //todo create facebook app ID on Facebook for Developers platform
   const handleFacebookShare = () => {
-    window.open(
-      `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-        props.link
-      )}`,
-      '_blank'
-    );
+    const fbAppId = 'YOUR_FACEBOOK_APP_ID'; // Replace with Facebook App ID when made
+    const encodedLink = encodeURIComponent(props.link);
+    const facebookUrl = `https://www.facebook.com/dialog/share?app_id=${fbAppId}&href=${encodedLink}`;
+  
+    window.open(facebookUrl, '_blank');
   };
+  
 
   const handleEmailShare = () => {
     const subject = 'Check out this link!';
