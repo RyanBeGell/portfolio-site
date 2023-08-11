@@ -3,6 +3,7 @@ import BlogPostsCardData from '@/src/components/blog/Card/BlogCardData';
 import {
   Divider,
   OutlinedInput,
+  Pagination,
   Paper,
   Typography,
   useTheme,
@@ -64,6 +65,23 @@ export default function Home() {
 
   const RecentBlogPosts = BlogPostsCardData.slice(0, 1);
   const darkMode = theme.palette.mode === 'dark';
+
+  const postsPerPage = 5;
+  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    page: number
+  ) => {
+    setCurrentPage(page);
+    window.scrollTo(0, 0);
+  };
+
+  const startIndex = (currentPage - 1) * postsPerPage;
+  const endIndex = startIndex + postsPerPage;
+  const postsToShow = filteredPosts.slice(startIndex, endIndex);
 
   return (
     <>
@@ -134,7 +152,7 @@ export default function Home() {
             </Box>
             <Grid container spacing={5} sx={{ pt: '24px' }}>
               <Grid item container xs={12} md={8} spacing={3}>
-                {filteredPosts.map((item, index) => (
+                {postsToShow.map((item, index) => (
                   <Fade in={true} timeout={500} key={item.id}>
                     <Grid item xs={12}>
                       <BlogCard
@@ -227,6 +245,18 @@ export default function Home() {
                   </Button>{' '}
                 </Paper>
               </Grid>
+              <Box
+                sx={{ display: 'flex', justifyContent: 'center', my: 3, mx: 4 }}
+              >
+                <Pagination
+                  count={totalPages}
+                  page={currentPage}
+                  onChange={handlePageChange}
+                  variant="outlined"
+                  shape="rounded"
+                  color="primary"
+                />
+              </Box>
             </Grid>
           </Box>
         </Box>
