@@ -68,7 +68,7 @@ export const getDesignTokens = (mode: PaletteMode) => ({
         : {
             primary: '#000000',
             contrast: '#114b7a',
-            blogIcons: 'rgba(168, 168, 168, 1)',
+            blogIcons: '#666666',
             secondary: '#3e5060',
             navFooter: '#e0e0e0',
           }),

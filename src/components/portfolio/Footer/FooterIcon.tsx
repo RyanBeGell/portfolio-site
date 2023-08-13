@@ -24,7 +24,7 @@ const FooterIcon = ({ type, color }: IconProps) => {
   return (
     <IconComponent
       sx={{
-        color: 'text.secondary',
+        color: 'text.blogIcons',
         fontSize: '25px',
         '&:hover': {
           color: `var(--${color})`,

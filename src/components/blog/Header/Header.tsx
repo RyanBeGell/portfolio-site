@@ -107,7 +107,7 @@ export default function Header(props: Props) {
                     color: 'text.blogIcons',
                     transform: 'rotate(-45deg)',
                     fontSize: '25px',
-                    '&:hover': { color: '#666666', cursor: 'pointer' },
+                    '&:hover': { color:  '#909090', cursor: 'pointer' },
                   }}
                 />
               </Tooltip>
