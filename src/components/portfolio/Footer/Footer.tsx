@@ -31,25 +31,25 @@ const Footer = () => {
         </Typography>
       </Box>
       <Box display="flex">
-        <FooterIcon type="GitHub" />
+        <FooterIcon type="GitHub" href={'https://github.com/RyanBeGell'}/>
         <Divider
           orientation="vertical"
           flexItem
           sx={{ mx: '8px', my: '2px' }}
         />
-        <FooterIcon type="LinkedIn" color="linkedInBlue" />
+        <FooterIcon type="LinkedIn" color="linkedInBlue" href={'https://LinkedIn.com/RyanBeGell'}/>
         <Divider
           orientation="vertical"
           flexItem
           sx={{ mx: '8px', my: '2px' }}
         />
-        <FooterIcon type="CodePen" />
+        <FooterIcon type="CodePen" href={'https://CodePen.com/RyanBeGell'}/>
         <Divider
           orientation="vertical"
           flexItem
           sx={{ mx: '8px', my: '2px' }}
         />
-        <FooterIcon type="Email" color="gmailRed" />
+        <FooterIcon type="Email" color="gmailRed" href={'mailto:ryanbegell@outlook.com'}/>
       </Box>
     </Box>
   );
