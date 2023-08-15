@@ -74,9 +74,9 @@ export default function Contact() {
                 with me
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Fill in the contact form below or contact me anytime at{' '}
+                Fill in the contact form below or send me an email at{' '}
                 <Link
-                  href="#"
+                  href="mailto:ryanbegell@outlook.com"
                   color="inherit"
                   sx={{
                     '&:hover': {
