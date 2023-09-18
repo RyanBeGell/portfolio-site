@@ -255,6 +255,9 @@ export default function Home() {
                   variant="outlined"
                   shape="rounded"
                   color="primary"
+                  sx={{'& .Mui-selected': {
+                    color: darkMode? 'white': 'primary.main', // Change this to the desired text color
+                  },}}
                 />
               </Box>
             </Grid>
