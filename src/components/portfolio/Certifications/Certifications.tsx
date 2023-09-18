@@ -7,17 +7,21 @@ export default function Certifications() {
   const certifications = [
     { src: '/AWS-Certified-Cloud-Practitioner.png', height: 190, width: 190 },
     {
-      src: '/AWS-Certified-Developer-Associate_badge.png',
+      src: '/AWS-Certified-Developer-Associate.png',
       height: 190,
       width: 190,
     },
-    { src: '/AWS-Certified-Cloud-Practitioner.png', height: 190, width: 190 },
+    {
+      src: '/AWS-Certified-Solutions-Architect-Associate.png',
+      height: 190,
+      width: 190,
+    },
   ];
 
   return (
     <Box className="centerBox">
       <SectionTitle title="Certifications" />
-      <Grid container direction="row">
+      <Grid container direction="row" spacing={3}>
         {certifications.map((cert, index) => (
           <Grid
             key={index}
