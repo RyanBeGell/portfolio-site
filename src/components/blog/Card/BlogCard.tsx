@@ -70,7 +70,13 @@ export default function BlogCard(props: Props) {
       raised={!darkMode}
       ref={cardRef}
       variant={darkMode ? 'outlined' : undefined}
-      sx={{ display: 'flex', flexDirection: 'row' }}
+      sx={{
+        display: 'flex',
+        flexDirection: 'row',
+        '&:hover': {
+          borderColor: 'primary.main',
+        },
+      }}
     >
       <CardContent
         sx={{
@@ -145,7 +151,11 @@ export default function BlogCard(props: Props) {
           </IconButton>
         </Box>
       </CardContent>
-      <ShareDialog open={open} handleClose={handleClose} link={"https://RyanBeGell.com/blog/posts/" + props.path}/>
+      <ShareDialog
+        open={open}
+        handleClose={handleClose}
+        link={'https://RyanBeGell.com/blog/posts/' + props.path}
+      />
       <Box display="flex" alignItems="center">
         <CardMedia
           component="img"
