@@ -26,7 +26,7 @@ export default function Header(props: Props) {
       navigator.clipboard.writeText('http://localhost:3000/blog/posts/onions');
       setTimeout(() => {
         setAnchorEl(null);
-      }, 2000); // close the popover after 2 seconds
+      }, 3000); // close the popover after 3 seconds
     }
   };
 
