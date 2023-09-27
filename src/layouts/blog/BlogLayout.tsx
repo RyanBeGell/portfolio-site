@@ -27,7 +27,6 @@ export default function BlogLayout({ children }: any) {
         <Box className={'blogPost'} sx={{ mx: '48px', mb: '48px', mt: 14 }}>
           <Button
             onClick={() => router.push('/blog')}
-            size='small'
             disableFocusRipple
             disableRipple
             sx={{
