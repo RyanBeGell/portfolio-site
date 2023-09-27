@@ -78,8 +78,6 @@
     padding-top:60px;
     padding-left: 16%;
     padding-right: 16%;
-    /* 64px fixed app bar, MUI sticky not working */
-    margin-top: 112px;
     max-width: 1000px;
     min-height: 90vh;
   }
