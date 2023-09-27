@@ -1,8 +1,9 @@
 import BlogPostsCardData from '@/src/components/blog/Card/BlogCardData';
-import { Box, Chip, Divider, Grid, Paper } from '@mui/material';
+import { Box, Button, Chip, Divider, Grid, Paper } from '@mui/material';
 import { useRouter } from 'next/router';
 import { ColorModeContext } from 'pages/_app';
 import { useContext, useState } from 'react';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 
 export default function BlogLayout({ children }: any) {
   const [sideNavOpen, setSideNavOpen] = useState(false);
@@ -21,10 +22,25 @@ export default function BlogLayout({ children }: any) {
         className={`${
           mode === 'light' ? 'blogLightContainer' : 'centerFlexBox'
         }`}
-        flexDirection="column"
         sx={{ width: '100%' }}
       >
-        <Box className={'blogPost'} sx={{ mx: '48px' }}>
+        <Box className={'blogPost'} sx={{ mx: '48px', mb: '48px', mt: 14 }}>
+          <Button
+            onClick={() => router.push('/blog')}
+            size='small'
+            disableFocusRipple
+            disableRipple
+            sx={{
+              alignSelf: 'flex-start',
+              my: '16px',
+              px:0,
+              textTransform: 'none', // Make the text lowercase
+              '&:hover': {
+                color: mode === 'light'? 'primary.dark' : 'primary.light', // Change text color on hover
+                backgroundColor: 'transparent', // Remove the default MUI background color on hover
+              },
+            }}
+          > <KeyboardArrowLeftIcon fontSize='small' sx={{ml:'-8px'}}/> Back to blog</Button>
           <Paper
             className={`${mode === 'light' ? 'blogPostLight' : 'blogPostDark'}`}
             elevation={8}
@@ -50,7 +66,7 @@ export default function BlogLayout({ children }: any) {
                   {BlogPost.chips?.map((chip, index) => (
                     <Grid item key={chip}>
                       <Chip
-                      sx={{borderRadius:'4px'}}
+                        sx={{ borderRadius: '4px' }}
                         label={chip}
                         onClick={() =>
                           router.push({
