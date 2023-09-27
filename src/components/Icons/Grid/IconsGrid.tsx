@@ -49,7 +49,7 @@ const IconsGrid: React.FC<Props> = ({
               </Tooltip>
             )}
             {!noTitle && (
-              <ScrollAnimation animation={'grow'} timeout={1000 + index * 250}>
+              <ScrollAnimation animation={'fade'} timeout={1000 + index * 250}>
                 <Box className={styles.customIcon}>
                   <DynamicComponent
                     key={name}
