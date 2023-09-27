@@ -139,23 +139,8 @@ export default function BlogCard(props: Props) {
               </Grid>
             ))}
           </Grid>
-          <IconButton
-            onClick={handleClickOpen}
-            sx={{
-              ml: 'auto',
-              color: 'text.blogIcons',
-              '&:hover': { color: 'primary.main' },
-            }}
-          >
-            <ShareIcon />
-          </IconButton>
         </Box>
       </CardContent>
-      <ShareDialog
-        open={open}
-        handleClose={handleClose}
-        link={'https://RyanBeGell.com/blog/posts/' + props.path}
-      />
       <Box display="flex" alignItems="center">
         <CardMedia
           component="img"
