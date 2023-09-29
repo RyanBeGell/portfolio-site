@@ -110,7 +110,7 @@ export default function Sidebar(props: Props) {
         alignItems="center"
         sx={{ mb: 2, mt: 2 }}
       >
-        <Avatar id={styles.avatar} src={'/avatar.svg'} alt="Avatar" />
+        <Avatar id={styles.avatar} src={'/profile_photo1.jpg'} alt="Avatar" sx={{border:'8px solid', borderColor: theme.palette.mode === 'dark' ? 'rgba(33, 150, 243, 0.3)' : 'rgba(255, 255, 255, 0.3)' }} />
       </Box>
       <Typography variant={'h5'} id={styles.name} color="#FFFFFF">
         Ryan BeGell
