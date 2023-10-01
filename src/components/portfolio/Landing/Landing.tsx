@@ -1,30 +1,37 @@
-import SouthIcon from '@mui/icons-material/South';
-import { Box, Fade, Grid, Typography } from '@mui/material';
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+import DescriptionIcon from '@mui/icons-material/Description';
+import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
+import { Box, Button, Fade, Grid, Typography, useTheme } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import Image from 'next/image';
+import Link from 'next/link';
 import { scroller } from 'react-scroll';
 import styles from './Landing.module.css';
-import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
-
-const handleScroll = () => {
-  //used to determine offset (mobile app bar is 56px height)
-  const appBarOpen = window.innerWidth < 1200;
-
-  scroller.scrollTo('about', {
-    duration: 500,
-    delay: 100,
-    smooth: true,
-    offset: appBarOpen ? -56 : 0,
-  });
-};
 
 export default function Landing() {
+  const theme = useTheme();
+
+  const handleScroll = () => {
+    //used to determine offset (mobile app bar is 56px height)
+    const appBarOpen = window.innerWidth < 1200;
+
+    scroller.scrollTo('about', {
+      duration: 500,
+      delay: 100,
+      smooth: true,
+      offset: appBarOpen ? -56 : 0,
+    });
+  };
+
   return (
-    <Box className="centerFlexBox" sx={{ minHeight: '100vh', mx: '48px' }}>
-      <Grid className="centerFlexBox">
+    <Box
+      className="centerFlexBox"
+      sx={{ minHeight: '100vh', maxWidth: '1150px', mx: '48px' }}
+    >
+      <Grid container className="centerFlexBox" spacing={4} >
         <Fade in={true} timeout={500}>
-          <Grid item>
-            <Typography variant={'h1'} className={'name'}>
+          <Grid item  md={7.5} >
+            <Typography variant={'h1'} className={'name'} sx={{ ml: '-4px' }}>
               Ryan
               <Typography
                 component="span"
@@ -35,41 +42,68 @@ export default function Landing() {
                 &nbsp;BeGell
               </Typography>
             </Typography>
-            <Typography variant={'h4'} noWrap sx={{ ml: '4px' }}>
-              Full Stack Software Developer
-              {/* <ReactTyped
-              loop={false}
-              typeSpeed={50}
-              strings={['Full Stack Software Developer']}
-              smartBackspace={false}
-              shuffle={false}
-              loopCount={0}
-              showCursor={false}
-              cursorChar="_"
-            /> */}
+            <Typography
+              variant={'h4'}
+              color="text.secondary"
+              noWrap
+              sx={{ my: '16px' }}
+            >
+              Full Stack Software Engineer
             </Typography>
+            <Typography
+              variant={'body1'}
+              color="text.secondary"
+              sx={{ maxWidth: '800px' }}
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </Typography>
+            <Grid container spacing={2} sx={{ mt: '16px' }}>
+              <Grid item>
+                <Link href="/portfolio">
+                  <Button
+                    size="large"
+                    startIcon={<ArrowCircleRightIcon />}
+                    variant={'contained'}
+                  >
+                    View Portfolio
+                  </Button>
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="/portfolio">
+                  <Button
+                    size="large"
+                    startIcon={<DescriptionIcon />}
+                    variant={'outlined'}
+                  >
+                    View Resume
+                  </Button>
+                </Link>
+              </Grid>
+            </Grid>
           </Grid>
         </Fade>
         <Fade in={true} timeout={1500}>
-          <Grid
-            item
-            sx={{
-              pl: '32px',
-              display: { xs: 'none', sm: 'none', md: 'block' },
-            }}
-          >
+          <Grid item md={4.5} sx={{ display:{xs:'none', md:'block'}} }>
             <Image
-              src="/programming.svg"
+              src="/photo.jpg"
               alt="ManAtDesk"
-              width={700}
-              height={600}
+              width={554.4}
+              height={660}
               priority
+              style={{ borderRadius: '4px' }}
             />
           </Grid>
         </Fade>
       </Grid>
       <IconButton id={styles.ArrowIcon} color="primary" onClick={handleScroll}>
-        <KeyboardDoubleArrowDownIcon color="primary" sx={{ fontSize: '32px' }} />
+        <KeyboardDoubleArrowDownIcon
+          color="primary"
+          sx={{ fontSize: '32px' }}
+        />
       </IconButton>
     </Box>
   );
