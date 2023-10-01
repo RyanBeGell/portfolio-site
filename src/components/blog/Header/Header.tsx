@@ -48,11 +48,11 @@ export default function Header(props: Props) {
             >
               <Avatar
                 alt="Ryan BeGell"
-                src="avatar.svg"
+                src="/profile_photo1.jpg"
                 sx={{ height: '48px', width: '48px' }}
               />
             </Box>
-            <Typography variant="subtitle1" fontWeight={'bold'}>
+            <Typography variant='subtitle1'>
               Ryan BeGell
             </Typography>
             <Typography
