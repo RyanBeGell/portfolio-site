@@ -6,6 +6,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { ColorModeContext } from 'pages/_app';
 import React, { useContext, useState } from 'react';
 import HeaderIcon from './HeaderIcon';
+import router from 'next/router';
 export interface Props {
   date: String;
   minRead: Number;
@@ -14,7 +15,8 @@ export interface Props {
 
 export default function Header(props: Props) {
   const { mode } = useContext(ColorModeContext);
-
+  const router = useRouter();
+  const link = router.asPath;
   const [anchorEl, setAnchorEl] = useState<
     (EventTarget & SVGSVGElement) | null
   >(null);
@@ -32,6 +34,29 @@ export default function Header(props: Props) {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLinkedInShare = () => {
+    window.open(
+      `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+        link
+      )}`,
+      '_blank'
+    );
+  };
+
+  const handleTwitterShare = () => {
+    window.open(
+      `https://twitter.com/intent/tweet?url=${encodeURIComponent(link)}`,
+      '_blank'
+    );
+  };
+
+  const handleRedditShare = () => {
+    window.open(
+      `https://www.reddit.com/submit?url=${encodeURIComponent(link)}`,
+      '_blank'
+    );
   };
 
   const open = Boolean(anchorEl);
