@@ -3,7 +3,7 @@ import Contact from '@/src/components/portfolio/Contact/Contact';
 import ProjectsSection from '@/src/components/portfolio/Projects/Projects';
 import RecentBlogPostsSection from '@/src/components/portfolio/RecentBlogPosts/RecentBlogPosts';
 import Skills from '@/src/components/portfolio/Skills/Skills';
-import AboutMe from '@/src/components/portfolio/about/AboutMe';
+import AboutMe from '@/src/components/portfolio/About/AboutMe';
 import KeyboardArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded';
 import { Box, Divider, Fade } from '@mui/material';
 import Fab from '@mui/material/Fab';
