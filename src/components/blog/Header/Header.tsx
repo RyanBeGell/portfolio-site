@@ -6,7 +6,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { ColorModeContext } from 'pages/_app';
 import React, { useContext, useState } from 'react';
 import HeaderIcon from './HeaderIcon';
-import router from 'next/router';
+import router, { useRouter } from 'next/router';
 export interface Props {
   date: String;
   minRead: Number;
