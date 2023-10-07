@@ -1,15 +1,13 @@
-import ShareIcon from '@mui/icons-material/Share';
 import { Chip, Grid, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
-import ShareDialog from '../ShareDialogue/ShareDialogue';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 export interface Props {
   title: string;
@@ -141,19 +139,21 @@ export default function BlogCard(props: Props) {
           </Grid>
         </Box>
       </CardContent>
-      <Box display="flex" alignItems="center">
-        <CardMedia
-          component="img"
-          sx={{
-            height: imgHeightWidth.height,
-            width: imgHeightWidth.width,
-            py: boxSize === 'small' ? '16px' : '24px',
-            px: boxSize === 'small' ? '16px' : '24px',
-            objectFit: 'cover', // add this line to set the object-fit property
-          }}
-          image="https://via.placeholder.com/500x500.png?text=Image2"
-          alt="Live from space album cover"
-        />
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'flex-end',
+          marginTop: 'auto',
+          p: '8px',
+        }}
+      >
+        <Button
+          variant="text"
+          sx={{ whiteSpace: 'noWrap', textTransform: 'none' }}
+          endIcon={<KeyboardArrowRightIcon/>}
+        >
+          Read more
+        </Button>
       </Box>
     </Card>
   );
