@@ -1,3 +1,4 @@
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { Chip, Grid, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -7,7 +8,6 @@ import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 export interface Props {
   title: string;
@@ -78,9 +78,8 @@ export default function BlogCard(props: Props) {
     >
       <CardContent
         sx={{
-          pl: boxSize === 'small' ? '16px ' : '24px ',
+          px: boxSize === 'small' ? '16px ' : '24px ',
           pt: boxSize === 'small' ? '12px' : '16px',
-          pr: '0px',
           pb: boxSize === 'small' ? '8px !important' : '16px !important',
         }}
       >
@@ -119,7 +118,7 @@ export default function BlogCard(props: Props) {
             {props.body}
           </Typography>
         </Box>
-        <Box display="flex" sx={{ mt: '8px', alignItems: 'center' }}>
+        <Box display="flex" sx={{ mt: '16px', alignItems: 'center' }}>
           <Grid container spacing={1} sx={{ alignItems: 'center' }}>
             {props.chips?.map((chip, index) => (
               <Grid item key={chip}>
@@ -137,24 +136,23 @@ export default function BlogCard(props: Props) {
               </Grid>
             ))}
           </Grid>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'flex-end',
+              marginTop: 'auto',
+            }}
+          >
+            <Button
+              variant="text"
+              sx={{ whiteSpace: 'noWrap', textTransform: 'none' }}
+              endIcon={<KeyboardArrowRightIcon />}
+            >
+              Read more
+            </Button>
+          </Box>
         </Box>
       </CardContent>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'flex-end',
-          marginTop: 'auto',
-          p: '8px',
-        }}
-      >
-        <Button
-          variant="text"
-          sx={{ whiteSpace: 'noWrap', textTransform: 'none' }}
-          endIcon={<KeyboardArrowRightIcon/>}
-        >
-          Read more
-        </Button>
-      </Box>
     </Card>
   );
 }
