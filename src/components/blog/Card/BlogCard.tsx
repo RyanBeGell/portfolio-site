@@ -7,66 +7,24 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useRef, useState } from 'react';
 
 export interface Props {
   title: string;
   body: string;
   path: string;
-  image: string;
   date: string;
   minsToRead: number;
   chips?: string[];
 }
 
 export default function BlogCard(props: Props) {
-  const [showExcerpt, setShowExcerpt] = useState(true);
-  const [boxSize, setBoxSize] = useState<'small' | 'medium' | 'large'>('large');
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [open, setOpen] = useState(false);
   const router = useRouter();
-
   const theme = useTheme();
-  const darkMode = theme.palette.mode === 'dark';
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const imgHeightWidth = {
-    height: boxSize === 'small' ? '128px' : '200px',
-    width: boxSize === 'small' ? '128px' : '200px',
-  };
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (cardRef.current) {
-        const cardWidth = cardRef.current.offsetWidth;
-        if (cardWidth < 450) {
-          setBoxSize('small');
-        } else if (cardWidth < 520) {
-          setBoxSize('medium');
-        } else {
-          setBoxSize('large');
-        }
-      }
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    //clear out the last event listener
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [cardRef, showExcerpt]);
+const darkMode = theme.palette.mode === 'dark';
 
   return (
     <Card
       raised={!darkMode}
-      ref={cardRef}
       variant={darkMode ? 'outlined' : undefined}
       sx={{
         display: 'flex',
@@ -78,9 +36,9 @@ export default function BlogCard(props: Props) {
     >
       <CardContent
         sx={{
-          px: boxSize === 'small' ? '16px ' : '24px ',
-          pt: boxSize === 'small' ? '12px' : '16px',
-          pb: boxSize === 'small' ? '8px !important' : '16px !important',
+          px: '16px ',
+          pt: '12px',
+          pb: '12px !important',
         }}
       >
         <Typography
@@ -109,12 +67,7 @@ export default function BlogCard(props: Props) {
           </Typography>
         </Link>
         <Box className="ellipsisBox">
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            component="div"
-            className={`${boxSize === 'small' ? 'invisible' : null}`}
-          >
+          <Typography variant="body2" color="text.secondary" component="div">
             {props.body}
           </Typography>
         </Box>
