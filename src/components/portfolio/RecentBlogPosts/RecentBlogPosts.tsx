@@ -10,10 +10,10 @@ import BlogPostCardData from '../../blog/Card/BlogCardData';
 import SectionTitle from '../SectionTitle/SectionTitle';
 
 export default function RecentBlogPostsSection() {
+
   //Get the information from the last 4 blog posts from the data file
   const RecentBlogPosts = BlogPostCardData.slice(0, 4);
   const theme = useTheme();
-  const mdScreenOrLower = useMediaQuery(theme.breakpoints.down('md'));
   const colorMode = theme.palette.mode;
 
   return (
@@ -26,14 +26,13 @@ export default function RecentBlogPostsSection() {
               <Grid item key={index} xl={6} lg={6} md={6}>
                 <ScrollAnimation
                   animation={'fade'}
-                  //Above md screen has a 2v2 grid, so stagger animation for 2nd in each grid row with index%2
+                  //Above md screen has a 2v2 grid, so delayed animation for 2nd in each grid row with index%2
                   timeout={1000}
                 >
                   <BlogCard
                     key={index}
                     title={post.title}
                     body={post.body}
-                    image={post.image}
                     path={post.path}
                     date={post.date}
                     chips={post.chips}
