@@ -1,22 +1,43 @@
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Modal } from '@mui/material';
+import { useState } from 'react';
 import ScrollAnimation from '../../ScrollAnimation';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import styles from './Certifications.module.css';
 
 export default function Certifications() {
+  interface Certification {
+    logo: string;
+    screenshot: string;
+  }
+
   const certifications = [
-    { src: '/AWS-Certified-Cloud-Practitioner.png', height: 190, width: 190 },
     {
-      src: '/AWS-Certified-Developer-Associate.png',
-      height: 190,
-      width: 190,
+      logo: '/AWS-Certified-Cloud-Practitioner.png',
+      screenshot: '/sample.png',
     },
     {
-      src: '/AWS-Certified-Solutions-Architect-Associate.png',
-      height: 190,
-      width: 190,
+      logo: '/AWS-Certified-Developer-Associate.png',
+      screenshot: '/sample.png',
+    },
+    {
+      logo: '/AWS-Certified-Solutions-Architect-Associate.png',
+      screenshot: '/sample.png',
     },
   ];
+
+  // State to control the modal
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedCertification, setSelectedCertification] =
+    useState<null | Certification>(null);
+
+  const handleCertificationClick = (cert: Certification) => {
+    setSelectedCertification(cert);
+    setOpenModal(true);
+  };
+
+  const closeModal = () => {
+    setOpenModal(false);
+  };
 
   return (
     <Box className="centerBox">
@@ -34,15 +55,35 @@ export default function Certifications() {
           >
             <ScrollAnimation animation={'fade'} timeout={1000 + index * 500}>
               <img
-                src={cert.src}
-                height={cert.height}
-                width={cert.width}
+                src={cert.logo}
+                height={190}
+                width={190}
                 className={`${styles.cert} hover-pointer grow-on-hover`}
+                onClick={() => handleCertificationClick(cert)}
               />
             </ScrollAnimation>
           </Grid>
         ))}
       </Grid>
+      <Modal
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+        open={openModal}
+        onClose={closeModal}
+      >
+        <Box>
+        {selectedCertification && (
+          <img
+            src={selectedCertification.screenshot}
+            height={900}
+            width={600}
+          />
+        )}
+        </Box>
+      </Modal>
     </Box>
   );
 }
