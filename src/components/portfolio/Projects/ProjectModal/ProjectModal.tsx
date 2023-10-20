@@ -34,7 +34,7 @@ export default function ProjectModal(props: Props) {
             onClick={props.handleClose}
             className="xButton"
             sx={{
-              color: 'text.secondary',
+              color: 'primary.main',
               ':hover': { color: 'red' },
             }}
           >
