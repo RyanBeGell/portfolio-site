@@ -79,7 +79,7 @@ export default function Certifications() {
         open={openModal}
         onClose={closeModal}
       >
-        <Box sx={{ position: 'relative' }}>
+        <Box sx={{ position: 'relative',}}>
           {/* Close button */}
           <IconButton
             onClick={closeModal}
@@ -99,6 +99,7 @@ export default function Certifications() {
               src={selectedCertification.screenshot}
               height={900}
               width={600}
+              style={{borderRadius:'4px'}}
             />
           )}
         </Box>
