@@ -1,4 +1,6 @@
+import CloseIcon from '@mui/icons-material/Close';
 import { Box, Grid, Modal } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
 import { useState } from 'react';
 import ScrollAnimation from '../../ScrollAnimation';
 import SectionTitle from '../SectionTitle/SectionTitle';
@@ -70,18 +72,35 @@ export default function Certifications() {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+          '&:focus': {
+            outline: 'none',
+          },
         }}
         open={openModal}
         onClose={closeModal}
       >
-        <Box>
-        {selectedCertification && (
-          <img
-            src={selectedCertification.screenshot}
-            height={900}
-            width={600}
-          />
-        )}
+        <Box sx={{ position: 'relative' }}>
+          {/* Close button */}
+          <IconButton
+            onClick={closeModal}
+            sx={{
+              position: 'absolute',
+              top: '10px',
+              right: '10px',
+              color: 'primary.main',
+              ':hover': { color: 'red', backgroundColor:'#f5f5f5' },
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+
+          {selectedCertification && (
+            <img
+              src={selectedCertification.screenshot}
+              height={900}
+              width={600}
+            />
+          )}
         </Box>
       </Modal>
     </Box>
