@@ -25,12 +25,13 @@ const darkMode = theme.palette.mode === 'dark';
   return (
     <Card
       raised={!darkMode}
-      variant={darkMode ? 'outlined' : undefined}
+      variant={darkMode ? 'outlined' : 'outlined'}
       sx={{
         display: 'flex',
         flexDirection: 'row',
         '&:hover': {
-          borderColor: 'primary.main',
+          borderColor: darkMode? 'primary.main':'#c7d0dd' ,
+          boxShadow: 6
         },
       }}
     >
