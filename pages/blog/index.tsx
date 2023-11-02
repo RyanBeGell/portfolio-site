@@ -18,12 +18,38 @@ import { useEffect, useState } from 'react';
 
 export default function Home() {
   const router = useRouter();
-  const { tag } = router.query;
   const theme = useTheme();
+  const { tag } = router.query;
+
+  const [currentPage, setCurrentPage] = useState(1);
   const [tagSelected, setTagSelected] = useState<boolean>(false);
   const [selectedChip, setSelectedChip] = useState<string | null>(
     tag ? String(tag) : null
   );
+
+  const filteredPosts = selectedChip
+    ? BlogPostsCardData.filter((post) => post.chips.includes(selectedChip))
+    : BlogPostsCardData;
+
+  const RecentBlogPosts = BlogPostsCardData.slice(0, 1);
+  const darkMode = theme.palette.mode === 'dark';
+
+  const postsPerPage = 5;
+  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+
+  const chipData = Array.from(
+    //flattening each blog post's array of chips into a single array of all chips
+    //Afterwards taking the set of that array to get all unique chips
+    new Set(BlogPostsCardData.flatMap((post) => post.chips))
+  );
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    page: number
+  ) => {
+    setCurrentPage(page);
+    window.scrollTo(0, 0);
+  };
 
   const handleChipClick = (label: string) => () => {
     //  Nextjs router query tag uses + for space encoding,
@@ -38,6 +64,8 @@ export default function Home() {
       setSelectedChip(label);
       router.replace(`/blog?tag=${encodedTag}`);
       setTagSelected(true);
+      // Reset the pagination page to 1 when a new tag is selected
+      setCurrentPage(1);
     }
   };
 
@@ -53,31 +81,6 @@ export default function Home() {
   }, [tag]);
 
   // Array of the set of all blog post chips ( aka tags)
-  const chipData = Array.from(
-    //flattening each blog post's array of chips into a single array of all chips
-    //Afterwards taking the set of that array to get all unique chips
-    new Set(BlogPostsCardData.flatMap((post) => post.chips))
-  );
-
-  const filteredPosts = selectedChip
-    ? BlogPostsCardData.filter((post) => post.chips.includes(selectedChip))
-    : BlogPostsCardData;
-
-  const RecentBlogPosts = BlogPostsCardData.slice(0, 1);
-  const darkMode = theme.palette.mode === 'dark';
-
-  const postsPerPage = 5;
-  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
-
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
-    page: number
-  ) => {
-    setCurrentPage(page);
-    window.scrollTo(0, 0);
-  };
 
   const startIndex = (currentPage - 1) * postsPerPage;
   const endIndex = startIndex + postsPerPage;
@@ -158,7 +161,6 @@ export default function Home() {
                       <BlogCard
                         title={item.title}
                         body={item.body}
-                        image={item.image}
                         path={item.path}
                         date={item.date}
                         chips={item.chips}
@@ -255,9 +257,11 @@ export default function Home() {
                   variant="outlined"
                   shape="rounded"
                   color="primary"
-                  sx={{'& .Mui-selected': {
-                    color: darkMode? 'white': 'primary.main', // Change this to the desired text color
-                  },}}
+                  sx={{
+                    '& .Mui-selected': {
+                      color: darkMode ? 'white' : 'primary.main', // Change this to the desired text color
+                    },
+                  }}
                 />
               </Box>
             </Grid>
