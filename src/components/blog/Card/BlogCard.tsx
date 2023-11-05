@@ -32,7 +32,7 @@ export default function BlogCard(props: Props) {
         flexDirection: 'row',
         '&:hover': {
           borderColor: darkMode ? 'primary.main' : '#c7d0dd',
-          boxShadow: props.transparent ? 6 : 0, 
+          boxShadow: props.transparent ? 0 : 6, 
         },
         backgroundColor: props.transparent ? 'transparent' : 'background.paper', 
         border: props.transparent ? 'none' : 'null',
