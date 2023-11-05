@@ -154,7 +154,7 @@ export default function Home() {
               )}
             </Box>
             <Grid container spacing={5} sx={{ pt: '24px' }}>
-              <Grid item container xs={12} md={8} spacing={3}>
+              <Grid item container xs={12} md={8}>
                 {postsToShow.map((item, index) => (
                   <Fade in={true} timeout={500} key={item.id}>
                     <Grid item xs={12}>
@@ -167,10 +167,11 @@ export default function Home() {
                         minsToRead={item.minsToRead}
                         transparent={true}
                       />
-                      <Divider sx={{mx:'4px'}}/>
+                      <Divider sx={{my:'4px'}}/>
                     </Grid>
                   </Fade>
                 ))}
+                <Divider />
               </Grid>
               <Grid item xs={12} md={4}>
                 <Paper
@@ -195,7 +196,7 @@ export default function Home() {
                         color={label === selectedChip ? 'primary' : 'default'}
                         onClick={handleChipClick(label)}
                         size="medium"
-                        sx={{ mr: 1, mb: 1, borderRadius: '4px' }}
+                        sx={{ mr: 1, mb: 1, borderRadius: '4px', }}
                       />
                     ))}
                   </Box>
