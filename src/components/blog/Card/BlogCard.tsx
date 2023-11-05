@@ -15,12 +15,13 @@ export interface Props {
   date: string;
   minsToRead: number;
   chips?: string[];
+  transparent?: boolean; 
 }
 
 export default function BlogCard(props: Props) {
   const router = useRouter();
   const theme = useTheme();
-const darkMode = theme.palette.mode === 'dark';
+  const darkMode = theme.palette.mode === 'dark';
 
   return (
     <Card
@@ -30,14 +31,16 @@ const darkMode = theme.palette.mode === 'dark';
         display: 'flex',
         flexDirection: 'row',
         '&:hover': {
-          borderColor: darkMode? 'primary.main':'#c7d0dd' ,
-          boxShadow: 6
+          borderColor: darkMode ? 'primary.main' : '#c7d0dd',
+          boxShadow: props.transparent ? 6 : 0, 
         },
+        backgroundColor: props.transparent ? 'transparent' : 'background.paper', 
+        border: props.transparent ? 'none' : 'null',
       }}
     >
       <CardContent
         sx={{
-          px: '16px ',
+          px: props.transparent ? '0px': '16px ',
           pt: '12px',
           pb: '12px !important',
         }}
