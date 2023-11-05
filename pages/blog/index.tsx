@@ -165,7 +165,9 @@ export default function Home() {
                         date={item.date}
                         chips={item.chips}
                         minsToRead={item.minsToRead}
+                        transparent={true}
                       />
+                      <Divider sx={{mx:'4px'}}/>
                     </Grid>
                   </Fade>
                 ))}
