@@ -7,6 +7,8 @@ import DefaultLayout from '@/src/layouts/portfolio/DefaultLayout';
 import LandingLayout from '@/src/layouts/portfolio/LandingLayout';
 import { getDesignTokens } from '@/src/theme/createPallette';
 import '@/src/theme/PrismaTheme.css';
+import { ascii } from 'public/ascii-art';
+
 import {
   Box,
   createTheme,
@@ -39,6 +41,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     }),
     []
   );
+
+
+  console.log(ascii);
 
   return (
     <>
