@@ -7,7 +7,6 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { blue } from '@mui/material/colors';
 
 export interface Props {
   title: string;
@@ -16,7 +15,7 @@ export interface Props {
   date: string;
   minsToRead: number;
   chips?: string[];
-  transparent?: boolean; 
+  transparent?: boolean;
 }
 
 export default function BlogCard(props: Props) {
@@ -33,15 +32,15 @@ export default function BlogCard(props: Props) {
         flexDirection: 'row',
         '&:hover': {
           borderColor: darkMode ? 'primary.main' : '#c7d0dd',
-          boxShadow: props.transparent ? 0 : 6, 
+          boxShadow: props.transparent ? 0 : 6,
         },
-        backgroundColor: props.transparent ? 'transparent' : 'background.paper', 
+        backgroundColor: props.transparent ? 'transparent' : 'background.paper',
         border: props.transparent ? 'none' : 'null',
       }}
     >
       <CardContent
         sx={{
-          px: props.transparent ? '0px': '16px ',
+          px: props.transparent ? '0px' : '16px ',
           pt: '12px',
           pb: '12px !important',
         }}
@@ -62,7 +61,7 @@ export default function BlogCard(props: Props) {
               mt: '8px',
               mb: '8px',
               cursor: 'pointer',
-              color:darkMode? 'primary.light':'inherit',
+              color: darkMode ? 'secondary.main' : 'inherit',
               '&:hover': {
                 textDecoration: 'underline',
               },
@@ -84,7 +83,24 @@ export default function BlogCard(props: Props) {
                 <Chip
                   label={chip}
                   size="small"
-                  sx={{ borderRadius: 1, fontWeight:'500',  border:'1px solid', borderColor:'rgba(0, 76, 153, 0.5)', backgroundColor:'rgba(0, 58, 117, 0.4)', '&:hover': {backgroundColor:'primary.main'} }}
+                  sx={{
+                    borderRadius: 1,
+                    fontWeight: '500',
+                    color: darkMode ? null : '#0d6efd',
+                    border: '1px solid',
+                    borderColor: darkMode ? 'rgba(0, 76, 153, 0.5)' : '#c2e0ff',
+                    backgroundColor: darkMode
+                      ? 'rgba(0, 58, 117, 0.4)'
+                      : '#f0f7ff',
+                    '&:hover': {
+                      backgroundColor: darkMode
+                        ? 'rgba(0, 58, 117, 0.4)'
+                        : 'inherit',
+                      borderColor: 'primary.main',
+                    },
+                    transition:
+                      'color 0.3s, background-color 0.3s, border-color 0.3s',
+                  }}
                   onClick={() =>
                     router.push({
                       pathname: '/blog',
@@ -106,6 +122,7 @@ export default function BlogCard(props: Props) {
               variant="text"
               sx={{ whiteSpace: 'noWrap', textTransform: 'none' }}
               endIcon={<KeyboardArrowRightIcon />}
+              color="secondary"
             >
               Read more
             </Button>
