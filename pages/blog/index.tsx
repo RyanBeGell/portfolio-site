@@ -196,7 +196,7 @@ export default function Home() {
                         color={label === selectedChip ? 'primary' : 'default'}
                         onClick={handleChipClick(label)}
                         size="medium"
-                        sx={{ mr: 1, mb: 1, borderRadius: '4px', }}
+                        sx={{ mr: 1, mb: 1, borderRadius: '4px', fontWeight:'500' }}
                       />
                     ))}
                   </Box>

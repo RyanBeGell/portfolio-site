@@ -7,6 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { blue } from '@mui/material/colors';
 
 export interface Props {
   title: string;
@@ -61,6 +62,7 @@ export default function BlogCard(props: Props) {
               mt: '8px',
               mb: '8px',
               cursor: 'pointer',
+              color:darkMode? 'primary.light':'inherit',
               '&:hover': {
                 textDecoration: 'underline',
               },
@@ -82,7 +84,7 @@ export default function BlogCard(props: Props) {
                 <Chip
                   label={chip}
                   size="small"
-                  sx={{ borderRadius: 1 }}
+                  sx={{ borderRadius: 1, fontWeight:'500',  border:'1px solid', borderColor:'rgba(0, 76, 153, 0.5)', backgroundColor:'rgba(0, 58, 117, 0.4)', '&:hover': {backgroundColor:'primary.main'} }}
                   onClick={() =>
                     router.push({
                       pathname: '/blog',
