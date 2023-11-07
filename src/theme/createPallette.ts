@@ -18,7 +18,13 @@ export const getDesignTokens = (mode: PaletteMode) => ({
           }),
     },
     secondary: {
-      main: '#f50057',
+      ...(mode === 'dark'
+      ? {
+          main: '#66b2ff',
+        }
+      : {
+          main: '#2196F3',
+        }),
     },
     info: {
       main: '#42a5f5',
