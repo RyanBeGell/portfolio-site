@@ -98,8 +98,7 @@ export default function BlogCard(props: Props) {
                         : 'inherit',
                       borderColor: 'primary.main',
                     },
-                    transition:
-                      'color 0.3s, background-color 0.3s, border-color 0.3s',
+                    transition: 'none',
                   }}
                   onClick={() =>
                     router.push({
@@ -122,7 +121,7 @@ export default function BlogCard(props: Props) {
               variant="text"
               sx={{ whiteSpace: 'noWrap', textTransform: 'none' }}
               endIcon={<KeyboardArrowRightIcon />}
-              color="secondary"
+              color="primary"
             >
               Read more
             </Button>
