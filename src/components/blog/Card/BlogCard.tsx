@@ -61,9 +61,10 @@ export default function BlogCard(props: Props) {
               mt: '8px',
               mb: '8px',
               cursor: 'pointer',
-              color: darkMode ? 'secondary.main' : 'inherit',
+              color: darkMode ? 'primary.main' : 'inherit',
               '&:hover': {
                 textDecoration: 'underline',
+                color:'secondary.main'
               },
             }}
             className="ellipsisBox"
@@ -119,7 +120,9 @@ export default function BlogCard(props: Props) {
           >
             <Button
               variant="text"
-              sx={{ whiteSpace: 'noWrap', textTransform: 'none' }}
+              sx={{ whiteSpace: 'noWrap', textTransform: 'none', '&:hover': {
+                color:'secondary.main'
+              }, }}
               endIcon={<KeyboardArrowRightIcon />}
               color="primary"
             >
