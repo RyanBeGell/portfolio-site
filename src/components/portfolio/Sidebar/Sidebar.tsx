@@ -70,7 +70,13 @@ export default function Sidebar(props: Props) {
   };
 
   //sidebar social icons
-  const SocialIconButton = ({ Icon, href }: { Icon: React.ElementType, href: string  }) => {
+  const SocialIconButton = ({
+    Icon,
+    href,
+  }: {
+    Icon: React.ElementType;
+    href: string;
+  }) => {
     const isDarkMode = theme.palette.mode === 'dark';
     const backgroundColor = isDarkMode ? theme.palette.primary.main : '#FFFFFF';
     const color = isDarkMode
@@ -82,9 +88,9 @@ export default function Sidebar(props: Props) {
 
     return (
       <IconButton
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
         sx={{
           color,
           backgroundColor,
@@ -110,7 +116,18 @@ export default function Sidebar(props: Props) {
         alignItems="center"
         sx={{ mb: 2, mt: 2 }}
       >
-        <Avatar id={styles.avatar} src={'/profile_photo1.jpg'} alt="Avatar" sx={{border:'8px solid', borderColor: theme.palette.mode === 'dark' ? 'rgba(33, 150, 243, 0.3)' : 'rgba(255, 255, 255, 0.3)' }} />
+        <Avatar
+          id={styles.avatar}
+          src={'/profile_photo1.jpg'}
+          alt="Avatar"
+          sx={{
+            border: '8px solid',
+            borderColor:
+              theme.palette.mode === 'dark'
+                ? 'rgba(33, 150, 243, 0.3)'
+                : 'rgba(255, 255, 255, 0.3)',
+          }}
+        />
       </Box>
       <Typography variant={'h5'} id={styles.name} color="#FFFFFF">
         Ryan BeGell
@@ -134,16 +151,28 @@ export default function Sidebar(props: Props) {
         }}
       >
         <Grid item>
-          <SocialIconButton Icon={GitHubIcon} href={'https://github.com/RyanBeGell'}/>
+          <SocialIconButton
+            Icon={GitHubIcon}
+            href={'https://github.com/RyanBeGell'}
+          />
         </Grid>
         <Grid item>
-          <SocialIconButton Icon={LinkedInIcon} href={'https://LinkedIn.com/RyanBeGell'}/>
+          <SocialIconButton
+            Icon={LinkedInIcon}
+            href={'https://LinkedIn.com/RyanBeGell'}
+          />
         </Grid>
         <Grid item>
-          <SocialIconButton Icon={CodePenIcon} href={'https://CodePen.com/RyanBeGell'}/>
+          <SocialIconButton
+            Icon={CodePenIcon}
+            href={'https://CodePen.com/RyanBeGell'}
+          />
         </Grid>
         <Grid item>
-          <SocialIconButton Icon={EmailIcon} href={'mailto:ryanbegell@outlook.com'} />
+          <SocialIconButton
+            Icon={EmailIcon}
+            href={'mailto:ryanbegell@outlook.com'}
+          />
         </Grid>
       </Grid>
       {mode === 'light' ? (
@@ -260,6 +289,22 @@ export default function Sidebar(props: Props) {
               border: 0,
               backgroundColor: 'background.nav',
             },
+            '& .MuiPaper-root': {
+              '&::-webkit-scrollbar': {
+                width: '10px',
+              },
+              '&::-webkit-scrollbar-track': {
+                backgroundColor: '#f2f2f2',
+                borderRadius: '10px',
+              },
+              '&::-webkit-scrollbar-thumb': {
+                backgroundColor: '#888888',
+                borderRadius: '10px',
+              },
+              '&::-webkit-scrollbar-thumb:hover': {
+                backgroundColor: '#555555',
+              },
+            },
           }}
         >
           {drawer}
@@ -301,6 +346,22 @@ export default function Sidebar(props: Props) {
               p: '16px',
               border: 0,
               backgroundColor: 'background.nav',
+            },
+            '& .MuiPaper-root': {
+              '&::-webkit-scrollbar': {
+                width: '10px',
+              },
+              '&::-webkit-scrollbar-track': {
+                backgroundColor: '#f2f2f2',
+                borderRadius: '10px',
+              },
+              '&::-webkit-scrollbar-thumb': {
+                backgroundColor: '#888888',
+                borderRadius: '10px',
+              },
+              '&::-webkit-scrollbar-thumb:hover': {
+                backgroundColor: '#555555',
+              },
             },
           }}
           open
