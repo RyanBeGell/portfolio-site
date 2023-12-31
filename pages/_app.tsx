@@ -42,7 +42,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     []
   );
 
-
   console.log(ascii);
 
   return (
@@ -73,9 +72,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
             {/* passing function to change color mode to sideNav to use on DarkMode switch*/}
             {router.pathname === '/' ? (
               <Sidebar toggleColorMode={colorMode.toggleColorMode} />
-            ) : (
+            ) : router.pathname !== '/subscription-confirmed' ? (
               <BlogAppBar toggleColorMode={colorMode.toggleColorMode} />
-            )}
+            ) : null}
             {router.pathname.includes('blog/posts') ? (
               <BlogLayout>
                 <Component {...pageProps} />
@@ -90,28 +89,30 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
               </DefaultLayout>
             )}
             {/* Global Footer */}
-            <Box
-              sx={{
-                width: '100%',
-                backgroundColor: 'background.light',
-                ...(mode === 'dark' && {
-                  boxShadow: `0px 1px 0px 0px ${theme.palette.divider}`,
-                  height: '1px',
-                }),
-              }}
-            >
-              <Box sx={{ mx: '48px' }}>
-                <Box
-                  sx={{
-                    py: '48px',
-                    maxWidth: '1150px',
-                    margin: '0 auto',
-                  }}
-                >
-                  <Footer />
+            {router.pathname !== '/subscription-confirmed' ? (
+              <Box
+                sx={{
+                  width: '100%',
+                  backgroundColor: 'background.light',
+                  ...(mode === 'dark' && {
+                    boxShadow: `0px 1px 0px 0px ${theme.palette.divider}`,
+                    height: '1px',
+                  }),
+                }}
+              >
+                <Box sx={{ mx: '48px' }}>
+                  <Box
+                    sx={{
+                      py: '48px',
+                      maxWidth: '1150px',
+                      margin: '0 auto',
+                    }}
+                  >
+                    <Footer />
+                  </Box>
                 </Box>
               </Box>
-            </Box>
+            ) : null}
           </Box>
         </ThemeProvider>
       </ColorModeContext.Provider>
