@@ -15,25 +15,20 @@ export default function SubscriptionConfirmed() {
     <Box
       display="flex"
       flexDirection="column"
-      justifyContent="center"
       alignItems="center"
       textAlign="center"
-      sx={{
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-      }}
+      minHeight="100vh" // Ensure the entire viewport is covered
+      justifyContent="center"
     >
       <Paper
         variant="outlined"
         sx={{
           maxWidth: '500px',
-          maxHeight: '600px',
-          mt: 4, // Adjust this value to account for the navbar height (56px / 2 = 28px)
+          p: theme.spacing(4),
+          width: '90%', // Adjust the width as needed
         }}
       >
-        <Box sx={{ p: 4 }}>
+        <Box sx={{ textAlign: 'center' }}>
           <MarkEmailReadIcon
             sx={{ fontSize: '64px', fontColor: '#66bb6a' }}
             color="primary"
@@ -50,11 +45,11 @@ export default function SubscriptionConfirmed() {
             color="primary"
             startIcon={<NavigateBeforeIcon />}
             onClick={() => router.push('/blog')}
-            sx={{ my: 4, textTransform: 'none' }}
+            sx={{ mt: theme.spacing(4), textTransform: 'none' }}
           >
             Return to blog
           </Button>
-          <Divider sx={{ mb: 4 }} />
+          <Divider sx={{ mt: theme.spacing(4), mb: theme.spacing(2) }} />
           <Box
             sx={{
               display: 'flex',
@@ -73,9 +68,8 @@ export default function SubscriptionConfirmed() {
             </Typography>
           </Box>
         </Box>
-        {/* typography paragraph */}
       </Paper>
-      <Typography variant={'subtitle2'} color="text.secondary" sx={{ pt: 4 }}>
+      <Typography variant={'subtitle2'} color="text.secondary" sx={{ pt: 4, width: '90%', }}>
         Changed your mind? If you wish to unsubscribe,{' '}
         <MUILink color="inherit"> click here.</MUILink>
       </Typography>
