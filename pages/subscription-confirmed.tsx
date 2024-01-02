@@ -4,9 +4,12 @@ import { Box, Divider, Paper, Typography, useTheme } from '@mui/material';
 import Button from '@mui/material/Button';
 import MUILink from '@mui/material/Link';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function SubscriptionConfirmed() {
   const theme = useTheme();
+  const router = useRouter()
 
   return (
     <Box
@@ -40,13 +43,13 @@ export default function SubscriptionConfirmed() {
           </Typography>
           <Typography variant="body1">
             You have been successfully added to the blog subscriber list. You
-            will now receive email notifications for new posts and updates to my
-            blog.
+            will now receive email notifications about my latest posts and blog updates.
           </Typography>
           <Button
             variant="contained"
             color="primary"
             startIcon={<NavigateBeforeIcon />}
+            onClick={() => router.push('/blog')}
             sx={{ my: 4, textTransform: 'none' }}
           >
             Return to blog
