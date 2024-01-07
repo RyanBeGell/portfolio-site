@@ -72,7 +72,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
             {/* passing function to change color mode to sideNav to use on DarkMode switch*/}
             {router.pathname === '/' ? (
               <Sidebar toggleColorMode={colorMode.toggleColorMode} />
-            ) : router.pathname !== '/subscription-confirmed' ? (
+            ) : !router.pathname.includes('/subscriptions') ? (
               <BlogAppBar toggleColorMode={colorMode.toggleColorMode} />
             ) : null}
             {router.pathname.includes('blog/posts') ? (
@@ -89,7 +89,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
               </DefaultLayout>
             )}
             {/* Global Footer */}
-            {router.pathname !== '/subscription-confirmed' ? (
+            {!router.pathname.includes('/subscriptions') ? (
               <Box
                 sx={{
                   width: '100%',
