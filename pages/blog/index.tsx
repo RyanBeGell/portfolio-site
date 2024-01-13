@@ -20,12 +20,16 @@ export default function Home() {
   const router = useRouter();
   const theme = useTheme();
   const { tag } = router.query;
-
   const [currentPage, setCurrentPage] = useState(1);
   const [tagSelected, setTagSelected] = useState<boolean>(false);
   const [selectedChip, setSelectedChip] = useState<string | null>(
     tag ? String(tag) : null
   );
+
+  const [email, setEmail] = useState<string>('');
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  };
 
   const filteredPosts = selectedChip
     ? BlogPostsCardData.filter((post) => post.chips.includes(selectedChip))
@@ -85,6 +89,35 @@ export default function Home() {
   const startIndex = (currentPage - 1) * postsPerPage;
   const endIndex = startIndex + postsPerPage;
   const postsToShow = filteredPosts.slice(startIndex, endIndex);
+
+  //Subscribe button axios call
+  const handleSubscribeClick = async () => {
+    if (!email) {
+      console.error('Email is required');
+      return;
+    }
+
+    try {
+      const response = await fetch('LAMBDA_SUBSCRIBE_API_GATEWAY', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          responseData.message || 'Error occurred while subscribing'
+        );
+      }
+      console.log(responseData.message);
+    } catch (error) {
+      console.error('There was an error!', error);
+    }
+  };
 
   return (
     <>
@@ -167,7 +200,7 @@ export default function Home() {
                         minsToRead={item.minsToRead}
                         transparent={true}
                       />
-                      <Divider sx={{my:'4px'}}/>
+                      <Divider sx={{ my: '4px' }} />
                     </Grid>
                   </Fade>
                 ))}
@@ -196,7 +229,12 @@ export default function Home() {
                         color={label === selectedChip ? 'primary' : 'default'}
                         onClick={handleChipClick(label)}
                         size="medium"
-                        sx={{ mr: 1, mb: 1, borderRadius: '4px', fontWeight:'500' }}
+                        sx={{
+                          mr: 1,
+                          mb: 1,
+                          borderRadius: '4px',
+                          fontWeight: '500',
+                        }}
                       />
                     ))}
                   </Box>
@@ -228,10 +266,13 @@ export default function Home() {
                     </Typography>
                     <OutlinedInput
                       id="email"
+                      type="email"
                       size="small"
                       placeholder="example@email.com"
                       autoComplete="off"
                       fullWidth
+                      value={email}
+                      onChange={handleEmailChange}
                       sx={{
                         '&:hover .MuiOutlinedInput-notchedOutline': {
                           borderColor: 'primary.main',
