@@ -53,12 +53,9 @@ export default function Landing() {
             <Typography
               variant={'body1'}
               color="text.secondary"
-              sx={{ maxWidth: '800px' }}
+              sx={{ maxWidth: '600px' }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Curious software engineer with a passion for building web applications and working with new technologies.
             </Typography>
             <Grid container spacing={2} sx={{ mt: '16px' }}>
               <Grid item>
