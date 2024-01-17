@@ -25,6 +25,10 @@ export default function Home() {
   const [selectedChip, setSelectedChip] = useState<string | null>(
     tag ? String(tag) : null
   );
+  const [isSubscribing, setIsSubscribing] = useState(false);
+  const [subscriptionStatus, setSubscriptionStatus] = useState<string | null>(
+    null
+  );
 
   const [email, setEmail] = useState<string>('');
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -97,6 +101,9 @@ export default function Home() {
       return;
     }
 
+    setIsSubscribing(true); // Start loading
+    setSubscriptionStatus(null); // Reset status
+
     try {
       const response = await fetch('LAMBDA_SUBSCRIBE_API_GATEWAY', {
         method: 'POST',
@@ -113,9 +120,15 @@ export default function Home() {
           responseData.message || 'Error occurred while subscribing'
         );
       }
-      console.log(responseData.message);
+
+      setSubscriptionStatus('Success: ' + responseData.message);
     } catch (error) {
-      console.error('There was an error!', error);
+      if (error instanceof Error) {
+        console.error('There was an error!', error);
+        setSubscriptionStatus('Error: ' + error.message);
+      }
+    } finally {
+      setIsSubscribing(false); // Stop loading
     }
   };
 
@@ -284,11 +297,25 @@ export default function Home() {
                     variant="contained"
                     size="small"
                     fullWidth
+                    onClick={handleSubscribeClick}
+                    disabled={isSubscribing}
                     sx={{ mt: '4px' }}
                   >
-                    {' '}
-                    Subscribe
-                  </Button>{' '}
+                    {isSubscribing ? 'Subscribing...' : 'Subscribe'}
+                  </Button>
+                  {subscriptionStatus && (
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        color: subscriptionStatus.startsWith('Error')
+                          ? 'error.main'
+                          : 'primary.main',
+                        mt: '8px',
+                      }}
+                    >
+                      {subscriptionStatus}
+                    </Typography>
+                  )}
                 </Paper>
               </Grid>
               <Box
@@ -303,7 +330,7 @@ export default function Home() {
                   color="primary"
                   sx={{
                     '& .Mui-selected': {
-                      color: darkMode ? 'white' : 'primary.main', // Change this to the desired text color
+                      color: darkMode ? 'white' : 'primary.main', 
                     },
                   }}
                 />
