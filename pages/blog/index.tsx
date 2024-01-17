@@ -121,7 +121,7 @@ export default function Home() {
         );
       }
 
-      setSubscriptionStatus('Success: ' + responseData.message);
+      setSubscriptionStatus('Success: Please check ' + email + ' to verify your subscription' );
     } catch (error) {
       if (error instanceof Error) {
         console.error('There was an error!', error);
@@ -309,7 +309,7 @@ export default function Home() {
                       sx={{
                         color: subscriptionStatus.startsWith('Error')
                           ? 'error.main'
-                          : 'primary.main',
+                          : '#4caf50',
                         mt: '8px',
                       }}
                     >
