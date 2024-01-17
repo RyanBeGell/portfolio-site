@@ -27,7 +27,7 @@ export default function SubscriptionConfirmed() {
       >
         <Box sx={{ textAlign: 'center' }}>
           <UnsubscribeIcon
-            sx={{ fontSize: '64px', fontColor: '#66bb6a' }}
+            sx={{ fontSize: '64px',  }}
             color="primary"
           />
           <Typography variant={'h5'} fontWeight="700" sx={{ mb: 4 }}>

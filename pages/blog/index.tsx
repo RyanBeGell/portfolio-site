@@ -328,7 +328,7 @@ export default function Home() {
                       sx={{
                         color: subscriptionStatus.startsWith('Error')
                           ? 'error.main'
-                          : '#4caf50',
+                          : 'success.main',
                         mt: '8px',
                       }}
                     >
