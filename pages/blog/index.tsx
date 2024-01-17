@@ -26,7 +26,7 @@ export default function Home() {
   const [selectedChip, setSelectedChip] = useState<string | null>(
     tag ? String(tag) : null
   );
-  const [isSubscribing, setIsSubscribing] = useState(true);
+  const [isSubscribing, setIsSubscribing] = useState(false);
   const [subscriptionStatus, setSubscriptionStatus] = useState<string | null>(
     null
   );
@@ -125,6 +125,7 @@ export default function Home() {
       setSubscriptionStatus(
         'Success: Please check ' + email + ' to verify your subscription'
       );
+      setEmail(''); //clear email input 
     } catch (error) {
       if (error instanceof Error) {
         console.error('There was an error!', error);
@@ -296,7 +297,7 @@ export default function Home() {
                       }}
                     />
                   </Box>
-                  <Box sx={{  position: 'relative' }}>
+                  <Box sx={{ position: 'relative' }}>
                     <Button
                       variant="contained"
                       size="small"
@@ -307,7 +308,7 @@ export default function Home() {
                     >
                       {isSubscribing ? 'Subscribing...' : 'Subscribe'}
                     </Button>
-                    {isSubscribing  && (
+                    {isSubscribing && (
                       <CircularProgress
                         size={24}
                         sx={{
