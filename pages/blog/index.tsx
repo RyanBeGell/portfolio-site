@@ -1,6 +1,7 @@
 import BlogCard from '@/src/components/blog/Card/BlogCard';
 import BlogPostsCardData from '@/src/components/blog/Card/BlogCardData';
 import {
+  CircularProgress,
   Divider,
   OutlinedInput,
   Pagination,
@@ -25,7 +26,7 @@ export default function Home() {
   const [selectedChip, setSelectedChip] = useState<string | null>(
     tag ? String(tag) : null
   );
-  const [isSubscribing, setIsSubscribing] = useState(false);
+  const [isSubscribing, setIsSubscribing] = useState(true);
   const [subscriptionStatus, setSubscriptionStatus] = useState<string | null>(
     null
   );
@@ -121,7 +122,9 @@ export default function Home() {
         );
       }
 
-      setSubscriptionStatus('Success: Please check ' + email + ' to verify your subscription' );
+      setSubscriptionStatus(
+        'Success: Please check ' + email + ' to verify your subscription'
+      );
     } catch (error) {
       if (error instanceof Error) {
         console.error('There was an error!', error);
@@ -293,16 +296,31 @@ export default function Home() {
                       }}
                     />
                   </Box>
-                  <Button
-                    variant="contained"
-                    size="small"
-                    fullWidth
-                    onClick={handleSubscribeClick}
-                    disabled={isSubscribing}
-                    sx={{ mt: '4px' }}
-                  >
-                    {isSubscribing ? 'Subscribing...' : 'Subscribe'}
-                  </Button>
+                  <Box sx={{  position: 'relative' }}>
+                    <Button
+                      variant="contained"
+                      size="small"
+                      fullWidth
+                      onClick={handleSubscribeClick}
+                      disabled={isSubscribing}
+                      sx={{ mt: '4px' }}
+                    >
+                      {isSubscribing ? 'Subscribing...' : 'Subscribe'}
+                    </Button>
+                    {isSubscribing  && (
+                      <CircularProgress
+                        size={24}
+                        sx={{
+                          color: 'green',
+                          position: 'absolute',
+                          top: '50%',
+                          left: '50%',
+                          marginTop: '-12px',
+                          marginLeft: '-12px',
+                        }}
+                      />
+                    )}
+                  </Box>
                   {subscriptionStatus && (
                     <Typography
                       variant="caption"
@@ -330,7 +348,7 @@ export default function Home() {
                   color="primary"
                   sx={{
                     '& .Mui-selected': {
-                      color: darkMode ? 'white' : 'primary.main', 
+                      color: darkMode ? 'white' : 'primary.main',
                     },
                   }}
                 />
