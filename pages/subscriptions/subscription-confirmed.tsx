@@ -4,12 +4,42 @@ import { Box, Divider, Paper, Typography, useTheme } from '@mui/material';
 import Button from '@mui/material/Button';
 import MUILink from '@mui/material/Link';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 export default function SubscriptionConfirmed() {
   const theme = useTheme();
-  const router = useRouter()
+  const router = useRouter();
+  const [token, setToken] = useState<string>('');
+
+  useEffect(() => {
+    if (!router.isReady) return;
+
+    // Checking if the token is present and is a string
+    const queryToken = router.query.token;
+
+    if (typeof queryToken === 'string') {
+      setToken(queryToken);
+    }
+  }, [router, router.isReady]);
+
+  const handleUnsubscribe = async () => {
+    try {
+      const unsubscribeUrl = `https://hz4rmymtz7.execute-api.us-east-1.amazonaws.com/prod/unsubscribe?token=${encodeURIComponent(
+        token
+      )}`;
+      const response = await fetch(unsubscribeUrl);
+
+      if (!response.ok) {
+        throw new Error('Error in unsubscribe');
+      }
+
+      // Redirect to the unsubscribe confirmation page
+      window.location.href = response.url;
+    } catch (error) {
+      console.error('Unsubscribe failed:', error);
+    }
+  };
 
   return (
     <Box
@@ -38,7 +68,8 @@ export default function SubscriptionConfirmed() {
           </Typography>
           <Typography variant="body1">
             You have been successfully added to the blog subscriber list. You
-            will now receive email notifications about my latest posts and blog updates.
+            will now receive email notifications about my latest posts and blog
+            updates.
           </Typography>
           <Button
             variant="contained"
@@ -69,9 +100,20 @@ export default function SubscriptionConfirmed() {
           </Box>
         </Box>
       </Paper>
-      <Typography variant={'subtitle2'} color="text.secondary" sx={{ pt: 4, width: '90%', }}>
+      <Typography
+        variant={'subtitle2'}
+        color="text.secondary"
+        sx={{ pt: 4, width: '90%' }}
+      >
         Changed your mind? If you wish to unsubscribe,{' '}
-        <MUILink color="inherit"> click here.</MUILink>
+        <MUILink
+          color="inherit"
+          onClick={handleUnsubscribe}
+          sx={{ '&:hover': { cursor: 'pointer' } }}
+        >
+          {' '}
+          click here.
+        </MUILink>
       </Typography>
     </Box>
   );
