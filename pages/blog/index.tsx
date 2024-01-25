@@ -106,13 +106,16 @@ export default function Home() {
     setSubscriptionStatus(null); // Reset status
 
     try {
-      const response = await fetch('LAMBDA_SUBSCRIBE_API_GATEWAY', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
-      });
+      const response = await fetch(
+        'https://hz4rmymtz7.execute-api.us-east-1.amazonaws.com/prod/subscribe',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
 
       const responseData = await response.json();
 
@@ -125,7 +128,7 @@ export default function Home() {
       setSubscriptionStatus(
         'Success: Please check ' + email + ' to verify your subscription'
       );
-      setEmail(''); //clear email input 
+      setEmail(''); //clear email input
     } catch (error) {
       if (error instanceof Error) {
         console.error('There was an error!', error);
