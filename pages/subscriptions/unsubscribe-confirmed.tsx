@@ -2,11 +2,51 @@ import UnsubscribeIcon from '@mui/icons-material/Unsubscribe';
 import { Box, Button, Divider, Paper, Typography, useTheme } from '@mui/material';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import MUILink from '@mui/material/Link';
+import { useState,useEffect } from 'react';
 
 export default function SubscriptionConfirmed() {
   const theme = useTheme();
   const router = useRouter();
+  const [token, setToken] = useState<string>('');
+
+  useEffect(() => {
+    if (!router.isReady) return;
+
+    // Checking if the token is present and is a string
+    const queryToken = router.query.token;
+
+    if (typeof queryToken === 'string') {
+      setToken(queryToken);
+    }
+  }, [router, router.isReady]);
+  
+  const handleResubscribe = async () => {
+  try {
+    const response = await fetch(
+      'https://hz4rmymtz7.execute-api.us-east-1.amazonaws.com/prod/subscribe',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token }),
+      }
+    );
+
+    const responseData = await response.json();
+
+    if (!response.ok) {
+      throw new Error(
+        responseData.message || 'Error occurred while subscribing'
+      );
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error('There was an error!', error);
+    }
+  } 
+};
+
 
   return (
     <Box
