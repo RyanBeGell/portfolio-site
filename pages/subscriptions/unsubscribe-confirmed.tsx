@@ -30,7 +30,7 @@ export default function SubscriptionConfirmed() {
   const url = new URL(
     'https://hz4rmymtz7.execute-api.us-east-1.amazonaws.com/prod/resubscribe'
   );
-  
+
   url.searchParams.append('token', token);
 
   const handleResubscribe = async () => {
@@ -42,11 +42,11 @@ export default function SubscriptionConfirmed() {
         },
       });
 
-      const responseData = await response.json();
-
       if (response.ok) {
         const responseData = await response.json();
-        window.location.href = responseData.redirectUrl;
+        window.location.href = `${
+          responseData.redirectUrl
+        }?token=${encodeURIComponent(token)}`;
       }
     } catch (error) {
       if (error instanceof Error) {

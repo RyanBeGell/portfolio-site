@@ -35,7 +35,7 @@ export default function SubscriptionConfirmed() {
       }
 
       // Redirect to the unsubscribe confirmation page
-      window.location.href = response.url;
+      window.location.href = `${response.url}?token=${encodeURIComponent(token)}`;
     } catch (error) {
       console.error('Unsubscribe failed:', error);
     }
