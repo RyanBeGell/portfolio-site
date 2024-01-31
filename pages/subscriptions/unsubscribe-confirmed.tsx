@@ -1,8 +1,15 @@
 import UnsubscribeIcon from '@mui/icons-material/Unsubscribe';
-import { Box, Button, Divider, Paper, Typography, useTheme } from '@mui/material';
+import {
+  Box,
+  Button,
+  Divider,
+  Paper,
+  Typography,
+  useTheme,
+} from '@mui/material';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useState,useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function SubscriptionConfirmed() {
   const theme = useTheme();
@@ -19,34 +26,34 @@ export default function SubscriptionConfirmed() {
       setToken(queryToken);
     }
   }, [router, router.isReady]);
+
+  const url = new URL(
+    'https://hz4rmymtz7.execute-api.us-east-1.amazonaws.com/prod/resubscribe'
+  );
   
+  url.searchParams.append('token', token);
+
   const handleResubscribe = async () => {
-  try {
-    const response = await fetch(
-      'https://hz4rmymtz7.execute-api.us-east-1.amazonaws.com/prod/subscribe',
-      {
+    try {
+      const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ token }),
+      });
+
+      const responseData = await response.json();
+
+      if (response.ok) {
+        const responseData = await response.json();
+        window.location.href = responseData.redirectUrl;
       }
-    );
-
-    const responseData = await response.json();
-
-    if (!response.ok) {
-      throw new Error(
-        responseData.message || 'Error occurred while subscribing'
-      );
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error('There was an error!', error);
+      }
     }
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error('There was an error!', error);
-    }
-  } 
-};
-
+  };
 
   return (
     <Box
@@ -66,15 +73,12 @@ export default function SubscriptionConfirmed() {
         }}
       >
         <Box sx={{ textAlign: 'center' }}>
-          <UnsubscribeIcon
-            sx={{ fontSize: '64px',  }}
-            color="primary"
-          />
+          <UnsubscribeIcon sx={{ fontSize: '64px' }} color="primary" />
           <Typography variant={'h5'} fontWeight="700" sx={{ mb: 4 }}>
             Unsubscribe Successful
           </Typography>
           <Typography variant="body1">
-            You have successfully unsubscribed from email communications. 
+            You have successfully unsubscribed from email communications.
           </Typography>
           <Divider sx={{ mt: theme.spacing(4), mb: theme.spacing(2) }} />
           <Box
@@ -96,9 +100,16 @@ export default function SubscriptionConfirmed() {
           </Box>
         </Box>
       </Paper>
-      <Typography variant={'subtitle2'} color="text.secondary" sx={{ pt: 4, width: '90%', }}>
+      <Typography
+        variant={'subtitle2'}
+        color="text.secondary"
+        sx={{ pt: 4, width: '90%' }}
+      >
         Unsubscribe by accident? &nbsp;
-        <Button size='small' variant='outlined'> Resubscribe </Button>
+        <Button size="small" variant="outlined" onClick={handleResubscribe}>
+          {' '}
+          Resubscribe{' '}
+        </Button>
       </Typography>
     </Box>
   );
