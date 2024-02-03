@@ -1,6 +1,13 @@
 import MarkEmailReadIcon from '@mui/icons-material/MarkEmailRead';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import { Box, Divider, Paper, Typography, useTheme } from '@mui/material';
+import {
+  Box,
+  Divider,
+  LinearProgress,
+  Paper,
+  Typography,
+  useTheme,
+} from '@mui/material';
 import Button from '@mui/material/Button';
 import MUILink from '@mui/material/Link';
 import Image from 'next/image';
@@ -11,6 +18,9 @@ export default function SubscriptionConfirmed() {
   const theme = useTheme();
   const router = useRouter();
   const [token, setToken] = useState<string>('');
+
+  // State for managing loading spinner visibility
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -24,6 +34,7 @@ export default function SubscriptionConfirmed() {
   }, [router, router.isReady]);
 
   const handleUnsubscribe = async () => {
+    setIsLoading(true); // Show loading spinner
     try {
       const unsubscribeUrl = `https://hz4rmymtz7.execute-api.us-east-1.amazonaws.com/prod/unsubscribe?token=${encodeURIComponent(
         token
@@ -35,7 +46,9 @@ export default function SubscriptionConfirmed() {
       }
 
       // Redirect to the unsubscribe confirmation page
-      window.location.href = `${response.url}?token=${encodeURIComponent(token)}`;
+      window.location.href = `${response.url}?token=${encodeURIComponent(
+        token
+      )}`;
     } catch (error) {
       console.error('Unsubscribe failed:', error);
     }
@@ -50,6 +63,17 @@ export default function SubscriptionConfirmed() {
       minHeight="100vh" // Ensure the entire viewport is covered
       justifyContent="center"
     >
+      {isLoading && (
+        <LinearProgress
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            zIndex: 1000, // Ensure it's above other elements
+          }}
+        />
+      )}
       <Paper
         variant="outlined"
         sx={{
@@ -109,7 +133,10 @@ export default function SubscriptionConfirmed() {
         <MUILink
           color="inherit"
           onClick={handleUnsubscribe}
-          sx={{ '&:hover': { cursor: 'pointer' } }}
+          sx={{
+            '&:hover': { cursor: isLoading ? 'default' : 'pointer' },
+            opacity: isLoading ? 0.6 : 1, // Lower opacity to indicate it's disabled
+          }}
         >
           {' '}
           click here.

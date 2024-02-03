@@ -2,7 +2,9 @@ import UnsubscribeIcon from '@mui/icons-material/Unsubscribe';
 import {
   Box,
   Button,
+  CircularProgress,
   Divider,
+  LinearProgress,
   Paper,
   Typography,
   useTheme,
@@ -15,6 +17,9 @@ export default function SubscriptionConfirmed() {
   const theme = useTheme();
   const router = useRouter();
   const [token, setToken] = useState<string>('');
+
+  // State for managing loading spinner visibility
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -34,6 +39,7 @@ export default function SubscriptionConfirmed() {
   url.searchParams.append('token', token);
 
   const handleResubscribe = async () => {
+    setIsLoading(true);
     try {
       const response = await fetch(url, {
         method: 'POST',
@@ -64,6 +70,17 @@ export default function SubscriptionConfirmed() {
       minHeight="100vh" // Ensure the entire viewport is covered
       justifyContent="center"
     >
+      {isLoading && (
+        <LinearProgress
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            zIndex: 1000, // Ensure it's above other elements
+          }}
+        />
+      )}
       <Paper
         variant="outlined"
         sx={{
@@ -106,10 +123,29 @@ export default function SubscriptionConfirmed() {
         sx={{ pt: 4, width: '90%' }}
       >
         Unsubscribe by accident? &nbsp;
-        <Button size="small" variant="outlined" onClick={handleResubscribe}>
-          {' '}
-          Resubscribe{' '}
+      <Box sx={{ m: 1, position: 'relative' }}>
+      <Button
+        variant="outlined"
+        size='small'
+        color="primary"
+        onClick={handleResubscribe}
+        disabled={isLoading} // Disable button when loading
+      >
+          resubscribe
         </Button>
+        {isLoading && (
+          <CircularProgress
+            size={24}
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              marginTop: '-12px',
+              marginLeft: '-12px',
+            }}
+          />
+        )}
+      </Box>
       </Typography>
     </Box>
   );
