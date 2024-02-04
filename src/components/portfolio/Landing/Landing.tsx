@@ -7,6 +7,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { scroller } from 'react-scroll';
 import styles from './Landing.module.css';
+import ContactMailIcon from '@mui/icons-material/ContactMail';
+import SendIcon from '@mui/icons-material/Send';
 
 export default function Landing() {
   const theme = useTheme();
@@ -23,14 +25,15 @@ export default function Landing() {
     });
   };
 
+
   return (
     <Box
       className="centerFlexBox"
       sx={{ minHeight: '100vh', maxWidth: '1150px', mx: '48px' }}
     >
-      <Grid container className="centerFlexBox" spacing={4} >
+      <Grid container className="centerFlexBox" spacing={4}>
         <Fade in={true} timeout={500}>
-          <Grid item  md={7.5} >
+          <Grid item md={7.5}>
             <Typography variant={'h1'} className={'name'} sx={{ ml: '-4px' }}>
               Ryan
               <Typography
@@ -55,19 +58,19 @@ export default function Landing() {
               color="text.secondary"
               sx={{ maxWidth: '600px' }}
             >
-              Curious Software Support Engineer with a passion for building web applications and working with new technologies.
+              Curious Software Support Engineer with a passion for building web
+              applications and working with new technologies.
             </Typography>
             <Grid container spacing={2} sx={{ mt: '16px' }}>
               <Grid item>
-                <Link href="/portfolio">
                   <Button
                     size="large"
-                    startIcon={<ArrowCircleRightIcon />}
+                    startIcon={<SendIcon />}
                     variant={'contained'}
+                    onClick={() => scroller.scrollTo('contact', { duration: 500, delay: 100, smooth: true, })}
                   >
-                    View Portfolio
+                    Contact me
                   </Button>
-                </Link>
               </Grid>
               <Grid item>
                 <Link href="/portfolio">
@@ -76,7 +79,7 @@ export default function Landing() {
                     startIcon={<DescriptionIcon />}
                     variant={'outlined'}
                   >
-                    View Resume
+                    View Portfolio
                   </Button>
                 </Link>
               </Grid>
@@ -84,7 +87,7 @@ export default function Landing() {
           </Grid>
         </Fade>
         <Fade in={true} timeout={1500}>
-          <Grid item md={4.5} sx={{ display:{xs:'none', md:'block'}} }>
+          <Grid item md={4.5} sx={{ display: { xs: 'none', md: 'block' } }}>
             <Image
               src="/photo.jpg"
               alt="ManAtDesk"
