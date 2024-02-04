@@ -1,7 +1,7 @@
 export default [
 
   {
-      title:"I Asked ChatGPT to Create Comics, Then I Drew Them.",
+    title:"Lorem Ipsum Dolor Sit Amet, Consectetuer ",
       body: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus",
       date:'Jan 22, 2022',
       chips:['React', 'Java', 'Chat GPT' ],
@@ -10,7 +10,7 @@ export default [
       id:1
   },
   {
-    title:"I Asked ChatGPT to Create Comics, Then I Drew Them..",
+    title:"Lorem Ipsum Dolor Sit Amet, Consectetuer ",
     body: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus",
     date:'Jan 22, 2022',
     chips:['Java', 'Spring' ],
@@ -19,7 +19,7 @@ export default [
     id:2
 },
 {
-  title:"I Asked ChatGPT to Create Comics, Then I Drew Them....",
+  title:"Lorem Ipsum Dolor Sit Amet, Consectetuer ",
   body: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus",
   date:'Jan 22, 2022',
   chips:[ 'AI' ],
@@ -28,7 +28,7 @@ export default [
   id:3
 },
 {
-  title:"I Asked ChatGPT to Create Comics, Then I Drew Them.",
+  title:"Lorem Ipsum Dolor Sit Amet, Consectetuer ",
   body: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus",
   date:'Jan 22, 2022',
   chips:['Node' ],
@@ -37,7 +37,7 @@ export default [
   id:4
 },
 {
-  title:"I Asked ChatGPT to Create Comics, Then I Drew Them......",
+  title:"Lorem Ipsum Dolor Sit Amet, Consectetuer ",
   body: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus",
   date:'Jan 22, 2022',
   chips:['React', ],
@@ -46,7 +46,7 @@ export default [
   id:5
 },
 {
-  title:"I Asked ChatGPT to Create Comics, Then I Drew Them.......",
+  title:"Lorem Ipsum Dolor Sit Amet, Consectetuer ",
   body: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus",
   date:'Jan 22, 2022',
   chips:['Java', ],
