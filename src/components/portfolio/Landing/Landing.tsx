@@ -48,14 +48,14 @@ export default function Landing() {
               noWrap
               sx={{ my: '16px' }}
             >
-              Full Stack Software Engineer
+              Software Support Engineer
             </Typography>
             <Typography
               variant={'body1'}
               color="text.secondary"
               sx={{ maxWidth: '600px' }}
             >
-              Curious software engineer with a passion for building web applications and working with new technologies.
+              Curious Software Support Engineer with a passion for building web applications and working with new technologies.
             </Typography>
             <Grid container spacing={2} sx={{ mt: '16px' }}>
               <Grid item>
