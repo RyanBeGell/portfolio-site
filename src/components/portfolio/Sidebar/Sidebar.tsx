@@ -159,7 +159,7 @@ export default function Sidebar(props: Props) {
         <Grid item>
           <SocialIconButton
             Icon={LinkedInIcon}
-            href={'https://LinkedIn.com/RyanBeGell'}
+            href={'https://www.linkedin.com/in/ryanbegell'}
           />
         </Grid>
         <Grid item>
