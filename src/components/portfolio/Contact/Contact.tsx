@@ -1,5 +1,5 @@
 import SendIcon from '@mui/icons-material/Send';
-import { Button, useTheme } from '@mui/material';
+import { Button, CircularProgress, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
@@ -8,6 +8,9 @@ import SectionTitle from '../SectionTitle/SectionTitle';
 
 export default function Contact() {
   const theme = useTheme();
+
+  // State for managing loading spinner visibility
+  const [isLoading, setIsLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -24,9 +27,47 @@ export default function Contact() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    setIsLoading(true);
     event.preventDefault();
     console.log(formData); // will be changed to AWS SES
+
+    // API Gateway URL to trigger my lambda function
+    const apiEndpoint =
+      'https://p0p2y1r5u0.execute-api.us-east-1.amazonaws.com/prod/submit';
+
+    try {
+      const response = await fetch(apiEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setIsLoading(false);
+        const result = await response.json();
+        console.log(result.message); // Success message
+        //TODO: reset the form or display a success message
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          subject: '',
+          message: '',
+        });
+        //TODO:  Display success alert/message to the user
+      } else {
+        setIsLoading(false);
+        // Handle server errors or invalid responses
+        const error = await response.text();
+        throw new Error(error);
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      // TODO: Display error alert/message to the user
+    }
   };
 
   return (
@@ -137,17 +178,35 @@ export default function Contact() {
                 }}
               />
               <div>
-                <Button
-                  size="large"
-                  variant={`${
-                    theme.palette.mode === 'dark' ? 'outlined' : 'contained'
-                  }`}
-                  sx={{ mt: '16px' }}
-                  startIcon={<SendIcon />}
-                  type="submit"
+                <Box
+                  sx={{ m: 1, position: 'relative', display: 'inline-flex' }}
                 >
-                  Send Message
-                </Button>
+                  <Button
+                    size="large"
+                    variant={`${
+                      theme.palette.mode === 'dark' ? 'outlined' : 'contained'
+                    }`}
+                    sx={{ mt: '16px' }}
+                    startIcon={<SendIcon />}
+                    type="submit"
+                    disabled={isLoading}
+                  >
+                    Send Message
+                  </Button>
+                  {isLoading && (
+                    <CircularProgress
+                      size={24}
+                      sx={{
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        marginTop: '-4px', 
+                        marginLeft: '-12px', 
+                        zIndex: 1,
+                      }}
+                    />
+                  )}
+                </Box>
               </div>
             </div>
           </ScrollAnimation>
