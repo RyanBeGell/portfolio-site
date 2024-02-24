@@ -1,8 +1,9 @@
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import CodePenIcon from '../../Icons/CodePenIcon';
 import Link from '@mui/material/Link';
+import Tooltip from '@mui/material/Tooltip';
+import CodePenIcon from '../../Icons/CodePenIcon';
 
 type IconType = 'GitHub' | 'LinkedIn' | 'Email' | 'CodePen';
 
@@ -24,16 +25,20 @@ const FooterIcon = ({ type, color, href }: IconProps) => {
 
   return (
     <Link href={href} target="_blank" rel="noopener noreferrer" color="inherit">
-      <IconComponent
-        sx={{
-          color: 'text.blogIcons',
-          fontSize: '25px',
-          '&:hover': {
-            color: `var(--${color})`,
-            cursor: 'pointer',
-          },
-        }}
-      />
+      <Tooltip title={type}  arrow placement="top" >
+        <div>
+        <IconComponent
+          sx={{
+            color: 'text.blogIcons',
+            fontSize: '25px',
+            '&:hover': {
+              color: `var(--${color})`,
+              cursor: 'pointer',
+            },
+          }}
+        />
+        </div>
+      </Tooltip>
     </Link>
   );
 };
