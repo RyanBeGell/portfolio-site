@@ -29,9 +29,9 @@ export default function Landing() {
   return (
     <Box
       className="centerFlexBox"
-      sx={{ minHeight: '100vh', maxWidth: '1150px', mx: '48px' }}
+      sx={{ minHeight: '100vh', maxWidth: '1150px', mx: '48px', pt: { xs: '56px', sm: '56px', md: '56px', lg: '0px' }}}
     >
-      <Grid container className="centerFlexBox" spacing={4}>
+      <Grid container className="centerFlexBox" spacing={4} justifyContent={{ xs: 'center', md: 'flex-start' }}>
         <Fade in={true} timeout={500}>
           <Grid item md={7.5}>
             <Typography variant={'h1'} className={'name'} sx={{ ml: '-4px' }}>
@@ -87,7 +87,7 @@ export default function Landing() {
           </Grid>
         </Fade>
         <Fade in={true} timeout={1500}>
-          <Grid item md={4.5} sx={{ display: { xs: 'none', md: 'block' } }}>
+          <Grid item md={4.5} sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}>
             <Image
               src="/photo.jpg"
               alt="ManAtDesk"
