@@ -51,15 +51,14 @@ export default function Landing() {
               noWrap
               sx={{ my: '16px' }}
             >
-              Software Support Engineer
+              Software Engineer
             </Typography>
             <Typography
               variant={'body1'}
               color="text.secondary"
               sx={{ maxWidth: '600px' }}
             >
-              Curious Software Support Engineer with a passion for building web
-              applications and working with new technologies.
+              Curious Software Engineer with a passion for problem solving and working with new technologies.
             </Typography>
             <Grid container spacing={2} sx={{ mt: '16px' }}>
               <Grid item>
@@ -106,5 +105,6 @@ export default function Landing() {
         />
       </IconButton>
     </Box>
+    //TODO: Rotating skills section conveyor belt like auth0 landing page
   );
 }

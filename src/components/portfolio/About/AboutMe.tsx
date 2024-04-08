@@ -11,7 +11,7 @@ export default function AboutMe() {
       <ScrollAnimation animation={'fade'} timeout={1000}>
         {/* Div Necessary to provide react element to Scroll Animation */}
         <div>
-          {`I'm a self-motivated Software Support Engineer, with a natural curiosity for learning new technologies and a proven track record in rapid learning and independent problem-solving. Actively seeking a challenging role to collaborate, make meaningful contributions, and further expand my skills and experience. I enjoy working with ReactJS, Java, and AWS,  but I'm always ready to get started learning new languages, frameworks, and technologies. Want to find out more about me and my experience? Check out my `}
+          {`I'm a self-motivated Software Engineer, with a natural curiosity for learning new technologies. I enjoy working with ReactJS, Java, and AWS,  but I'm always ready to get started learning new languages, frameworks, and technologies. Want to find out more about me and my experience? Check out my `}
           <Box
             display={'inline'}
             sx={{

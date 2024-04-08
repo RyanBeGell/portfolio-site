@@ -1,15 +1,16 @@
 export default [
     {
-        title:"Lizard",
-        body: "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica",
-        image: "https://animals.sandiegozoo.org/sites/default/files/2017-12/iguana-grand-cayman-blue.jpg",
-        tags:[ 'Java' ],
+        title:"Lambda Subscriber Service",
+        body: "A serverless AWS Lambda based subscriber service which allows users to build their own subscriber base for a dev blog, mailing list, or newsletter.",
+        image: "/lambda-subscribe-card-photo.png",
+        tags:[ 'NodeJS', 'AWS', 'JavaScript' ],
+        demo: false,
     },
     {
-        title:"Lizard1",
-        body: "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica",
-        image: "https://animals.sandiegozoo.org/sites/default/files/2017-12/iguana-grand-cayman-blue.jpg",
-        tags:['MaterialUI', 'React', 'TypeScript', 'Java' ],
+        title:"Lambda Contact Form Service",
+        body: "A serverless contact form service which allows users to easily add a contact form to their website, without needing to worry about the backend.",
+        image: "/serverless-contact-form-photo.png",
+        tags:['NodeJS', 'AWS', 'JavaScript' ],
     },
     {
         title:"Lizard2",

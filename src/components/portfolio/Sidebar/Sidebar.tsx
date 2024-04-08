@@ -185,7 +185,7 @@ export default function Sidebar(props: Props) {
           'Home',
           'About',
           'Skills',
-          'Certifications',
+          // 'Certifications',
           'Projects',
           'Blog',
           'Contact',
@@ -207,13 +207,13 @@ export default function Sidebar(props: Props) {
                   <PersonOutlineOutlinedIcon />
                 ) : index === 2 ? (
                   <CodeIcon />
+                // ) : index === 3 ? (
+                //   <WorkspacePremiumIcon />
                 ) : index === 3 ? (
-                  <WorkspacePremiumIcon />
-                ) : index === 4 ? (
                   <FolderSpecialOutlinedIcon />
-                ) : index === 5 ? (
+                ) : index === 4 ? (
                   <HistoryEduOutlinedIcon />
-                ) : index === 6 ? (
+                ) : index === 5 ? (
                   <ContactMailOutlinedIcon />
                 ) : null}
               </ListItemIcon>

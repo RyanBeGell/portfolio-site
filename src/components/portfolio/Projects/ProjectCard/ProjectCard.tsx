@@ -13,6 +13,7 @@ export interface Props {
   body?: string; //temporarily optional
   image?: string; //temporarily optional
   handleOpen: () => void; //method to close modal which provides more information about the card
+  demo: boolean; 
 }
 
 export default function ProjectCard(props: Props) {
@@ -54,9 +55,11 @@ export default function ProjectCard(props: Props) {
         <Button size="small" startIcon={<GitHubIcon />}>
           {'GITHUB'}
         </Button>
+        {props.demo?
         <Button size="small" startIcon={<LanguageIcon />}>
           {'LIVE DEMO'}
-        </Button>
+        </Button>:null
+        }
       </CardActions>
     </Card>
   );
