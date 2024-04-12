@@ -11,16 +11,38 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import React from 'react';
 import Carousel from './carousel/carousel';
 
 export interface Props {
   open: boolean;
   handleClose: () => void;
+  title?: string; //temporarily optional
+  body: string; //temporarily optional
+  image?: string; //temporarily optional
+  githubLink?: string;
+  demoLink?: string;
+  tags: string[];
+}
+
+interface FormatTextProps {
+  text: string;
 }
 
 export default function ProjectModal(props: Props) {
   const theme = useTheme();
   const fullScreenModal = useMediaQuery(theme.breakpoints.down('md'));
+
+  //TODO: make image always match right hand size
+  const FormatText: React.FC<FormatTextProps> = ({ text }) => {
+    const paragraphs = text.split('\n').map((line, index) => (
+      <React.Fragment key={index}>
+        {line}
+        <br />
+      </React.Fragment>
+    ));
+    return <>{paragraphs}</>;
+  };
 
   return (
     <Dialog
@@ -30,16 +52,16 @@ export default function ProjectModal(props: Props) {
       maxWidth={'xl'}
       aria-labelledby="responsive-dialog-title"
     >
-          <IconButton
-            onClick={props.handleClose}
-            className="xButton"
-            sx={{
-              color: 'primary.main',
-              ':hover': { color: 'red' },
-            }}
-          >
-            <CloseIcon />
-          </IconButton>
+      <IconButton
+        onClick={props.handleClose}
+        className="xButton"
+        sx={{
+          color: 'primary.main',
+          ':hover': { color: 'red' },
+        }}
+      >
+        <CloseIcon />
+      </IconButton>
       <Grid
         display="flex"
         sx={{
@@ -55,7 +77,6 @@ export default function ProjectModal(props: Props) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            // p: `${fullScreen ? '24px' : ''}`,
           }}
         >
           <Carousel />
@@ -64,39 +85,28 @@ export default function ProjectModal(props: Props) {
           item
           display="flex"
           flexDirection="column"
-          sx={{ width: '564px', p:`${fullScreenModal ? '' : '36px'}`, px:`${fullScreenModal ? '36px' : ''}`}}
+          sx={{
+            width: '564px',
+            p: `${fullScreenModal ? '' : '36px'}`,
+            px: `${fullScreenModal ? '36px' : ''}`,
+          }}
         >
-          <DialogTitle sx={{pt:'0px', px:0}}>
-            {"Use Google's location service?"}
-            </DialogTitle>
-          <DialogContent sx={{px:0}}>
+          <DialogTitle sx={{ pt: '0px', px: 0, alignItems: 'flexStart' }}>
+            {props.title}
+          </DialogTitle>
+          <DialogContent sx={{ px: 0, pb: '16px' }}>
             <DialogContentText>
-              Let Google help apps determine location. This means sending
-              anonymous location data to Google, even when no apps are running.
-              Let Google help apps determine location. This means sending
-              anonymous location data to Google, even when no apps are running.
-              <br /> <br />
-                Let Google help apps determine location. This means sending
-                anonymous location data to Google, even when no apps are
-                running. This means sending anonymous location data to Google,
-                even when no apps are running.
+              <FormatText text={props.body} />
             </DialogContentText>
             <Box>
               {/* Front End Section/Icons */}
-              <Typography variant={'body1'} sx={{ pb: '8px', pt:'24px' }}>
+              <Typography variant={'body1'} sx={{ pb: '8px', pt: '16px' }}>
                 Technologies used
               </Typography>
               <IconsGrid
-                componentNames={[
-                  'ReactJS',
-                  'TypeScript',
-                  'MaterialUI',
-                  'NextJS',
-                  'Java',
-                  'Spring',
-                ]}
-                height={24}
-                width={24}
+                componentNames={props.tags}
+                height={32}
+                width={32}
                 spacing={2}
                 noTitle={true}
               />
@@ -106,22 +116,33 @@ export default function ProjectModal(props: Props) {
             sx={{
               display: 'flex',
               justifyContent: 'center',
-              marginTop: 'auto',
-              px: '0px',
+              p: '0px',
             }}
           >
-            <Button
-              fullWidth
-              color="primary"
-              variant={'contained'}
-              sx={{ mr: '8px' }}
-              startIcon={<LanguageIcon />}
-            >
-              LIVE DEMO
-            </Button>
-            <Button fullWidth variant={'outlined'} startIcon={<GitHubIcon />}>
-              GITHUB
-            </Button>
+            {props.demoLink ? (
+              <Button
+                href={props.demoLink}
+                target="_blank"
+                fullWidth
+                color="primary"
+                variant={'contained'}
+                sx={{ mr: '8px' }}
+                startIcon={<LanguageIcon />}
+              >
+                LIVE DEMO
+              </Button>
+            ) : null}
+            {props.githubLink ? (
+              <Button
+                href={props.githubLink}
+                target="_blank"
+                fullWidth
+                variant={`${props.demoLink ? 'outlined' : 'contained'}`}
+                startIcon={<GitHubIcon />}
+              >
+                {`${props.demoLink ? 'GitHub' : 'GitHub Repository'}`}
+              </Button>
+            ) : null}
           </DialogActions>
         </Grid>
       </Grid>

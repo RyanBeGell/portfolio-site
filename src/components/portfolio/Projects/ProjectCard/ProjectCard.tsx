@@ -6,27 +6,44 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
+import { useState } from 'react';
+import ProjectModal from '../ProjectModal/ProjectModal';
 import styles from './ProjectCard.module.css';
 
 export interface Props {
-  title?: string; //temporarily optional
-  body?: string; //temporarily optional
+  title: string; //temporarily optional
+  subtitle: string;
+  body: string; //temporarily optional
   image?: string; //temporarily optional
-  handleOpen: () => void; //method to close modal which provides more information about the card
-  demo: boolean; 
+  githubLink?: string;
+  demoLink?: string;
+  tags: string[];
 }
 
 export default function ProjectCard(props: Props) {
   const theme = useTheme();
   const darkMode = theme.palette.mode === 'dark';
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <Card
       raised={!darkMode}
       id={styles.card}
       variant={darkMode ? 'outlined' : undefined}
     >
+      <ProjectModal
+        open={open}
+        handleClose={handleClose}
+        title={props.title}
+        body={props.body}
+        demoLink={props.demoLink}
+        githubLink={props.githubLink}
+        tags={props.tags}
+      />
       <CardActionArea
-        onClick={props.handleOpen}
+        onClick={handleOpen}
         sx={{
           color: theme.palette.mode === 'dark' ? 'primary.main' : undefined,
         }}
@@ -47,19 +64,31 @@ export default function ProjectCard(props: Props) {
             {props.title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {props.body}
+            {props.subtitle}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions sx={{ mx: '4px' }}>
-        <Button size="small" startIcon={<GitHubIcon />}>
-          {'GITHUB'}
-        </Button>
-        {props.demo?
-        <Button size="small" startIcon={<LanguageIcon />}>
-          {'LIVE DEMO'}
-        </Button>:null
-        }
+        {props.githubLink ? (
+          <Button
+            href={props.githubLink}
+            target="_blank"
+            size="small"
+            startIcon={<GitHubIcon />}
+          >
+            {'GITHUB'}
+          </Button>
+        ) : null}
+        {props.demoLink ? (
+          <Button
+            size="small"
+            href={props.demoLink}
+            target="_blank"
+            startIcon={<LanguageIcon />}
+          >
+            {'LIVE DEMO'}
+          </Button>
+        ) : null}
       </CardActions>
     </Card>
   );

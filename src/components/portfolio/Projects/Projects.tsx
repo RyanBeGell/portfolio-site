@@ -8,19 +8,14 @@ import ScrollAnimation from '../../ScrollAnimation';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import ProjectCard from './ProjectCard/ProjectCard';
 import ProjectData from './ProjectCard/ProjectCardData';
-import ProjectModal from './ProjectModal/ProjectModal';
 
 export default function ProjectsSection() {
   //State for Modal
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
   const theme = useTheme();
   const colorMode = theme.palette.mode;
   const TopThreeProjects = ProjectData.slice(0, 3);
   return (
     <>
-      <ProjectModal open={open} handleClose={handleClose} />
       <Box className="centerBox">
         <Box sx={{ maxWidth: 1150 }}>
           <SectionTitle title="Projects" />
@@ -32,10 +27,13 @@ export default function ProjectsSection() {
                   timeout={1000 + index * 500}
                 >
                   <ProjectCard
-                    handleOpen={handleOpen}
                     title={item.title}
                     body={item.body}
+                    subtitle={item.subtitle}
                     image={item.image}
+                    githubLink={item.githubLink}
+                    demoLink={item.demoLink}
+                    tags={item.tags}
                   />
                 </ScrollAnimation>
               </Grid>

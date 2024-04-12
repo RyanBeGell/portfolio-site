@@ -11,4 +11,6 @@ export { default as ReactJS } from './React';
 export { default as Spring } from './Spring';
 export { default as TypeScript } from './TypeScript';
 export { default as Docker } from './Docker';
-export { default as AWS } from './AWS'
+export { default as AWS } from './AWS';
+export { default as Go } from './Go';
+export { default as PowerShell } from './PowerShell';
