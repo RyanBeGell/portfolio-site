@@ -1,6 +1,5 @@
 import ProjectCard from '@/src/components/portfolio/Projects/ProjectCard/ProjectCard';
 import ProjectData from '@/src/components/portfolio/Projects/ProjectCard/ProjectCardData';
-import ProjectModal from '@/src/components/portfolio/Projects/ProjectModal/ProjectModal';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import {
   Chip,
@@ -16,10 +15,6 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 export default function Portfolio() {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
   const router = useRouter();
   const { tag } = router.query;
   const theme = useTheme();
@@ -64,7 +59,6 @@ export default function Portfolio() {
 
   return (
     <>
-      <ProjectModal open={open} handleClose={handleClose} />
       <Box className="centerBox" sx={{ minHeight: '100%' }}>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <Box sx={{ maxWidth: '1000px', width: '100%', mx: 4 }}>
@@ -83,7 +77,11 @@ export default function Portfolio() {
               >
                 Portfolio
               </Typography>
-              <Typography variant={'h3'} className={'neutraface'} sx={{my:'10px'}}>
+              <Typography
+                variant={'h3'}
+                className={'neutraface'}
+                sx={{ my: '10px' }}
+              >
                 <Typography
                   variant={'h3'}
                   component={'span'}
@@ -156,10 +154,14 @@ export default function Portfolio() {
                   {filteredPosts.map((item, index) => (
                     <Grid item xs={12} sm={6} key={index}>
                       <ProjectCard
-                        handleOpen={handleOpen}
                         title={item.title}
                         body={item.body}
+                        subtitle={item.subtitle}
                         image={item.image}
+                        githubLink={item.githubLink}
+                        demoLink={item.demoLink}
+                        tags={item.tags}
+                        modalImages={item.modalImages}
                       />
                     </Grid>
                   ))}
