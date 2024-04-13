@@ -1,5 +1,11 @@
 import SendIcon from '@mui/icons-material/Send';
-import { Button, CircularProgress, useTheme } from '@mui/material';
+import {
+  Alert,
+  Button,
+  CircularProgress,
+  Snackbar,
+  useTheme,
+} from '@mui/material';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
@@ -11,7 +17,8 @@ export default function Contact() {
 
   // State for managing loading spinner visibility
   const [isLoading, setIsLoading] = useState(false);
-
+  const [successOpen, setSuccessOpen] = useState(false);
+  const [errorOpen, setErrorOpen] = useState(true);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -19,6 +26,33 @@ export default function Contact() {
     subject: '',
     message: '',
   });
+
+  const handleCloseSuccess = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setSuccessOpen(false);
+  };
+
+  const handleCloseError = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setErrorOpen(false);
+  };
+
+  const handleMailTo = () => {
+    window.location.href =
+      'mailto:ryanbegell@outlook.com?subject=Contact Form Issue';
+  };
 
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -49,6 +83,7 @@ export default function Contact() {
         setIsLoading(false);
         const result = await response.json();
         console.log(result.message); // Success message
+        setSuccessOpen(true);
         //TODO: reset the form or display a success message
         setFormData({
           firstName: '',
@@ -57,7 +92,6 @@ export default function Contact() {
           subject: '',
           message: '',
         });
-        //TODO:  Display success alert/message to the user
       } else {
         setIsLoading(false);
         // Handle server errors or invalid responses
@@ -66,7 +100,7 @@ export default function Contact() {
       }
     } catch (error) {
       console.error('Submission error:', error);
-      // TODO: Display error alert/message to the user
+      setErrorOpen(true);
     }
   };
 
@@ -200,12 +234,50 @@ export default function Contact() {
                         position: 'absolute',
                         top: '50%',
                         left: '50%',
-                        marginTop: '-4px', 
-                        marginLeft: '-12px', 
+                        marginTop: '-4px',
+                        marginLeft: '-12px',
                         zIndex: 1,
                       }}
                     />
                   )}
+                  <Snackbar
+                    open={successOpen}
+                    autoHideDuration={6000}
+                    onClose={handleCloseSuccess}
+                  >
+                    <Alert
+                      onClose={handleCloseSuccess}
+                      severity="success"
+                      variant="filled"
+                      sx={{ width: '100%' }}
+                    >
+                      Message sent
+                    </Alert>
+                  </Snackbar>
+                  <Snackbar
+                    open={errorOpen}
+                    autoHideDuration={6000}
+                    onClose={handleCloseError}
+                  >
+                    <Alert
+                      onClose={handleCloseError}
+                      severity="error"
+                      variant="filled"
+                      sx={{ width: '100%' }}
+                      action={
+                        <Button
+                          color="inherit"
+                          variant="outlined"
+                          size="small"
+                          onClick={handleMailTo}
+                        >
+                          Email Me Directly
+                        </Button>
+                      }
+                    >
+                      Something went wrong!
+                    </Alert>
+                  </Snackbar>
                 </Box>
               </div>
             </div>
