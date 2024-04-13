@@ -18,6 +18,7 @@ export interface Props {
   githubLink?: string;
   demoLink?: string;
   tags: string[];
+  modalImages:string[];
 }
 
 export default function ProjectCard(props: Props) {
@@ -41,6 +42,7 @@ export default function ProjectCard(props: Props) {
         demoLink={props.demoLink}
         githubLink={props.githubLink}
         tags={props.tags}
+        modalImages={props.modalImages}
       />
       <CardActionArea
         onClick={handleOpen}

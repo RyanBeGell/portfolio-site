@@ -34,6 +34,7 @@ export default function ProjectsSection() {
                     githubLink={item.githubLink}
                     demoLink={item.demoLink}
                     tags={item.tags}
+                    modalImages={item.modalImages}
                   />
                 </ScrollAnimation>
               </Grid>

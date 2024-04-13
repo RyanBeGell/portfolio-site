@@ -7,14 +7,11 @@ import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import styles from './carousel.module.css';
 import Fade from '@mui/material/Fade';
 
-const images = [
-  'https://via.placeholder.com/500x500.png?text=Image1',
-  'https://via.placeholder.com/500x500.png?text=Image2',
-  'https://via.placeholder.com/500x500.png?text=Image3',
-  'https://via.placeholder.com/500x500.png?text=Image4'
-];
+interface CarouselProps {
+  images: string[];
+}
 
-const Carousel: React.FC = () => {
+const Carousel: React.FC<CarouselProps> = ({ images }) => {
   const [index, setIndex] = useState(0);
   
   return (
@@ -33,7 +30,7 @@ const Carousel: React.FC = () => {
       </IconButton>
       <IconButton 
           color='primary'
-          disabled={index===3}
+          disabled={index === images.length - 1}
           sx={{ color:'rgba(117, 117, 117, 1)', '&:hover': {color:'primary.main'} }}
           className={styles.navigateButton} 
           onClick={() => setIndex(index + 1)}

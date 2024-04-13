@@ -23,6 +23,7 @@ export interface Props {
   githubLink?: string;
   demoLink?: string;
   tags: string[];
+  modalImages:string[];
 }
 
 interface FormatTextProps {
@@ -79,7 +80,7 @@ export default function ProjectModal(props: Props) {
             justifyContent: 'center',
           }}
         >
-          <Carousel />
+          <Carousel images={props.modalImages} />
         </Grid>
         <Grid
           item
