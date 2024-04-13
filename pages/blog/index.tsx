@@ -139,6 +139,11 @@ export default function Home() {
     }
   };
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); // Prevents the default form submission behavior
+    handleSubscribeClick();
+  };
+
   return (
     <>
       <Box className="centerBox" sx={{ minHeight: '100vh-64px' }}>
@@ -259,85 +264,87 @@ export default function Home() {
                     ))}
                   </Box>
                   <Divider sx={{ my: 3 }} />
-                  <Typography
-                    variant="h6"
-                    fontWeight={'400'}
-                    sx={{ mt: '16px' }}
-                  >
-                    Keep up to date
-                  </Typography>
-                  <Typography
-                    variant="caption"
-                    component="div"
-                    sx={{ color: 'text.secondary', mb: '8px' }}
-                  >
-                    Subscribe for email notifications
-                  </Typography>
-                  <Box sx={{ mb: '4px' }}>
+                  <form onSubmit={handleSubmit}>
+                    <Typography
+                      variant="h6"
+                      fontWeight="400"
+                      sx={{ mt: '16px' }}
+                    >
+                      Keep up to date
+                    </Typography>
                     <Typography
                       variant="caption"
-                      sx={{
-                        fontSize: '12px',
-                        color: 'text.secondary',
-                        mb: '4px',
-                      }}
+                      component="div"
+                      sx={{ color: 'text.secondary', mb: '8px' }}
                     >
-                      Enter your email:
+                      Subscribe for email notifications
                     </Typography>
-                    <OutlinedInput
-                      id="email"
-                      type="email"
-                      size="small"
-                      placeholder="example@email.com"
-                      autoComplete="off"
-                      fullWidth
-                      value={email}
-                      onChange={handleEmailChange}
-                      sx={{
-                        '&:hover .MuiOutlinedInput-notchedOutline': {
-                          borderColor: 'primary.main',
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ position: 'relative' }}>
-                    <Button
-                      variant="contained"
-                      size="small"
-                      fullWidth
-                      onClick={handleSubscribeClick}
-                      disabled={isSubscribing}
-                      sx={{ mt: '4px' }}
-                    >
-                      {isSubscribing ? 'Subscribing...' : 'Subscribe'}
-                    </Button>
-                    {isSubscribing && (
-                      <CircularProgress
-                        size={24}
+                    <Box sx={{ mb: '4px' }}>
+                      <Typography
+                        variant="caption"
                         sx={{
-                          color: 'green',
-                          position: 'absolute',
-                          top: '50%',
-                          left: '50%',
-                          marginTop: '-12px',
-                          marginLeft: '-12px',
+                          fontSize: '12px',
+                          color: 'text.secondary',
+                          mb: '4px',
+                        }}
+                      >
+                        Enter your email:
+                      </Typography>
+                      <OutlinedInput
+                        id="email"
+                        type="email"
+                        size="small"
+                        placeholder="example@email.com"
+                        autoComplete="off"
+                        fullWidth
+                        value={email}
+                        onChange={handleEmailChange}
+                        sx={{
+                          '&:hover .MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'primary.main',
+                          },
                         }}
                       />
+                    </Box>
+                    <Box sx={{ position: 'relative' }}>
+                      <Button
+                        type="submit"
+                        variant="contained"
+                        size="small"
+                        fullWidth
+                        disabled={isSubscribing}
+                        sx={{ mt: '4px' }}
+                      >
+                        {isSubscribing ? 'Subscribing...' : 'Subscribe'}
+                      </Button>
+                      {isSubscribing && (
+                        <CircularProgress
+                          size={24}
+                          sx={{
+                            color: 'green',
+                            position: 'absolute',
+                            top: '50%',
+                            left: '50%',
+                            marginTop: '-12px',
+                            marginLeft: '-12px',
+                          }}
+                        />
+                      )}
+                    </Box>
+                    {subscriptionStatus && (
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          color: subscriptionStatus.startsWith('Error')
+                            ? 'error.main'
+                            : 'success.main',
+                          mt: '8px',
+                        }}
+                      >
+                        {subscriptionStatus}
+                      </Typography>
                     )}
-                  </Box>
-                  {subscriptionStatus && (
-                    <Typography
-                      variant="caption"
-                      sx={{
-                        color: subscriptionStatus.startsWith('Error')
-                          ? 'error.main'
-                          : 'success.main',
-                        mt: '8px',
-                      }}
-                    >
-                      {subscriptionStatus}
-                    </Typography>
-                  )}
+                  </form>
                 </Paper>
               </Grid>
               <Box
