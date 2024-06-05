@@ -68,9 +68,9 @@ const Home: NextPage = () => {
           <Skills />
         </Element>
         <Divider />
-        {/* <Element name="certifications">
+        <Element name="certifications">
           <Certifications />
-        </Element> */}
+        </Element> 
         <Divider />
         <Element name="projects">
           <ProjectsSection />
