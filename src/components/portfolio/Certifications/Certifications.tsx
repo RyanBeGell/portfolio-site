@@ -1,10 +1,12 @@
 import CloseIcon from '@mui/icons-material/Close';
 import { Box, Grid, Modal } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
+import { Tooltip } from '@mui/material';
 import { useState } from 'react';
 import ScrollAnimation from '../../ScrollAnimation';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import styles from './Certifications.module.css';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 export default function Certifications() {
   interface Certification {
@@ -15,16 +17,17 @@ export default function Certifications() {
   const certifications = [
     {
       logo: '/AWS-Certified-Cloud-Practitioner.png',
-      screenshot: '/sample.png',
+      screenshot: 'AWS-Certified-Cloud-Practitioner-certificate.jpg',
     },
-    {
-      logo: '/AWS-Certified-Developer-Associate.png',
-      screenshot: '/sample.png',
-    },
-    {
-      logo: '/AWS-Certified-Solutions-Architect-Associate.png',
-      screenshot: '/sample.png',
-    },
+    // additional certifications can be added here in future after completion
+    // {
+    //   logo: '/AWS-Certified-Developer-Associate.png',
+    //   screenshot: '/sample.png',
+    // },
+    // {
+    //   logo: '/AWS-Certified-Solutions-Architect-Associate.png',
+    //   screenshot: '/sample.png',
+    // },
   ];
 
   // State to control the modal
@@ -51,15 +54,15 @@ export default function Certifications() {
             container
             justifyContent="center"
             item
-            xs={6}
-            sm={4}
-            md={4}
+            xs={12}
+            sm={12}
+            md={12}
           >
             <ScrollAnimation animation={'fade'} timeout={1000 + index * 500}>
               <img
                 src={cert.logo}
-                height={190}
-                width={190}
+                height={210}
+                width={210}
                 className={`${styles.cert} hover-pointer grow-on-hover`}
                 onClick={() => handleCertificationClick(cert)}
               />
@@ -79,28 +82,42 @@ export default function Certifications() {
         open={openModal}
         onClose={closeModal}
       >
-        <Box sx={{ position: 'relative',}}>
+        <Box
+          sx={{ position: 'relative', cursor: 'pointer' }}
+          onClick={() =>
+            window.open(
+              'https://cp.certmetrics.com/amazon/en/public/verify/credential/24b65de2fcb441d48f175b0a29de8eb8',
+              '_blank'
+            )
+          }
+        >
           {/* Close button */}
           <IconButton
-            onClick={closeModal}
+            onClick={(event) => {
+              event.stopPropagation();
+              closeModal();
+            }}
             sx={{
               position: 'absolute',
               top: '10px',
               right: '10px',
               color: 'primary.main',
-              ':hover': { color: 'red', backgroundColor:'#f5f5f5' },
+              ':hover': { color: 'red', backgroundColor: '#f5f5f5' },
             }}
           >
             <CloseIcon />
           </IconButton>
 
           {selectedCertification && (
-            <img
-              src={selectedCertification.screenshot}
-              height={900}
-              width={600}
-              style={{borderRadius:'4px'}}
-            />
+            <Tooltip title={<span style={{ display: 'flex', alignItems: 'center' }}>View Credential Verification <OpenInNewIcon fontSize='inherit' sx={{ml:'4px'}}/></span>} followCursor={true} placement='top'>
+
+              <img
+                src={selectedCertification.screenshot}
+                height={'100%'}
+                width={'100%'}
+                style={{ borderRadius: '4px' }}
+              />
+            </Tooltip>
           )}
         </Box>
       </Modal>

@@ -58,7 +58,7 @@ export default function Landing() {
               color="text.secondary"
               sx={{ maxWidth: '600px' }}
             >
-              Curious Software Engineer with a passion for problem solving and working with new technologies.
+              Curious Software Engineer with a passion for all aspects of software development.
             </Typography>
             <Grid container spacing={2} sx={{ mt: '16px' }}>
               <Grid item>
