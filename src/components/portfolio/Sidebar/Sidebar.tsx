@@ -137,7 +137,7 @@ export default function Sidebar(props: Props) {
         sx={{ textAlign: 'center', mb: 2 }}
         color="text.navFooter"
       >
-        Software Developer
+        Software Engineer
       </Typography>
       <Grid
         container
@@ -162,12 +162,12 @@ export default function Sidebar(props: Props) {
             href={'https://www.linkedin.com/in/ryanbegell'}
           />
         </Grid>
-        <Grid item>
+        {/* <Grid item>
           <SocialIconButton
             Icon={CodePenIcon}
             href={'https://CodePen.com/RyanBeGell'}
           />
-        </Grid>
+        </Grid> */}
         <Grid item>
           <SocialIconButton
             Icon={EmailIcon}
@@ -185,7 +185,7 @@ export default function Sidebar(props: Props) {
           'Home',
           'About',
           'Skills',
-          // 'Certifications',
+          'Certifications',
           'Projects',
           'Blog',
           'Contact',
@@ -207,13 +207,13 @@ export default function Sidebar(props: Props) {
                   <PersonOutlineOutlinedIcon />
                 ) : index === 2 ? (
                   <CodeIcon />
-                // ) : index === 3 ? (
-                //   <WorkspacePremiumIcon />
                 ) : index === 3 ? (
-                  <FolderSpecialOutlinedIcon />
+                   <WorkspacePremiumIcon />
                 ) : index === 4 ? (
-                  <HistoryEduOutlinedIcon />
+                  <FolderSpecialOutlinedIcon />
                 ) : index === 5 ? (
+                  <HistoryEduOutlinedIcon />
+                ) : index === 6 ? (
                   <ContactMailOutlinedIcon />
                 ) : null}
               </ListItemIcon>
