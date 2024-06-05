@@ -36,7 +36,7 @@ export default [
     subtitle:
       'A CLI Pomodoro Timer built in Go for Windows Subsystem for Linux (WSL) which includes Windows notifications to help you stay productive.',
     body: 'The Pomodoro technique is a time management method which uses a timer to break down work into intervals, traditionally 25 minutes in length, separated by short 5-minute breaks. The Pomodoro technique is based on the idea that frequent small breaks can improve mental agility and productivity. \n \n This CLI Pomodoro Timer built in Go for Windows Subsystem for Linux (WSL) which includes Windows notifications to help users stay productive. This program executes a short powershell script to send Windows toast notifications from your WSL terminal.',
-    image: '/pomodoro-cli.png',
+    image: '/pomodoro-cli/pomodoro-break.PNG',
     githubLink: 'https://github.com/RyanBeGell/cli-pomodoro-timer',
     demoLink: '',
     tags: ['Go', 'PowerShell'],
