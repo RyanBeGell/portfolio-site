@@ -18,7 +18,7 @@ export default function Contact() {
   // State for managing loading spinner visibility
   const [isLoading, setIsLoading] = useState(false);
   const [successOpen, setSuccessOpen] = useState(false);
-  const [errorOpen, setErrorOpen] = useState(true);
+  const [errorOpen, setErrorOpen] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',

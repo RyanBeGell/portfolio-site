@@ -38,12 +38,12 @@ const Footer = () => {
           sx={{ mx: '8px', my: '2px' }}
         />
         <FooterIcon type="LinkedIn" color="linkedInBlue" href={'https://LinkedIn.com/RyanBeGell'}/>
-        <Divider
+        {/* <Divider
           orientation="vertical"
           flexItem
           sx={{ mx: '8px', my: '2px' }}
-        />
-        <FooterIcon type="CodePen" href={'https://CodePen.com/RyanBeGell'}/>
+        /> */}
+        {/* <FooterIcon type="CodePen" href={'https://CodePen.com/RyanBeGell'}/> */}
         <Divider
           orientation="vertical"
           flexItem
