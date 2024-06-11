@@ -1,7 +1,9 @@
 import * as Icons from '@/src/components/Icons';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Box, Divider, Grid, Typography } from '@mui/material';
 import Tooltip from '@mui/material/Tooltip';
 import { useTheme } from '@mui/material/styles';
+import { useRouter } from 'next/router';
 import ScrollAnimation from '../../ScrollAnimation';
 import styles from './IconsGrid.module.css';
 
@@ -22,6 +24,7 @@ const IconsGrid: React.FC<Props> = ({
 }) => {
   const theme = useTheme();
   const primary = theme.palette.primary.main;
+  const router = useRouter();
 
   return (
     <Grid container spacing={spacing}>
@@ -50,30 +53,45 @@ const IconsGrid: React.FC<Props> = ({
             )}
             {!noTitle && (
               <ScrollAnimation animation={'fade'} timeout={1000 + index * 250}>
-                <Box className={styles.customIcon}>
-                  <DynamicComponent
-                    key={name}
-                    height={height}
-                    width={width}
-                    fill={primary}
-                  />
-                  <Divider
-                    id={styles.divider}
-                    sx={{
-                      bgcolor: 'primary.main',
-                      height: 2,
-                      my: 1,
-                      mx: '20%',
-                    }}
-                  />
-                  <Typography
-                    id={styles.title}
-                    variant={'body1'}
-                    sx={{ color: 'primary.main' }}
+                <Tooltip
+                  enterDelay={500}
+                  enterNextDelay={500}
+                  title={
+                    <span style={{ display: 'flex', alignItems: 'center' }}>
+                      View projects using {name} &nbsp;
+                      <ArrowForwardIcon fontSize="inherit" />
+                    </span>
+                  }
+                >
+                  <Box
+                    className={`${styles.customIcon} hover-pointer`}
+                    onClick={() => router.push(`/portfolio?tag=${name}`)}
                   >
-                    {name}
-                  </Typography>
-                </Box>
+                    <DynamicComponent
+                      key={name}
+                      height={height}
+                      width={width}
+                      fill={primary}
+                      Style
+                    />
+                    <Divider
+                      id={styles.divider}
+                      sx={{
+                        bgcolor: 'primary.main',
+                        height: 2,
+                        my: 1,
+                        mx: '20%',
+                      }}
+                    />
+                    <Typography
+                      id={styles.title}
+                      variant={'body1'}
+                      sx={{ color: 'primary.main' }}
+                    >
+                      {name}
+                    </Typography>
+                  </Box>
+                </Tooltip>
               </ScrollAnimation>
             )}
           </Grid>

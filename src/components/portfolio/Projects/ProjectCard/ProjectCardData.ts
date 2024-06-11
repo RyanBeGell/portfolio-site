@@ -7,7 +7,7 @@ export default [
     image: '/lambda-subscribe-card-photo.png',
     githubLink: 'https://github.com/RyanBeGell/lambda-subscriber-service',
     demoLink: '',
-    tags: ['NodeJS', 'AWS', 'JavaScript'],
+    tags: ['NodeJS', 'AWS', 'JavaScript', 'MaterialUI', 'HTML5', 'CSS3', ],
     modalImages: [
       '/lambda-subscribe-service/subscribe.PNG',
       '/lambda-subscribe-service/confirm-email.PNG',
@@ -24,7 +24,7 @@ export default [
     githubLink:
       'https://github.com/RyanBeGell/lambda-contact-form-email-service',
     demoLink: '',
-    tags: ['NodeJS', 'AWS', 'JavaScript'],
+    tags: ['NodeJS', 'AWS', 'JavaScript', 'MaterialUI', 'HTML5', 'CSS3', ],
     modalImages: [
       '/contact-form-service/contact-form.PNG',
       '/contact-form-service/success-toast.PNG',

@@ -32,6 +32,8 @@ export default function Skills() {
               'TypeScript',
               'Tailwind',
               'MaterialUI',
+              'HTML5',
+              'CSS3',
             ]}
             height={64}
             width={64}
