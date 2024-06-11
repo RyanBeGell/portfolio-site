@@ -1,12 +1,11 @@
 import CloseIcon from '@mui/icons-material/Close';
-import { Box, Grid, Modal } from '@mui/material';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import { Box, Grid, Modal, Tooltip } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
-import { Tooltip } from '@mui/material';
 import { useState } from 'react';
 import ScrollAnimation from '../../ScrollAnimation';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import styles from './Certifications.module.css';
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 export default function Certifications() {
   interface Certification {
@@ -75,47 +74,62 @@ export default function Certifications() {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          '&:focus': {
-            outline: 'none',
-          },
         }}
         open={openModal}
         onClose={closeModal}
       >
         <Box
-          sx={{ position: 'relative', cursor: 'pointer' }}
-          onClick={() =>
-            window.open(
-              'https://cp.certmetrics.com/amazon/en/public/verify/credential/24b65de2fcb441d48f175b0a29de8eb8',
-              '_blank'
-            )
-          }
+          sx={{
+            position: 'relative',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            maxWidth: '90vw',
+            maxHeight: '90vh',
+            borderRadius: '4px',
+            overflow: 'hidden',
+          }}
         >
-          {/* Close button */}
           <IconButton
             onClick={(event) => {
               event.stopPropagation();
               closeModal();
             }}
+            className="xButton"
             sx={{
-              position: 'absolute',
-              top: '10px',
-              right: '10px',
               color: 'primary.main',
-              ':hover': { color: 'red', backgroundColor: '#f5f5f5' },
+              ':hover': { color: 'red' },
             }}
           >
             <CloseIcon />
           </IconButton>
 
           {selectedCertification && (
-            <Tooltip title={<span style={{ display: 'flex', alignItems: 'center' }}>View Credential Verification <OpenInNewIcon fontSize='inherit' sx={{ml:'4px'}}/></span>} followCursor={true} placement='top'>
-
+            <Tooltip
+              title={
+                <span style={{ display: 'flex', alignItems: 'center' }}>
+                  View Credential Verification{' '}
+                  <OpenInNewIcon fontSize="inherit" sx={{ ml: '4px' }} />
+                </span>
+              }
+              followCursor={true}
+              placement="top"
+            >
               <img
                 src={selectedCertification.screenshot}
-                height={'100%'}
-                width={'100%'}
-                style={{ borderRadius: '4px' }}
+                style={{
+                  maxHeight: '100%',
+                  maxWidth: '100%',
+                  objectFit: 'contain',
+                  cursor: 'pointer',
+                  borderRadius: '4px',
+                }}
+                onClick={() =>
+                  window.open(
+                    'https://cp.certmetrics.com/amazon/en/public/verify/credential/24b65de2fcb441d48f175b0a29de8eb8',
+                    '_blank'
+                  )
+                }
               />
             </Tooltip>
           )}
