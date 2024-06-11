@@ -14,3 +14,5 @@ export { default as Docker } from './Docker';
 export { default as AWS } from './AWS';
 export { default as Go } from './Go';
 export { default as PowerShell } from './PowerShell';
+export { default as Tailwind } from './Tailwind';
+export { default as Redux } from './Redux';

@@ -11,7 +11,7 @@ export default function AboutMe() {
       <ScrollAnimation animation={'fade'} timeout={1000}>
         {/* Div Necessary to provide react element to Scroll Animation */}
         <div>
-          {`Hello! I'm a dedicated and passionate software engineer interested in all aspects of software development. My main strengths lie in front-end development with React and building robust back-end REST APIs using Java/Spring Boot. I excel at building out dynamic and responsive front-end components and ensuring the reliability and scalability of web applications. While I frequently use React and Java/Springboot, I often experiment with and am eager to learn new technologies, languages, and frameworks.`}
+          {`Hello! I'm a software engineer passionate about all aspects of software development. My main strengths lie in creating dynamic and responsive front-end components with React and building robust back-end REST APIs using Java and Spring Boot. While I frequently use React and Java, I often experiment with other languages and frameworks, and I'm always eager to learn something new.`}
           <br/>
           <br />
           {`Want to learn more about me and my experience? Check out my `}

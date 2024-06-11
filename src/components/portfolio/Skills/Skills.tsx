@@ -26,12 +26,12 @@ export default function Skills() {
           <IconsGrid
             componentNames={[
               'ReactJS',
+              'Redux',
+              'NextJS',
               'JavaScript',
               'TypeScript',
-              'CSS3',
-              'HTML5',
+              'Tailwind',
               'MaterialUI',
-              'NextJS',
             ]}
             height={64}
             width={64}
