@@ -16,13 +16,15 @@ export default function RecentBlogPostsSection() {
   const theme = useTheme();
   const colorMode = theme.palette.mode;
 
+  const reversedPosts = [...RecentBlogPosts].reverse(); // reverse order of posts to show most recent first
+
   return (
     <Box className="centerBox">
       <Box sx={{ maxWidth: 1150 }}>
         <SectionTitle title="Recent Blog Posts" />
         <Box sx={{ pb: '48px' }}>
           <Grid container spacing={3}>
-            {RecentBlogPosts.map((post, index) => (
+            {reversedPosts.map((post, index) => (
               <Grid item key={index} xl={6} lg={6} md={6}>
                 <ScrollAnimation
                   animation={'fade'}
