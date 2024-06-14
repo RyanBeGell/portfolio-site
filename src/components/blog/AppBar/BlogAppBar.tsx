@@ -89,11 +89,11 @@ export default function BlogAppBar(props: Props) {
                   key={item}
                   sx={{
                     color: 'text.primary',
-                    fontWeight: 700,
                     '&:hover': {
                       color: 'primary.main',
                     },
                     textTransform: 'none',
+                    height:'34px',
                   }}
                 >
                   {item}
