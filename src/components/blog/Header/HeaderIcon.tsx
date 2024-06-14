@@ -1,10 +1,9 @@
 import EmailIcon from '@mui/icons-material/Email';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import RedditIcon from '@mui/icons-material/Reddit';
-import TwitterIcon from '@mui/icons-material/Twitter';
 import Tooltip from '@mui/material/Tooltip';
-
-type IconType = 'Reddit' | 'Twitter' | 'LinkedIn' | 'Email';
+import XIcon from '@mui/icons-material/X';
+type IconType = 'Reddit' | 'X' | 'LinkedIn' | 'Email';
 
 interface IconProps {
   type: IconType;
@@ -13,7 +12,7 @@ interface IconProps {
 
 const icons = {
   Reddit: RedditIcon,
-  Twitter: TwitterIcon,
+  X: XIcon,
   LinkedIn: LinkedInIcon,
   Email: EmailIcon,
 };

@@ -109,7 +109,7 @@ export default function Header(props: Props) {
             <Box position="relative" sx={{ top: '25%' }}>
               <HeaderIcon type="LinkedIn" color="linkedInBlue" />
               <HeaderIcon type="Reddit" color="redditOrange" />
-              <HeaderIcon type="Twitter" color="twitterBlue" />
+              <HeaderIcon type="X" color="Black" />
               <Tooltip
                 title="Copy link"
                 placement="top"
