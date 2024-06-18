@@ -118,11 +118,11 @@ export default function Certifications() {
               <img
                 src={selectedCertification.screenshot}
                 style={{
-                  maxHeight: '100%',
-                  maxWidth: '100%',
                   objectFit: 'contain',
                   cursor: 'pointer',
                   borderRadius: '4px',
+                  maxWidth: '90vw',
+                  maxHeight: '90vh',
                 }}
                 onClick={() =>
                   window.open(
