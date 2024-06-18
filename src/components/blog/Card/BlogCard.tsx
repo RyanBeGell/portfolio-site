@@ -53,7 +53,7 @@ export default function BlogCard(props: Props) {
         >
           {props.date + ' · ' + props.minsToRead + ' min read'}
         </Typography>
-        <Link href={`/blog/posts/${props.path}`}>
+        <Link style={{textDecoration:'none'}}href={`/blog/posts/${props.path}`}>
           <Typography
             component="div"
             variant={'h6'}
@@ -62,9 +62,10 @@ export default function BlogCard(props: Props) {
               mb: '8px',
               cursor: 'pointer',
               color: darkMode ? 'primary.main' : 'inherit',
+              textDecoration:'none',
               '&:hover': {
                 textDecoration: 'underline',
-                color:'secondary.main'
+                color:'primary.main'
               },
             }}
             className="ellipsisBox"
@@ -125,6 +126,7 @@ export default function BlogCard(props: Props) {
               }, }}
               endIcon={<KeyboardArrowRightIcon />}
               color="primary"
+              onClick={() => router.push(`/blog/posts/${props.path}`)}
             >
               Read more
             </Button>
