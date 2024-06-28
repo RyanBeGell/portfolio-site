@@ -21,12 +21,12 @@ export interface Props {
 export default function BlogAppBar(props: Props) {
   const theme = useTheme();
   const mode = theme.palette.mode;
-  const pages = ['Home', 'Blog', 'Portfolio', 'Contact'];
+  const pages = ['About me', 'Blog', 'Portfolio', 'Contact'];
 
   const router = useRouter();
 
   function handleRedirect(path: string) {
-    if (path === 'Home') router.push('/');
+    if (path === 'About me' || path === 'home') router.push('/');
     else {
       router.push('/' + path.toLowerCase());
     }
@@ -69,7 +69,7 @@ export default function BlogAppBar(props: Props) {
               className="hover-pointer grow-on-hover"
             >
               <Image
-                onClick={() => handleRedirect('Home')}
+                onClick={() => handleRedirect('home')}
                 src="/favicon.png"
                 alt="logo"
                 width={32}
